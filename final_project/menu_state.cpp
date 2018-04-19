@@ -75,12 +75,6 @@ void menu_state::Init()
 void menu_state::HandleInput()
 {
     
-}
-void menu_state::Update()
-{
-    //std::cout << "se esta actualizando" << std::endl;
-        
-    
         sf::Event evento;
         while(Motor2D::Instance()->getWindow()->pollEvent(evento))
         {
@@ -135,15 +129,20 @@ void menu_state::Update()
                         selected=i;
                 }
               }
+        }
+}
+void menu_state::Update()
+{
+    //std::cout << "se esta actualizando" << std::endl;
+        
+    
            
             for(int i=0;i<4; i++){
                 if(i!=selected)
                     menu[i].setColor(255,0,0);
-            }
-            
+            }            
             mouse.CursorUpdate();//se actualiza el sprite a la posicion del raton
-        }
-     
+            
 }
 void menu_state::Draw()
 {   

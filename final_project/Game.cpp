@@ -46,7 +46,7 @@ void Game::run(){
         
         motor->clearWindow();
         
-        //prueba->getSprite()->draw();
+        escena->HandleInput();
         escena->Update();
         escena->Draw();
         motor->displayWindow();

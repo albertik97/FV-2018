@@ -40,7 +40,7 @@ private:
     credits_state &operator= (const credits_state &);
     
     static credits_state* pinstance;
-    Text texto;
+    Text texto[6];
             
 };
 #endif /* CREDITS_STATE_H */

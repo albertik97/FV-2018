@@ -55,11 +55,7 @@ void ingame_state::Init()
 }
 void ingame_state::HandleInput()
 {
-    
-}
-void ingame_state::Update()
-{
-        sf::Event evento;
+     sf::Event evento;
         while(Motor2D::Instance()->getWindow()->pollEvent(evento))
         {
             if(evento.type == sf::Event::Closed)
@@ -72,6 +68,9 @@ void ingame_state::Update()
                  
             }
         }
+}
+void ingame_state::Update()
+{
    
 }
 void ingame_state::Draw()

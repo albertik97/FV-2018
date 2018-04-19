@@ -34,10 +34,6 @@ void options_state::Init()
 }
 void options_state::HandleInput()
 {
-  
-}
-void options_state::Update()
-{
     sf::Event event;
     while(Motor2D::Instance()->getWindow()->pollEvent(event))
     {
@@ -50,6 +46,10 @@ void options_state::Update()
              Game::instance()->setState(menu_state::Instance());
         }
     }
+}
+void options_state::Update()
+{
+  
 }
 void options_state::Draw()
 {

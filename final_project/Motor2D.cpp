@@ -30,7 +30,7 @@ Motor2D* Motor2D::Instance()
 }
 
 Motor2D::Motor2D()
-:window(sf::VideoMode(1280,720), "Ye", sf::Style::Close | sf::Style::Fullscreen | sf::Style::Titlebar)
+:window(sf::VideoMode(1920,1080), "Ye", sf::Style::Close | sf::Style::Fullscreen | sf::Style::Titlebar)
 {
      
 }
