@@ -31,21 +31,17 @@ credits_state::credits_state()
 }
 void credits_state::Init()
 {
-    texto.setSize(20);
-    texto.setText("Credits");
-    texto.setText("Alberto Berenguer");
+   // texto.setSize(20);
+   // texto.setText("Credits");
+   // texto.setText("Alberto Berenguer");
 
-    texto.setPos(Motor2D::Instance()->getWindow()->getSize().x / 2,Motor2D::Instance()->getWindow()->getSize().y / 2);
+//    texto.setPos(Motor2D::Instance()->getWindow()->getSize().x / 2,Motor2D::Instance()->getWindow()->getSize().y / 2);
    
     
 }
 void credits_state::HandleInput()
 {
- 
-}
-void credits_state::Update()
-{
-    sf::Event event;
+  sf::Event event;
     while(Motor2D::Instance()->getWindow()->pollEvent(event))
     {
         if(event.type == sf::Event::Closed)
@@ -58,8 +54,13 @@ void credits_state::Update()
         }
     }
 }
+void credits_state::Update()
+{
+   
+}
 void credits_state::Draw()
 {
- //Motor2D::Instance()->getWindow()->draw(mapa);
+   // for
+    //texto.draw();
  
 }
