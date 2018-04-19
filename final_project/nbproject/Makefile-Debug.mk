@@ -36,11 +36,13 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Clock.o \
+	${OBJECTDIR}/Coords.o \
 	${OBJECTDIR}/Food.o \
 	${OBJECTDIR}/Game.o \
 	${OBJECTDIR}/Keyboard.o \
 	${OBJECTDIR}/Motor2D.o \
 	${OBJECTDIR}/Mouse.o \
+	${OBJECTDIR}/Player.o \
 	${OBJECTDIR}/Sprite.o \
 	${OBJECTDIR}/Text.o \
 	${OBJECTDIR}/TileMap.o \
@@ -92,6 +94,11 @@ ${OBJECTDIR}/Clock.o: Clock.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Iusr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Clock.o Clock.cpp
 
+${OBJECTDIR}/Coords.o: Coords.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iusr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Coords.o Coords.cpp
+
 ${OBJECTDIR}/Food.o: Food.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -116,6 +123,11 @@ ${OBJECTDIR}/Mouse.o: Mouse.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Iusr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Mouse.o Mouse.cpp
+
+${OBJECTDIR}/Player.o: Player.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iusr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Player.o Player.cpp
 
 ${OBJECTDIR}/Sprite.o: Sprite.cpp 
 	${MKDIR} -p ${OBJECTDIR}

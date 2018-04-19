@@ -25,6 +25,9 @@ public:
     virtual ~Sprite();
     void draw( );
     void scale(float x, float y);
+    void moving(float x, float y);
+    void rotate(float angle);
+    sf::Vector2f getPosition();
     void setPosition(float x, float y);
     void setOrigin(int x, int y);
     //metodos

@@ -24,6 +24,16 @@ Keyboard::Keyboard(const Keyboard& orig) {
 Keyboard::~Keyboard() {
 }
 
+
+
+bool Keyboard::isAnyKeyPressed(){
+    
+    
+}
+
+
+
+
 bool Keyboard::isKeyWPressed(){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
         return true;

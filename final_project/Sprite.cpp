@@ -36,7 +36,6 @@ sprite->setTexture(texture);
 
 
 void Sprite::draw(){
-
    
     Motor2D *motor =  Motor2D::Instance();
     motor->dibujar(*sprite);
@@ -47,6 +46,17 @@ void Sprite::draw(){
 void Sprite::scale(float x, float y){
     sprite->scale(x,y);
 }
+
+
+void Sprite::moving(float dir, float v){
+    
+    sprite->move(dir,v);
+}
+
+void Sprite::rotate(float a){
+    sprite->rotate(a);
+}
+
 void Sprite::setOrigin(int x, int y){
     sprite->setOrigin(x,y);
 }
@@ -56,10 +66,15 @@ void Sprite::setPosition(float x, float y){
     std::cout<<"pos: "<<x<<","<<y<<std::endl;
 }
 
+sf::Vector2f Sprite::getPosition(){
+    sprite->getPosition();
+}
+
 
 sf::Sprite* Sprite::getSprite(){
     return sprite;
 }
+
 
 
 Sprite::Sprite(const Sprite& orig) {

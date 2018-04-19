@@ -5,11 +5,13 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>Clock.h</itemPath>
+      <itemPath>Coords.h</itemPath>
       <itemPath>Food.h</itemPath>
       <itemPath>Game.h</itemPath>
       <itemPath>Keyboard.h</itemPath>
       <itemPath>Motor2D.h</itemPath>
       <itemPath>Mouse.h</itemPath>
+      <itemPath>Player.h</itemPath>
       <itemPath>Resources.h</itemPath>
       <itemPath>Sprite.h</itemPath>
       <itemPath>Text.h</itemPath>
@@ -38,11 +40,13 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>Clock.cpp</itemPath>
+      <itemPath>Coords.cpp</itemPath>
       <itemPath>Food.cpp</itemPath>
       <itemPath>Game.cpp</itemPath>
       <itemPath>Keyboard.cpp</itemPath>
       <itemPath>Motor2D.cpp</itemPath>
       <itemPath>Mouse.cpp</itemPath>
+      <itemPath>Player.cpp</itemPath>
       <itemPath>Sprite.cpp</itemPath>
       <itemPath>Text.cpp</itemPath>
       <itemPath>TileMap.cpp</itemPath>
@@ -121,6 +125,10 @@
       </item>
       <item path="Clock.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Coords.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Coords.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Food.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Food.h" ex="false" tool="3" flavor2="0">
@@ -140,6 +148,10 @@
       <item path="Mouse.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Mouse.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Player.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Player.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Resources.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -236,6 +248,10 @@
       </item>
       <item path="Clock.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Coords.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Coords.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Food.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Food.h" ex="false" tool="3" flavor2="0">
@@ -255,6 +271,10 @@
       <item path="Mouse.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Mouse.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Player.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Player.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Resources.h" ex="false" tool="3" flavor2="0">
       </item>
