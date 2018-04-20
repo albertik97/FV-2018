@@ -21,8 +21,8 @@
 class Sprite {
 public:
     Sprite();
-    Sprite(const Sprite& orig);
-    virtual ~Sprite();
+
+
     void draw( );
     void scale(float x, float y);
     void moving(float x, float y);

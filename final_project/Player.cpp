@@ -8,34 +8,30 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Color.hpp>
 
-#define kVel 5
+#define kVel 2
 
 #define kSalto 20
 
 Player::Player() {
     
-    sprite = new Sprite();
-    
+    sprite=new Sprite();
+    x = 200;
+    y = 200;
     up = false;
     left = false;
     down = false;
     right = false;
-    dir = 1;
+
 }
-/*
+
 void Player::chargingTexture() {
-	//Cargo la imagen donde reside la textura del sprite
-	if (!tex.loadFromFile("resources/sprites.png")){
-		std::cerr << "Error cargando el sprite del personaje";
-		exit(0);
-	}
 	
-	sprite= sf::Sprite(tex);                                // Y creo el spritesheet a partir de la imagen anterior
-        sprite.setTextureRect(sf::IntRect(4,238, 58, 64));
-	sprite.setOrigin(58/2,64/2);
-	sprite.setPosition(x, y);                               // Lo dispongo en el centro de la pantalla
+	sprite->setSpriteTexture("resources/sprites.png");                              // Y creo el spritesheet a partir de la imagen anterior
+        sprite->getSprite()->setTextureRect(sf::IntRect(4,238, 58, 64));
+	sprite->getSprite()->setOrigin(58/2,64/2);
+	sprite->getSprite()->setPosition(x, y);                               // Lo dispongo en el centro de la pantalla
 }
-*/
+
 
 void Player::draw() {
     
@@ -44,7 +40,7 @@ void Player::draw() {
 
 void Player::input(){
         
-    if(sf::Event::KeyPressed){
+   // if(sf::Event::KeyPressed){
 
                     if(Keyboard::isKeyDPressed()){				
                             
@@ -68,13 +64,13 @@ void Player::input(){
                         
                     }
 
-		}
+		//}
 	
 	
-	else{
+	//else{
 	
                     if(!Keyboard::isKeyDPressed()){				
-                            
+                        std::cout<<"dasdasda"<<std::endl;
                         right = false;
                     }
                     
@@ -95,7 +91,7 @@ void Player::input(){
                         
                     }
 		
-	}  
+	//}  
 
 }
 
@@ -104,7 +100,9 @@ void Player::input(){
 void Player::lookAtMouse(){
     
     sf::Vector2f curPos = sprite->getPosition();
-    sf::Vector2i position= (Mouse::getPosX(), Mouse::getPosY());    
+    //(std::cout<<sprite->getPosition().x;
+    //std::cout<<sprite->getPosition().y;
+    sf::Vector2f position(Mouse::getPosX(), Mouse::getPosY()); 
     const float PI = 3.14159265;
     float dx = curPos.x - position.x;
     float dy = curPos.y - position.y;
@@ -116,8 +114,8 @@ void Player::lookAtMouse(){
 
 
 void Player::update(){
-        lookAtMouse();
-	moveChar();
+       lookAtMouse();
+        moveChar();
 }
 
 // Si pulsamos IZDA, intentamos ir a la IZDA
@@ -125,46 +123,56 @@ void Player::update(){
 void Player::moveChar(){
     
 	if(left){
-            moveX(-1);
-            dir=-1;
+            moveX();
+        
             
         }
-	else{
+
              if(right){      
-             moveX(1);
-             dir=1;
+             moveX();
+           
              }
-        }
+        
         
         if(up){
             
-            moveY(-1);
-            dir=-1;
+            moveY();
+            
             
         }
-        else{
+       
             if(down){
                 
-            moveY(1);
-            dir=1;
+            moveY();
+           
             
             }
-        }
+        
    
 }
 
 
 void Player::moveX(){
-
-             sprite->moving(dir * kVel, 0);
+    if(left)
+             sprite->moving(-kVel, 0);
+    if(right)
+            sprite->moving(kVel, 0);
        
 }
 
 void Player::moveY(){
-
-             sprite->moving(0, dir * kVel);
+    if(up)
+             sprite->moving(0, -kVel);
+    if(down)
+             sprite->moving(0, kVel);
       
 }
+
+
+Sprite* Player::getSprite(){
+    return sprite;
+}
+
 /*
 bool Player::colisionComida(){
    

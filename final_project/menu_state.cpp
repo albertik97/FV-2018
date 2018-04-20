@@ -65,7 +65,7 @@ void menu_state::Init()
 
     
     fondo.setSpriteTexture("resources/fondo.png");
- 
+//    mouse.setTexture("resources/pointer.png");
     
     selected=0;
     
