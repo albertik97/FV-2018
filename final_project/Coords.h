@@ -17,8 +17,7 @@
 class Coords {
 public:
     Coords();
-    Coords(const Coords& orig);
-    virtual ~Coords();
+
 private:
     float x;
     float y;

@@ -27,6 +27,7 @@ public:
    static bool RightPressed();
    static float getPosX();
    static float getPosY();
+   void setTexture(std::string);
    void CursorUpdate();
    Sprite* getCursorSprite();
 private:

@@ -15,12 +15,11 @@
 #define PLAYER_H
 
 #include "Coords.h"
+#include "Sprite.h"
 
 class Player {
 public:
     Player();
-    Player(const Player& orig);
-    virtual ~Player();
     void draw();
     void lookAtMouse();
     void update();
@@ -29,9 +28,11 @@ public:
     void moveX();
     void moveY();
     bool colisionComida();
+    void chargingTexture();
+    Sprite* getSprite();
     
 private:
-    
+    sf::Texture tex;
     Coords actual;
     Coords last;
     Sprite* sprite;
@@ -40,6 +41,8 @@ private:
     bool down;
     bool right;
     float dir;
+    int x;
+    int y;
 
 };
 

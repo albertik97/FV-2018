@@ -17,7 +17,9 @@
 #include "menu_state.h"
 #include "Game.h"
 #include "TileMap.h"
+#include "Player.h"
 #include "Text.h"
+#include "Mouse.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
@@ -34,6 +36,8 @@ private:
     
     Text texto;
     TileMap mapa;
+    Player player;
+    Mouse mouse;
     
 
     

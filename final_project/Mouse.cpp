@@ -32,6 +32,13 @@ Mouse::Mouse(const Mouse& orig) {
 Mouse::~Mouse() {
 }
 
+
+void Mouse::setTexture(std::string route){
+    
+    cursor->setSpriteTexture(route);
+}
+
+
 bool Mouse::RightPressed(){
     if(sf::Mouse::isButtonPressed(sf::Mouse::Right)){
         return true;

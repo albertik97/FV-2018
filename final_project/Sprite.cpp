@@ -26,14 +26,11 @@ Sprite::Sprite(){
 
 void Sprite::setSpriteTexture(std::string ruta){
 sprite= new sf::Sprite(); 
-texture.loadFromFile(ruta);
+if(!texture.loadFromFile(ruta))
+    std::cout<<"error textura"<<std::endl;
 sprite->setTexture(texture);
  
 }
-
-
-
-
 
 void Sprite::draw(){
    
@@ -54,7 +51,8 @@ void Sprite::moving(float dir, float v){
 }
 
 void Sprite::rotate(float a){
-    sprite->rotate(a);
+    sprite->setRotation(a);
+    
 }
 
 void Sprite::setOrigin(int x, int y){
@@ -63,11 +61,10 @@ void Sprite::setOrigin(int x, int y){
 
 void Sprite::setPosition(float x, float y){
     sprite->setPosition(x,y);
-    std::cout<<"pos: "<<x<<","<<y<<std::endl;
 }
 
 sf::Vector2f Sprite::getPosition(){
-    sprite->getPosition();
+    return sprite->getPosition();
 }
 
 
@@ -76,10 +73,4 @@ sf::Sprite* Sprite::getSprite(){
 }
 
 
-
-Sprite::Sprite(const Sprite& orig) {
-}
-
-Sprite::~Sprite() {
-}
 
