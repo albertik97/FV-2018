@@ -55,7 +55,7 @@ void Game::run(){
 }
 
 void Game::init(){
-    prueba = new Food();
+
     
 }
 

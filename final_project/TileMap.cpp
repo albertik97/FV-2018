@@ -78,7 +78,10 @@ void TileMap::cargarmapa(){
         for(int y = 0; y < altoMapa; y++){
             _tilemap[l][y] = new int[anchoMapa];
             for(int x = 0; x < anchoMapa; x++){
+<<<<<<< HEAD
                // std::cout<<l<<","<<y<<","<<x<<std::endl;
+=======
+>>>>>>> master
                 data[l]->QueryIntAttribute("gid", &_tilemap[l][y][x]);
                 data[l] = data[l]->NextSiblingElement("tile");            
             }

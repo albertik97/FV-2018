@@ -1,5 +1,4 @@
 
-
 #include "menu_state.h"
 #include "Sprite.h"
 #include "Keyboard.h"

@@ -26,6 +26,8 @@ public:
     virtual ~Food();
     void draw( );
     //metodos
+    void chargingTexture();
+    bool colisionComida();
     
     Sprite* getSprite();
 
@@ -33,7 +35,7 @@ public:
     
     
 private:
-    Sprite *foodSprite;
+    Sprite *sprite;
 };
 
 #endif /* SPRITE_H */

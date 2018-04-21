@@ -22,6 +22,7 @@
 #include <sstream>
 #include <stdlib.h>
 #include <ctype.h>
+#include <vector>
 
 
 ingame_state* ingame_state::pinstance = 0;
@@ -41,6 +42,7 @@ ingame_state::ingame_state()
 }
 void ingame_state::Init()
 {
+<<<<<<< HEAD
    player.chargingTexture();   
    mapa.cargarmapa();
    mouse.initMouse("resources/mira.png",0.1,0.1);
@@ -51,6 +53,40 @@ void ingame_state::Init()
       enemys[i]->setPosRandom();
    }
    
+=======
+    texto.setSize(20);
+    texto.setText("Esta es la escena 'ingame_state'.");
+
+    texto.setPos(Motor2D::Instance()->getWindow()->getSize().x / 2,Motor2D::Instance()->getWindow()->getSize().y / 2);
+    player = new Player();
+    player->chargingTexture();
+    
+    int x=70;
+    int y=70;
+    
+
+    
+    for(int i=0; i<10; i++){
+        
+      Food* comida = new Food();
+      comidaArray.push_back(comida);
+      comidaArray[i]->getSprite()->setPosition(x,y);
+      
+           
+            x=x+75;
+            y=y+75;
+      
+    }
+    
+    
+    
+   //carga del mapa
+    
+   mapa.cargarmapa();
+   mouse.initMouse("resources/mira.png",0.1,0.1);
+   colision.setPlayer(player);
+   colision.setFood(comidaArray);
+>>>>>>> master
     
     
 }
@@ -76,32 +112,41 @@ void ingame_state::HandleInput()
                 for(int i=0;i<10;i++)
                     enemys[i]->changeStrategy(new IAPasiva());
             }
-            player.input();
+            player->input();
         }
 }
 void ingame_state::Update()
 {
    
-    
-    player.update();
+
+    player->update();
     mouse.CursorUpdate();
+<<<<<<< HEAD
     for(int i=0;i<10;i++)
         enemys[i]->update();
     
     
+=======
+    colision.update();
+
+>>>>>>> master
 }
 void ingame_state::Draw()
-{
-       
+{       
         //texto.draw();
         Motor2D::Instance()->getWindow()->draw(mapa);
+<<<<<<< HEAD
         for(int i=0;i<10;i++)
             enemys[i]->draw();
         
          player.getSprite()->draw();
          
+=======
+        player->getSprite()->draw();
+>>>>>>> master
         mouse.getCursorSprite()->draw();
-        
-       
-  
+         for(int i=0; i<comidaArray.size(); i++){
+            comidaArray[i]->getSprite()->draw();
+        }
+ 
 }

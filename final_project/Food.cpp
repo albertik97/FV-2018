@@ -14,7 +14,8 @@
 #include "Food.h"
 
 Food::Food() {
-    foodSprite = new Sprite();
+    sprite = new Sprite();
+    chargingTexture();
 }
 
 Food::Food(const Food& orig) {
@@ -23,7 +24,21 @@ Food::Food(const Food& orig) {
 Food::~Food() {
 }
 
-Sprite* Food::getSprite(){
-    return foodSprite;
+void Food::chargingTexture() {
+    
+
+	
+	sprite->setSpriteTexture("resources/sprites.png");                              // Y creo el spritesheet a partir de la imagen anterior
+        sprite->getSprite()->setTextureRect(sf::IntRect(278,238, 40, 64));
+	sprite->getSprite()->setOrigin(75/2,75/2);
+      
+	
 }
+
+
+Sprite* Food::getSprite(){
+    return sprite;
+}
+
+
 

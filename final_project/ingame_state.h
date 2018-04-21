@@ -18,6 +18,7 @@
 #include "Game.h"
 #include "TileMap.h"
 #include "Player.h"
+#include "Colisionator.h"
 #include "Text.h"
 #include "Mouse.h"
 #include "Enemy.h"
@@ -36,9 +37,16 @@ private:
     static ingame_state* pinstance;
     
     TileMap mapa;
-    Player player;
+    Player* player;
     Mouse mouse;
+<<<<<<< HEAD
     Enemy* enemys[10];
+=======
+    Colisionator colision;
+    std::vector<Food*> comidaArray;
+    
+
+>>>>>>> master
     
 public:
     static ingame_state* instance();

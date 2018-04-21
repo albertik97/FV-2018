@@ -35,14 +35,13 @@ public:
     void init();
     void setState(state* escena);
     //Sprite *prueba;
-    Food *prueba;
 
 private:
     Game();
     Game(const Game& orig);
     Game &operator= (const Game &);
     
-    
+
     static Game* pinstance;
     Text t;
     state* escena;
