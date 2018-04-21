@@ -1,15 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   menu_state.cpp
- * Author: blanca
- * 
- * Created on 17 de abril de 2018, 20:21
- */
 
 
 #include "menu_state.h"
@@ -65,9 +53,7 @@ void menu_state::Init()
 
     
     fondo.setSpriteTexture("resources/fondo.png");
-//    mouse.setTexture("resources/pointer.png");
-    
-    selected=0;
+    mouse.initMouse("resources/pointer.png",0.1,0.1);
     
     Motor2D::Instance()->getWindow()->setMouseCursorVisible(false);
     

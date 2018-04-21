@@ -20,10 +20,7 @@
 #include "Mouse.h"
 
 Mouse::Mouse() {
-    cursor= new Sprite();
-    cursor->setSpriteTexture("resources/pointer.png");
-    cursor->scale(0.1,0.1);
-    cursor->setOrigin(cursor->getSprite()->getGlobalBounds().width/2,cursor->getSprite()->getGlobalBounds().height/2);
+
 }
 
 Mouse::Mouse(const Mouse& orig) {
@@ -32,6 +29,12 @@ Mouse::Mouse(const Mouse& orig) {
 Mouse::~Mouse() {
 }
 
+void Mouse::initMouse(std::string a, float s1, float s2){
+    cursor= new Sprite();
+    cursor->setSpriteTexture(a);
+    cursor->scale(s1,s2);
+    cursor->setOrigin(cursor->getSprite()->getGlobalBounds().width/2,cursor->getSprite()->getGlobalBounds().height/2);
+}
 
 void Mouse::setTexture(std::string route){
     
@@ -63,9 +66,10 @@ float Mouse::getPosY(){
 }
 
 void Mouse::CursorUpdate(){
-    cursor->setPosition(mouse.getPosition().x,mouse.getPosition().y);
-}
+        cursor->setPosition(mouse.getPosition().x,mouse.getPosition().y);
+}   
 
 Sprite* Mouse::getCursorSprite(){
     return cursor;
 }
+

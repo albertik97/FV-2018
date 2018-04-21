@@ -40,18 +40,14 @@ void ingame_state::Init()
 {
     texto.setSize(20);
     texto.setText("Esta es la escena 'ingame_state'.");
-        
-    Motor2D::Instance()->getWindow()->setMouseCursorVisible(true);
 
     texto.setPos(Motor2D::Instance()->getWindow()->getSize().x / 2,Motor2D::Instance()->getWindow()->getSize().y / 2);
     player.chargingTexture();
     
-    //mouse.setTexture("resources/pointer.png");
     //carga del mapa
     
-    //mapa.cargarmapa();
-    
-    
+   mapa.cargarmapa();
+    mouse.initMouse("resources/mira.png",0.1,0.1);
     
     
 }
@@ -86,8 +82,9 @@ void ingame_state::Draw()
 {
        
         //texto.draw();
-         //Motor2D::Instance()->getWindow()->draw(mapa);
+        Motor2D::Instance()->getWindow()->draw(mapa);
          player.getSprite()->draw();
+        mouse.getCursorSprite()->draw();
         
        
   

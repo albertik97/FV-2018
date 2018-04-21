@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="160" height="90" tilewidth="32" tileheight="32" nextobjectid="1">
- <tileset firstgid="1" source="patrones_oceano_nivel1.tsx"/>
+ <tileset name="patrones_oceano_nivel1" tilewidth="32" tileheight="32" tilecount="120" columns="8"><image source="a.png" width="256" height="480"/></tileset>
  <layer name="Capa de Patrones 1" width="160" height="90">
   <data>
    <tile gid="41"/>
@@ -43213,4 +43213,7 @@
    <tile gid="70"/>
   </data>
  </layer>
+ <imagelayer name="Capa de Imagen 1" visible="0">
+  <image source="../../../../Escritorio/mapa1/a.png"/>
+ </imagelayer>
 </map>

@@ -30,6 +30,7 @@ public:
    void setTexture(std::string);
    void CursorUpdate();
    Sprite* getCursorSprite();
+   void initMouse(std::string a,float s1,float s2);
 private:
     Sprite* cursor;
     sf::Mouse mouse;

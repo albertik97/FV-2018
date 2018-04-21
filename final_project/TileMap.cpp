@@ -61,6 +61,8 @@ void TileMap::cargarmapa(){
         layer = layer->NextSiblingElement("layer");
     }
     
+    numeroCapas=1; ///linea que hay que borrar pero que es porvisional para que se puedan hacer pruebas
+    
     TiXmlElement *data[numeroCapas];
     data[0] = map->FirstChildElement("layer")->FirstChildElement("data")->FirstChildElement("tile");
     _tilemap = new int**[numeroCapas]; 
@@ -76,20 +78,22 @@ void TileMap::cargarmapa(){
         for(int y = 0; y < altoMapa; y++){
             _tilemap[l][y] = new int[anchoMapa];
             for(int x = 0; x < anchoMapa; x++){
+                std::cout<<l<<","<<y<<","<<x<<std::endl;
                 data[l]->QueryIntAttribute("gid", &_tilemap[l][y][x]);
-                data[l] = data[l]->NextSiblingElement("tile");
+                data[l] = data[l]->NextSiblingElement("tile");            
             }
         }
     }
-    
-    for(int i = 0; i < numeroCapas; i++){
+
+    /*
+    for(int i = 0; i < numeroCapas-2; i++){
         for(int j = 0; j < altoMapa; j++){
             for(int x = 0; x < anchoMapa; x++){
                 std::cout << _tilemap[i][j][x] << std::endl;
             }
         }
     }
-    
+    */
     
     
     
@@ -119,7 +123,7 @@ void TileMap::cargarmapa(){
     _tileMapSprite = new sf::Sprite***[numeroCapas];
     
     for(int l = 0; l < numeroCapas; l++){
-        _tileMapSprite[l] = new sf::Sprite**[numeroCapas];
+        _tileMapSprite[l] = new sf::Sprite**[altoMapa];
     }
     for(int l = 0; l < numeroCapas; l++){
         for(int y = 0; y < altoMapa; y++){
