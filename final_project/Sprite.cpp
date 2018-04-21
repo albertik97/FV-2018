@@ -73,4 +73,11 @@ sf::Sprite* Sprite::getSprite(){
 }
 
 
+void Sprite::setTextureRect(int a, int b, int c, int d){
+    sprite->setTextureRect(sf::IntRect(a,b, c, d));
+}
+
+void Sprite::move(int a,int b){
+    sprite->move(a,b);
+}
 

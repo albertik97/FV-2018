@@ -37,8 +37,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/Clock.o \
 	${OBJECTDIR}/Coords.o \
+	${OBJECTDIR}/Enemy.o \
 	${OBJECTDIR}/Food.o \
 	${OBJECTDIR}/Game.o \
+	${OBJECTDIR}/IAActiva.o \
+	${OBJECTDIR}/IAPasiva.o \
 	${OBJECTDIR}/Keyboard.o \
 	${OBJECTDIR}/Motor2D.o \
 	${OBJECTDIR}/Mouse.o \
@@ -99,6 +102,11 @@ ${OBJECTDIR}/Coords.o: Coords.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Iusr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Coords.o Coords.cpp
 
+${OBJECTDIR}/Enemy.o: Enemy.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iusr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Enemy.o Enemy.cpp
+
 ${OBJECTDIR}/Food.o: Food.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -108,6 +116,16 @@ ${OBJECTDIR}/Game.o: Game.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Iusr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game.o Game.cpp
+
+${OBJECTDIR}/IAActiva.o: IAActiva.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iusr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/IAActiva.o IAActiva.cpp
+
+${OBJECTDIR}/IAPasiva.o: IAPasiva.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iusr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/IAPasiva.o IAPasiva.cpp
 
 ${OBJECTDIR}/Keyboard.o: Keyboard.cpp 
 	${MKDIR} -p ${OBJECTDIR}

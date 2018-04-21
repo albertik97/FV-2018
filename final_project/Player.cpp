@@ -27,10 +27,10 @@ Player::Player() {
 void Player::chargingTexture() {
 	
 	sprite->setSpriteTexture("resources/player.png");                              // Y creo el spritesheet a partir de la imagen anterior
-        sprite->getSprite()->setTextureRect(sf::IntRect(50,50, 1026, 1026));
-	sprite->getSprite()->setOrigin(1026/2,1026/2);
+        sprite->setTextureRect(50,50, 1026, 1026);
+	sprite->setOrigin(1026/2,1026/2);
         sprite->scale(0.1,0.1);
-	sprite->getSprite()->setPosition(x, y);                               // Lo dispongo en el centro de la pantalla
+	sprite->setPosition(x, y);                               // Lo dispongo en el centro de la pantalla
 }
 
 

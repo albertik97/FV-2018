@@ -6,8 +6,12 @@
                    projectFiles="true">
       <itemPath>Clock.h</itemPath>
       <itemPath>Coords.h</itemPath>
+      <itemPath>Enemy.h</itemPath>
       <itemPath>Food.h</itemPath>
       <itemPath>Game.h</itemPath>
+      <itemPath>IA.h</itemPath>
+      <itemPath>IAActiva.h</itemPath>
+      <itemPath>IAPasiva.h</itemPath>
       <itemPath>Keyboard.h</itemPath>
       <itemPath>Motor2D.h</itemPath>
       <itemPath>Mouse.h</itemPath>
@@ -31,6 +35,7 @@
     </logicalFolder>
     <logicalFolder name="resources" displayName="resources" projectFiles="true">
       <itemPath>../../Descargas/Hito2_clases (3)/resources/Carnivoro.png</itemPath>
+      <itemPath>resources/enemy.png</itemPath>
       <itemPath>../../Descargas/Hito2_clases (3)/resources/fondo.png</itemPath>
       <itemPath>resources/mira.png</itemPath>
       <itemPath>../../Descargas/Hito2_clases (3)/resources/pointer.png</itemPath>
@@ -42,8 +47,11 @@
                    projectFiles="true">
       <itemPath>Clock.cpp</itemPath>
       <itemPath>Coords.cpp</itemPath>
+      <itemPath>Enemy.cpp</itemPath>
       <itemPath>Food.cpp</itemPath>
       <itemPath>Game.cpp</itemPath>
+      <itemPath>IAActiva.cpp</itemPath>
+      <itemPath>IAPasiva.cpp</itemPath>
       <itemPath>Keyboard.cpp</itemPath>
       <itemPath>Motor2D.cpp</itemPath>
       <itemPath>Mouse.cpp</itemPath>
@@ -130,6 +138,10 @@
       </item>
       <item path="Coords.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Enemy.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Enemy.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Food.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Food.h" ex="false" tool="3" flavor2="0">
@@ -137,6 +149,16 @@
       <item path="Game.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Game.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IA.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IAActiva.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="IAActiva.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IAPasiva.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="IAPasiva.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Keyboard.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -185,6 +207,8 @@
       <item path="options_state.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="options_state.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/enemy.png" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/mira.png" ex="false" tool="3" flavor2="0">
       </item>
@@ -255,6 +279,10 @@
       </item>
       <item path="Coords.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Enemy.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Enemy.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Food.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Food.h" ex="false" tool="3" flavor2="0">
@@ -262,6 +290,16 @@
       <item path="Game.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Game.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IA.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IAActiva.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="IAActiva.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IAPasiva.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="IAPasiva.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Keyboard.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -310,6 +348,8 @@
       <item path="options_state.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="options_state.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/enemy.png" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/mira.png" ex="false" tool="3" flavor2="0">
       </item>

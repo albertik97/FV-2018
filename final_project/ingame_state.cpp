@@ -15,6 +15,9 @@
 #include "Motor2D.h"
 #include "tinystr.h"
 #include "tinyxml.h"
+#include "IAPasiva.h"
+#include "IAActiva.h"
+#include "Keyboard.h"
 #include <stdio.h>
 #include <sstream>
 #include <stdlib.h>
@@ -38,16 +41,16 @@ ingame_state::ingame_state()
 }
 void ingame_state::Init()
 {
-    texto.setSize(20);
-    texto.setText("Esta es la escena 'ingame_state'.");
-
-    texto.setPos(Motor2D::Instance()->getWindow()->getSize().x / 2,Motor2D::Instance()->getWindow()->getSize().y / 2);
-    player.chargingTexture();
-    
-    //carga del mapa
-    
+   player.chargingTexture();   
    mapa.cargarmapa();
-    mouse.initMouse("resources/mira.png",0.1,0.1);
+   mouse.initMouse("resources/mira.png",0.1,0.1);
+   //colocamos los enemigos
+   for(int i=0;i<10;i++){
+      enemys[i]=new Enemy();
+      enemys[i]->chargingTexture();
+      enemys[i]->setPosRandom();
+   }
+   
     
     
 }
@@ -63,8 +66,15 @@ void ingame_state::HandleInput()
             if(evento.type == sf::Event::KeyPressed && evento.key.code == sf::Keyboard::Return)
             {
                  Game::instance()->setState(menu_state::Instance());
-                 
-                 
+                               
+            }
+            if(Keyboard::isKey1Pressed()){
+                for(int i=0;i<10;i++)
+                    enemys[i]->changeStrategy(new IAActiva());
+            }
+             if(Keyboard::isKey2Pressed()){
+                for(int i=0;i<10;i++)
+                    enemys[i]->changeStrategy(new IAPasiva());
             }
             player.input();
         }
@@ -75,6 +85,8 @@ void ingame_state::Update()
     
     player.update();
     mouse.CursorUpdate();
+    for(int i=0;i<10;i++)
+        enemys[i]->update();
     
     
 }
@@ -83,7 +95,11 @@ void ingame_state::Draw()
        
         //texto.draw();
         Motor2D::Instance()->getWindow()->draw(mapa);
+        for(int i=0;i<10;i++)
+            enemys[i]->draw();
+        
          player.getSprite()->draw();
+         
         mouse.getCursorSprite()->draw();
         
        

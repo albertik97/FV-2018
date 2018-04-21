@@ -20,6 +20,8 @@
 #include "Player.h"
 #include "Text.h"
 #include "Mouse.h"
+#include "Enemy.h"
+
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
@@ -32,14 +34,11 @@ private:
     ingame_state &operator= (const ingame_state &);
     
     static ingame_state* pinstance;
-//    Game* j;
     
-    Text texto;
     TileMap mapa;
     Player player;
     Mouse mouse;
-    
-
+    Enemy* enemys[10];
     
 public:
     static ingame_state* instance();
