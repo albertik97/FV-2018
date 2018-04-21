@@ -30,6 +30,8 @@ public:
     bool colisionComida();
     void chargingTexture();
     Sprite* getSprite();
+
+     
     
 private:
     sf::Texture tex;
@@ -43,6 +45,7 @@ private:
     float dir;
     int x;
     int y;
+
 
 };
 

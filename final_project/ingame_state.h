@@ -18,6 +18,7 @@
 #include "Game.h"
 #include "TileMap.h"
 #include "Player.h"
+#include "Colisionator.h"
 #include "Text.h"
 #include "Mouse.h"
 #include <iostream>
@@ -36,8 +37,10 @@ private:
     
     Text texto;
     TileMap mapa;
-    Player player;
+    Player* player;
     Mouse mouse;
+    Colisionator colision;
+    std::vector<Food*> comidaArray;
     
 
     

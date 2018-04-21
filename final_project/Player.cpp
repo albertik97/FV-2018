@@ -8,15 +8,15 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Color.hpp>
 
-#define kVel 2
+#define kVel 10
 
 #define kSalto 20
 
 Player::Player() {
     
     sprite=new Sprite();
-    x = 200;
-    y = 200;
+    x = 700;
+    y = 700;
     up = false;
     left = false;
     down = false;
@@ -71,7 +71,7 @@ void Player::input(){
 	//else{
 	
                     if(!Keyboard::isKeyDPressed()){				
-                        std::cout<<"dasdasda"<<std::endl;
+
                         right = false;
                     }
                     
@@ -116,40 +116,22 @@ void Player::lookAtMouse(){
 
 void Player::update(){
        lookAtMouse();
-        moveChar();
+       moveChar();
 }
 
 // Si pulsamos IZDA, intentamos ir a la IZDA
 // Si pulsamos DCHA, intentamos ir a la DCHA
 void Player::moveChar(){
     
-	if(left){
+	if(left || right){
             moveX();
-        
-            
         }
-
-             if(right){      
-             moveX();
-           
-             }
         
         
-        if(up){
+        if(up || down){
             
             moveY();
-            
-            
         }
-       
-            if(down){
-                
-            moveY();
-           
-            
-            }
-        
-   
 }
 
 
@@ -174,15 +156,4 @@ Sprite* Player::getSprite(){
     return sprite;
 }
 
-/*
-bool Player::colisionComida(){
-   
-        if(comida->sprite.getGlobalBounds().intersects(sprite.getGlobalBounds())){
-            std::cout<<"Colisiona"<<std::endl;
-            return true;
-        }
-    return false;
-  
-}
 
-*/

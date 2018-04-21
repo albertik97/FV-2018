@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Clock.o \
+	${OBJECTDIR}/Colisionator.o \
 	${OBJECTDIR}/Coords.o \
 	${OBJECTDIR}/Food.o \
 	${OBJECTDIR}/Game.o \
@@ -85,6 +86,11 @@ ${OBJECTDIR}/Clock.o: Clock.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Clock.o Clock.cpp
+
+${OBJECTDIR}/Colisionator.o: Colisionator.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Colisionator.o Colisionator.cpp
 
 ${OBJECTDIR}/Coords.o: Coords.cpp 
 	${MKDIR} -p ${OBJECTDIR}
