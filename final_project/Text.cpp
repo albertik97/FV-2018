@@ -38,8 +38,11 @@ void Text::setText(std::string s){
 
 void Text::setPos(int x, int y){
     text.setPosition(sf::Vector2f(x,y));
+    
 }
-
+void Text::setOriginCenter(){
+    text.setOrigin(text.getGlobalBounds().width/2,text.getGlobalBounds().top/2);
+}
 void Text::setSize(int a){
     text.setCharacterSize(a);
 }
@@ -55,12 +58,8 @@ bool Text::getColision(float x, float y){
 }
 
 void Text::draw(){
-
-   
     Motor2D *motor =  Motor2D::Instance();
-    motor->dibujarTexto(text);
-
-    
+    motor->dibujarTexto(text);   
 }
 
 Text::Text(const Text& orig) {

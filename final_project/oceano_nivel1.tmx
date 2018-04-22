@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="160" height="90" tilewidth="32" tileheight="32" nextobjectid="1">
- <tileset firstgid="121" name="aver" tilewidth="32" tileheight="32" tilecount="120">
-  <image source="a.png" width="256" height="480"/>
- </tileset>
+ <properties>
+  <property name="colisionable" value="true"/>
+ </properties>
+<tileset name="patrones_oceano_nivel1" tilewidth="32" tileheight="32" tilecount="120" columns="8">
+ <image source="a.png" width="256" height="480"/>
+</tileset>
  <layer name="Capa de Patrones 1" width="160" height="90">
+  <properties>
+   <property name="colisionable" value="false"/>
+  </properties>
   <data>
    <tile gid="41"/>
    <tile gid="41"/>
@@ -14408,6 +14414,9 @@
   </data>
  </layer>
  <layer name="Capa de patrones 2" width="160" height="90">
+  <properties>
+   <property name="colisionable" value="true"/>
+  </properties>
   <data>
    <tile gid="102"/>
    <tile gid="102"/>
@@ -28812,6 +28821,9 @@
   </data>
  </layer>
  <layer name="Capa de patrones 3" width="160" height="90">
+  <properties>
+   <property name="colisionable" value="true"/>
+  </properties>
   <data>
    <tile gid="3"/>
    <tile gid="3"/>
@@ -43215,7 +43227,4 @@
    <tile gid="70"/>
   </data>
  </layer>
- <imagelayer name="Capa de Imagen 1">
-  <image source="a.png"/>
- </imagelayer>
 </map>

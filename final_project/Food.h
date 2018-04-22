@@ -21,7 +21,7 @@ public:
     //metodos
     void chargingTexture(std::string s,int a,int b,int c, int d);
     bool colisionComida();
-    void setRandomFood();
+    void setRandomFood(sf::Sprite**** &a);
     Sprite* getSprite();
     
 private:

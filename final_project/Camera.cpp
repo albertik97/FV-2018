@@ -1,6 +1,7 @@
 
 
 #include "Camera.h"
+#include <iostream>
 
 Camera::Camera() 
 {

@@ -38,6 +38,7 @@
     <logicalFolder name="resources" displayName="resources" projectFiles="true">
       <itemPath>../../Descargas/Hito2_clases (3)/resources/Carnivoro.png</itemPath>
       <itemPath>resources/enemy.png</itemPath>
+      <itemPath>resources/fondo.jpg</itemPath>
       <itemPath>../../Descargas/Hito2_clases (3)/resources/fondo.png</itemPath>
       <itemPath>resources/mira.png</itemPath>
       <itemPath>../../Descargas/Hito2_clases (3)/resources/pointer.png</itemPath>
@@ -234,6 +235,8 @@
       </item>
       <item path="resources/enemy.png" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="resources/fondo.jpg" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="resources/mira.png" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/sprites.png" ex="false" tool="3" flavor2="0">
@@ -382,6 +385,8 @@
       <item path="options_state.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/enemy.png" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/fondo.jpg" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/mira.png" ex="false" tool="3" flavor2="0">
       </item>

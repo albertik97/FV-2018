@@ -47,10 +47,16 @@ Sprite* Food::getSprite(){
     return sprite;
 }
 
-void Food::setRandomFood(){
-    int x= (1 + rand() % (1900)); //random para elegir la direccion
-    int y= (1 + rand() % (1025));
-    sprite->setPosition(x,y);
+void Food::setRandomFood(sf::Sprite**** &m){
+    bool set=false;
+    while(!set){
+        int x= (rand() % (159)); //random para elegir la direccion
+        int y= (rand() % (89));
+        if(m[1][y][x]==NULL){
+             sprite->setPosition(x*32-16,y*32-16);
+             set=true;
+        }
+    }
 }
 
 

@@ -29,7 +29,7 @@ private:
     TileMap mapa;
     Player* player;
     Mouse mouse;
-    Enemy* enemys[10];
+    std::vector<Enemy*> enemys;
     Colisionator colision;
     std::vector<Food*> comidaArray;
     Camera camera;

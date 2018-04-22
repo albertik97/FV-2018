@@ -27,10 +27,8 @@ void Enemy::chargingTexture(){
 }
 
 void Enemy::setPosRandom(){
-    int x = rand() % 1900;
-    int y = rand() % 1810;
-    
-    std::cout<<x<<","<<y<<std::endl;
+    int x = rand() % 179*32;
+    int y = rand() % 89*32;
     sprite->setPosition(x,y);
 }
 

@@ -35,11 +35,14 @@ void ingame_state::Init()
    mapa.cargarmapa();
    mouse.initMouse("resources/mira.png",0.1,0.1);
    //colocamos los enemigos
-   for(int i=0;i<10;i++){
-      enemys[i]=new Enemy();
-      enemys[i]->chargingTexture();
-      enemys[i]->setPosRandom();
-   }
+
+   for(int i=0; i<22; i++){  
+      Enemy* e = new Enemy();
+      e->chargingTexture();
+      e->setPosRandom();
+      enemys.push_back(e);
+           
+    }
     player = new Player();
     player->chargingTexture();
     
@@ -48,10 +51,10 @@ void ingame_state::Init()
     
     Motor2D::Instance()->setCamera(camera);
     
-    for(int i=0; i<10; i++){  
+    for(int i=0; i<60; i++){  
       Food* comida = new Food();
       comidaArray.push_back(comida);
-      comidaArray[i]->setRandomFood();
+      comidaArray[i]->setRandomFood(mapa._tileMapSprite);
            
     }
    colision.setPlayer(player);
@@ -99,14 +102,14 @@ void ingame_state::Update()
 void ingame_state::Draw()
 {       mapa.setCapaActiva(0);
         Motor2D::Instance()->getWindow()->draw(mapa);
-    mapa.setCapaActiva(1);
+        mapa.setCapaActiva(1);
         Motor2D::Instance()->getWindow()->draw(mapa);
             mapa.setCapaActiva(2);
         Motor2D::Instance()->getWindow()->draw(mapa);
           for(int i=0; i<comidaArray.size(); i++){
             comidaArray[i]->getSprite()->draw();
         }
-        for(int i=0;i<10;i++)
+        for(int i=0;i<enemys.size();i++)
             enemys[i]->draw();
 
         player->getSprite()->draw();

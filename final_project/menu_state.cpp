@@ -26,32 +26,36 @@ void menu_state::Init()
 {
     std::cout << "Entramos al Init()" << std::endl;
     
-    menu[0].setPos(Motor2D::Instance()->getWindow()->getSize().x*0.04,Motor2D::Instance()->getWindow()->getSize().y*0.2);
+    menu[0].setPos(Motor2D::Instance()->getWindow()->getSize().x/2,Motor2D::Instance()->getWindow()->getSize().y*0.7);
     menu[0].setColor(255,255,255);
     menu[0].setText("Jugar");
     menu[0].setSize(40);
+    menu[0].setOriginCenter();
     
     
-    menu[1].setPos(Motor2D::Instance()->getWindow()->getSize().x*0.04,Motor2D::Instance()->getWindow()->getSize().y*0.3);
+    menu[1].setPos(Motor2D::Instance()->getWindow()->getSize().x/2,Motor2D::Instance()->getWindow()->getSize().y*0.8);
     menu[1].setColor(255,0,0);
-     menu[1].setText("Opciones");
+    menu[1].setText("Opciones");
     menu[1].setSize(40);
+    menu[1].setOriginCenter();
    
     
-    menu[2].setPos(Motor2D::Instance()->getWindow()->getSize().x*0.04,Motor2D::Instance()->getWindow()->getSize().y*0.4);
+    menu[2].setPos(Motor2D::Instance()->getWindow()->getSize().x/2,Motor2D::Instance()->getWindow()->getSize().y*0.9);
     menu[2].setColor(255,0,0);
-      menu[2].setText("Creditos");
+    menu[2].setText("Creditos");
     menu[2].setSize(40);
+    menu[2].setOriginCenter();
   
     
-    menu[3].setPos(Motor2D::Instance()->getWindow()->getSize().x*0.04,Motor2D::Instance()->getWindow()->getSize().y*0.5);
+    menu[3].setPos(Motor2D::Instance()->getWindow()->getSize().x/2,Motor2D::Instance()->getWindow()->getSize().y);
     menu[3].setColor(255,0,0);
     menu[3].setText("Salir");
     menu[3].setSize(40);
+    menu[3].setOriginCenter();
   
 
     
-    fondo.setSpriteTexture("resources/fondo.png");
+    fondo.setSpriteTexture("resources/fondo.jpg");
     mouse.initMouse("resources/pointer.png",0.1,0.1);
     
     Motor2D::Instance()->getWindow()->setMouseCursorVisible(false);

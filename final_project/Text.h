@@ -29,6 +29,7 @@ public:
     sf::Text getText();
     bool getColision(float x,float y);
     void draw();
+    void setOriginCenter();
     
 private:
     sf::Text text;
