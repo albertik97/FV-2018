@@ -26,7 +26,6 @@ void TileMap::draw(sf::RenderTarget& target, sf::RenderStates states) const{
         target.draw(_tileSetImagen[i]);
     }*/
     
-    
     for(int i = 0; i < altoMapa; i++){
         for(int j = 0; j< anchoMapa; j++){
             if(_tileMapSprite[capaActiva][i][j] != NULL){
@@ -36,7 +35,15 @@ void TileMap::draw(sf::RenderTarget& target, sf::RenderStates states) const{
     }
 }
 
+void TileMap::setCapaActiva(int layer){
+    capaActiva=layer;
+}
+
+
 void TileMap::cargarmapa(){
+    numeroCapas=0;
+    capaActiva=0;
+    
     TiXmlDocument doc;
     doc.LoadFile("oceano_nivel1.tmx");
     TiXmlElement *map = doc.FirstChildElement("map");
@@ -53,15 +60,13 @@ void TileMap::cargarmapa(){
     TiXmlElement *img = map->FirstChildElement("tileset")->FirstChildElement("image");
     tilesetname = img->Attribute("source");
     //Imprimimos el nombre o ruta del tileset
-    std::cout << "Nombre del tileset: " << tilesetname << std::endl;
+    //std::cout << "Nombre del tileset: " << tilesetname << std::endl;
   
     while(layer != NULL){
         /*if(numeroCapas < 1)*/
         numeroCapas++; //Si tenemos solo una capa entonces numeroCapas es 0 y si son dos capas 1 etc...
         layer = layer->NextSiblingElement("layer");
     }
-    
-    numeroCapas=1; ///linea que hay que borrar pero que es porvisional para que se puedan hacer pruebas
     
     TiXmlElement *data[numeroCapas];
     data[0] = map->FirstChildElement("layer")->FirstChildElement("data")->FirstChildElement("tile");
@@ -79,13 +84,23 @@ void TileMap::cargarmapa(){
             _tilemap[l][y] = new int[anchoMapa];
             for(int x = 0; x < anchoMapa; x++){
                 data[l]->QueryIntAttribute("gid", &_tilemap[l][y][x]);
-                data[l] = data[l]->NextSiblingElement("tile");            
+                std::cout<<_tilemap[l][y][x]<<std::endl;
+                data[l] = data[l]->NextSiblingElement("tile");
+             
             }
+        }
+        if(l==0){
+            data[l+1] = map->FirstChildElement("layer");
+            data[l+1] = data[l+1]->NextSiblingElement("layer")->FirstChildElement("data")->FirstChildElement("tile");
+        }else if(l==1){
+            data[l+1] = map->FirstChildElement("layer");
+            data[l+1] = data[l+1]->NextSiblingElement("layer");
+            data[l+1] = data[l+1]->NextSiblingElement("layer")->FirstChildElement("data")->FirstChildElement("tile");
         }
     }
 
     /*
-    for(int i = 0; i < numeroCapas-2; i++){
+    for(int i = 0; i  numeroCapas-2; i++){
         for(int j = 0; j < altoMapa; j++){
             for(int x = 0; x < anchoMapa; x++){
                 std::cout << _tilemap[i][j][x] << std::endl;

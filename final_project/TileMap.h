@@ -30,14 +30,14 @@ public:
     int altoMapa;
     int anchoImagen;
     int altoImagen;
-    int numeroCapas = 0;
-    int capaActiva = 0;
+    int numeroCapas;
+    int capaActiva ;
     const char* tilesetname;
     
   
     void cargarmapa();
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-    //void setCapaActiva(int layer);  
+    void setCapaActiva(int layer);  
 };
 
 

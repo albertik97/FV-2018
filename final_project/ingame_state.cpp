@@ -89,8 +89,11 @@ void ingame_state::Update()
 
 }
 void ingame_state::Draw()
-{       
-        //texto.draw();
+{       mapa.setCapaActiva(0);
+        Motor2D::Instance()->getWindow()->draw(mapa);
+    mapa.setCapaActiva(1);
+        Motor2D::Instance()->getWindow()->draw(mapa);
+            mapa.setCapaActiva(2);
         Motor2D::Instance()->getWindow()->draw(mapa);
           for(int i=0; i<comidaArray.size(); i++){
             comidaArray[i]->getSprite()->draw();
