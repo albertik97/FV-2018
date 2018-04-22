@@ -38,7 +38,7 @@ void Enemy::draw(){
 }
 
 void Enemy::update(){
-    strategy->recalcularEstrategia(sprite);
+    strategy->estrategia(sprite);
 }
 
 void Enemy::changeStrategy(IA* a){

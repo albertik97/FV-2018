@@ -13,11 +13,6 @@ IAPasiva::IAPasiva(const IAPasiva& orig) {
 IAPasiva::~IAPasiva() {
 }
 
-int IAPasiva::recalcularEstrategia(Sprite* s){
-    
-    if(true)
-        estrategia(s);
-}
 
  void IAPasiva::estrategia(Sprite* s){
      

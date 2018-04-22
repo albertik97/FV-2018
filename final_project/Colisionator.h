@@ -23,14 +23,13 @@ public:
     Colisionator();
     Colisionator(const Colisionator& orig);
     virtual ~Colisionator();
-    void setPlayer(Player* p);
-    void setFood(std::vector<Food*>);
-    bool checkColisionComida();
+    void setPlayer(Player* &p);
+    void setFood(std::vector<Food*> &f);
+    bool checkColisionComida(std::vector<Food*> &comidaArray);
     void update();
 private:
     Player* player;
-    std::vector<Food*> comidaArray;
-
+    //std::vector<Food*> comidaArray;
 };
 
 #endif /* COLISIONATOR_H */

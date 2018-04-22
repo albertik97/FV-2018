@@ -17,7 +17,7 @@
 #include <iostream>
 
 Colisionator::Colisionator() {
-    
+   
 }
 
 Colisionator::Colisionator(const Colisionator& orig) {
@@ -27,39 +27,27 @@ Colisionator::~Colisionator() {
 }
 
 
-void Colisionator::setPlayer(Player* p){
+void Colisionator::setPlayer(Player* &p){
     player = p;
 }
 
-void Colisionator::setFood(std::vector<Food*> f){
-    comidaArray = f;    
-
-}
-
-void Colisionator::update(){
-    //checkColisionComida();
-}
-
-
-
-
-bool Colisionator::checkColisionComida(){
+bool Colisionator::checkColisionComida(std::vector<Food*> &comidaArray){
     
    // std::cout<<"LLAMADA AL METODO";
 
-    
     for(int i=0; i<comidaArray.size(); i++){
-    if(comidaArray[i]->getSprite()->getSprite()->getGlobalBounds().intersects(player->getSprite()->getSprite()->getGlobalBounds())){
-        std::cout<<"Hay colision";
-           delete comidaArray[i]; //liberas memoria
-           comidaArray[i]=NULL;
-           comidaArray.erase(comidaArray.begin() + i); //eliminas la posición del vector
-           std::cout<<comidaArray.size();
-            return true;
-        }
-    return false;
-    
+        if(comidaArray[i]->getSprite()->getSprite()->getGlobalBounds().intersects(player->getSprite()->getSprite()->getGlobalBounds())){
+            std::cout<<"Hay colision";
+           
+              delete comidaArray[i]; //liberas memoria
+                comidaArray[i]=NULL;
+                comidaArray.erase(comidaArray.begin() + i); 
+               //eliminas la posición del vector
+               std::cout<<comidaArray.size();
+                return true;
+       }
     }
+     return false;
     
 }
  

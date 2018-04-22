@@ -5,6 +5,7 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>Clock.h</itemPath>
+      <itemPath>Colisionator.h</itemPath>
       <itemPath>Coords.h</itemPath>
       <itemPath>Enemy.h</itemPath>
       <itemPath>Food.h</itemPath>
@@ -46,6 +47,7 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>Clock.cpp</itemPath>
+      <itemPath>Colisionator.cpp</itemPath>
       <itemPath>Coords.cpp</itemPath>
       <itemPath>Enemy.cpp</itemPath>
       <itemPath>Food.cpp</itemPath>

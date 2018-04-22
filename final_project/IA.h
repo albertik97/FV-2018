@@ -4,12 +4,11 @@
 
 class IA {
 public:
-    
+    virtual void estrategia(Sprite* s)=0;
 private:
     
-    
 protected:
-   virtual void estrategia(Sprite* s)=0;
+  //void estrategias(Sprite* s);
 };
 
 #endif /* IA_H */

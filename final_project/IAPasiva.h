@@ -14,7 +14,6 @@ public:
     IAPasiva();
     IAPasiva(const IAPasiva& orig);
     virtual ~IAPasiva();
-    int recalcularEstrategia(Sprite* s);
     void estrategia(Sprite* s);
 private:
     int mov_dir,dist,dist_aux=0;

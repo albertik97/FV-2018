@@ -1,15 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/* 
- * File:   ingame_state.cpp
- * Author: blanca
- * 
- * Created on 17 de abril de 2018, 20:22
- */
 
 #include "ingame_state.h"
 #include "Motor2D.h"
@@ -42,8 +31,7 @@ ingame_state::ingame_state()
 }
 void ingame_state::Init()
 {
-<<<<<<< HEAD
-   player.chargingTexture();   
+     srand(time(0));
    mapa.cargarmapa();
    mouse.initMouse("resources/mira.png",0.1,0.1);
    //colocamos los enemigos
@@ -52,43 +40,17 @@ void ingame_state::Init()
       enemys[i]->chargingTexture();
       enemys[i]->setPosRandom();
    }
-   
-=======
-    texto.setSize(20);
-    texto.setText("Esta es la escena 'ingame_state'.");
-
-    texto.setPos(Motor2D::Instance()->getWindow()->getSize().x / 2,Motor2D::Instance()->getWindow()->getSize().y / 2);
     player = new Player();
     player->chargingTexture();
     
-    int x=70;
-    int y=70;
-    
-
-    
-    for(int i=0; i<10; i++){
-        
+    for(int i=0; i<10; i++){  
       Food* comida = new Food();
       comidaArray.push_back(comida);
-      comidaArray[i]->getSprite()->setPosition(x,y);
-      
+      comidaArray[i]->setRandomFood();
            
-            x=x+75;
-            y=y+75;
-      
     }
-    
-    
-    
-   //carga del mapa
-    
-   mapa.cargarmapa();
-   mouse.initMouse("resources/mira.png",0.1,0.1);
    colision.setPlayer(player);
-   colision.setFood(comidaArray);
->>>>>>> master
-    
-    
+//   colision.setFood(comidaArray);
 }
 void ingame_state::HandleInput()
 {
@@ -121,32 +83,23 @@ void ingame_state::Update()
 
     player->update();
     mouse.CursorUpdate();
-<<<<<<< HEAD
     for(int i=0;i<10;i++)
         enemys[i]->update();
-    
-    
-=======
-    colision.update();
+    colision.checkColisionComida(comidaArray);
 
->>>>>>> master
 }
 void ingame_state::Draw()
 {       
         //texto.draw();
         Motor2D::Instance()->getWindow()->draw(mapa);
-<<<<<<< HEAD
-        for(int i=0;i<10;i++)
-            enemys[i]->draw();
-        
-         player.getSprite()->draw();
-         
-=======
-        player->getSprite()->draw();
->>>>>>> master
-        mouse.getCursorSprite()->draw();
-         for(int i=0; i<comidaArray.size(); i++){
+          for(int i=0; i<comidaArray.size(); i++){
             comidaArray[i]->getSprite()->draw();
         }
+        for(int i=0;i<10;i++)
+            enemys[i]->draw();
+
+        player->getSprite()->draw();
+        mouse.getCursorSprite()->draw();
+       
  
 }

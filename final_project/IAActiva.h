@@ -8,7 +8,6 @@ public:
     IAActiva();
     IAActiva(const IAActiva& orig);
     virtual ~IAActiva();
-    int recalcularEstrategia(Sprite* s);
     void estrategia(Sprite* s);
 private:
 

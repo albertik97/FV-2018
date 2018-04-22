@@ -25,7 +25,3 @@ IAActiva::~IAActiva() {
 void IAActiva::estrategia(Sprite* s){
 
 }
-
-int IAActiva::recalcularEstrategia(Sprite* s){
-
-}
