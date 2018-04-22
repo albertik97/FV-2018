@@ -58,6 +58,7 @@ void ingame_state::Init()
            
     }
    colision.setPlayer(player);
+   hud.cargarhud(0);
 //   colision.setFood(comidaArray);
 }
 void ingame_state::HandleInput()
@@ -97,6 +98,7 @@ void ingame_state::Update()
     colision.checkColisionComida(comidaArray);
     camera.setCenter(player->getPositionX(), player->getPositionY());
     Motor2D::Instance()->setCamera(camera);
+    hud.updateHud(player->getPositionX(),player->getPositionY());
 
 }
 void ingame_state::Draw()
@@ -114,6 +116,6 @@ void ingame_state::Draw()
 
         player->getSprite()->draw();
         mouse.getCursorSprite()->draw();
-       
- 
+        hud.draw();
+        
 }

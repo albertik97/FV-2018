@@ -17,7 +17,8 @@
 
 Text::Text() {
     //se asigna la fuente
-    font.loadFromFile("resources/prstart.ttf");
+    if(!font.loadFromFile("resources/font.ttf"))
+        std::cout<<"error al cargar la fuente"<<std::endl;
     text.setFont(font);
 }
 

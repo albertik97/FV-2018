@@ -30,28 +30,28 @@ void menu_state::Init()
     menu[0].setPos(Motor2D::Instance()->getWindow()->getSize().x/2,Motor2D::Instance()->getWindow()->getSize().y*0.5);
     menu[0].setColor(255,255,255);
     menu[0].setText("Jugar");
-    menu[0].setSize(40);
+    menu[0].setSize(50);
     menu[0].setOriginCenter();
     
     
-    menu[1].setPos(Motor2D::Instance()->getWindow()->getSize().x/2,Motor2D::Instance()->getWindow()->getSize().y*0.55);
+    menu[1].setPos(Motor2D::Instance()->getWindow()->getSize().x/2,Motor2D::Instance()->getWindow()->getSize().y*0.6);
     menu[1].setColor(255,0,0);
     menu[1].setText("Opciones");
-    menu[1].setSize(40);
+    menu[1].setSize(50);
     menu[1].setOriginCenter();
    
     
-    menu[2].setPos(Motor2D::Instance()->getWindow()->getSize().x/2,Motor2D::Instance()->getWindow()->getSize().y*0.60);
+    menu[2].setPos(Motor2D::Instance()->getWindow()->getSize().x/2,Motor2D::Instance()->getWindow()->getSize().y*0.7);
     menu[2].setColor(255,0,0);
     menu[2].setText("Creditos");
-    menu[2].setSize(40);
+    menu[2].setSize(50);
     menu[2].setOriginCenter();
   
     std::cout<<Motor2D::Instance()->getWindow()->getSize().y<<std::endl;
-    menu[3].setPos(Motor2D::Instance()->getWindow()->getSize().x/2,Motor2D::Instance()->getWindow()->getSize().y*0.65);
+    menu[3].setPos(Motor2D::Instance()->getWindow()->getSize().x/2,Motor2D::Instance()->getWindow()->getSize().y*0.8);
     menu[3].setColor(255,0,0);
     menu[3].setText("Salir");
-    menu[3].setSize(40);
+    menu[3].setSize(50);
     menu[3].setOriginCenter();
   
 

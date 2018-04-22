@@ -11,6 +11,7 @@
       <itemPath>Enemy.h</itemPath>
       <itemPath>Food.h</itemPath>
       <itemPath>Game.h</itemPath>
+      <itemPath>Hud.h</itemPath>
       <itemPath>IA.h</itemPath>
       <itemPath>IAActiva.h</itemPath>
       <itemPath>IAPasiva.h</itemPath>
@@ -37,12 +38,14 @@
     </logicalFolder>
     <logicalFolder name="resources" displayName="resources" projectFiles="true">
       <itemPath>../../Descargas/Hito2_clases (3)/resources/Carnivoro.png</itemPath>
+      <itemPath>resources/THE MINION.ttf</itemPath>
       <itemPath>resources/enemy.png</itemPath>
       <itemPath>resources/fondo.jpg</itemPath>
       <itemPath>../../Descargas/Hito2_clases (3)/resources/fondo.png</itemPath>
+      <itemPath>resources/font.ttf</itemPath>
       <itemPath>resources/mira.png</itemPath>
       <itemPath>../../Descargas/Hito2_clases (3)/resources/pointer.png</itemPath>
-      <itemPath>../../Descargas/Hito2_clases (3)/resources/prstart.ttf</itemPath>
+      <itemPath>resources/prstart.ttf</itemPath>
       <itemPath>resources/sprites.png</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
@@ -55,6 +58,7 @@
       <itemPath>Enemy.cpp</itemPath>
       <itemPath>Food.cpp</itemPath>
       <itemPath>Game.cpp</itemPath>
+      <itemPath>Hud.cpp</itemPath>
       <itemPath>IAActiva.cpp</itemPath>
       <itemPath>IAPasiva.cpp</itemPath>
       <itemPath>Keyboard.cpp</itemPath>
@@ -142,11 +146,6 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="../../Descargas/Hito2_clases (3)/resources/prstart.ttf"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="Camera.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Camera.h" ex="false" tool="3" flavor2="0">
@@ -174,6 +173,10 @@
       <item path="Game.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Game.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Hud.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Hud.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="IA.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -233,11 +236,17 @@
       </item>
       <item path="options_state.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="resources/THE MINION.ttf" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="resources/enemy.png" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/fondo.jpg" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="resources/font.ttf" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="resources/mira.png" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/prstart.ttf" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/sprites.png" ex="false" tool="3" flavor2="0">
       </item>
@@ -293,11 +302,6 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="../../Descargas/Hito2_clases (3)/resources/prstart.ttf"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="Camera.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Camera.h" ex="false" tool="3" flavor2="0">
@@ -325,6 +329,10 @@
       <item path="Game.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Game.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Hud.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Hud.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="IA.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -384,11 +392,17 @@
       </item>
       <item path="options_state.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="resources/THE MINION.ttf" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="resources/enemy.png" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/fondo.jpg" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="resources/font.ttf" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="resources/mira.png" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/prstart.ttf" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/sprites.png" ex="false" tool="3" flavor2="0">
       </item>

@@ -12,6 +12,7 @@
 #include "Mouse.h"
 #include "Enemy.h"
 #include "Camera.h"
+#include "Hud.h"
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
@@ -33,6 +34,8 @@ private:
     Colisionator colision;
     std::vector<Food*> comidaArray;
     Camera camera;
+    Hud hud;
+    
     
 public:
     static ingame_state* instance();

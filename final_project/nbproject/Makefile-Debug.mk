@@ -42,6 +42,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Enemy.o \
 	${OBJECTDIR}/Food.o \
 	${OBJECTDIR}/Game.o \
+	${OBJECTDIR}/Hud.o \
 	${OBJECTDIR}/IAActiva.o \
 	${OBJECTDIR}/IAPasiva.o \
 	${OBJECTDIR}/Keyboard.o \
@@ -128,6 +129,11 @@ ${OBJECTDIR}/Game.o: Game.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Iusr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game.o Game.cpp
+
+${OBJECTDIR}/Hud.o: Hud.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iusr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Hud.o Hud.cpp
 
 ${OBJECTDIR}/IAActiva.o: IAActiva.cpp 
 	${MKDIR} -p ${OBJECTDIR}
