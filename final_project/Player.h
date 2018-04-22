@@ -30,6 +30,8 @@ public:
     bool colisionComida();
     void chargingTexture();
     Sprite* getSprite();
+    float getPositionX();
+    float getPositionY();
 
      
     

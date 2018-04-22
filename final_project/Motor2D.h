@@ -16,6 +16,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
+#include "Camera.h"
 
 class Motor2D {
 public:
@@ -27,6 +28,8 @@ public:
     bool openWindow();
     void displayWindow();
     void closeWindow();
+    void setCamera(Camera cam);
+    void resetCamera();
     
 private:
     Motor2D();

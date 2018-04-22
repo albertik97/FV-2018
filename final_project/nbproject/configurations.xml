@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Camera.h</itemPath>
       <itemPath>Clock.h</itemPath>
       <itemPath>Colisionator.h</itemPath>
       <itemPath>Coords.h</itemPath>
@@ -46,6 +47,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Camera.cpp</itemPath>
       <itemPath>Clock.cpp</itemPath>
       <itemPath>Colisionator.cpp</itemPath>
       <itemPath>Coords.cpp</itemPath>
@@ -143,6 +145,10 @@
             ex="false"
             tool="3"
             flavor2="0">
+      </item>
+      <item path="Camera.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Camera.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Clock.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -288,6 +294,10 @@
             ex="false"
             tool="3"
             flavor2="0">
+      </item>
+      <item path="Camera.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Camera.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Clock.cpp" ex="false" tool="1" flavor2="0">
       </item>

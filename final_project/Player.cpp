@@ -165,4 +165,12 @@ Sprite* Player::getSprite(){
     return sprite;
 }
 
+float Player::getPositionX()
+{
+    return sprite->getPosition().x;
+}
 
+float Player::getPositionY()
+{
+    return sprite->getPosition().y;
+}
