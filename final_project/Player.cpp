@@ -117,6 +117,10 @@ void Player::lookAtMouse(){
 void Player::update(){
        lookAtMouse();
        moveChar();
+       sprite->animar();
+       if(!left && !right && !up && !down){
+            sprite->setAnimationTime(500);
+        }
 }
 
 // Si pulsamos IZDA, intentamos ir a la IZDA
@@ -136,20 +140,25 @@ void Player::moveChar(){
 
 
 void Player::moveX(){
-    if(left)
+    if(left){
              sprite->moving(-kVel, 0);
-    if(right)
+             sprite->setAnimationTime(100);
+    }
+    if(right){
             sprite->moving(kVel, 0);
+            sprite->setAnimationTime(100);
+    }
        
 }
 
 void Player::moveY(){
-    if(up)
-             sprite->moving(0, -kVel);
-    if(down)
-             sprite->moving(0, kVel);
+    if(up){
+             sprite->moving(0, -kVel);sprite->setAnimationTime(100);}
+    if(down){
+             sprite->moving(0, kVel);sprite->setAnimationTime(100);}
       
 }
+
 
 
 Sprite* Player::getSprite(){

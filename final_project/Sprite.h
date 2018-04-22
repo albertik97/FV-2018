@@ -22,9 +22,13 @@ public:
     void setSpriteTexture(std::string je);
     void setTextureRect(int a,int b,int c,int d);
     void move(int a,int b);
+    void setAnimationTime(int t);
+    void animar();
 private:
    sf::Sprite *sprite;
    sf::Texture texture;
+   sf::Clock tiempo;
+   int animationTime;
 
 };
 

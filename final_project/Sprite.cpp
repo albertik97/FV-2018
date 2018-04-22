@@ -55,6 +55,26 @@ void Sprite::rotate(float a){
     
 }
 
+void Sprite::setAnimationTime(int t){
+    animationTime = t;
+}
+
+void Sprite::animar(){ //TODO cuando tengamos todos los sprites pasarlos o algo por parametro
+    if(tiempo.getElapsedTime().asMilliseconds()<animationTime){
+        sprite->setTextureRect(sf::IntRect(1026*0,50, 1026, 1026)); 
+    }
+    if(tiempo.getElapsedTime().asMilliseconds()>animationTime && tiempo.getElapsedTime().asMilliseconds()<animationTime*2){
+        sprite->setTextureRect(sf::IntRect(1026*2,50, 1026, 1026));
+    }
+    if(tiempo.getElapsedTime().asMilliseconds()>animationTime*2 && tiempo.getElapsedTime().asMilliseconds()<animationTime*3){
+        sprite->setTextureRect(sf::IntRect(1026*1,50, 1026, 1026));
+    }
+    
+    if(tiempo.getElapsedTime().asMilliseconds()>animationTime*3){
+        tiempo.restart();
+    }
+}
+
 void Sprite::setOrigin(int x, int y){
     sprite->setOrigin(x,y);
 }
