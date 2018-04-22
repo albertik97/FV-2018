@@ -41,7 +41,7 @@ void Text::setPos(int x, int y){
     
 }
 void Text::setOriginCenter(){
-    text.setOrigin(text.getGlobalBounds().width/2,text.getGlobalBounds().top/2);
+    text.setOrigin(text.getGlobalBounds().width/2.0f,text.getGlobalBounds().height/2.0f);
 }
 void Text::setSize(int a){
     text.setCharacterSize(a);
