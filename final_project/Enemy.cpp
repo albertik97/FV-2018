@@ -22,7 +22,8 @@ void Enemy::chargingTexture(){
     sprite->setSpriteTexture("resources/enemy.png");
     sprite->setTextureRect(0,0,1024,1024);
     sprite->setOrigin(1024/2,1024/2);
-    sprite->scale(0.07,0.07);   
+    sprite->scale(0.07,0.07);  
+    sprite->setAnimationTime(400);
 }
 
 void Enemy::setPosRandom(){
@@ -39,6 +40,7 @@ void Enemy::draw(){
 
 void Enemy::update(){
     strategy->estrategia(sprite);
+    sprite->animar();
 }
 
 void Enemy::changeStrategy(IA* a){
