@@ -11,6 +11,7 @@
 #include "Text.h"
 #include "Mouse.h"
 #include "Enemy.h"
+#include "Camera.h"
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
@@ -31,6 +32,7 @@ private:
     Enemy* enemys[10];
     Colisionator colision;
     std::vector<Food*> comidaArray;
+    Camera camera;
     
 public:
     static ingame_state* instance();

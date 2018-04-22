@@ -43,6 +43,11 @@ void ingame_state::Init()
     player = new Player();
     player->chargingTexture();
     
+    camera.setCenter(player->getPositionX(), player->getPositionY());
+    camera.setSize(1920, 1080);
+    
+    Motor2D::Instance()->setCamera(camera);
+    
     for(int i=0; i<10; i++){  
       Food* comida = new Food();
       comidaArray.push_back(comida);
@@ -63,7 +68,8 @@ void ingame_state::HandleInput()
                // j->ToogleFullscreen();
             if(evento.type == sf::Event::KeyPressed && evento.key.code == sf::Keyboard::Return)
             {
-                 Game::instance()->setState(menu_state::Instance());
+                Motor2D::Instance()->resetCamera();
+                Game::instance()->setState(menu_state::Instance());
                                
             }
             if(Keyboard::isKey1Pressed()){
@@ -86,6 +92,8 @@ void ingame_state::Update()
     for(int i=0;i<10;i++)
         enemys[i]->update();
     colision.checkColisionComida(comidaArray);
+    camera.setCenter(player->getPositionX(), player->getPositionY());
+    Motor2D::Instance()->setCamera(camera);
 
 }
 void ingame_state::Draw()
