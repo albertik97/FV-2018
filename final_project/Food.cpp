@@ -20,12 +20,12 @@ Food::Food() {
     int random=rand() % (10);
     if(random>=0&&random<4){
         type=0;
-        chargingTexture("resources/food.png",0,128,32,32);
+        chargingTexture("resources/food.png",96,192,32,32);
     }else if(random>=4&&random<8){
         type=1;
-        chargingTexture("resources/food.png",0,0,32,32);
+        chargingTexture("resources/food.png",96,64,32,32);
     }else{
-        chargingTexture("resources/food.png",192,0,32,32);
+        chargingTexture("resources/food.png",288,64,32,32);
         type=2;
     }
 }
@@ -36,10 +36,21 @@ Food::Food(const Food& orig) {
 Food::~Food() {
 }
 
+
+void Food::update(){
+    sprite->animar(primer, segundo, tercero, cuarto, 32);
+}
+
 void Food::chargingTexture(std::string s, int a, int b,int c , int d) {	
-	sprite->setSpriteTexture(s);                              // Y creo el spritesheet a partir de la imagen anterior
+    primer=a;
+    segundo=b;
+    tercero=c;
+    cuarto=d;
+        sprite->setSpriteTexture(s);                              // Y creo el spritesheet a partir de la imagen anterior
         sprite->getSprite()->setTextureRect(sf::IntRect(a,b,c,d));
 	sprite->getSprite()->setOrigin(32/2,32/2);
+        //sprite->getSprite()->setScale(2,2);
+        sprite->setAnimationTime(150);
 }
 
 

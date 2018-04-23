@@ -93,8 +93,10 @@ void ingame_state::Update()
 
     player->update();
     mouse.CursorUpdate();
-    for(int i=0;i<10;i++)
+    for(int i=0;i<enemys.size();i++)
         enemys[i]->update();
+    for(int i=0;i<comidaArray.size();i++)
+        comidaArray[i]->update();
     colision.checkColisionComida(comidaArray);
     camera.setCenter(player->getPositionX(), player->getPositionY());
     Motor2D::Instance()->setCamera(camera);

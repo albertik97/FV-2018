@@ -38,7 +38,7 @@ void Enemy::draw(){
 
 void Enemy::update(){
     strategy->estrategia(sprite);
-    sprite->animar();
+    sprite->animar(0,0,1024,1024, 1026);
 }
 
 void Enemy::changeStrategy(IA* a){

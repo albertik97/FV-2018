@@ -23,11 +23,13 @@ public:
     bool colisionComida();
     void setRandomFood(sf::Sprite**** &a);
     Sprite* getSprite();
+        void update();//actualiza el movimiento
     
 private:
     Sprite *sprite;
     int type;
     Clock clock;
+    int primer, segundo, tercero, cuarto;
 };
 
 #endif /* SPRITE_H */

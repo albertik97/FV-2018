@@ -117,7 +117,7 @@ void Player::lookAtMouse(){
 void Player::update(){
        lookAtMouse();
        moveChar();
-       sprite->animar();
+       sprite->animar(50,50, 1026, 1026, 1026);
        if(!left && !right && !up && !down){
             sprite->setAnimationTime(500);
         }
