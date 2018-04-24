@@ -114,3 +114,9 @@ bool Keyboard::isKeyEnterPressed(){
     }else
         return false;
 }
+bool Keyboard::isKeySpacePressed()
+{
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        return true;
+    return false;
+}

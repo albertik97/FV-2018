@@ -12,11 +12,13 @@
 
 #define kSalto 20
 
-Player::Player() {
+Player::Player() 
+    : movX(0), movY(0)
+{
     
     sprite=new Sprite();
-    x = 700;
-    y = 700;
+    x = 1920 / 2;
+    y = 1080 / 2;
     up = false;
     left = false;
     down = false;
@@ -29,6 +31,9 @@ Player::Player() {
     exp=0;
     carne=0;
     verdura=0;
+    
+    mouse.initMouse("resources/mira.png",0.1,0.1);
+    mouse.getCursorSprite()->setPosition(x+50, y+50);
 
 
 }
@@ -56,8 +61,9 @@ int Player::getExperiencia(){
 }
 
 void Player::draw() {
-    
     sprite->draw();
+    mouse.getCursorSprite()->draw();
+    
 }
 
 void Player::input(){
@@ -185,8 +191,10 @@ void Player::lookAtMouse(){
 
 
 void Player::update(){
-       lookAtMouse();
+       
        moveChar();
+       mouse.CursorUpdate(movX, movY);
+       lookAtMouse();
        sprite->animar(50,50, 1026, 1026, 1026);
        if(!left && !right && !up && !down){
             sprite->setAnimationTime(500);
@@ -211,10 +219,12 @@ void Player::moveChar(){
 void Player::moveX(){
     if(left){
              sprite->moving(-kVel, 0);
+             movX += -kVel;
              sprite->setAnimationTime(100);
     }
     if(right){
             sprite->moving(kVel, 0);
+            movX += kVel;
             sprite->setAnimationTime(100);
     }
        
@@ -222,9 +232,13 @@ void Player::moveX(){
 
 void Player::moveY(){
     if(up){
-             sprite->moving(0, -kVel);sprite->setAnimationTime(100);}
+             sprite->moving(0, -kVel);
+             movY += -kVel;
+             sprite->setAnimationTime(100);}
     if(down){
-             sprite->moving(0, kVel);sprite->setAnimationTime(100);}
+             sprite->moving(0, kVel);
+             movY += kVel;
+             sprite->setAnimationTime(100);}
       
 }
 

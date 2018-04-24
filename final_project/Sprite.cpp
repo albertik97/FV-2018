@@ -106,3 +106,11 @@ void Sprite::move(int a,int b){
     sprite->move(a,b);
 }
 
+int Sprite::getAlpha()
+{
+    return static_cast<int>(sprite->getColor().a);
+}
+void Sprite::setAlpha(int a)
+{
+    sprite->setColor(sf::Color(sprite->getColor().r, sprite->getColor().g, sprite->getColor().b, a));
+}

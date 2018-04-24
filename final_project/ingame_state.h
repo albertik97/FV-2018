@@ -13,11 +13,12 @@
 #include "Enemy.h"
 #include "Camera.h"
 #include "Hud.h"
+#include "Fondo.h"
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
-class ingame_state : public state
+class ingame_state : public state, transitions
 {
 private:
     
@@ -29,12 +30,15 @@ private:
     
     TileMap mapa;
     Player* player;
-    Mouse mouse;
+    //Mouse mouse;
     std::vector<Enemy*> enemys;
     Colisionator colision;
     std::vector<Food*> comidaArray;
     Camera camera;
     Hud hud;
+    Clock gameStart;
+    Fondo fondoTransition;
+    bool endGame;
     
     
 public:
@@ -47,6 +51,9 @@ public:
     Player* getPlayer();
     std::vector<Enemy*>  getEnemys();
     std::vector<Food*> getComida();
+    
+    void beginAlpha();
+    void endAlpha();
 
 };
 

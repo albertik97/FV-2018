@@ -16,6 +16,7 @@
 
 #include "Coords.h"
 #include "Sprite.h"
+#include "Mouse.h"
 
 class Player {
 public:
@@ -59,6 +60,9 @@ private:
     int x;
     int y;
     int exp,carne,verdura;//la experciencia y la cantidad de comida de cada tipo
+    Mouse mouse;
+    int movX;
+    int movY;
 
 
 };

@@ -13,6 +13,8 @@
 
 #include<SFML/Graphics.hpp>
 #include<string>
+#include "Resources.h"
+
 #ifndef TEXT_H
 #define TEXT_H
 
@@ -22,6 +24,7 @@ public:
     Text(const Text& orig);
     virtual ~Text();
     void draw(sf::RenderWindow &a);
+    void setFont(std::string font);
     void setText(std::string s);
     void setPos(int x, int y);
     void setColor(int r, int g, int b);
@@ -30,6 +33,8 @@ public:
     bool getColision(float x,float y);
     void draw();
     void setOriginCenter();
+    void setAlpha(int a);
+    int getAlpha();
     
 private:
     sf::Text text;

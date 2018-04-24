@@ -15,6 +15,7 @@
 #define MENU_STATE_H
 
 #include "state.h"
+#include "Transitions.h"
 #include "ingame_state.h"
 #include "Game.h"
 #include "Resources.h"
@@ -23,8 +24,9 @@
 #include "Text.h"
 #include "Mouse.h"
 #include "Sprite.h"
+#include "Button.h"
 
-class menu_state : public state
+class menu_state : public state, transitions
 {
 private:
     
@@ -35,8 +37,11 @@ private:
     
     static menu_state* pinstance;
     Text menu[4];
+    Button b[4];
     Sprite fondo;
+    Sprite selector;
     int selected;
+    Clock menuStart;
     Mouse mouse;
     
 public:
@@ -48,6 +53,8 @@ public:
     void Draw();
     void Up();
     void Down();
+    void beginAlpha();
+    void endAlpha();
 };
 
 

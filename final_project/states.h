@@ -17,6 +17,7 @@
 #include "state.h"
 
 // Aqui se inlcuyen todos las escenas del juego
+#include "intro_state.h"
 #include "menu_state.h"
 #include "ingame_state.h"
 

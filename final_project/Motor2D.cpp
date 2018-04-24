@@ -30,7 +30,7 @@ Motor2D* Motor2D::Instance()
 }
 
 Motor2D::Motor2D()
-:window(sf::VideoMode(1280,720), "Evohungry", sf::Style::Close  | sf::Style::Titlebar)
+:window(sf::VideoMode(WINDOW_WIDTH,WINDOW_HEIGHT), "Evohungry", sf::Style::Close  | sf::Style::Titlebar | sf::Style::Fullscreen)
 {
      
 }
@@ -39,6 +39,10 @@ Motor2D::Motor2D()
 void Motor2D::dibujar(sf::Sprite a){
     window.draw(a);
   
+}
+void Motor2D::dibujar(sf::RectangleShape shape)
+{
+    window.draw(shape);
 }
 
 void Motor2D::dibujarTexto(sf::Text t){

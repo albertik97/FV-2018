@@ -31,6 +31,7 @@ public:
    static bool isKey2Pressed();//para el menu
    static bool isKey3Pressed();//para el menu
    static bool isKeyEnterPressed();//para el menu
+   static bool isKeySpacePressed();
 private:
 
 };

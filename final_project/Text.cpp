@@ -17,7 +17,7 @@
 
 Text::Text() {
     //se asigna la fuente
-    if(!font.loadFromFile("resources/font.ttf"))
+    if(!font.loadFromFile(GAME_MENU_FONT_FILEPATH))
         std::cout<<"error al cargar la fuente"<<std::endl;
     text.setFont(font);
 }
@@ -31,6 +31,12 @@ sf::Text Text::getText(){
 }
 void Text::setColor(int r,int g,int b){
     text.setColor(sf::Color(r,g,b));
+}
+void Text::setFont(std::string fonts)
+{
+    if(!font.loadFromFile(fonts))
+        std::cout<<"error al cargar la fuente"<<std::endl;
+    text.setFont(font);
 }
 
 void Text::setText(std::string s){
@@ -67,4 +73,12 @@ Text::Text(const Text& orig) {
 }
 
 Text::~Text() {
+}
+void Text::setAlpha(int a)
+{
+    text.setColor(sf::Color(text.getColor().r, text.getColor().g, text.getColor().b, a));
+}
+int Text::getAlpha()
+{
+    return static_cast<int>(text.getColor().a);
 }

@@ -19,6 +19,8 @@ public:
     void setPosition(float x, float y);
     void setOrigin(int x, int y);
     sf::Sprite* getSprite();
+    int getAlpha();
+    void setAlpha(int a);
     void setSpriteTexture(std::string je);
     void setTextureRect(int a,int b,int c,int d);
     void move(int a,int b);

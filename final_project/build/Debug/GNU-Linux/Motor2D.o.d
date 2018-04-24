@@ -1,7 +1,8 @@
 build/Debug/GNU-Linux/Motor2D.o: Motor2D.cpp Motor2D.h Camera.h Game.h \
- Sprite.h Food.h Clock.h Text.h states.h state.h menu_state.h \
- ingame_state.h TileMap.h Player.h Coords.h Colisionator.h Mouse.h \
- Enemy.h IA.h Hud.h Rectangleshape.h Resources.h
+ Sprite.h Food.h Clock.h Text.h Resources.h states.h state.h \
+ intro_state.h Transitions.h Keyboard.h Fondo.h Button.h menu_state.h \
+ ingame_state.h TileMap.h Player.h Coords.h Mouse.h Colisionator.h \
+ Enemy.h IA.h Hud.h Rectangleshape.h
 
 Motor2D.h:
 
@@ -17,9 +18,21 @@ Clock.h:
 
 Text.h:
 
+Resources.h:
+
 states.h:
 
 state.h:
+
+intro_state.h:
+
+Transitions.h:
+
+Keyboard.h:
+
+Fondo.h:
+
+Button.h:
 
 menu_state.h:
 
@@ -31,9 +44,9 @@ Player.h:
 
 Coords.h:
 
-Colisionator.h:
-
 Mouse.h:
+
+Colisionator.h:
 
 Enemy.h:
 
@@ -42,5 +55,3 @@ IA.h:
 Hud.h:
 
 Rectangleshape.h:
-
-Resources.h:

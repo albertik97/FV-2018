@@ -65,11 +65,15 @@ float Mouse::getPosY(){
     return sf::Mouse::getPosition().y;
 }
 
-void Mouse::CursorUpdate(){
-        cursor->setPosition(mouse.getPosition().x,mouse.getPosition().y);
+void Mouse::CursorUpdate(int x, int y){
+        cursor->setPosition(sf::Mouse::getPosition(*(Motor2D::Instance()->getWindow())).x + x, sf::Mouse::getPosition(*(Motor2D::Instance()->getWindow())).y + y);
 }   
 
 Sprite* Mouse::getCursorSprite(){
     return cursor;
 }
 
+sf::Mouse Mouse::getMouse()
+{
+    return mouse;
+}

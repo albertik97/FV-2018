@@ -15,6 +15,7 @@ Hud::Hud(){
      habilidad_dos = new Sprite();
      habilidad_tres = new Sprite();
      exp = new Text();
+     exp->setFont(SCORE_FONT_FILEPATH);
     
 
 }

@@ -25,9 +25,9 @@ using namespace std;
 int main(int argc, char** argv) {
     
     Motor2D* motor = Motor2D::Instance();
-    state* menu = menu_state::Instance();
+    state* intro = intro_state::Instance();
     Game* j = Game::instance();
-    j->setState(menu);
+    j->setState(intro);
     j->run();
     
     return 0;

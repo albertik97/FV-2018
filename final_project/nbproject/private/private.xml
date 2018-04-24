@@ -4,4 +4,21 @@
         <activeConfTypeElem>1</activeConfTypeElem>
         <activeConfIndexElem>0</activeConfIndexElem>
     </data>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/dome/NetBeansProjects/FV-2018/final_project/Mouse.cpp</file>
+            <file>file:/home/dome/NetBeansProjects/FV-2018/final_project/ingame_state.h</file>
+            <file>file:/home/dome/NetBeansProjects/FV-2018/final_project/menu_state.cpp</file>
+            <file>file:/home/dome/NetBeansProjects/FV-2018/final_project/Text.h</file>
+            <file>file:/home/dome/NetBeansProjects/FV-2018/final_project/ingame_state.cpp</file>
+            <file>file:/home/dome/NetBeansProjects/FV-2018/final_project/Text.cpp</file>
+            <file>file:/home/dome/NetBeansProjects/FV-2018/final_project/Motor2D.cpp</file>
+            <file>file:/home/dome/NetBeansProjects/FV-2018/final_project/Hud.cpp</file>
+            <file>file:/home/dome/NetBeansProjects/FV-2018/final_project/main.cpp</file>
+            <file>file:/home/dome/NetBeansProjects/FV-2018/final_project/Player.cpp</file>
+            <file>file:/home/dome/NetBeansProjects/FV-2018/final_project/Resources.h</file>
+            <file>file:/home/dome/NetBeansProjects/FV-2018/final_project/menu_state.h</file>
+        </group>
+    </open-files>
 </project-private>

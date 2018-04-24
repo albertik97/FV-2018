@@ -27,7 +27,7 @@ void menu_state::Init()
     std::cout << "Entramos al Init()" << std::endl;
     Motor2D::Instance()->resetCamera();
     
-    menu[0].setPos(Motor2D::Instance()->getWindow()->getSize().x/2,Motor2D::Instance()->getWindow()->getSize().y*0.5);
+    /*menu[0].setPos(Motor2D::Instance()->getWindow()->getSize().x/2,Motor2D::Instance()->getWindow()->getSize().y*0.5);
     menu[0].setColor(255,255,255);
     menu[0].setText("Jugar");
     menu[0].setSize(50);
@@ -52,14 +52,80 @@ void menu_state::Init()
     menu[3].setColor(255,0,0);
     menu[3].setText("Salir");
     menu[3].setSize(50);
-    menu[3].setOriginCenter();
+    menu[3].setOriginCenter();*/
+    
+    b[0].getFondoButton()->setSize(200, 50);
+    b[0].getFondoButton()->setTextureRect(100, 90);
+    b[0].getFondoButton()->setOutlineThickness(5.f);
+    b[0].getFondoButton()->setOutlineColor(25, 25, 25);
+    b[0].getFondoButton()->setTexture(WOOD_TEXTURE_FILEPATH);
+    b[0].getFondoButton()->setOriginCenter();
+    b[0].getFondoButton()->setPos(0, WINDOW_HEIGHT / 2);
+    
+    
+    b[0].getTextButton()->setText("Play");
+    b[0].getTextButton()->setSize(20);
+    b[0].getTextButton()->setColor(255, 222, 173);
+    
+    b[0].getTextButton()->setOriginCenter();
+    b[0].getTextButton()->setPos(0, 540.f);
+    
+    
+    b[1].getFondoButton()->setSize(200, 50);
+    b[1].getFondoButton()->setTextureRect(100, 90);
+    b[1].getFondoButton()->setOutlineThickness(5.f);
+    b[1].getFondoButton()->setOutlineColor(25, 25, 25);
+    b[1].getFondoButton()->setTexture(WOOD_TEXTURE_FILEPATH);
+    b[1].getFondoButton()->setOriginCenter();
+    b[1].getFondoButton()->setPos(0, (WINDOW_HEIGHT / 2) * 1.15);
+    b[1].getTextButton()->setText("Options");
+    b[1].getTextButton()->setSize(20);
+    b[1].getTextButton()->setColor(255, 222, 173);
+    
+    b[1].getTextButton()->setOriginCenter();
+    b[1].getTextButton()->setPos(0, (WINDOW_HEIGHT / 2) * 1.15);
+    
+    
+    b[2].getFondoButton()->setSize(200, 50);
+    b[2].getFondoButton()->setTextureRect(100, 90);
+    b[2].getFondoButton()->setOutlineThickness(5.f);
+    b[2].getFondoButton()->setOutlineColor(25, 25, 25);
+    b[2].getFondoButton()->setTexture(WOOD_TEXTURE_FILEPATH);
+    b[2].getFondoButton()->setOriginCenter();
+    b[2].getFondoButton()->setPos(0, (WINDOW_HEIGHT / 2) * 1.3);
+    b[2].getTextButton()->setText("Credits");
+    b[2].getTextButton()->setSize(20);
+    b[2].getTextButton()->setColor(255, 222, 173);
+    
+    b[2].getTextButton()->setOriginCenter();
+    b[2].getTextButton()->setPos(0, (WINDOW_HEIGHT / 2) * 1.3);
+    
+    
+    
+    b[3].getFondoButton()->setSize(200, 50);
+    b[3].getFondoButton()->setTextureRect(100, 90);
+    b[3].getFondoButton()->setOutlineThickness(5.f);
+    b[3].getFondoButton()->setOutlineColor(25, 25, 25);
+    b[3].getFondoButton()->setTexture(WOOD_TEXTURE_FILEPATH);
+    b[3].getFondoButton()->setOriginCenter();
+    b[3].getFondoButton()->setPos(0, (WINDOW_HEIGHT / 2) * 1.45);
+    b[3].getTextButton()->setText("Exit");
+    b[3].getTextButton()->setSize(20);
+    b[3].getTextButton()->setColor(255, 222, 173);
+    
+    b[3].getTextButton()->setOriginCenter();
+    b[3].getTextButton()->setPos(0, (WINDOW_HEIGHT / 2) * 1.45);
   
 
+    selector.setSpriteTexture(SELECTOR_SPRITE_FILEPATH);
+    selector.setPosition(WINDOW_WIDTH / 2.6, WINDOW_HEIGHT / 2.15);
     
-    fondo.setSpriteTexture("resources/fondo.jpg");
+    fondo.setSpriteTexture(MENU_STATE_BACKGROUND_FILEPATH);
+    fondo.setAlpha(0);
     mouse.initMouse("resources/pointer.png",0.1,0.1);
+    selected = 0;
     
-    Motor2D::Instance()->getWindow()->setMouseCursorVisible(false);
+    //Motor2D::Instance()->getWindow()->setMouseCursorVisible(false);
     
 }
 void menu_state::HandleInput()
@@ -75,13 +141,13 @@ void menu_state::HandleInput()
             
             switch(selected){
                 case 0:
-                    if(Keyboard::isKeyEnterPressed() || Mouse::LeftPressed() && menu[0].getColision(Mouse::getPosX(),Mouse::getPosY())){
+                    if(Keyboard::isKeyEnterPressed() || Mouse::LeftPressed() && b[0].getColision(Mouse::getPosX(),Mouse::getPosY())){
                         std::cout << "Nos pasamos a la escena de juego" << std::endl;
                         Game::instance()->setState(ingame_state::instance());
                     }
                     break;
                 case 1:
-                    if(Keyboard::isKeyEnterPressed() || Mouse::LeftPressed() && menu[1].getColision(Mouse::getPosX(),Mouse::getPosY())){
+                    if(Keyboard::isKeyEnterPressed() || Mouse::LeftPressed() && b[1].getColision(Mouse::getPosX(),Mouse::getPosY())){
                         std::cout << "Segunda opcion" << std::endl;
                         Game::instance()->setState(options_state::Instance());
                     }
@@ -89,14 +155,14 @@ void menu_state::HandleInput()
                     break;
                 case 2: 
                     
-                    if(Keyboard::isKeyEnterPressed() || Mouse::LeftPressed() && menu[2].getColision(Mouse::getPosX(),Mouse::getPosY())){
+                    if(Keyboard::isKeyEnterPressed() || Mouse::LeftPressed() && b[2].getColision(Mouse::getPosX(),Mouse::getPosY())){
                        std::cout << "Tercera opcion" << std::endl;
                        Game::instance()->setState(credits_state::Instance());
                     }                  
                     
                     break;
                 case 3: 
-                    if(Keyboard::isKeyEnterPressed() || Mouse::LeftPressed() && menu[3].getColision(Mouse::getPosX(),Mouse::getPosY())){
+                    if(Keyboard::isKeyEnterPressed() || Mouse::LeftPressed() && b[3].getColision(Mouse::getPosX(),Mouse::getPosY())){
                         std::cout << "Nos salimos del juego" << std::endl;
                         Motor2D::Instance()->closeWindow();
                     }
@@ -113,9 +179,11 @@ void menu_state::HandleInput()
              if(Keyboard::isKeyDownPressed())
                 Down();
               for(int i=0;i<4; i++){
-                if(menu[i].getColision(Mouse::getPosX(),Mouse::getPosY())){
-                        menu[i].setColor(255,255,255);
-                        selected=i;
+                if(b[i].getColision(Mouse::getPosX(),Mouse::getPosY())){
+                        //menu[i].setColor(255,255,255);
+                    int res = i - selected;
+                    selector.setPosition(selector.getPosition().x,  selector.getPosition().y + (WINDOW_HEIGHT / 2) * (0.15 * res));
+                    selected=i;
                 }
               }
         }
@@ -123,21 +191,34 @@ void menu_state::HandleInput()
 void menu_state::Update()
 {
     //std::cout << "se esta actualizando" << std::endl;
-        
+    Motor2D::Instance()->resetCamera();
+    if(menuStart.getSeconds() < INTRO_STATE_TRANSITION_TIME) 
+    {
+        beginAlpha();
+        for(int i = 0; i < 4; i++)
+        {
+            if(b[i].getTextButton()->getText().getPosition().x < (WINDOW_WIDTH / 2.f))
+            {
+                b[i].getFondoButton()->setPos(b[i].getFondoButton()->getShape().getPosition().x + 5, b[i].getFondoButton()->getShape().getPosition().y);
+                b[i].getTextButton()->setPos(b[i].getTextButton()->getText().getPosition().x + 5, b[i].getTextButton()->getText().getPosition().y);
+            }
+        }
+    }
     
            
             for(int i=0;i<4; i++){
                 if(i!=selected)
                     menu[i].setColor(255,0,0);
             }            
-            mouse.CursorUpdate();//se actualiza el sprite a la posicion del raton
+            mouse.CursorUpdate(0, 0);//se actualiza el sprite a la posicion del raton
             
 }
 void menu_state::Draw()
 {   
     fondo.draw();
+    selector.draw();
     for(int i=0;i<4;i++){
-        menu[i].draw();
+        b[i].draw();
             
         }
 
@@ -150,7 +231,8 @@ void menu_state::Up()
     if(selected-1 >= 0){
        // menu[selected].setColor(255,0,0);
         selected--;
-        menu[selected].setColor(255,255,255);
+        //menu[selected].setColor(255,255,255);
+        selector.setPosition(selector.getPosition().x,  selector.getPosition().y - (WINDOW_HEIGHT / 2) * 0.15);
     }
 }
 
@@ -159,6 +241,39 @@ void menu_state::Down()
     if(selected+1 <4){
         //menu[selected].setColor(255,0,0);
         selected++;
-        menu[selected].setColor(255,255,255);
+        //menu[selected].setColor(255,255,255);
+        selector.setPosition(selector.getPosition().x,  selector.getPosition().y + (WINDOW_HEIGHT / 2) * 0.15);
     }
+}
+
+
+void menu_state::beginAlpha()
+{
+    int alpha = fondo.getAlpha() + INTRO_STATE_TRANSITION_SPEED;
+    
+    if(alpha >= 255)
+    {
+        alpha = 255;
+    }
+    /*for(int i = 0; i < 4; i++)
+    {
+        b[i].getFondoButton()->setAlpha(alpha);
+        b[i].getTextButton()->setAlpha(alpha);
+    }*/
+    fondo.setAlpha(alpha);
+}
+void menu_state::endAlpha()
+{
+    int alpha = fondo.getAlpha() - (INTRO_STATE_TRANSITION_SPEED);
+        
+    if(alpha <= 0)
+    {
+        alpha = 0;
+    }
+    for(int i = 0; i < 4; i++)
+    {
+        b[i].getFondoButton()->setAlpha(alpha);
+        b[i].getTextButton()->setAlpha(alpha);
+    }
+    fondo.setAlpha(alpha);
 }

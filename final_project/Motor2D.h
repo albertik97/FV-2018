@@ -23,6 +23,7 @@ public:
     static Motor2D* Instance();
     sf::RenderWindow* getWindow();
     void dibujar(sf::Sprite );
+    void dibujar(sf::RectangleShape);
     void dibujarTexto(sf::Text);
     void clearWindow();
     bool openWindow();

@@ -16,8 +16,27 @@
 
 #include <string>
 
-const std::string ruta = "Resources/sprites.png";
-const std::string GAME_MENU_FONT_FILEPATH = "Resources/prstart.ttf";
+
+// Window things
+const int WINDOW_WIDTH                                  = 1920;
+const int WINDOW_HEIGHT                                 = 1080;
+
+
+// Times for things
+const float INTRO_STATE_TIME                            = 8.f;
+const float INTRO_STATE_TRANSITION_SPEED                = 1.f;
+const float INTRO_STATE_TRANSITION_TIME                 = 2.f;
+
+
+// Sprites and img's
+const std::string SELECTOR_SPRITE_FILEPATH              = "resources/flechaa.png";
+const std::string WOOD_TEXTURE_FILEPATH                 = "resources/wood.jpg";
+const std::string MENU_STATE_BACKGROUND_FILEPATH        = "resources/fondo.jpg";
+const std::string INTRO_STATE_BACKGROUND_FILEPATH       = "resources/CHOP-CODERS.jpg";
+const std::string ruta                                  = "resources/sprites.png";
+
+
+const std::string GAME_MENU_FONT_FILEPATH               = "resources/prstart.ttf";
+const std::string SCORE_FONT_FILEPATH                   = "resources/font.ttf";
 
 #endif /* RESOURCES_H */
-

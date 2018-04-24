@@ -24,6 +24,7 @@ ingame_state* ingame_state::instance()
     return pinstance;
 }
 ingame_state::ingame_state()
+    : endGame(false)
 {
     std::cout << "Esto deberia salir al crearse la escena de ingame" << std::endl;
     //j = Game::Instance();
@@ -33,7 +34,7 @@ void ingame_state::Init()
 {
      srand(time(0));
    mapa.cargarmapa();
-   mouse.initMouse("resources/mira.png",0.1,0.1);
+   //mouse.initMouse("resources/mira.png",0.1,0.1);
    //colocamos los enemigos
 
    for(int i=0; i<22; i++){  
@@ -60,6 +61,11 @@ void ingame_state::Init()
    colision.setPlayer(player);
    hud.cargarhud(2);
 //   colision.setFood(comidaArray);
+   
+   fondoTransition.setSize(WINDOW_WIDTH * 2, WINDOW_HEIGHT * 2);
+   fondoTransition.setColor(0, 0, 0);
+   fondoTransition.setOriginCenter();
+   fondoTransition.setPos(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
 }
 void ingame_state::HandleInput()
 {
@@ -72,8 +78,9 @@ void ingame_state::HandleInput()
                // j->ToogleFullscreen();
             if(evento.type == sf::Event::KeyPressed && evento.key.code == sf::Keyboard::Return)
             {
-                Motor2D::Instance()->resetCamera();
-                Game::instance()->setState(menu_state::Instance());
+                endGame = true;
+                //Motor2D::Instance()->resetCamera();
+               // Game::instance()->setState(menu_state::Instance());
                                
             }
             if(Keyboard::isKey1Pressed()){
@@ -89,10 +96,28 @@ void ingame_state::HandleInput()
 }
 void ingame_state::Update()
 {
-   
+   if(gameStart.getSeconds() < 6)
+    {
+        endAlpha();
+    }
+    //std::cout << fondoTransition.getAlpha() << std::endl;
+    if(endGame)
+    {
+        beginAlpha();
+    }
+    if(endGame && fondoTransition.getAlpha() == 255)
+    {
+        endGame = false;
+        Motor2D::Instance()->resetCamera();
+        Game::instance()->setState(menu_state::Instance());
+    }
+    if(fondoTransition.getAlpha() == 255)
+    {
+        gameStart.reset();
+    }
 
      player->update();
-    mouse.CursorUpdate();
+    //mouse.CursorUpdate();
     for(int i=0;i<enemys.size();i++)
         enemys[i]->update();
     if(colision.checkColisionComida(comidaArray))
@@ -117,10 +142,12 @@ void ingame_state::Draw()
         for(int i=0;i<enemys.size();i++)
             enemys[i]->draw();
 
-        player->getSprite()->draw();
-        mouse.getCursorSprite()->draw();
+        player->draw();
+        //mouse.getCursorSprite()->draw();
 
         hud.draw();
+        if(fondoTransition.getAlpha() != 0)
+            fondoTransition.draw();
         
 
        
@@ -135,4 +162,32 @@ Player* ingame_state::getPlayer(){
 std::vector<Food*> ingame_state::getComida(){
     return comidaArray;
 
+}
+
+void ingame_state::beginAlpha()
+{
+    fondoTransition.setPos(player->getPositionX(), player->getPositionY());
+    int alpha = fondoTransition.getAlpha() + (INTRO_STATE_TRANSITION_SPEED * 2);
+    
+    if(alpha >= 255)
+    {
+        alpha = 255;
+    }
+    fondoTransition.setAlpha(alpha);
+}
+void ingame_state::endAlpha()
+{
+    fondoTransition.setPos(player->getPositionX(), player->getPositionY());
+    int alpha = fondoTransition.getAlpha() - (INTRO_STATE_TRANSITION_SPEED * 2);
+        
+    if(alpha <= 0)
+    {
+        alpha = 0;
+    }
+    /*for(int i = 0; i < 4; i++)
+    {
+        b[i].getFondoButton()->setAlpha(alpha);
+        b[i].getTextButton()->setAlpha(alpha);
+    }*/
+    fondoTransition.setAlpha(alpha);
 }

@@ -17,6 +17,7 @@
 #define MOUSE_H
 
 #include "Sprite.h"
+#include "Motor2D.h"
 
 class Mouse {
 public:
@@ -28,9 +29,10 @@ public:
    static float getPosX();
    static float getPosY();
    void setTexture(std::string);
-   void CursorUpdate();
+   void CursorUpdate(int x, int y);
    Sprite* getCursorSprite();
    void initMouse(std::string a,float s1,float s2);
+   sf::Mouse getMouse();
 private:
     Sprite* cursor;
     sf::Mouse mouse;
