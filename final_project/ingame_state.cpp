@@ -119,21 +119,20 @@ void ingame_state::Draw()
 
         player->getSprite()->draw();
         mouse.getCursorSprite()->draw();
-<<<<<<< HEAD
+
         hud.draw();
         
-=======
-        hud.draw();   
->>>>>>> master
+
+       
+
 }
 
 Player* ingame_state::getPlayer(){
     return player;
-<<<<<<< HEAD
-=======
+
 }
 
 std::vector<Food*> ingame_state::getComida(){
     return comidaArray;
->>>>>>> master
+
 }

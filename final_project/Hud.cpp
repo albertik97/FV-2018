@@ -14,11 +14,9 @@ Hud::Hud(){
      habilidad_uno = new Sprite();
      habilidad_dos = new Sprite();
      habilidad_tres = new Sprite();
-<<<<<<< HEAD
-=======
      exp = new Text();
     
->>>>>>> master
+
 }
 
 
@@ -70,7 +68,7 @@ void Hud::updateHud(float x,float y){
     Rectvida->setPosition(20+(x-950),21+(y-530));
     Rectexperiencia->setPosition(20+(x-950),37+(y-530));
     panel->setPosition(15+(x-950),15+(y-530));
-<<<<<<< HEAD
+
     
     if(ingame_state::instance()->instance()->getPlayer()->getHabilidad() == 1){
         std::cout << "Usamos habilidad numero 1" << std::endl;
@@ -85,9 +83,9 @@ void Hud::updateHud(float x,float y){
 
 
 
-=======
+
     exp->setPos(x+760,y-470);
->>>>>>> master
+
 }
 
 void Hud::sumaexp(int e){

@@ -32,15 +32,12 @@ public:
     Sprite* getSprite();
     float getPositionX();
     float getPositionY();
-<<<<<<< HEAD
     int getHabilidad();
-    
-=======
     void setExperiencia(int exp);
     int getExperiencia();
     void aumenteCarne();
     void aumentaVerdura();
->>>>>>> master
+
 
      
     

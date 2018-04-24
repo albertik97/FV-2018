@@ -21,15 +21,15 @@ Player::Player() {
     left = false;
     down = false;
     right = false;
-<<<<<<< HEAD
+
     habuno = false;
     habdos = false;
     habtres = false;
-=======
+
     exp=0;
     carne=0;
     verdura=0;
->>>>>>> master
+
 
 }
 

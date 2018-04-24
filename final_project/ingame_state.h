@@ -45,11 +45,9 @@ public:
     void Update();
     void Draw();
     Player* getPlayer();
-<<<<<<< HEAD
-=======
     std::vector<Enemy*>  getEnemys();
     std::vector<Food*> getComida();
->>>>>>> master
+
 };
 
 
