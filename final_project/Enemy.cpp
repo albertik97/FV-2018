@@ -26,10 +26,17 @@ void Enemy::chargingTexture(){
     sprite->setAnimationTime(400);
 }
 
-void Enemy::setPosRandom(){
-    int x = rand() % 179*32;
-    int y = rand() % 89*32;
-    sprite->setPosition(x,y);
+void Enemy::setPosRandom(int*** &m){
+    bool set=false;
+   
+    while(!set){
+        int x = rand() % 159;
+        int y = rand() % 89;
+       if(m[1][y][x]==0){
+            sprite->setPosition(x*32-16,y*32-16);
+            set=true;
+       }
+    }
 }
 
 void Enemy::draw(){
@@ -37,8 +44,9 @@ void Enemy::draw(){
 }
 
 void Enemy::update(){
-    strategy->estrategia(sprite);
+    strategy->elegirComportamiento(sprite);
     sprite->animar();
+    
 }
 
 void Enemy::changeStrategy(IA* a){

@@ -18,13 +18,13 @@
 Food::Food() {
     sprite = new Sprite();
     int random=rand() % (10);
-    if(random>=0&&random<4){
+    if(random>=0&&random<5){//verdura
         type=0;
         chargingTexture("resources/food.png",0,128,32,32);
-    }else if(random>=4&&random<8){
+    }else if(random>=5&&random<9){//carne
         type=1;
         chargingTexture("resources/food.png",0,0,32,32);
-    }else{
+    }else{//veneno
         chargingTexture("resources/food.png",192,0,32,32);
         type=2;
     }
@@ -36,6 +36,9 @@ Food::Food(const Food& orig) {
 Food::~Food() {
 }
 
+int Food::getType(){
+    return type;
+}
 void Food::chargingTexture(std::string s, int a, int b,int c , int d) {	
 	sprite->setSpriteTexture(s);                              // Y creo el spritesheet a partir de la imagen anterior
         sprite->getSprite()->setTextureRect(sf::IntRect(a,b,c,d));

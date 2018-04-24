@@ -18,6 +18,7 @@
 #include "Rectangleshape.h"
 #include "Sprite.h"
 #include "Player.h"
+#include "Text.h"
 #include <iostream>
 
 
@@ -40,6 +41,7 @@ public:
     Sprite* h_especial_h;
     //Tipo de player (Carnivoro o Herbivoro);
     int tipo;// 0 canrivoro, 1 herb, 2 celu
+    Text* exp;
     
     Hud();
     void cargarhud(int a);
@@ -50,7 +52,7 @@ public:
     void restarvida();
     void sumarvida();
     void restaexp();
-    void sumaexp();
+    void sumaexp(int exp);
     //void tipo();
     
 };

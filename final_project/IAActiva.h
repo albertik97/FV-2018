@@ -8,7 +8,8 @@ public:
     IAActiva();
     IAActiva(const IAActiva& orig);
     virtual ~IAActiva();
-    void estrategia(Sprite* s);
+    void elegirComportamiento(Sprite* s);
+    void moverse(std::vector<Food*> f,Sprite* s);
 private:
 
 };

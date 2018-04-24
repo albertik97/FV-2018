@@ -44,6 +44,9 @@ public:
     void HandleInput();
     void Update();
     void Draw();
+    Player* getPlayer();
+    std::vector<Enemy*>  getEnemys();
+    std::vector<Food*> getComida();
 };
 
 

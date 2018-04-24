@@ -10,7 +10,7 @@ public:
     Enemy(const Enemy& orig);
     virtual ~Enemy();
     void chargingTexture();
-    void setPosRandom();
+    void setPosRandom(int*** &m);
     void draw();
     void update();//actualiza el movimiento
     void changeStrategy(IA* a);

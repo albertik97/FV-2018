@@ -21,9 +21,22 @@ Player::Player() {
     left = false;
     down = false;
     right = false;
+    exp=0;
+    carne=0;
+    verdura=0;
 
 }
 
+void Player::aumenteCarne(){
+    carne++;
+}
+void Player::aumentaVerdura(){
+    verdura++;
+}
+
+void Player::setExperiencia(int e){
+    exp+=e;
+}
 void Player::chargingTexture() {
 	
 	sprite->setSpriteTexture("resources/player.png");                              // Y creo el spritesheet a partir de la imagen anterior
@@ -32,7 +45,9 @@ void Player::chargingTexture() {
         sprite->scale(0.1,0.1);
 	sprite->setPosition(x, y);                               // Lo dispongo en el centro de la pantalla
 }
-
+int Player::getExperiencia(){
+    return exp;
+}
 
 void Player::draw() {
     

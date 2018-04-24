@@ -22,6 +22,12 @@ IAActiva::IAActiva(const IAActiva& orig) {
 IAActiva::~IAActiva() {
 }
 
-void IAActiva::estrategia(Sprite* s){
-
-}
+ void IAActiva::elegirComportamiento(Sprite* s){
+ 
+ 
+ 
+ }
+ 
+ void IAActiva::moverse(std::vector<Food*> f, Sprite* s){
+ 
+ }

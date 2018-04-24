@@ -37,13 +37,22 @@ bool Colisionator::checkColisionComida(std::vector<Food*> &comidaArray){
 
     for(int i=0; i<comidaArray.size(); i++){
         if(comidaArray[i]->getSprite()->getSprite()->getGlobalBounds().intersects(player->getSprite()->getSprite()->getGlobalBounds())){
-            std::cout<<"Hay colision";
-           
+                 if(comidaArray[i]->getType()==0){
+                     player->setExperiencia(10);
+                     player->aumentaVerdura();
+                 }
+                 if(comidaArray[i]->getType()==1){
+                     player->setExperiencia(10);
+                     player->aumenteCarne();
+                 }
+                 if(comidaArray[i]->getType()==2){
+                     player->setExperiencia(-30);
+                 } 
               delete comidaArray[i]; //liberas memoria
                 comidaArray[i]=NULL;
                 comidaArray.erase(comidaArray.begin() + i); 
                //eliminas la posición del vector
-               std::cout<<comidaArray.size();
+                
                 return true;
        }
     }

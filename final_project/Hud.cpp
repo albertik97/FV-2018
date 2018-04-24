@@ -4,6 +4,7 @@
 #include "Sprite.h"
 #include "Motor2D.h"
 #include <iostream>
+#include <sstream>
 
 Hud::Hud(){
      panel = new Sprite();
@@ -12,6 +13,7 @@ Hud::Hud(){
      habilidad_uno = new Sprite();
      habilidad_dos = new Sprite();
      habilidad_tres = new Sprite();
+     exp = new Text();
     
 }
 
@@ -40,9 +42,13 @@ void Hud::cargarhud(int tipo){
         habilidad_tres->scale(0.025,0.025);
     }
     
-    
+    exp->setText("Experiencia: 0");
+    exp->setSize(30);
+    exp->setOriginCenter();
+    exp->setColor(255,0,0);
     Rectvida->setSpriteTexture("resources/vida.jpg");
     Rectvida->scale(9.3,0.4);
+    
     
     Rectexperiencia->setSpriteTexture("resources/experiencia.jpg");
     
@@ -62,8 +68,15 @@ void Hud::updateHud(float x,float y){
     Rectvida->setPosition(20+(x-950),21+(y-530));
     Rectexperiencia->setPosition(20+(x-950),37+(y-530));
     panel->setPosition(15+(x-950),15+(y-530));
+    exp->setPos(x+760,y-470);
 }
 
+void Hud::sumaexp(int e){
+    std::stringstream ss;
+    ss<<e;
+    std::string str=ss.str();
+    exp->setText("Experiencia: "+str);
+}
 void Hud::draw(){
     //std::cout << "Entramos en el DRAW de HUD" << std::endl;
     Rectexperiencia->draw();
@@ -72,6 +85,7 @@ void Hud::draw(){
     habilidad_uno->draw();
     habilidad_dos->draw();
     habilidad_tres->draw();
+    exp->draw();
     
     //Rectvida.draw();
     //Rectexperiencia.draw();

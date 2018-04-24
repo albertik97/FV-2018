@@ -23,6 +23,7 @@ public:
     bool colisionComida();
     void setRandomFood(sf::Sprite**** &a);
     Sprite* getSprite();
+    int getType();
     
 private:
     Sprite *sprite;
