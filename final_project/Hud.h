@@ -23,7 +23,6 @@
 
 class Hud{
 public:
-    
     int vida;
     int experiencia;
     Sprite* Rectvida;
@@ -42,7 +41,7 @@ public:
     int tipo;// 0 canrivoro, 1 herb, 2 celu
     
     Hud();
-    void cargarhud(int a);
+    void cargarhud(int _tipo);
     void updateHud(float x,float y);
     void aumentavida();
     void draw();

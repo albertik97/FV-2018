@@ -58,7 +58,7 @@ void ingame_state::Init()
            
     }
    colision.setPlayer(player);
-   hud.cargarhud(0);
+   hud.cargarhud(2);
 //   colision.setFood(comidaArray);
 }
 void ingame_state::HandleInput()
@@ -120,4 +120,8 @@ void ingame_state::Draw()
         mouse.getCursorSprite()->draw();
         hud.draw();
         
+}
+
+Player* ingame_state::getPlayer(){
+    return player;
 }

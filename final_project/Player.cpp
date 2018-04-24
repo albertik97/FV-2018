@@ -21,6 +21,9 @@ Player::Player() {
     left = false;
     down = false;
     right = false;
+    habuno = false;
+    habdos = false;
+    habtres = false;
 
 }
 
@@ -62,7 +65,22 @@ void Player::input(){
                     if(Keyboard::isKeySPressed()){
                         
                         down=true;
-                        
+                        std::cout << "TECHA DE ABAJO" << std::endl;
+                    }
+                    
+                    if(Keyboard::isKey1Pressed()){
+                        habuno = true;
+                       // std::cout << "HABILIDAD 1" << std::endl;
+                    }
+                    
+                    if(Keyboard::isKey2Pressed()){
+                        habdos = true;
+                        //std::cout << "HABILIDAD 2" << std::endl;
+                    }
+                    
+                    if(Keyboard::isKey3Pressed()){
+                        habtres = true;
+                        //std::cout << "HABILIDAD 3" << std::endl;
                     }
 
 		//}
@@ -90,10 +108,44 @@ void Player::input(){
                         
                         down=false;
                         
+                        //std::cout << "ABAJOOOOOOOOOOOOOOOOO FALSE" << std::endl;
+                    }
+                    
+                    if(!Keyboard::isKey1Pressed()){
+                        habuno = false;
+                        //std::cout << "HABILIDAD 1 FALSE" << std::endl;
+                    }
+                    
+                    if(!Keyboard::isKey2Pressed()){
+                        habdos = false;
+                        //std::cout << "HABILIDAD 2 FALSE" << std::endl;
+                    }
+                    
+                    if(!Keyboard::isKey3Pressed()){
+                        habtres = false;
+                        //std::cout << "HABILIDAD 3 FALSE" << std::endl;
                     }
 		
 	//}  
 
+}
+
+int Player::getHabilidad(){
+    int numHabilidad = 0;
+    
+    if(habuno){
+        numHabilidad = 1;
+    } 
+    
+    if(habdos){
+        numHabilidad = 2;
+    }
+    
+    if(habtres){
+        numHabilidad = 3;
+    }
+   
+    return numHabilidad;
 }
 
 
@@ -133,7 +185,6 @@ void Player::moveChar(){
         
         
         if(up || down){
-            
             moveY();
         }
 }

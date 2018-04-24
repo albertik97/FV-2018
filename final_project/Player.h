@@ -32,6 +32,8 @@ public:
     Sprite* getSprite();
     float getPositionX();
     float getPositionY();
+    int getHabilidad();
+    
 
      
     
@@ -44,6 +46,11 @@ private:
     bool up;
     bool down;
     bool right;
+    bool habuno;
+    bool habdos;
+    bool habtres;
+    int vida;
+    int experiencia;
     float dir;
     int x;
     int y;

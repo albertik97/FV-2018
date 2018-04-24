@@ -44,6 +44,7 @@ public:
     void HandleInput();
     void Update();
     void Draw();
+    Player* getPlayer();
 };
 
 

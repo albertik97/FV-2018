@@ -3,6 +3,7 @@
 #include "Rectangleshape.h"
 #include "Sprite.h"
 #include "Motor2D.h"
+#include "ingame_state.h"
 #include <iostream>
 
 Hud::Hud(){
@@ -12,19 +13,16 @@ Hud::Hud(){
      habilidad_uno = new Sprite();
      habilidad_dos = new Sprite();
      habilidad_tres = new Sprite();
-    
 }
 
 
-void Hud::cargarhud(int tipo){
-    
+void Hud::cargarhud(int _tipo){
+    tipo = _tipo;
     if(tipo == 1){
         habilidad_uno->setSpriteTexture("resources/Carnivoro/lengua_desactivada.png");
-        
         habilidad_uno->scale(0.025,0.025);
 
         habilidad_dos->setSpriteTexture("resources/Carnivoro/paraliza_desactivado.png");
-
         habilidad_dos->scale(0.025,0.025);
 
         habilidad_tres->setSpriteTexture("resources/Carnivoro/velocidad_desactivado.png");
@@ -54,7 +52,7 @@ void Hud::cargarhud(int tipo){
 }
 
 void Hud::updateHud(float x,float y){
-    if(tipo==2 || tipo==1){
+    if(tipo==2 || tipo == 1){
         habilidad_uno->setPosition(40+(x-950),50+(y-530));
         habilidad_dos->setPosition(80+(x-950),50+(y-530));
         habilidad_tres->setPosition(120+(x-950),50+(y-530));
@@ -62,6 +60,20 @@ void Hud::updateHud(float x,float y){
     Rectvida->setPosition(20+(x-950),21+(y-530));
     Rectexperiencia->setPosition(20+(x-950),37+(y-530));
     panel->setPosition(15+(x-950),15+(y-530));
+    
+    if(ingame_state::instance()->instance()->getPlayer()->getHabilidad() == 1){
+        std::cout << "Usamos habilidad numero 1" << std::endl;
+    }
+    if(ingame_state::instance()->instance()->getPlayer()->getHabilidad() == 2){
+        std::cout << "Usamos habilidad numero 2" << std::endl;
+    }
+    if(ingame_state::instance()->instance()->getPlayer()->getHabilidad() == 3){
+        std::cout << "Usamos habilidad numero 3" << std::endl;
+    }
+
+
+
+
 }
 
 void Hud::draw(){
