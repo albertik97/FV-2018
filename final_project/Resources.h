@@ -34,6 +34,8 @@ const std::string WOOD_TEXTURE_FILEPATH                 = "resources/wood.jpg";
 const std::string MENU_STATE_BACKGROUND_FILEPATH        = "resources/fondo.jpg";
 const std::string INTRO_STATE_BACKGROUND_FILEPATH       = "resources/CHOP-CODERS.jpg";
 const std::string ruta                                  = "resources/sprites.png";
+const std::string ENEMY_SPRITE_FILEPATH                 = "resources/enemy.png";
+const std::string PLAYER_SPRITE_FILEPATH                = "resources/player.png";
 
 
 const std::string GAME_MENU_FONT_FILEPATH               = "resources/prstart.ttf";

@@ -20,9 +20,12 @@
 #include "Game.h"
 #include "Resources.h"
 #include <SFML/Graphics.hpp>
+#include "Transitions.h"
+#include "Clock.h"
+#include "Sprite.h"
 
 
-class credits_state : public state
+class credits_state : public state, transitions
 {
 public:
     
@@ -33,6 +36,11 @@ public:
     void Update();
     void Draw();
     
+    void beginAlpha();
+    void endAlpha();
+    
+
+    
 private:
     
     credits_state();
@@ -41,6 +49,9 @@ private:
     
     static credits_state* pinstance;
     Text texto[6];
+    Clock creditsTimer;
+    Sprite img[3];
+    
             
 };
 #endif /* CREDITS_STATE_H */
