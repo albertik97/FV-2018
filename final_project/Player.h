@@ -32,8 +32,15 @@ public:
     Sprite* getSprite();
     float getPositionX();
     float getPositionY();
+<<<<<<< HEAD
     int getHabilidad();
     
+=======
+    void setExperiencia(int exp);
+    int getExperiencia();
+    void aumenteCarne();
+    void aumentaVerdura();
+>>>>>>> master
 
      
     
@@ -54,6 +61,7 @@ private:
     float dir;
     int x;
     int y;
+    int exp,carne,verdura;//la experciencia y la cantidad de comida de cada tipo
 
 
 };

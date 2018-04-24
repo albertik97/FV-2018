@@ -39,7 +39,7 @@ void ingame_state::Init()
    for(int i=0; i<22; i++){  
       Enemy* e = new Enemy();
       e->chargingTexture();
-      e->setPosRandom();
+      e->setPosRandom(mapa._tilemap);
       enemys.push_back(e);
            
     }
@@ -77,11 +77,11 @@ void ingame_state::HandleInput()
                                
             }
             if(Keyboard::isKey1Pressed()){
-                for(int i=0;i<10;i++)
-                    enemys[i]->changeStrategy(new IAActiva());
+                //for(int i=0;i<enemys.size();i++)
+                   // enemys[i]->changeStrategy(new IAActiva());
             }
              if(Keyboard::isKey2Pressed()){
-                for(int i=0;i<10;i++)
+                for(int i=0;i<enemys.size();i++)
                     enemys[i]->changeStrategy(new IAPasiva());
             }
             player->input();
@@ -91,13 +91,14 @@ void ingame_state::Update()
 {
    
 
-    player->update();
+     player->update();
     mouse.CursorUpdate();
     for(int i=0;i<enemys.size();i++)
         enemys[i]->update();
+    if(colision.checkColisionComida(comidaArray))
+        hud.sumaexp(player->getExperiencia());
     for(int i=0;i<comidaArray.size();i++)
         comidaArray[i]->update();
-    colision.checkColisionComida(comidaArray);
     camera.setCenter(player->getPositionX(), player->getPositionY());
     Motor2D::Instance()->setCamera(camera);
     hud.updateHud(player->getPositionX(),player->getPositionY());
@@ -118,10 +119,21 @@ void ingame_state::Draw()
 
         player->getSprite()->draw();
         mouse.getCursorSprite()->draw();
+<<<<<<< HEAD
         hud.draw();
         
+=======
+        hud.draw();   
+>>>>>>> master
 }
 
 Player* ingame_state::getPlayer(){
     return player;
+<<<<<<< HEAD
+=======
+}
+
+std::vector<Food*> ingame_state::getComida(){
+    return comidaArray;
+>>>>>>> master
 }

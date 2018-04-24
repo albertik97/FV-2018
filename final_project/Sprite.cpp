@@ -76,9 +76,7 @@ void Sprite::animar(int a, int b, int c, int d, int factor){ //TODO cuando tenga
 
         if(tiempo.getElapsedTime().asMilliseconds()>animationTime*4){
             tiempo.restart();
-        }
-    
-    
+        }      
     
 }
 
