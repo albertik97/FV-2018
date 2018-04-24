@@ -23,7 +23,7 @@ public:
     void setTextureRect(int a,int b,int c,int d);
     void move(int a,int b);
     void setAnimationTime(int t);
-    void animar();
+    void animar(int a, int b, int c, int d, int factor);
 private:
    sf::Sprite *sprite;
    sf::Texture texture;
