@@ -91,18 +91,14 @@ void ingame_state::Update()
 {
    
 
-    player->update();
+     player->update();
     mouse.CursorUpdate();
     for(int i=0;i<enemys.size();i++)
         enemys[i]->update();
-<<<<<<< HEAD
     if(colision.checkColisionComida(comidaArray))
         hud.sumaexp(player->getExperiencia());
-=======
     for(int i=0;i<comidaArray.size();i++)
         comidaArray[i]->update();
-    colision.checkColisionComida(comidaArray);
->>>>>>> master
     camera.setCenter(player->getPositionX(), player->getPositionY());
     Motor2D::Instance()->setCamera(camera);
     hud.updateHud(player->getPositionX(),player->getPositionY());

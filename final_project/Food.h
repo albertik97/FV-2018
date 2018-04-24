@@ -23,11 +23,8 @@ public:
     bool colisionComida();
     void setRandomFood(sf::Sprite**** &a);
     Sprite* getSprite();
-<<<<<<< HEAD
     int getType();
-=======
-        void update();//actualiza el movimiento
->>>>>>> master
+    void update();//actualiza el movimiento
     
 private:
     Sprite *sprite;
