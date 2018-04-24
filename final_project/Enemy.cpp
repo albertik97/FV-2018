@@ -30,8 +30,8 @@ void Enemy::setPosRandom(int*** &m){
     bool set=false;
    
     while(!set){
-        int x = rand() % 159;
-        int y = rand() % 89;
+        int x = rand() % 229;
+        int y = rand() % 129;
        if(m[1][y][x]==0){
             sprite->setPosition(x*32-16,y*32-16);
             set=true;
