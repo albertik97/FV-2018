@@ -33,7 +33,7 @@ ingame_state::ingame_state()
 void ingame_state::Init()
 {
      srand(time(0));
-   mapa.cargarmapa();
+   mapa.cargarmapa("nivel1.tmx");
    //mouse.initMouse("resources/mira.png",0.1,0.1);
    //colocamos los enemigos
 

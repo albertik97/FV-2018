@@ -40,12 +40,14 @@ void TileMap::setCapaActiva(int layer){
 }
 
 
-void TileMap::cargarmapa(){
+void TileMap::cargarmapa(std::string path){
     numeroCapas=0;
     capaActiva=0;
     
+    const char* file = path.c_str();
+    
     TiXmlDocument doc;
-    doc.LoadFile("oceano_nivel1.tmx");
+    doc.LoadFile(file);
     TiXmlElement *map = doc.FirstChildElement("map");
     
     //Recogemos los atributos del mapa

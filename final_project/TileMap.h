@@ -35,7 +35,7 @@ public:
     const char* tilesetname;
     
   
-    void cargarmapa();
+    void cargarmapa(std::string path);
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     void setCapaActiva(int layer);  
 };
