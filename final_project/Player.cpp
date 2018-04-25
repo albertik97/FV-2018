@@ -5,6 +5,7 @@
 #include "Sprite.h"
 #include "Mouse.h"
 #include "Keyboard.h"
+#include "ingame_state.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Color.hpp>
 
@@ -17,8 +18,10 @@ Player::Player()
 {
     
     sprite=new Sprite();
-    x = 1920 / 2;
-    y = 1080 / 2;
+    x = 2000;
+    y = 1000;
+    xlast = 0;
+    ylast = 0;
     up = false;
     left = false;
     down = false;
@@ -31,6 +34,7 @@ Player::Player()
     exp=0;
     carne=0;
     verdura=0;
+    eliminoComida = 0;
     
     mouse.initMouse("resources/mira.png",0.1,0.1);
     mouse.getCursorSprite()->setPosition(x+50, y+50);
@@ -50,11 +54,11 @@ void Player::setExperiencia(int e){
 }
 void Player::chargingTexture() {
 	
-	sprite->setSpriteTexture("resources/player.png");                              // Y creo el spritesheet a partir de la imagen anterior
-        sprite->setTextureRect(50,50, 1026, 1026);
-	sprite->setOrigin(1026/2,1026/2);
-        sprite->scale(0.1,0.1);
-	sprite->setPosition(x, y);                               // Lo dispongo en el centro de la pantalla
+	sprite->setSpriteTexture("resources/spritesheet.png");                              // Y creo el spritesheet a partir de la imagen anterior
+        sprite->setTextureRect(7,1, 112, 173);
+	sprite->setOrigin(112/2,173/2);
+        sprite->scale(0.5,0.5);
+	sprite->setPosition(x, y);                               // Lo dispongo en el centro de la pantalla                            // Lo dispongo en el centro de la pantalla
 }
 int Player::getExperiencia(){
     return exp;
@@ -195,7 +199,7 @@ void Player::update(){
        moveChar();
        mouse.CursorUpdate(movX, movY);
        lookAtMouse();
-       sprite->animar(50,50, 1026, 1026, 1026);
+       sprite->animar(7,1, 112, 173, 134);
        if(!left && !right && !up && !down){
             sprite->setAnimationTime(500);
         }
@@ -217,32 +221,70 @@ void Player::moveChar(){
 
 
 void Player::moveX(){
-    if(left){
+if(left){
+        xlast = x;
+        ylast = y;
+        if(!checkColisionMap(-kVel, 0)){
              sprite->moving(-kVel, 0);
-             movX += -kVel;
              sprite->setAnimationTime(100);
+             x -= kVel;
+        }
+             
     }
     if(right){
+        xlast = x;
+        ylast = y;
+         if(!checkColisionMap(kVel, 0)){
             sprite->moving(kVel, 0);
-            movX += kVel;
             sprite->setAnimationTime(100);
+            x += kVel;
+         }
     }
        
 }
 
 void Player::moveY(){
     if(up){
-             sprite->moving(0, -kVel);
-             movY += -kVel;
-             sprite->setAnimationTime(100);}
+            xlast = x;
+            ylast = y;
+             if(!checkColisionMap(0, -kVel)){
+            sprite->moving(0, -kVel);
+            sprite->setAnimationTime(100);
+             y -= kVel;
+             }
+    }
     if(down){
+            xlast = x;
+            ylast = y;
+            if(!checkColisionMap(0, +kVel)){
              sprite->moving(0, kVel);
-             movY += kVel;
-             sprite->setAnimationTime(100);}
-      
+             sprite->setAnimationTime(100);
+             y += kVel;
+            }
+    }
 }
 
+bool Player::checkColisionMap(int x, int y){
+    
+    //COJO LAS CUATRO ESQUINAS DEL BOUNDING BOX  
+    
+    float left = ingame_state::instance()->instance()->getPlayer()->getSprite()->getSprite()->getGlobalBounds().left+15 + x;
+    float top = ingame_state::instance()->instance()->getPlayer()->getSprite()->getSprite()->getGlobalBounds().top+15 + y;
+    float right = ingame_state::instance()->instance()->getPlayer()->getSprite()->getSprite()->getGlobalBounds().width-60 + left;
+    float down = top + ingame_state::instance()->instance()->getPlayer()->getSprite()->getSprite()->getGlobalBounds().height-60;
 
+    
+    if(ingame_state::instance()->instance()->getMapa()._tilemap[1][(int)top/32][(int)left/32]==0 &&
+      ingame_state::instance()->instance()->getMapa()._tilemap[1][(int)top/32][(int)right/32]==0 &&
+      ingame_state::instance()->instance()->getMapa()._tilemap[1][(int)down/32][(int)left/32]==0 &&
+      ingame_state::instance()->instance()->getMapa()._tilemap[1][(int)down/32][(int)right/32]==0){
+        
+        return false;
+   
+    }
+    return true;
+    
+}
 
 Sprite* Player::getSprite(){
     return sprite;

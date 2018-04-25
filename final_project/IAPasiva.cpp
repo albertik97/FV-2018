@@ -5,10 +5,13 @@
 #include<time.h>
 #include <math.h>
 
+#define kVel 15
+
 IAPasiva::IAPasiva() {
     move=false;
     comer=false;
-    objetivo=-1;
+
+
 }
 
 IAPasiva::IAPasiva(const IAPasiva& orig) {
@@ -17,43 +20,47 @@ IAPasiva::IAPasiva(const IAPasiva& orig) {
 IAPasiva::~IAPasiva() {
 }
 
-void IAPasiva::elegirComportamiento(Sprite *s){
-    std::vector<Food*> comida=ingame_state::instance()->getComida();
-  
-    if(objetivo==-1){
-        moverse(comida,s);
-    }else
-        buscarComida(comida,s);
-        
+void IAPasiva::elegirComportamiento(Sprite *&s){
+
+        moverse(ingame_state::instance()->getComida(),s);
+
 }
 
  void IAPasiva::moverse(std::vector<Food*> comida,Sprite* s){
-     
-            if(!move){
+    
+            if(!move && !comer){
                 //srand(time(NULL));//activasmmmos el randomizeitor jojo
                 mov_dir = (1 + rand() % (4)); //random para elegir la direccion
                 dist = (30 + rand() % (100));//ramdom que la distancia que va a recorrer
                 move=true;
                 wait.reset();
                 time = (1 + rand() % (25))*0.1;
-            }else{
+            }else if(!comer){
                 if(wait.getSeconds()>time){
-                    if(mov_dir==1){//izquierda
+                     if(mov_dir==1){//izquierda
+                     if(!checkColisionMap(-kVel,0,s)){    
                         if(dist_aux<dist)
-                           s->move(-2,0);
+                           s->move(-kVel,0);
+                         }
                     }
                     if(mov_dir==2){//derecha
+                     if(!checkColisionMap(kVel,0,s)){
                         if(dist_aux<dist)
-                           s->move(2,0);
+                           s->move(kVel,0);
+                       }
                     }
                      if(mov_dir==3 ){//arriba
+                     if(!checkColisionMap(0,-kVel,s)){
                         if(dist_aux<dist)
-                           s->move(0,-2);
+                           s->move(0,-kVel);
+                        }
                     }
                     if(mov_dir==4){//abajo
+                        if(!checkColisionMap(0,kVel,s)){
                         if(dist_aux<dist)
-                           s->move(0,2);
-                    }
+                           s->move(0,kVel);
+                        }
+                     }
                     dist_aux+=5;
                     if(dist_aux>dist){
                         dist_aux=0;
@@ -63,18 +70,42 @@ void IAPasiva::elegirComportamiento(Sprite *s){
             }
             
             //mira si hay comida cerca
-            if(!comer){
-                for(int i=0;i<comida.size();i++){
+            
+                int i=0;
+                int minima=100000;
+                int select=-1;
+                while(i<comida.size()){
                     std::vector<float> pos =distFood(comida[i],s);
+                  
                     if(pos[0]<400 &&pos[1]<400){
                        comer=true;
-                       objetivo=i;
-                    }
+                       move=true;
+                      
+                       if((sqrt(pow((int)pos[0],2)+(pow((int)pos[1],2),2))) < minima){
+                        minima = sqrt(pow((int)pos[0],2)+(pow((int)pos[1],2),2));
+                        std::cout<<minima<<std::endl;
+                        select = i;
+                        }
+
+                    } 
+                    
+                    i++;
+                
                 }
-        }
+                if(comer&&select!=-1)
+                    buscarComida(ingame_state::instance()->getComida(),s,select);
+                
+                if(i==comida.size()&&select==-1){
+                    comer=false;
+    
+                }
+               
+                
+        
 }
  
  std::vector<float> IAPasiva::distFood(Food* comida,Sprite* player){
+     
      std::vector<float> pos;
             //se calcula la distacia a la comida
             int ax = comida->getSprite()->getPosition().x;     
@@ -91,21 +122,55 @@ void IAPasiva::elegirComportamiento(Sprite *s){
             pos.push_back(pos2);
             
             return pos;
+      
  }
  
  
-void IAPasiva::buscarComida(std::vector<Food*> comida,Sprite* s){
-    if(objetivo<comida.size()){
-            int xp= comida[objetivo]->getSprite()->getPosition().x;
-            int yp=comida[objetivo]->getSprite()->getPosition().y;;
+void IAPasiva::buscarComida(std::vector<Food*> comida,Sprite* s,int i){
+    
+            int xp= ingame_state::instance()->getComida()[i]->getSprite()->getSprite()->getPosition().x;
+            int yp=ingame_state::instance()->getComida()[i]->getSprite()->getSprite()->getPosition().y;
             int xplayer=s->getPosition().x;
             int yplayer=s->getPosition().y;
             float angle = atan2(yp - yplayer, xp - xplayer);
-            s->move(cos(angle)*2,sin(angle)*2);           
-            if(s->getSprite()->getGlobalBounds().intersects(comida[objetivo]->getSprite()->getSprite()->getGlobalBounds())){              
-                comer=false;
-                objetivo=-1;
+            if(!checkColisionMap(cos(angle)*2, sin(angle)*2, s)){
+                s->move(cos(angle)*2,sin(angle)*2);
+                if(collision.checkColisionSprite(comida,s)){              
+                    comer=false;
+         
+                     
+                }
             }
-    }else
-        objetivo=-1;
+     
+               
+            
+}
+
+
+bool IAPasiva::checkColisionMap(int x, int y, Sprite* s){
+    
+    //COJO LAS CUATRO ESQUINAS DEL BOUNDING BOX
+    
+    float left = s->getSprite()->getGlobalBounds().left+15 + x;
+    float top = s->getSprite()->getGlobalBounds().top+15 + y;
+    float right = s->getSprite()->getGlobalBounds().width-60 + left;
+    float down = top + s->getSprite()->getGlobalBounds().height-60;
+
+    
+    if(ingame_state::instance()->instance()->getMapa()._tilemap[1][(int)top/32][(int)left/32]==0 &&
+      ingame_state::instance()->instance()->getMapa()._tilemap[1][(int)top/32][(int)right/32]==0 &&
+      ingame_state::instance()->instance()->getMapa()._tilemap[1][(int)down/32][(int)left/32]==0 &&
+      ingame_state::instance()->instance()->getMapa()._tilemap[1][(int)down/32][(int)right/32]==0){
+
+        
+        return false;
+   
+    }
+    return true;
+    
+}
+
+
+void setEnemy(Enemy* e){
+   // com= comida;
 }

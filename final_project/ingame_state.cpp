@@ -59,6 +59,7 @@ void ingame_state::Init()
            
     }
    colision.setPlayer(player);
+   colision.setEnemies(enemys);
    hud.cargarhud(2);
 //   colision.setFood(comidaArray);
    
@@ -66,6 +67,8 @@ void ingame_state::Init()
    fondoTransition.setColor(0, 0, 0);
    fondoTransition.setOriginCenter();
    fondoTransition.setPos(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
+   
+   std::cout<<"He hecho el init de ingame"<<std::endl;
 }
 void ingame_state::HandleInput()
 {
@@ -115,13 +118,27 @@ void ingame_state::Update()
     {
         gameStart.reset();
     }
-
+    colision.checkColisionComidaEnemy(comidaArray);
      player->update();
     //mouse.CursorUpdate();
-    for(int i=0;i<enemys.size();i++)
+    
+    for(int i=0;i<enemys.size();i++){
         enemys[i]->update();
+        float x = enemys[i]->getSprite()->getPosition().x-player->getPositionX();
+        float y = enemys[i]->getSprite()->getPosition().y-player->getPositionY();
+        float resultado = sqrt((x*x)+(y*y));
+        
+        if(resultado<400){
+            enemys[i]->changeStrategy(new IAActiva());
+        }
+        if(resultado>1000){
+            enemys[i]->changeStrategy(new IAPasiva());
+        }
+    }
+
+     
     if(colision.checkColisionComida(comidaArray))
-        hud.sumaexp(player->getExperiencia());
+        hud.sumaexp(player->getExperiencia()); 
     for(int i=0;i<comidaArray.size();i++)
         comidaArray[i]->update();
     camera.setCenter(player->getPositionX(), player->getPositionY());
@@ -149,6 +166,13 @@ void ingame_state::Draw()
         if(fondoTransition.getAlpha() != 0)
             fondoTransition.draw();
         
+        
+               /* sf::RectangleShape rectangle(sf::Vector2f(player->getSprite()->getSprite()->getGlobalBounds().width-40, player->getSprite()->getSprite()->getGlobalBounds().height-40));
+        rectangle.setPosition(player->getSprite()->getSprite()->getGlobalBounds().left+15, player->getSprite()->getSprite()->getGlobalBounds().top+15);
+        rectangle.setFillColor(sf::Color::Magenta);
+        Motor2D::Instance()->dibujarRect(rectangle);
+	
+        */
 
        
 
@@ -162,6 +186,15 @@ Player* ingame_state::getPlayer(){
 std::vector<Food*> ingame_state::getComida(){
     return comidaArray;
 
+}
+
+std::vector<Enemy*> ingame_state::getEnemys(){
+    return enemys;
+}
+
+TileMap ingame_state::getMapa(){
+    
+    return mapa;
 }
 
 void ingame_state::beginAlpha()

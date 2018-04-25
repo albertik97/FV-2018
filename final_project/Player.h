@@ -38,6 +38,7 @@ public:
     int getExperiencia();
     void aumenteCarne();
     void aumentaVerdura();
+    bool checkColisionMap(int, int);
 
 
      
@@ -57,9 +58,9 @@ private:
     int vida;
     int experiencia;
     float dir;
-    int x;
-    int y;
+    int x,xlast,y,ylast;
     int exp,carne,verdura;//la experciencia y la cantidad de comida de cada tipo
+    int eliminoComida;
     Mouse mouse;
     int movX;
     int movY;

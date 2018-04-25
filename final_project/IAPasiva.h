@@ -12,6 +12,7 @@
 #include "Player.h"
 #include <vector>
 #include "Sprite.h"
+#include "Colisionator.h"
 
 class IAPasiva : public IA {
 public:
@@ -19,17 +20,21 @@ public:
     IAPasiva(const IAPasiva& orig);
     virtual ~IAPasiva();
     void moverse(std::vector<Food*> f,Sprite* s);
-    void buscarComida(std::vector<Food*> f,Sprite* player);
-    void elegirComportamiento(Sprite *s);
+    void buscarComida(std::vector<Food*> f,Sprite* player,int i);
+    void elegirComportamiento(Sprite *&s);
     std::vector<float> distFood(Food* comida,Sprite* player);
+    bool checkColisionMap(int x, int y, Sprite* enemy);
+    void setComida(std::vector<Food*> & com);
+
 private:
     int mov_dir,dist,dist_aux;
     float time;//tiempo que se mueve
     Clock wait;
     bool move,comer;
-    int objetivo;
+    Colisionator collision;
     int mode;//0 buscar comida
+    std::vector<Food*> com;
+
 };
 
 #endif /* IAPASIVA_H */
-

@@ -51,3 +51,12 @@ void Enemy::update(){
 void Enemy::changeStrategy(IA* a){
     strategy=a;
 }
+
+Sprite* Enemy::getSprite(){
+    return sprite;
+}
+
+
+IA* Enemy::getStrategy(){
+    return strategy;
+}

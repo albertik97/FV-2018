@@ -14,6 +14,7 @@
 #include <vector>
 
 #include "Colisionator.h"
+#include "ingame_state.h"
 #include <iostream>
 
 Colisionator::Colisionator() {
@@ -27,17 +28,46 @@ Colisionator::~Colisionator() {
 }
 
 
-void Colisionator::setPlayer(Player* &p){
+void Colisionator::setPlayer(Player* p){
     player = p;
 }
 
+void Colisionator::setEnemies(std::vector<Enemy*> &e){
+    enemies = e;
+}
+
+void Colisionator::setMap(TileMap &map){
+    mapa = map;
+}
+
+bool Colisionator::checkColisionComidaEnemy(std::vector<Food*> &comidaArray){
+   
+    for(int j=0; j<enemies.size(); j++){
+        
+       for(int i=0; i<comidaArray.size(); i++){
+           
+            if(comidaArray[i]->getSprite()->getSprite()->getGlobalBounds().intersects(enemies[j]->getSprite()->getSprite()->getGlobalBounds())){
+                
+
+                  delete comidaArray[i]; //liberas memoria
+                    comidaArray[i]=NULL;
+                    comidaArray.erase(comidaArray.begin() + i); 
+                   //eliminas la posición del vector
+                    return true;             
+           }
+        }
+    }
+     return false;
+    
+}
+
+
 bool Colisionator::checkColisionComida(std::vector<Food*> &comidaArray){
     
-   // std::cout<<"LLAMADA AL METODO";
 
     for(int i=0; i<comidaArray.size(); i++){
-        if(comidaArray[i]->getSprite()->getSprite()->getGlobalBounds().intersects(player->getSprite()->getSprite()->getGlobalBounds())){
-                 if(comidaArray[i]->getType()==0){
+        if(comidaArray[i]->getSprite()->getSprite()->getGlobalBounds().intersects(ingame_state::instance()->instance()->getPlayer()->getSprite()->getSprite()->getGlobalBounds())){
+            if(comidaArray[i]->getType()==0){
                      player->setExperiencia(10);
                      player->aumentaVerdura();
                  }
@@ -52,11 +82,25 @@ bool Colisionator::checkColisionComida(std::vector<Food*> &comidaArray){
                 comidaArray[i]=NULL;
                 comidaArray.erase(comidaArray.begin() + i); 
                //eliminas la posición del vector
-                
+
                 return true;
        }
     }
      return false;
     
 }
- 
+
+bool Colisionator::checkColisionSprite(std::vector<Food*> &comidaArray, Sprite* &s){
+    
+        for(int i=0; i<comidaArray.size(); i++){
+        if(comidaArray[i]->getSprite()->getSprite()->getGlobalBounds().intersects(s->getSprite()->getGlobalBounds())){
+             // delete comidaArray[i]; //liberas memoria
+             //   comidaArray[i]=NULL;
+              //  comidaArray.erase(comidaArray.begin() + i); 
+               //eliminas la posición del vector
+                return true;
+       }
+    }
+     return false;   
+    
+} 

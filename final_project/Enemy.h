@@ -14,6 +14,8 @@ public:
     void draw();
     void update();//actualiza el movimiento
     void changeStrategy(IA* a);
+    Sprite* getSprite();
+    IA* getStrategy();
 private:
     Sprite* sprite;
     Coords actual,last;
@@ -22,4 +24,3 @@ private:
 };
 
 #endif /* ENEMY_H */
-

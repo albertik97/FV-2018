@@ -51,6 +51,7 @@ public:
     Player* getPlayer();
     std::vector<Enemy*>  getEnemys();
     std::vector<Food*> getComida();
+    TileMap getMapa();
     
     void beginAlpha();
     void endAlpha();
