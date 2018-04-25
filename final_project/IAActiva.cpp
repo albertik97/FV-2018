@@ -54,12 +54,51 @@ IAActiva::~IAActiva() {
             int xshape=enemy->getPosition().x;
             int yshape=enemy->getPosition().y;
             float angle = atan2(yp - yshape, xp - xshape);
-          
-            enemy->move(cos(angle)*2*time,sin(angle)*2*time);
-    
-            if(enemy->getSprite()->getGlobalBounds().intersects(player->getSprite()->getSprite()->getGlobalBounds())&&t_ataque.getElapsedTime().asSeconds()>0.4){//si esta cerca del player ataca
-                std::cout<<"La IA usó mordisco!!!"<<std::endl;
-                enemy->move(cos(angle)*20,sin(angle)*20);//se lanza a por el
-                t_ataque.restart();
+            if(checkColisionMap(-kVel,0, enemy)){
+                enemy->move(kVel, 0);               
             }
+            if(checkColisionMap(kVel,0, enemy)){
+                enemy->move(-kVel, 0);               
+            }
+            if(checkColisionMap(0,-kVel, enemy)){
+                enemy->move(0, kVel);               
+            }
+            if(checkColisionMap(0,kVel, enemy)){
+                enemy->move(0, -kVel);               
+            }
+            else{
+              enemy->move(cos(angle)*2*time,sin(angle)*2*time);
+                
+            }
+            
+            
+            if(enemy->getSprite()->getGlobalBounds().intersects(player->getSprite()->getSprite()->getGlobalBounds())&&t_ataque.getElapsedTime().asSeconds()>0.4){//si esta cerca del player ataca
+                  std::cout<<"La IA usó mordisco!!!"<<std::endl;
+                  enemy->move(cos(angle)*20,sin(angle)*20);//se lanza a por el
+                  t_ataque.restart();
+              }
+            
  }
+ 
+ bool IAActiva::checkColisionMap(int x, int y, Sprite* s){
+    
+    //COJO LAS CUATRO ESQUINAS DEL BOUNDING BOX
+    
+    float left = s->getSprite()->getGlobalBounds().left+15 + x;
+    float top = s->getSprite()->getGlobalBounds().top+15 + y;
+    float right = s->getSprite()->getGlobalBounds().width-60 + left;
+    float down = top + s->getSprite()->getGlobalBounds().height-60;
+
+    
+    if(ingame_state::instance()->instance()->getMapa()._tilemap[1][(int)top/32][(int)left/32]==0 &&
+      ingame_state::instance()->instance()->getMapa()._tilemap[1][(int)top/32][(int)right/32]==0 &&
+      ingame_state::instance()->instance()->getMapa()._tilemap[1][(int)down/32][(int)left/32]==0 &&
+      ingame_state::instance()->instance()->getMapa()._tilemap[1][(int)down/32][(int)right/32]==0){
+
+        
+        return false;
+   
+    }
+    return true;
+    
+}
