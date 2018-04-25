@@ -16,7 +16,7 @@
 
 IAActiva::IAActiva() {
     
-   /* kVel=3;
+    kVel=3;
     dir=false;
     paralizado=false;
     pillado=false;
@@ -26,7 +26,7 @@ IAActiva::IAActiva() {
     mov_dir=0;
     dist=0;
     dist_aux=0;
-    tiempo=0;*/
+    tiempo=0;
 }
 
 IAActiva::IAActiva(const IAActiva& orig) {
@@ -36,17 +36,14 @@ IAActiva::~IAActiva() {
 }
 
  void IAActiva::elegirComportamiento(Sprite* &s) {
-   /* float time = 1;
-    perseguir(s, time);
- */
- 
+   float time = 1;
+    perseguir(s, time); 
  }
  
  void IAActiva::moverse(std::vector<Food*> f, Sprite* s){
  
  }
  
- /*
  void IAActiva::perseguir(Sprite* enemy, float time){
      Player *player = ingame_state::instance()->getPlayer();
      player->getPositionX();
@@ -66,4 +63,3 @@ IAActiva::~IAActiva() {
                 t_ataque.restart();
             }
  }
-*/
