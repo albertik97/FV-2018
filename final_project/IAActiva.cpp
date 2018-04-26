@@ -62,10 +62,10 @@ IAActiva::~IAActiva() {
         }
 
         //NO VA!!!!!!
-        if(enemy->getSprite()->getGlobalBounds().intersects(player->getSprite()->getSprite()->getGlobalBounds())&&t_ataque.getSeconds()>0.4){//si esta cerca del player ataca
+        if(enemy->getSprite()->getGlobalBounds().intersects(player->getSprite()->getSprite()->getGlobalBounds())){//si esta cerca del player ataca
               std::cout<<"Hay colision"<<std::endl;
-              enemy->move(cos(angle)*20,sin(angle)*20);//se lanza a por el
-              t_ataque.reset();
+              enemy->move(cos(angle)*4,sin(angle)*4);//se lanza a por el
+              //t_ataque.reset();
           }
             
  }
