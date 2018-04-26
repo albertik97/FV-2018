@@ -15,10 +15,8 @@ public:
     void perseguir(Sprite* s, float time);
     bool checkColisionMap(int x, int y, Sprite* enemy);
 private:
-   int kVel,mousex,mousey,mov_dir,dist,objetivo;
-   float dist_aux, tiempo;
-   bool dir,paralizado,pillado, mode,moviendose,comer;
-   sf::Clock tm,clockParalisis,espera_movimiento,t_ataque;
+   int kVel;
+   Clock t_ataque;
    Colisionator collision;
 };
 

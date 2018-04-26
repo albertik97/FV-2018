@@ -17,16 +17,6 @@
 IAActiva::IAActiva() {
     
     kVel=3;
-    dir=false;
-    paralizado=false;
-    pillado=false;
-    mode=false;
-    moviendose=false;
-    comer=false;
-    mov_dir=0;
-    dist=0;
-    dist_aux=0;
-    tiempo=0;
 }
 
 IAActiva::IAActiva(const IAActiva& orig) {
@@ -49,34 +39,34 @@ IAActiva::~IAActiva() {
      player->getPositionX();
      
      
-     int xp=player->getPositionX();
-            int yp=player->getPositionY();
-            int xshape=enemy->getPosition().x;
-            int yshape=enemy->getPosition().y;
-            float angle = atan2(yp - yshape, xp - xshape);
-            if(checkColisionMap(-kVel,0, enemy)){
-                enemy->move(kVel, 0);               
-            }
-            if(checkColisionMap(kVel,0, enemy)){
-                enemy->move(-kVel, 0);               
-            }
-            if(checkColisionMap(0,-kVel, enemy)){
-                enemy->move(0, kVel);               
-            }
-            if(checkColisionMap(0,kVel, enemy)){
-                enemy->move(0, -kVel);               
-            }
-            else{
-              enemy->move(cos(angle)*2*time,sin(angle)*2*time);
-                
-            }
-            
-            
-            if(enemy->getSprite()->getGlobalBounds().intersects(player->getSprite()->getSprite()->getGlobalBounds())&&t_ataque.getElapsedTime().asSeconds()>0.4){//si esta cerca del player ataca
-                  std::cout<<"La IA usó mordisco!!!"<<std::endl;
-                  enemy->move(cos(angle)*20,sin(angle)*20);//se lanza a por el
-                  t_ataque.restart();
-              }
+        int xp=player->getPositionX();
+        int yp=player->getPositionY();
+        int xenemy=enemy->getPosition().x;
+        int yenemy=enemy->getPosition().y;
+        float angle = atan2(yp - yenemy, xp - xenemy);
+        if(checkColisionMap(-kVel,0, enemy)){
+            enemy->move(kVel, 0);               
+        }
+        if(checkColisionMap(kVel,0, enemy)){
+            enemy->move(-kVel, 0);               
+        }
+        if(checkColisionMap(0,-kVel, enemy)){
+            enemy->move(0, kVel);               
+        }
+        if(checkColisionMap(0,kVel, enemy)){
+            enemy->move(0, -kVel);               
+        }
+        else{
+          enemy->move(cos(angle)*2*time,sin(angle)*2*time);
+
+        }
+
+        //NO VA!!!!!!
+        if(enemy->getSprite()->getGlobalBounds().intersects(player->getSprite()->getSprite()->getGlobalBounds())&&t_ataque.getSeconds()>0.4){//si esta cerca del player ataca
+              std::cout<<"Hay colision"<<std::endl;
+              enemy->move(cos(angle)*20,sin(angle)*20);//se lanza a por el
+              t_ataque.reset();
+          }
             
  }
  
