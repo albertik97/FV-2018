@@ -66,7 +66,11 @@ float Mouse::getPosY(){
 }
 
 void Mouse::CursorUpdate(int x, int y){
+    /*std::cout << "DespX: " << x << std::endl;
+    std::cout << "DespY: " << y << std::endl;*/
         cursor->setPosition(sf::Mouse::getPosition(*(Motor2D::Instance()->getWindow())).x + x, sf::Mouse::getPosition(*(Motor2D::Instance()->getWindow())).y + y);
+        /*std::cout << "MouseX: " << sf::Mouse::getPosition().x << std::endl;
+        std::cout << "MouseY: " << sf::Mouse::getPosition().y << std::endl;*/
 }   
 
 Sprite* Mouse::getCursorSprite(){

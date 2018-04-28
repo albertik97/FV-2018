@@ -25,6 +25,8 @@
 #include "Mouse.h"
 #include "Sprite.h"
 #include "Button.h"
+#include "Clock.h"
+#include "World.h"
 
 class menu_state : public state, transitions
 {
@@ -50,11 +52,11 @@ public:
     void Init();
     void HandleInput();
     void Update();
-    void Draw();
+    void Draw(float);
     void Up();
     void Down();
-    void beginAlpha();
-    void endAlpha();
+    void beginAlpha(float);
+    void endAlpha(float);
 };
 
 

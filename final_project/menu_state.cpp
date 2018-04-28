@@ -138,11 +138,18 @@ void menu_state::HandleInput()
                 Motor2D::Instance()->closeWindow();
            // if(evento.type == sf::Event::KeyPressed && evento.key.code == sf::Keyboard::F5)
             //    Game::Instance()->ToogleFullscreen();
-            
+            if(menuStart.getSeconds() >= INTRO_STATE_TRANSITION_TIME-0.75)
             switch(selected){
                 case 0:
                     if(Keyboard::isKeyEnterPressed() || Mouse::LeftPressed() && b[0].getColision(Mouse::getPosX(),Mouse::getPosY())){
                         std::cout << "Nos pasamos a la escena de juego" << std::endl;
+                        if(World::Instance()->getEndGame())
+                        {
+                            World::Instance()->resetWorld();
+                            World::Instance()->setEndGame(false);
+                            World::Instance()->CargarNivel(1);
+                        }
+                            
                         Game::instance()->setState(ingame_state::instance());
                     }
                     break;
@@ -173,10 +180,10 @@ void menu_state::HandleInput()
                        
                 
             
-            if(Keyboard::isKeyUpPressed())
+            if(Keyboard::isKeyUpPressed() && menuStart.getSeconds() >= INTRO_STATE_TRANSITION_TIME-0.75)
                 Up();
             
-             if(Keyboard::isKeyDownPressed())
+             if(Keyboard::isKeyDownPressed() && menuStart.getSeconds() >= INTRO_STATE_TRANSITION_TIME-0.75)
                 Down();
               for(int i=0;i<4; i++){
                 if(b[i].getColision(Mouse::getPosX(),Mouse::getPosY())){
@@ -192,18 +199,7 @@ void menu_state::Update()
 {
     //std::cout << "se esta actualizando" << std::endl;
     Motor2D::Instance()->resetCamera();
-    if(menuStart.getSeconds() < INTRO_STATE_TRANSITION_TIME) 
-    {
-        beginAlpha();
-        for(int i = 0; i < 4; i++)
-        {
-            if(b[i].getTextButton()->getText().getPosition().x < (WINDOW_WIDTH / 2.f))
-            {
-                b[i].getFondoButton()->setPos(b[i].getFondoButton()->getShape().getPosition().x + 5, b[i].getFondoButton()->getShape().getPosition().y);
-                b[i].getTextButton()->setPos(b[i].getTextButton()->getText().getPosition().x + 5, b[i].getTextButton()->getText().getPosition().y);
-            }
-        }
-    }
+    
     
            
             for(int i=0;i<4; i++){
@@ -211,10 +207,23 @@ void menu_state::Update()
                     menu[i].setColor(255,0,0);
             }            
             mouse.CursorUpdate(0, 0);//se actualiza el sprite a la posicion del raton
+            std::cout << World::Instance()->getEndGame() << std::endl;
             
 }
-void menu_state::Draw()
+void menu_state::Draw(float percentTick)
 {   
+    if(menuStart.getSeconds() < INTRO_STATE_TRANSITION_TIME) 
+    {
+        beginAlpha(percentTick);
+        for(int i = 0; i < 4; i++)
+        {
+            if(b[i].getTextButton()->getText().getPosition().x < (WINDOW_WIDTH / 2.f))
+            {
+                b[i].getFondoButton()->setPos(b[i].getFondoButton()->getShape().getPosition().x + 20, b[i].getFondoButton()->getShape().getPosition().y);
+                b[i].getTextButton()->setPos(b[i].getTextButton()->getText().getPosition().x + 20, b[i].getTextButton()->getText().getPosition().y);
+            }
+        }
+    }
     fondo.draw();
     selector.draw();
     for(int i=0;i<4;i++){
@@ -247,7 +256,7 @@ void menu_state::Down()
 }
 
 
-void menu_state::beginAlpha()
+void menu_state::beginAlpha(float percentTick)
 {
     int alpha = fondo.getAlpha() + INTRO_STATE_TRANSITION_SPEED;
     
@@ -262,7 +271,7 @@ void menu_state::beginAlpha()
     }*/
     fondo.setAlpha(alpha);
 }
-void menu_state::endAlpha()
+void menu_state::endAlpha(float percentTick)
 {
     int alpha = fondo.getAlpha() - (INTRO_STATE_TRANSITION_SPEED);
         

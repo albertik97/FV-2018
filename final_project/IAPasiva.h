@@ -25,6 +25,7 @@ public:
     std::vector<float> distFood(Food* comida,Sprite* player);
     bool checkColisionMap(int x, int y, Sprite* enemy);
     void setComida(std::vector<Food*> & com);
+    int getType();
 
 private:
     int mov_dir,dist,dist_aux;

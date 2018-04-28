@@ -21,12 +21,14 @@ public:
     void setTextureRect(int x, int y);
     sf::RectangleShape getShape();
     
+    
     void draw();
     
 
 private:
     sf::RectangleShape shape;
     sf::Texture textureShape;
+    
 };
 
 #endif /* FONDO_H */

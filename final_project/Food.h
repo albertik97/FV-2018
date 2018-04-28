@@ -34,4 +34,3 @@ private:
 };
 
 #endif /* SPRITE_H */
-

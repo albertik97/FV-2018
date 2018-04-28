@@ -109,21 +109,22 @@ void credits_state::HandleInput()
 }
 void credits_state::Update()
 {
-   if(creditsTimer.getSeconds() < INTRO_STATE_TRANSITION_TIME) 
-   {
-       beginAlpha();
-   }
+   
    
 }
-void credits_state::Draw()
+void credits_state::Draw(float percentTick)
 {
+   if(creditsTimer.getSeconds() < INTRO_STATE_TRANSITION_TIME) 
+   {
+       beginAlpha(percentTick);
+   }
     for(int i = 0; i < sizeof(texto) / sizeof(texto[0]); i++)
         texto[i].draw();
     for(int i = 0; i < sizeof(img) / sizeof(img[0]); i++)
         img[i].draw();
 }
 
-void credits_state::beginAlpha()
+void credits_state::beginAlpha(float percentTick)
 {
     int alpha = texto[0].getAlpha() + INTRO_STATE_TRANSITION_SPEED;
     
@@ -134,7 +135,7 @@ void credits_state::beginAlpha()
     for(int i = 0; i < sizeof(texto) / sizeof(texto[0]); i++)
         texto[i].setAlpha(alpha);
 }
-void credits_state::endAlpha()
+void credits_state::endAlpha(float percentTick)
 {
     
 }

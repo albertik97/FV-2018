@@ -14,6 +14,7 @@ public:
     void moverse(std::vector<Food*> f,Sprite* s);
     void perseguir(Sprite* s, float time);
     bool checkColisionMap(int x, int y, Sprite* enemy);
+    int getType();
 private:
    int kVel;
    Clock t_ataque;
@@ -21,5 +22,4 @@ private:
 };
 
 #endif /* IAACTIVA_H */
-
 

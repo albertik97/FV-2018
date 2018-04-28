@@ -41,4 +41,3 @@ private:
 };
 
 #endif /* COLISIONATOR_H */
-

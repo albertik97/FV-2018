@@ -1,24 +1,19 @@
 build/Debug/GNU-Linux/ingame_state.o: ingame_state.cpp ingame_state.h \
- state.h menu_state.h Transitions.h Game.h Sprite.h Food.h Clock.h Text.h \
- Resources.h states.h intro_state.h Motor2D.h Camera.h Keyboard.h Fondo.h \
- Button.h Mouse.h TileMap.h Player.h Coords.h Colisionator.h Enemy.h IA.h \
- Hud.h Rectangleshape.h tinystr.h tinyxml.h IAPasiva.h IAActiva.h
+ state.h World.h Game.h Sprite.h Text.h Resources.h states.h \
+ intro_state.h Transitions.h Motor2D.h Camera.h Clock.h Keyboard.h \
+ Fondo.h Button.h menu_state.h Mouse.h TileMap.h Player.h Coords.h Hud.h \
+ Rectangleshape.h Food.h Enemy.h IA.h IAActiva.h Colisionator.h \
+ IAPasiva.h tinystr.h tinyxml.h
 
 ingame_state.h:
 
 state.h:
 
-menu_state.h:
-
-Transitions.h:
+World.h:
 
 Game.h:
 
 Sprite.h:
-
-Food.h:
-
-Clock.h:
 
 Text.h:
 
@@ -28,15 +23,21 @@ states.h:
 
 intro_state.h:
 
+Transitions.h:
+
 Motor2D.h:
 
 Camera.h:
+
+Clock.h:
 
 Keyboard.h:
 
 Fondo.h:
 
 Button.h:
+
+menu_state.h:
 
 Mouse.h:
 
@@ -46,20 +47,22 @@ Player.h:
 
 Coords.h:
 
-Colisionator.h:
+Hud.h:
+
+Rectangleshape.h:
+
+Food.h:
 
 Enemy.h:
 
 IA.h:
 
-Hud.h:
+IAActiva.h:
 
-Rectangleshape.h:
+Colisionator.h:
+
+IAPasiva.h:
 
 tinystr.h:
 
 tinyxml.h:
-
-IAPasiva.h:
-
-IAActiva.h:

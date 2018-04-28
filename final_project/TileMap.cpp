@@ -173,5 +173,34 @@ void TileMap::cargarmapa(std::string path){
             }
         }
     }
+    std::cout << "Se ha terminado el cargar el mapa, creo" << std::endl;
+}
+void TileMap::deleteMap()
+{
+    for(int l = 0; l < numeroCapas; l++)
+    {
+        for(int y = 0; y < altoMapa; y++)
+        {
+            delete[] _tilemap[l][y];
+        }
+        delete[] _tilemap[l];
+    }
+    delete[] _tilemap;
+    std::cout << "Y: " << std::endl;
+    delete[] _tileSetImagen;
+    std::cout << "D: " << std::endl;
+    for(int x = 0; x < numeroCapas; x++)
+    {
+        for(int y = 0; y < altoMapa; y++)
+        {
+            for(int j = 0; j < anchoMapa; j++)
+            {
+                delete _tileMapSprite[x][y][j];
+            }
+            delete[] _tileMapSprite[x][y];
+        }
+        delete[] _tileMapSprite[x];
+    }
+    delete[] _tileMapSprite;
 }
 

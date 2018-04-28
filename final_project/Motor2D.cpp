@@ -77,6 +77,11 @@ void Motor2D::setCamera(Camera cam)
     window.setView(cam.getView());
 }
 
+void Motor2D::setFrameLimit()
+{
+    window.setFramerateLimit(60);
+}
+
 void Motor2D::resetCamera()
 {
     window.setView(window.getDefaultView());

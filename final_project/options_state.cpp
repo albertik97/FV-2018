@@ -51,7 +51,7 @@ void options_state::Update()
 {
   
 }
-void options_state::Draw()
+void options_state::Draw(float percentTick)
 {
  //Motor2D::Instance()->getWindow()->draw(mapa);
 }

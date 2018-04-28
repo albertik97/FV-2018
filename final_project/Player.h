@@ -33,12 +33,23 @@ public:
     Sprite* getSprite();
     float getPositionX();
     float getPositionY();
+    void setPositionInterpolated(float x,float y);
+    float getLastPositionX();
+    float getLastPositionY();
     int getHabilidad();
     void setExperiencia(int exp);
     int getExperiencia();
+    int getVida();
     void aumenteCarne();
     void aumentaVerdura();
+
+    void restaVida();
+    void aumentaVida();
     bool checkColisionMap(int, int);
+
+    void aumentaEnergia(float _tiempo);
+    float getEnergia();
+    int getTipo();
 
 
      
@@ -55,6 +66,8 @@ private:
     bool habuno;
     bool habdos;
     bool habtres;
+    int energia; // minimo 0 maximo 1000;
+    int maxenergia = 1000;
     int vida;
     int experiencia;
     float dir;
@@ -65,8 +78,10 @@ private:
     int movX;
     int movY;
 
+    int tipoPlayer;
+
+
 
 };
 
 #endif /* PLAYER_H */
-

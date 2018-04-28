@@ -16,7 +16,8 @@
 
 IAActiva::IAActiva() {
     
-    kVel=3;
+    kVel=7;
+    t_ataque.reset();
 }
 
 IAActiva::IAActiva(const IAActiva& orig) {
@@ -35,38 +36,54 @@ IAActiva::~IAActiva() {
  }
  
  void IAActiva::perseguir(Sprite* enemy, float time){
-     Player *player = ingame_state::instance()->getPlayer();
-     player->getPositionX();
-     
-     
-        int xp=player->getPositionX();
-        int yp=player->getPositionY();
-        int xenemy=enemy->getPosition().x;
-        int yenemy=enemy->getPosition().y;
-        float angle = atan2(yp - yenemy, xp - xenemy);
-        if(checkColisionMap(-kVel,0, enemy)){
-            enemy->move(kVel, 0);               
-        }
-        if(checkColisionMap(kVel,0, enemy)){
-            enemy->move(-kVel, 0);               
-        }
-        if(checkColisionMap(0,-kVel, enemy)){
-            enemy->move(0, kVel);               
-        }
-        if(checkColisionMap(0,kVel, enemy)){
-            enemy->move(0, -kVel);               
-        }
-        else{
-          enemy->move(cos(angle)*2*time,sin(angle)*2*time);
+     if(t_ataque.getSeconds()>0.3){
+        Player *player = World::Instance()->getPlayer();
+        player->getPositionX();
 
-        }
 
-        //NO VA!!!!!!
-        if(enemy->getSprite()->getGlobalBounds().intersects(player->getSprite()->getSprite()->getGlobalBounds())){//si esta cerca del player ataca
-              std::cout<<"Hay colision"<<std::endl;
-              enemy->move(cos(angle)*4,sin(angle)*4);//se lanza a por el
-              //t_ataque.reset();
-          }
+           int xp=player->getPositionX();
+           int yp=player->getPositionY();
+           int xenemy=enemy->getPosition().x;
+           int yenemy=enemy->getPosition().y;
+           float angle = atan2(yp - yenemy, xp - xenemy);
+     
+               if(!checkColisionMap(cos(angle)*2*time*kVel,sin(angle)*2*time*kVel,enemy)){
+                   enemy->move(cos(angle)*2*time*kVel,sin(angle)*2*time*kVel);
+               }else{
+
+
+                   //enemy->move(-cos(angle)*2*time*kVel,-sin(angle)*2*time*kVel);
+                   float x = player->getPositionX();
+                   float y = player->getPositionY();
+                   float xe =enemy->getPosition().x;
+                   float ye =enemy->getPosition().y;
+                   if(y-enemy->getPosition().y>0 && x-enemy->getPosition().x>0){
+                       enemy->move(-7,7);
+                      
+                   }
+                    if(y-enemy->getPosition().y<0 && x-enemy->getPosition().x>0){
+                       enemy->move(7,7);
+                      
+                   }
+                    if(y-enemy->getPosition().y<0 && x-enemy->getPosition().x<0){
+                       enemy->move(7,-7);
+                      
+                   }
+                    if(y-enemy->getPosition().y>0 && x-enemy->getPosition().x<0){
+                       enemy->move(-7,-7);
+                      
+                   }
+
+           }
+
+           if(enemy->getSprite()->getGlobalBounds().intersects(player->getSprite()->getSprite()->getGlobalBounds())){//si esta cerca del player ataca
+
+                 enemy->move(cos(angle)*30,sin(angle)*30);//se lanza a por el
+                 t_ataque.reset();
+                 World::Instance()->getPlayer()->restaVida();
+
+             }
+     }
             
  }
  
@@ -80,10 +97,10 @@ IAActiva::~IAActiva() {
     float down = top + s->getSprite()->getGlobalBounds().height-60;
 
     
-    if(ingame_state::instance()->instance()->getMapa()._tilemap[1][(int)top/32][(int)left/32]==0 &&
-      ingame_state::instance()->instance()->getMapa()._tilemap[1][(int)top/32][(int)right/32]==0 &&
-      ingame_state::instance()->instance()->getMapa()._tilemap[1][(int)down/32][(int)left/32]==0 &&
-      ingame_state::instance()->instance()->getMapa()._tilemap[1][(int)down/32][(int)right/32]==0){
+    if(World::Instance()->getMapa()._tilemap[1][(int)top/32][(int)left/32]==0 &&
+       World::Instance()->getMapa()._tilemap[1][(int)top/32][(int)right/32]==0 &&
+       World::Instance()->getMapa()._tilemap[1][(int)down/32][(int)left/32]==0 &&
+       World::Instance()->getMapa()._tilemap[1][(int)down/32][(int)right/32]==0){
 
         
         return false;
@@ -92,3 +109,7 @@ IAActiva::~IAActiva() {
     return true;
     
 }
+
+ int IAActiva::getType(){
+     return 0;
+ }

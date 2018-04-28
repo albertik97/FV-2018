@@ -5,12 +5,11 @@
 #include<time.h>
 #include <math.h>
 
-#define kVel 15
+#define kVel 10
 
 IAPasiva::IAPasiva() {
     move=false;
     comer=false;
-
 
 }
 
@@ -22,7 +21,7 @@ IAPasiva::~IAPasiva() {
 
 void IAPasiva::elegirComportamiento(Sprite *&s){
 
-        moverse(ingame_state::instance()->getComida(),s);
+        moverse(World::Instance()->getComida(),s);
 
 }
 
@@ -83,7 +82,6 @@ void IAPasiva::elegirComportamiento(Sprite *&s){
                       
                        if((sqrt(pow((int)pos[0],2)+(pow((int)pos[1],2),2))) < minima){
                         minima = sqrt(pow((int)pos[0],2)+(pow((int)pos[1],2),2));
-                        std::cout<<minima<<std::endl;
                         select = i;
                         }
 
@@ -93,7 +91,7 @@ void IAPasiva::elegirComportamiento(Sprite *&s){
                 
                 }
                 if(comer&&select!=-1)
-                    buscarComida(ingame_state::instance()->getComida(),s,select);
+                    buscarComida(World::Instance()->getComida(),s,select);
                 
                 if(i==comida.size()&&select==-1){
                     comer=false;
@@ -128,8 +126,8 @@ void IAPasiva::elegirComportamiento(Sprite *&s){
  
 void IAPasiva::buscarComida(std::vector<Food*> comida,Sprite* s,int i){
     
-            int xp= ingame_state::instance()->getComida()[i]->getSprite()->getSprite()->getPosition().x;
-            int yp=ingame_state::instance()->getComida()[i]->getSprite()->getSprite()->getPosition().y;
+            int xp= World::Instance()->getComida()[i]->getSprite()->getSprite()->getPosition().x;
+            int yp=World::Instance()->getComida()[i]->getSprite()->getSprite()->getPosition().y;
             int xplayer=s->getPosition().x;
             int yplayer=s->getPosition().y;
             float angle = atan2(yp - yplayer, xp - xplayer);
@@ -140,10 +138,7 @@ void IAPasiva::buscarComida(std::vector<Food*> comida,Sprite* s,int i){
          
                      
                 }
-            }
-     
-               
-            
+            }           
 }
 
 
@@ -157,10 +152,10 @@ bool IAPasiva::checkColisionMap(int x, int y, Sprite* s){
     float down = top + s->getSprite()->getGlobalBounds().height-60;
 
     
-    if(ingame_state::instance()->instance()->getMapa()._tilemap[1][(int)top/32][(int)left/32]==0 &&
-      ingame_state::instance()->instance()->getMapa()._tilemap[1][(int)top/32][(int)right/32]==0 &&
-      ingame_state::instance()->instance()->getMapa()._tilemap[1][(int)down/32][(int)left/32]==0 &&
-      ingame_state::instance()->instance()->getMapa()._tilemap[1][(int)down/32][(int)right/32]==0){
+    if(World::Instance()->getMapa()._tilemap[1][(int)top/32][(int)left/32]==0 &&
+       World::Instance()->getMapa()._tilemap[1][(int)top/32][(int)right/32]==0 &&
+       World::Instance()->getMapa()._tilemap[1][(int)down/32][(int)left/32]==0 &&
+       World::Instance()->getMapa()._tilemap[1][(int)down/32][(int)right/32]==0){
 
         
         return false;
@@ -171,6 +166,6 @@ bool IAPasiva::checkColisionMap(int x, int y, Sprite* s){
 }
 
 
-void setEnemy(Enemy* e){
-   // com= comida;
+int IAPasiva::getType(){
+    return 1;
 }

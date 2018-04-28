@@ -17,12 +17,12 @@
 
 #include "Sprite.h"
 #include "Game.h"
-#include "Food.h"
+
 #include "Motor2D.h"
 
 #include  <iostream>
 
-
+#define UPDATE_TICK_TIME 1000/15
 
 Game* Game::pinstance=0;
 Game* Game::instance(){
@@ -41,14 +41,22 @@ Game::Game(){
 void Game::run(){
     //init();
     
-    Motor2D *motor =  Motor2D::Instance(); 
+    Motor2D *motor =  Motor2D::Instance();
+    motor->setFrameLimit();
+    
+    Clock updateClock;
     while(motor->openWindow()){
         
         motor->clearWindow();
         
         escena->HandleInput();
-        escena->Update();
-        escena->Draw();
+        if((updateClock.getSeconds()*1000)>UPDATE_TICK_TIME){
+            escena->Update();
+            updateClock.reset();
+        }
+        float percentTick=fmin(1,(updateClock.getSeconds()*1000)/(UPDATE_TICK_TIME));
+        
+        escena->Draw(percentTick);
         motor->displayWindow();
     }
     

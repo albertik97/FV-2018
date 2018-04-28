@@ -9,7 +9,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Color.hpp>
 
-#define kVel 10
+#define kVel 20
 
 #define kSalto 20
 
@@ -18,10 +18,10 @@ Player::Player()
 {
     
     sprite=new Sprite();
-    x = 2000;
-    y = 1000;
-    xlast = 0;
-    ylast = 0;
+    x = 1920 / 2;
+    y = 1080 / 2;
+    xlast = 1920 / 2;
+    ylast = 1080 / 2;
     up = false;
     left = false;
     down = false;
@@ -30,24 +30,52 @@ Player::Player()
     habuno = false;
     habdos = false;
     habtres = false;
+    
+    
 
     exp=0;
     carne=0;
     verdura=0;
+
     eliminoComida = 0;
+    vida=100;
     
     mouse.initMouse("resources/mira.png",0.1,0.1);
     mouse.getCursorSprite()->setPosition(x+50, y+50);
 
+    energia = 1;
+    
+    tipoPlayer = 1;
+
+
 
 }
 
+int Player::getVida(){
+    return vida;
+}
+
+void Player::restaVida(){
+    if(vida>=10)
+         vida-=10;
+}
+
+void Player::aumentaVida(){
+    if(vida<=95)
+         vida+=5;
+}
 void Player::aumenteCarne(){
     carne++;
 }
 void Player::aumentaVerdura(){
     verdura++;
 }
+
+int Player::getTipo(){
+    return tipoPlayer;
+}
+
+
 
 void Player::setExperiencia(int e){
     exp+=e;
@@ -68,6 +96,16 @@ void Player::draw() {
     sprite->draw();
     mouse.getCursorSprite()->draw();
     
+}
+
+void Player::aumentaEnergia(float _tiempo){
+    if(static_cast<int>(_tiempo)%2 == 0 && energia < maxenergia){
+        energia++;
+    }
+}
+
+float Player::getEnergia(){
+    return energia;
 }
 
 void Player::input(){
@@ -93,7 +131,6 @@ void Player::input(){
                     if(Keyboard::isKeySPressed()){
                         
                         down=true;
-                        std::cout << "TECHA DE ABAJO" << std::endl;
                     }
                     
                     if(Keyboard::isKey1Pressed()){
@@ -195,7 +232,8 @@ void Player::lookAtMouse(){
 
 
 void Player::update(){
-       
+         ylast=y;
+         xlast=x;
        moveChar();
        mouse.CursorUpdate(movX, movY);
        lookAtMouse();
@@ -214,6 +252,7 @@ void Player::moveChar(){
         }
         
         
+        
         if(up || down){
             moveY();
         }
@@ -222,8 +261,7 @@ void Player::moveChar(){
 
 void Player::moveX(){
 if(left){
-        xlast = x;
-        ylast = y;
+       
         if(!checkColisionMap(-kVel, 0)){
              sprite->moving(-kVel, 0);
              sprite->setAnimationTime(100);
@@ -232,8 +270,7 @@ if(left){
              
     }
     if(right){
-        xlast = x;
-        ylast = y;
+        
          if(!checkColisionMap(kVel, 0)){
             sprite->moving(kVel, 0);
             sprite->setAnimationTime(100);
@@ -245,8 +282,7 @@ if(left){
 
 void Player::moveY(){
     if(up){
-            xlast = x;
-            ylast = y;
+           
              if(!checkColisionMap(0, -kVel)){
             sprite->moving(0, -kVel);
             sprite->setAnimationTime(100);
@@ -254,8 +290,7 @@ void Player::moveY(){
              }
     }
     if(down){
-            xlast = x;
-            ylast = y;
+           
             if(!checkColisionMap(0, +kVel)){
              sprite->moving(0, kVel);
              sprite->setAnimationTime(100);
@@ -268,16 +303,16 @@ bool Player::checkColisionMap(int x, int y){
     
     //COJO LAS CUATRO ESQUINAS DEL BOUNDING BOX  
     
-    float left = ingame_state::instance()->instance()->getPlayer()->getSprite()->getSprite()->getGlobalBounds().left+15 + x;
-    float top = ingame_state::instance()->instance()->getPlayer()->getSprite()->getSprite()->getGlobalBounds().top+15 + y;
-    float right = ingame_state::instance()->instance()->getPlayer()->getSprite()->getSprite()->getGlobalBounds().width-60 + left;
-    float down = top + ingame_state::instance()->instance()->getPlayer()->getSprite()->getSprite()->getGlobalBounds().height-60;
+    float left = World::Instance()->getPlayer()->getSprite()->getSprite()->getGlobalBounds().left+15 + x;
+    float top = World::Instance()->getPlayer()->getSprite()->getSprite()->getGlobalBounds().top+15 + y;
+    float right = World::Instance()->getPlayer()->getSprite()->getSprite()->getGlobalBounds().width-60 + left;
+    float down = top + World::Instance()->getPlayer()->getSprite()->getSprite()->getGlobalBounds().height-60;
 
     
-    if(ingame_state::instance()->instance()->getMapa()._tilemap[1][(int)top/32][(int)left/32]==0 &&
-      ingame_state::instance()->instance()->getMapa()._tilemap[1][(int)top/32][(int)right/32]==0 &&
-      ingame_state::instance()->instance()->getMapa()._tilemap[1][(int)down/32][(int)left/32]==0 &&
-      ingame_state::instance()->instance()->getMapa()._tilemap[1][(int)down/32][(int)right/32]==0){
+    if(World::Instance()->getMapa()._tilemap[1][(int)top/32][(int)left/32]==0 &&
+      World::Instance()->getMapa()._tilemap[1][(int)top/32][(int)right/32]==0 &&
+      World::Instance()->getMapa()._tilemap[1][(int)down/32][(int)left/32]==0 &&
+      World::Instance()->getMapa()._tilemap[1][(int)down/32][(int)right/32]==0){
         
         return false;
    
@@ -292,10 +327,24 @@ Sprite* Player::getSprite(){
 
 float Player::getPositionX()
 {
-    return sprite->getPosition().x;
+    return x;
 }
 
 float Player::getPositionY()
 {
-    return sprite->getPosition().y;
+    return y;
+}
+
+void Player::setPositionInterpolated(float a,float b){
+    sprite->setPosition(a,b);
+}
+
+float Player::getLastPositionX()
+{
+    return xlast;
+}
+
+float Player::getLastPositionY()
+{
+    return ylast;
 }

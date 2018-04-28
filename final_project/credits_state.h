@@ -34,10 +34,10 @@ public:
     void Init();
     void HandleInput();
     void Update();
-    void Draw();
+    void Draw(float);
     
-    void beginAlpha();
-    void endAlpha();
+    void beginAlpha(float percentTick);
+    void endAlpha(float percentTick);
     
 
     

@@ -54,6 +54,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Sprite.o \
 	${OBJECTDIR}/Text.o \
 	${OBJECTDIR}/TileMap.o \
+	${OBJECTDIR}/World.o \
 	${OBJECTDIR}/credits_state.o \
 	${OBJECTDIR}/ingame_state.o \
 	${OBJECTDIR}/intro_state.o \
@@ -184,6 +185,11 @@ ${OBJECTDIR}/TileMap.o: TileMap.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TileMap.o TileMap.cpp
+
+${OBJECTDIR}/World.o: World.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/World.o World.cpp
 
 ${OBJECTDIR}/credits_state.o: credits_state.cpp 
 	${MKDIR} -p ${OBJECTDIR}

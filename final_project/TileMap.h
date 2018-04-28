@@ -37,7 +37,8 @@ public:
   
     void cargarmapa(std::string path);
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-    void setCapaActiva(int layer);  
+    void setCapaActiva(int layer);
+    void deleteMap();
 };
 
 

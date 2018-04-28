@@ -6,8 +6,8 @@
 class transitions
 {
 public:
-    virtual void beginAlpha() = 0;
-    virtual void endAlpha() = 0;
+    virtual void beginAlpha(float) = 0;
+    virtual void endAlpha(float) = 0;
     
 private:
     

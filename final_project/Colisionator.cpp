@@ -64,19 +64,25 @@ bool Colisionator::checkColisionComidaEnemy(std::vector<Food*> &comidaArray){
 
 bool Colisionator::checkColisionComida(std::vector<Food*> &comidaArray){
     
-
+    
     for(int i=0; i<comidaArray.size(); i++){
-        if(comidaArray[i]->getSprite()->getSprite()->getGlobalBounds().intersects(ingame_state::instance()->instance()->getPlayer()->getSprite()->getSprite()->getGlobalBounds())){
+        if(comidaArray[i]->getSprite()->getSprite()->getGlobalBounds().intersects(World::Instance()->getPlayer()->getSprite()->getSprite()->getGlobalBounds())){
             if(comidaArray[i]->getType()==0){
+                std::cout << "me he comido una cosa" << std::endl;
                      player->setExperiencia(10);
                      player->aumentaVerdura();
+                     player->aumentaVida();
                  }
                  if(comidaArray[i]->getType()==1){
+                     std::cout << "me he comido una cosa" << std::endl;
                      player->setExperiencia(10);
                      player->aumenteCarne();
+                     player->aumentaVida();
                  }
                  if(comidaArray[i]->getType()==2){
+                     std::cout << "me he comido una cosa" << std::endl;
                      player->setExperiencia(-30);
+                     player->restaVida();
                  } 
               delete comidaArray[i]; //liberas memoria
                 comidaArray[i]=NULL;
@@ -94,10 +100,6 @@ bool Colisionator::checkColisionSprite(std::vector<Food*> &comidaArray, Sprite* 
     
         for(int i=0; i<comidaArray.size(); i++){
         if(comidaArray[i]->getSprite()->getSprite()->getGlobalBounds().intersects(s->getSprite()->getGlobalBounds())){
-             // delete comidaArray[i]; //liberas memoria
-             //   comidaArray[i]=NULL;
-              //  comidaArray.erase(comidaArray.begin() + i); 
-               //eliminas la posición del vector
                 return true;
        }
     }

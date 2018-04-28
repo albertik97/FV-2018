@@ -76,37 +76,44 @@ void intro_state::Update()
         skipTextTimer.reset();
     }
     
-    if(stateTimer.getSeconds() < INTRO_STATE_TRANSITION_TIME) 
-    {
-        beginAlpha();
-    }
     
-    if(stateTimer.getSeconds() > INTRO_STATE_TRANSITION_TIME + INTRO_STATE_TIME / 4) 
-    {
-        endAlpha();
-    }   
+    
+       
 }
 
-void intro_state::Draw()
+void intro_state::Draw(float percentTick)
 {
+    if(stateTimer.getSeconds() < INTRO_STATE_TRANSITION_TIME) 
+    {
+        beginAlpha(percentTick);
+    }
+    if(stateTimer.getSeconds() > INTRO_STATE_TRANSITION_TIME + INTRO_STATE_TIME / 4) 
+    {
+        endAlpha(percentTick);
+    }
+    if(stateTimer.getSeconds() > INTRO_STATE_TRANSITION_TIME + INTRO_STATE_TIME / 4) 
+    {
+        endAlpha(percentTick);
+    }
     background.draw();
     skipText.draw();
     b.draw();
 }
 
-void intro_state::beginAlpha() // animacion del principio
+void intro_state::beginAlpha(float percentTick) // animacion del principio
 {
-    int alpha = background.getAlpha() + INTRO_STATE_TRANSITION_SPEED;
     
+    int alpha = background.getAlpha() + INTRO_STATE_TRANSITION_SPEED * percentTick * 2;
+    background.setLastAlpha(alpha);
     if(alpha >= 255)
     {
         alpha = 255;
     }
     background.setAlpha(alpha);
 }
-void intro_state::endAlpha() // animacion del final
+void intro_state::endAlpha(float percentTick) // animacion del final
 {
-    int alpha = background.getAlpha() - (INTRO_STATE_TRANSITION_SPEED);
+    int alpha = background.getAlpha() - (INTRO_STATE_TRANSITION_SPEED * percentTick * 2);
         
     if(alpha <= 0)
     {

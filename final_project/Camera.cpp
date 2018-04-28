@@ -9,7 +9,7 @@ Camera::Camera()
 }
 void Camera::setCenter(float originX, float originY)
 {
-    view.setCenter(sf::Vector2f(sf::Vector2f(originX, originY)));
+    view.setCenter(sf::Vector2f(originX, originY));
     
 }
 

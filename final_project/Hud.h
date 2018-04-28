@@ -22,13 +22,17 @@
 #include <iostream>
 
 
+
 class Hud{
 public:
     int vida;
-    int experiencia;
+    int energia;
     Sprite* Rectvida;
+    int maxenergia = 1000;
+    float rellenoenergia;
+    Sprite* Rectenergia;
     //sf::Texture t_vida;
-    Sprite* Rectexperiencia;
+    //Sprite* Rectexperiencia;
     //sf::Sprite t_experiencia;
     //Habilidades
     Sprite* panel;
@@ -40,11 +44,13 @@ public:
     Sprite* h_especial_h;
     //Tipo de player (Carnivoro o Herbivoro);
     int tipo;// 0 canrivoro, 1 herb, 2 celu
+    int habilidadActiva;
     Text* exp;
     
     Hud();
     void cargarhud(int _tipo);
     void updateHud(float x,float y);
+    void activaHabilidad(int _hab, int tipo);
     void aumentavida();
     void draw();
     //virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -52,10 +58,10 @@ public:
     void sumarvida();
     void restaexp();
     void sumaexp(int exp);
+    void desactivaHabilidad(int _hab, int tipo);
     //void tipo();
     
 };
 
 
 #endif /* HUD_H */
-

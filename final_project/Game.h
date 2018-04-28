@@ -19,12 +19,13 @@
 #define GAME_H
 
 #include "Sprite.h"
-#include "Food.h"
 
 //nuevo añadido de Alberto
 
 #include "Text.h"
 #include "states.h"
+#include "Clock.h"
+#include <math.h>
 
 
 class Game {

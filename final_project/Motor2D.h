@@ -31,6 +31,7 @@ public:
     void closeWindow();
     void setCamera(Camera cam);
     void resetCamera();
+    void setFrameLimit();
     
 private:
     Motor2D();

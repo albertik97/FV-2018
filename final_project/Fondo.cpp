@@ -3,7 +3,9 @@
 #include "Fondo.h"
 #include <iostream>
 
-Fondo::Fondo() {
+Fondo::Fondo() 
+{
+    
 }
 
 Fondo::Fondo(const Fondo& orig) {
@@ -71,3 +73,4 @@ void Fondo::draw()
     Motor2D *j = Motor2D::Instance();
     j->dibujar(shape);
 }
+

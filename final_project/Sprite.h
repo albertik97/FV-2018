@@ -13,6 +13,7 @@ public:
 
     void draw( );
     void scale(float x, float y);
+    void scale2(float x, float y);
     void moving(float x, float y);
     void rotate(float angle);
     sf::Vector2f getPosition();
@@ -26,11 +27,15 @@ public:
     void move(int a,int b);
     void setAnimationTime(int t);
     void animar(int a, int b, int c, int d, int factor);
+    
+    void setLastAlpha(int a);
+    int getLastAlpha();
 private:
    sf::Sprite *sprite;
    sf::Texture texture;
    sf::Clock tiempo;
    int animationTime;
+   int lastAlpha;
 
 };
 

@@ -24,7 +24,7 @@ const int WINDOW_HEIGHT                                 = 1080;
 
 // Times for things
 const float INTRO_STATE_TIME                            = 8.f;
-const float INTRO_STATE_TRANSITION_SPEED                = 1.f;
+const float INTRO_STATE_TRANSITION_SPEED                = 2.f;
 const float INTRO_STATE_TRANSITION_TIME                 = 2.f;
 
 
@@ -40,5 +40,7 @@ const std::string PLAYER_SPRITE_FILEPATH                = "resources/player.png"
 
 const std::string GAME_MENU_FONT_FILEPATH               = "resources/prstart.ttf";
 const std::string SCORE_FONT_FILEPATH                   = "resources/font.ttf";
+const std::string LEVEL1_MAP_FILEPATH                   = "nivel1.tmx";
+const std::string LEVEL2_MAP_FILEPATH                   = "nivel2_jungla.tmx";
 
 #endif /* RESOURCES_H */

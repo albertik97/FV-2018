@@ -20,7 +20,9 @@
 #include <string>
 #include <iostream>
 
-Sprite::Sprite(){
+Sprite::Sprite()
+    : lastAlpha(0)
+{
     //setSpriteTexture();
 }
 
@@ -44,6 +46,9 @@ void Sprite::scale(float x, float y){
     sprite->scale(x,y);
 }
 
+void Sprite::scale2(float x, float y){
+    sprite->setScale(x,y);
+}
 
 void Sprite::moving(float dir, float v){
     
@@ -113,4 +118,13 @@ int Sprite::getAlpha()
 void Sprite::setAlpha(int a)
 {
     sprite->setColor(sf::Color(sprite->getColor().r, sprite->getColor().g, sprite->getColor().b, a));
+}
+
+void Sprite::setLastAlpha(int a)
+{
+    lastAlpha = a;
+}
+int Sprite::getLastAlpha()
+{
+    return lastAlpha;
 }

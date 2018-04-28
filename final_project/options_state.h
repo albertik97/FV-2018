@@ -30,7 +30,7 @@ public:
     void Init();
     void HandleInput();
     void Update();
-    void Draw();
+    void Draw(float);
     
 private:
     
