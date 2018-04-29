@@ -220,7 +220,7 @@ void Player::lookAtMouse(){
     sf::Vector2f curPos = sprite->getPosition();
     //(std::cout<<sprite->getPosition().x;
     //std::cout<<sprite->getPosition().y;
-    sf::Vector2f position(Mouse::getPosX(), Mouse::getPosY()); 
+    sf::Vector2f position(mouse.getCursorSprite()->getPosition().x, mouse.getCursorSprite()->getPosition().y); 
     const float PI = 3.14159265;
     float dx = curPos.x - position.x;
     float dy = curPos.y - position.y;
@@ -263,6 +263,7 @@ void Player::moveX(){
 if(left){
        
         if(!checkColisionMap(-kVel, 0)){
+            movX += -kVel;
              sprite->moving(-kVel, 0);
              sprite->setAnimationTime(100);
              x -= kVel;
@@ -272,6 +273,7 @@ if(left){
     if(right){
         
          if(!checkColisionMap(kVel, 0)){
+             movX += kVel;
             sprite->moving(kVel, 0);
             sprite->setAnimationTime(100);
             x += kVel;
@@ -284,6 +286,7 @@ void Player::moveY(){
     if(up){
            
              if(!checkColisionMap(0, -kVel)){
+            movY += -kVel;
             sprite->moving(0, -kVel);
             sprite->setAnimationTime(100);
              y -= kVel;
@@ -292,6 +295,7 @@ void Player::moveY(){
     if(down){
            
             if(!checkColisionMap(0, +kVel)){
+            movY += kVel;
              sprite->moving(0, kVel);
              sprite->setAnimationTime(100);
              y += kVel;
