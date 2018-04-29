@@ -329,6 +329,11 @@ Sprite* Player::getSprite(){
     return sprite;
 }
 
+Mouse Player::getMouse()
+{
+    return mouse;
+}
+
 float Player::getPositionX()
 {
     return x;
