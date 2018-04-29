@@ -50,10 +50,13 @@ public:
     void aumentaEnergia(float _tiempo);
     float getEnergia();
     int getTipo();
-    Mouse getMouse();
+    void setTipo(int i);
+    void cambiarSprite(std::string);
+    int getCarne();
+    int getVerdura();    
 
+    Mouse* getMouse();
 
-     
     
 private:
     sf::Texture tex;
@@ -75,7 +78,7 @@ private:
     int x,xlast,y,ylast;
     int exp,carne,verdura;//la experciencia y la cantidad de comida de cada tipo
     int eliminoComida;
-    Mouse mouse;
+    Mouse* mouse;
     int movX;
     int movY;
 

@@ -67,9 +67,11 @@ void Food::setRandomFood(sf::Sprite**** &m){
         int x= (rand() % (229)); //random para elegir la direccion
         int y= (rand() % (129));
         if(m[1][y][x]==NULL && m[1][y+1][x+1]==NULL && m[1][y][x+1]==NULL && m[1][y+1][x]==NULL && m[1][y-1][x-1]==NULL && m[1][y-1][x]==NULL && m[1][y][x-1]==NULL && m[1][y+1][x-1]==NULL & m[1][y-1][x+1]==NULL){
-             sprite->setPosition(x*32-16,y*32-16);
+ 
+            sprite->setPosition(x*32-16,y*32-16);
              set=true;
         }
+        
     }
 }
 

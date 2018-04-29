@@ -1,15 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   Game.cpp
- * Author: blanca
- * 
- * Created on 10 de abril de 2018, 12:18
- */
 
 #include <SFML/Window/VideoMode.hpp>
 #include <SFML/Window/WindowStyle.hpp>
@@ -22,7 +10,7 @@
 
 #include  <iostream>
 
-#define UPDATE_TICK_TIME 1000/15
+#define UPDATE_TICK_TIME 1000/30
 
 Game* Game::pinstance=0;
 Game* Game::instance(){

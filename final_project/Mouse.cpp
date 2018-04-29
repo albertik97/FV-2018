@@ -20,7 +20,10 @@
 #include "Mouse.h"
 
 Mouse::Mouse() {
-
+ xlast  =  0;
+ ylast  =   0;
+ x  =   0;
+ y  =   0;
 }
 
 Mouse::Mouse(const Mouse& orig) {
@@ -34,7 +37,6 @@ void Mouse::initMouse(std::string a, float s1, float s2){
     cursor->setSpriteTexture(a);
     cursor->scale(s1,s2);
     cursor->setOrigin(cursor->getSprite()->getGlobalBounds().width/2,cursor->getSprite()->getGlobalBounds().height/2);
-   // cursor->setPosition(500, 500);
 }
 
 void Mouse::setTexture(std::string route){
@@ -42,11 +44,10 @@ void Mouse::setTexture(std::string route){
     cursor->setSpriteTexture(route);
 }
 
-void Mouse::setPositionInterpolated(float x, float y)
-{
-    /*std::cout << "x interpolado: " << x << std::endl;
-    std::cout << "y interpolado: " << y << std::endl;*/
+void Mouse::setPositionInterpolated(float x, float y){
+    //std::cout<<"jjaja: "<<x<<std::endl;
     cursor->setPosition(x, y);
+    
 }
 
 
@@ -84,22 +85,32 @@ float Mouse::getLastPositionY()
     return ylast;
 }
 
-void Mouse::CursorUpdate(int x, int y){
-    xlast = cursor->getPosition().x;
-    ylast = cursor->getPosition().y;
-    /*std::cout << "DespX: " << xlast << std::endl;
-    std::cout << "DespY: " << ylast  << std::endl;*/
+float Mouse::getPositionX()
+{
+    return x;
+}
+
+float Mouse::getPositionY()
+{
+    return y;
+}
+
+void Mouse::CursorUpdate(float x, float y){
+    xlast = this->x;
+    ylast = this->y;
+
     
         cursor->setPosition(sf::Mouse::getPosition(*(Motor2D::Instance()->getWindow())).x + x, sf::Mouse::getPosition(*(Motor2D::Instance()->getWindow())).y + y);
-        /*std::cout << "MouseX: " << cursor->getPosition().x << std::endl;
-        std::cout << "MouseY: " << cursor->getPosition().y << std::endl;*/
+        this->x=sf::Mouse::getPosition(*(Motor2D::Instance()->getWindow())).x + x;
+        this->y=sf::Mouse::getPosition(*(Motor2D::Instance()->getWindow())).y + y;
 }   
+
 
 Sprite* Mouse::getCursorSprite(){
     return cursor;
 }
 
-sf::Mouse Mouse::getMouse()
+sf::Mouse* Mouse::getMouse()
 {
     return mouse;
 }
