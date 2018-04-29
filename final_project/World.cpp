@@ -188,9 +188,11 @@ void World::Draw(float percentTick)
     {
         beginAlpha(percentTick);
     }
+    player->setPositionInterpolated(player->getLastPositionX()*(1-percentTick)+player->getPositionX()*percentTick,player->getLastPositionY()*(1-percentTick)+player->getPositionY()*percentTick);
     
     
-    camera.setCenter(player->getPositionX(), player->getPositionY());
+    
+    camera.setCenter(player->getSprite()->getPosition().x, player->getSprite()->getPosition().y);
     Motor2D::Instance()->setCamera(camera);
     std::cout << "ticks: " << percentTick << std::endl;
     mapa.setCapaActiva(0);
@@ -208,7 +210,7 @@ void World::Draw(float percentTick)
     for(int i=0;i<enemys.size();i++)
         enemys[i]->draw();
     
-    player->setPositionInterpolated(player->getLastPositionX()*(1-percentTick)+player->getPositionX()*percentTick,player->getLastPositionY()*(1-percentTick)+player->getPositionY()*percentTick);
+    
     player->draw();
     
     hud.draw();

@@ -33,9 +33,16 @@ public:
    Sprite* getCursorSprite();
    void initMouse(std::string a,float s1,float s2);
    sf::Mouse getMouse();
+   void setPositionInterpolated(float x, float y);
+   float getLastPositionX();
+   float getLastPositionY();
+   
+   
 private:
     Sprite* cursor;
     sf::Mouse mouse;
+    float xlast;
+    float ylast;
 };
 
 #endif /* MOUSE_H */
