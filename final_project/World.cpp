@@ -17,6 +17,7 @@ World::World()
     : nivelActual(0), endGame(false)
 {
     std::cout << "Hemos creado el mundo y parace que no ha petado " << std::endl;
+    nivelico=false;
 }
 
 void World::CargarNivel(int nivel)
@@ -115,6 +116,7 @@ void World::CargarNivel(int nivel)
             fondoTransition.setColor(0, 0, 0);
             fondoTransition.setOriginCenter();
             fondoTransition.setPos(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
+            fondoTransition.setAlpha(0);
         }
         else
             if(nivel == 3)
@@ -130,9 +132,10 @@ void World::CargarNivel(int nivel)
 
 void World::Update()
 {
-    if(player->getExperiencia() >= 1000)
+    if(player->getExperiencia() >= 10 && !nivelico)
     {
-       CargarNivel(nivelActual + 1);
+        nivelico=true;
+       CargarNivel(2);
     }
     
     
