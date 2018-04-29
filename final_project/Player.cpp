@@ -39,9 +39,9 @@ Player::Player()
 
     eliminoComida = 0;
     vida=100;
-    
-    mouse.initMouse("resources/mira.png",0.1,0.1);
-    mouse.getCursorSprite()->setPosition(x+50, y+50);
+    mouse= new Mouse();
+    mouse->initMouse("resources/mira.png",0.1,0.1);
+    mouse->getCursorSprite()->setPosition(x+50, y+50);
 
     energia = 1;
     
@@ -54,7 +54,6 @@ void Player::cambiarSprite(std::string s){
         sprite->setTextureRect(1,1, 100, 105);
 	sprite->setOrigin(100/2,105/2);
         sprite->scale(0.8,0.8);
-        sprite->setAnimationTime(100);
         sprite->setPosition(1160,860);
         x = 1160;
         y = 860;
@@ -115,7 +114,7 @@ int Player::getExperiencia(){
 
 void Player::draw() {
     sprite->draw();
-    mouse.getCursorSprite()->draw();
+    mouse->getCursorSprite()->draw();
     
 }
 
@@ -241,7 +240,7 @@ void Player::lookAtMouse(){
     sf::Vector2f curPos = sprite->getPosition();
     //(std::cout<<sprite->getPosition().x;
     //std::cout<<sprite->getPosition().y;
-    sf::Vector2f position(mouse.getCursorSprite()->getPosition().x, mouse.getCursorSprite()->getPosition().y); 
+    sf::Vector2f position(mouse->getCursorSprite()->getPosition().x, mouse->getCursorSprite()->getPosition().y); 
     const float PI = 3.14159265;
     float dx = curPos.x - position.x;
     float dy = curPos.y - position.y;
@@ -256,17 +255,17 @@ void Player::update(){
          ylast=y;
          xlast=x;
        moveChar();
-       mouse.CursorUpdate(movX, movY);
+       mouse->CursorUpdate(movX, movY);
        lookAtMouse();
        if(tipoPlayer==0)
             sprite->animar(7,1, 112, 173, 134);
        else if(tipoPlayer==1){
            sprite->animar(1,1, 100, 105, 100);
        }else{
-           
+           sprite->animar(1,1, 100, 105, 100);
        }
        if(!left && !right && !up && !down){
-            sprite->setAnimationTime(50);
+            sprite->setAnimationTime(500);
         }
 }
 
@@ -356,7 +355,7 @@ Sprite* Player::getSprite(){
     return sprite;
 }
 
-Mouse Player::getMouse()
+Mouse* Player::getMouse()
 {
     return mouse;
 }

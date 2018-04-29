@@ -22,8 +22,6 @@ Hud::Hud(){
      energia = 0;
      habilidadActiva = 0;
      
-     
-
 }
 
 
@@ -31,22 +29,22 @@ void Hud::cargarhud(int _tipo){
     tipo = _tipo;
     if(tipo == 1){
         habilidad_uno->setSpriteTexture("resources/Carnivoro/lengua_desactivada.png");
-        habilidad_uno->scale(0.025,0.025);
+        habilidad_uno->scale(0.033,0.033);
 
         habilidad_dos->setSpriteTexture("resources/Carnivoro/paraliza_desactivado.png");
-        habilidad_dos->scale(0.025,0.025);
+        habilidad_dos->scale(0.033,0.033);
 
         habilidad_tres->setSpriteTexture("resources/Carnivoro/velocidad_desactivado.png");
-        habilidad_tres->scale(0.025,0.025);
+        habilidad_tres->scale(0.033,0.033);
     }else if(tipo == 2){
         habilidad_uno->setSpriteTexture("resources/Herbivoro/invisible_desactivado.png");
-        habilidad_uno->scale(0.025,0.025);
+        habilidad_uno->scale(0.033,0.033);
 
         habilidad_dos->setSpriteTexture("resources/Herbivoro/ralentiza_desactivado.png");
-        habilidad_dos->scale(0.025,0.025);
+        habilidad_dos->scale(0.033,0.033);
 
         habilidad_tres->setSpriteTexture("resources/Herbivoro/veneno_desactivado.png");
-        habilidad_tres->scale(0.025,0.025);
+        habilidad_tres->scale(0.033,0.033);
     }
     
     exp->setText("Experiencia: 0");
@@ -56,10 +54,6 @@ void Hud::cargarhud(int _tipo){
     Rectvida->setSpriteTexture("resources/vida.jpg");
     Rectvida->scale(12.4,0.4);
     
-    
-    //Rectexperiencia->setSpriteTexture("resources/experiencia.jpg");
-    
-    //Rectexperiencia->scale(9.3,0.4);
     
     panel->setSpriteTexture("resources/panel.png");
     panel->scale(0.4, 0.4);
@@ -146,7 +140,6 @@ void Hud::updateHud(float x,float y){
         //aumentamos la energia
         Rectenergia->setSpriteTexture("resources/experiencia.jpg");
         Rectenergia->scale(rellenoenergia,0.4);
-        //std::cout << "RELLENO ENERGIA: " << rellenoenergia << std::endl;
     }
     
     Rectvida->setPosition(20+(x-950),25+(y-530));
@@ -179,11 +172,8 @@ void Hud::updateHud(float x,float y){
         habilidadActiva = 3;
     }
 
-
-
-
     float scale=(12.3 * World::Instance()->getPlayer()->getVida()/100);
-        Rectvida->scale2(scale,0.4);
+    Rectvida->scale2(scale,0.4);
     exp->setPos(x+760,y-470);
 
 }
@@ -195,8 +185,7 @@ void Hud::sumaexp(int e){
     exp->setText("Experiencia: "+str);
 }
 void Hud::draw(){
-    //std::cout << "Entramos en el DRAW de HUD" << std::endl;
-    //Rectexperiencia->draw();
+
     Rectenergia->draw();
     Rectvida->draw();
     panel->draw();
@@ -205,8 +194,6 @@ void Hud::draw(){
     habilidad_tres->draw();
     exp->draw();
     
-    //Rectvida.draw();
-    //Rectexperiencia.draw();
 }
 
 

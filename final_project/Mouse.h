@@ -29,20 +29,23 @@ public:
    static float getPosX();
    static float getPosY();
    void setTexture(std::string);
-   void CursorUpdate(int x, int y);
+   void CursorUpdate(float x,float y);
    Sprite* getCursorSprite();
    void initMouse(std::string a,float s1,float s2);
-   sf::Mouse getMouse();
+   sf::Mouse* getMouse();
    void setPositionInterpolated(float x, float y);
    float getLastPositionX();
    float getLastPositionY();
+   float getPositionX();
+   float getPositionY();
    
    
 private:
     Sprite* cursor;
-    sf::Mouse mouse;
+    sf::Mouse* mouse;
     float xlast;
     float ylast;
+    float x,y;
 };
 
 #endif /* MOUSE_H */

@@ -44,9 +44,8 @@ void World::CargarNivel(int nivel)
         camera.setCenter(player->getPositionX(), player->getPositionY());
         camera.setSize(1920, 1080);
         
-        
-        
-        hud.cargarhud(2);
+              
+        hud.cargarhud(1);
         
         for(int i=0; i<60; i++)
         {  
@@ -93,8 +92,10 @@ void World::CargarNivel(int nivel)
             camera.setSize(1920, 1080);
 
 
-
-            hud.cargarhud(2);
+            if(player->getTipo()==1)
+                hud.cargarhud(1);
+            else
+                hud.cargarhud(2);
 
             for(int i=0; i<60; i++)
             {  
@@ -129,7 +130,7 @@ void World::CargarNivel(int nivel)
 
 void World::Update()
 {
-    if(player->getExperiencia() >= 10)
+    if(player->getExperiencia() >= 1000)
     {
        CargarNivel(nivelActual + 1);
     }
@@ -190,11 +191,18 @@ void World::Draw(float percentTick)
     }
     player->setPositionInterpolated(player->getLastPositionX()*(1-percentTick)+player->getPositionX()*percentTick,player->getLastPositionY()*(1-percentTick)+player->getPositionY()*percentTick);
     
-    
+    hud.panel->setPosition(((player->getLastPositionX()*(1-percentTick)+player->getPositionX()*percentTick)-950)+15,15+((player->getLastPositionY()*(1-percentTick)+player->getPositionY()*percentTick)-530));
+    hud.Rectenergia->setPosition(((player->getLastPositionX()*(1-percentTick)+player->getPositionX()*percentTick)-950)+20,47+((player->getLastPositionY()*(1-percentTick)+player->getPositionY()*percentTick)-530));
+    hud.Rectvida->setPosition(((player->getLastPositionX()*(1-percentTick)+player->getPositionX()*percentTick)-950)+20,25+((player->getLastPositionY()*(1-percentTick)+player->getPositionY()*percentTick)-530));
+    hud.habilidad_uno->setPosition(((player->getLastPositionX()*(1-percentTick)+player->getPositionX()*percentTick)-950)+55,63+((player->getLastPositionY()*(1-percentTick)+player->getPositionY()*percentTick)-530));
+    hud.habilidad_dos->setPosition(((player->getLastPositionX()*(1-percentTick)+player->getPositionX()*percentTick)-950)+105,63+((player->getLastPositionY()*(1-percentTick)+player->getPositionY()*percentTick)-530));
+    hud.habilidad_tres->setPosition(((player->getLastPositionX()*(1-percentTick)+player->getPositionX()*percentTick)-950)+155,63+((player->getLastPositionY()*(1-percentTick)+player->getPositionY()*percentTick)-530));
+    hud.exp->setPos((player->getLastPositionX()*(1-percentTick)+player->getPositionX()*percentTick)+760,(player->getLastPositionY()*(1-percentTick)+player->getPositionY()*percentTick)-470);
+    player->getMouse()->setPositionInterpolated(player->getMouse()->getLastPositionX()*(1-percentTick)+player->getMouse()->getPositionX()*percentTick,player->getMouse()->getLastPositionY()*(1-percentTick)+player->getMouse()->getPositionY()*percentTick);
+
     
     camera.setCenter(player->getSprite()->getPosition().x, player->getSprite()->getPosition().y);
     Motor2D::Instance()->setCamera(camera);
-    std::cout << "ticks: " << percentTick << std::endl;
     mapa.setCapaActiva(0);
     Motor2D::Instance()->getWindow()->draw(mapa);
     mapa.setCapaActiva(1);
@@ -252,7 +260,6 @@ void World::resetWorld()
         delete comidaArray[x];
         comidaArray[x] = NULL;
         comidaArray.erase(comidaArray.begin() + x);
-
     }
     
     for(int i = 0; i < enemys.size(); i++)
@@ -261,7 +268,7 @@ void World::resetWorld()
         enemys[i] = NULL;
         enemys.erase(enemys.begin() + i);
     }
-    
+    delete player->getMouse();
 }
 
 
@@ -303,54 +310,3 @@ int World::getNivelActual()
 {
     return nivelActual;
 }
-/*
-Clock World::getClockGameStart()
-{
-    return gameStart;
-}
-
-Fondo World::getFondo()
-{
-    return fondoTransition;
-}
-
-
-
-std::vector<Enemy*>  World::getEnemys()
-{
-    return enemys;
-}
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
