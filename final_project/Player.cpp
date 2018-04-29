@@ -45,12 +45,23 @@ Player::Player()
 
     energia = 1;
     
-    tipoPlayer = 1;
-
-
+    tipoPlayer = 0;
 
 }
 
+void Player::cambiarSprite(std::string s){
+        sprite->setSpriteTexture(s);                              // Y creo el spritesheet a partir de la imagen anterior
+        sprite->setTextureRect(1,1, 100, 105);
+	sprite->setOrigin(100/2,105/2);
+        sprite->scale(0.8,0.8);
+        sprite->setAnimationTime(100);
+        sprite->setPosition(1160,860);
+        x = 1160;
+        y = 860;
+        xlast = 1160;
+        ylast = 860;
+        
+}
 int Player::getVida(){
     return vida;
 }
@@ -75,7 +86,17 @@ int Player::getTipo(){
     return tipoPlayer;
 }
 
+void Player::setTipo(int i){
+    tipoPlayer=i;
+}
 
+int Player::getCarne(){
+    return carne;
+}
+
+int Player::getVerdura(){
+    return verdura;
+}
 
 void Player::setExperiencia(int e){
     exp+=e;
@@ -237,9 +258,15 @@ void Player::update(){
        moveChar();
        mouse.CursorUpdate(movX, movY);
        lookAtMouse();
-       sprite->animar(7,1, 112, 173, 134);
+       if(tipoPlayer==0)
+            sprite->animar(7,1, 112, 173, 134);
+       else if(tipoPlayer==1){
+           sprite->animar(1,1, 100, 105, 100);
+       }else{
+           
+       }
        if(!left && !right && !up && !down){
-            sprite->setAnimationTime(500);
+            sprite->setAnimationTime(50);
         }
 }
 

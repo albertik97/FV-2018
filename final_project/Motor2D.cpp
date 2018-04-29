@@ -30,7 +30,7 @@ Motor2D* Motor2D::Instance()
 }
 
 Motor2D::Motor2D()
-:window(sf::VideoMode(WINDOW_WIDTH,WINDOW_HEIGHT), "Evohungry", sf::Style::Close  | sf::Style::Titlebar | sf::Style::Fullscreen)
+:window(sf::VideoMode(WINDOW_WIDTH,WINDOW_HEIGHT), "Evohungry", sf::Style::Close  | sf::Style::Titlebar)
 {
      
 }

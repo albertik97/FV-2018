@@ -50,9 +50,10 @@ public:
     void aumentaEnergia(float _tiempo);
     float getEnergia();
     int getTipo();
-
-
-     
+    void setTipo(int i);
+    void cambiarSprite(std::string);
+    int getCarne();
+    int getVerdura();    
     
 private:
     sf::Texture tex;

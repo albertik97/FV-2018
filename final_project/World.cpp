@@ -54,14 +54,10 @@ void World::CargarNivel(int nivel)
             comidaArray.push_back(comida);
             comidaArray[i]->setRandomFood(mapa._tileMapSprite);
         }
-        
-        
+              
         colision.setPlayer(player);
         colision.setEnemies(enemys);
-        
-        
-        
-        
+       
         fondoTransition.setSize(WINDOW_WIDTH * 2, WINDOW_HEIGHT * 2);
         fondoTransition.setColor(0, 0, 0);
         fondoTransition.setOriginCenter();
@@ -83,8 +79,15 @@ void World::CargarNivel(int nivel)
                 enemys.push_back(e);
             }
 
-            player = new Player();
-            player->chargingTexture();
+            //player = new Player();
+           // player->chargingTexture();
+            if(player->getCarne()>player->getVerdura()){
+                player->cambiarSprite("resources/carnivoro.png");
+                player->setTipo(1);
+            }else{
+                player->cambiarSprite("resources/bicho.png");
+                player->setTipo(2);
+            }
 
             camera.setCenter(player->getPositionX(), player->getPositionY());
             camera.setSize(1920, 1080);
@@ -126,7 +129,7 @@ void World::CargarNivel(int nivel)
 
 void World::Update()
 {
-    if(player->getExperiencia() >= 2000)
+    if(player->getExperiencia() >= 10)
     {
        CargarNivel(nivelActual + 1);
     }
@@ -242,20 +245,20 @@ void World::endAlpha(float percentTick)
 void World::resetWorld()
 {
     mapa.deleteMap();
-    delete player;
-    /*for(int x = 0;  x < comidaArray.size(); x++)
+    for(int x = 0;  x < comidaArray.size(); x++)
     {
         delete comidaArray[x];
         comidaArray[x] = NULL;
-        comidaArray.erase(comidaArray.begin() + 1);
-    }*/
+        comidaArray.erase(comidaArray.begin() + x);
+
+    }
     
-    /*for(int i = 0; i < enemys.size(); i++)
+    for(int i = 0; i < enemys.size(); i++)
     {
         delete enemys[i];
         enemys[i] = NULL;
-        enemys.erase(enemys.begin() + 1);
-    }*/
+        enemys.erase(enemys.begin() + i);
+    }
     
 }
 
