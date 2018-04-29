@@ -34,11 +34,19 @@ void Mouse::initMouse(std::string a, float s1, float s2){
     cursor->setSpriteTexture(a);
     cursor->scale(s1,s2);
     cursor->setOrigin(cursor->getSprite()->getGlobalBounds().width/2,cursor->getSprite()->getGlobalBounds().height/2);
+   // cursor->setPosition(500, 500);
 }
 
 void Mouse::setTexture(std::string route){
     
     cursor->setSpriteTexture(route);
+}
+
+void Mouse::setPositionInterpolated(float x, float y)
+{
+    /*std::cout << "x interpolado: " << x << std::endl;
+    std::cout << "y interpolado: " << y << std::endl;*/
+    cursor->setPosition(x, y);
 }
 
 
@@ -57,7 +65,8 @@ bool Mouse::LeftPressed(){
         return false;
 }
 
-float Mouse::getPosX(){
+float Mouse::getPosX()
+{
     return sf::Mouse::getPosition().x;
 }
 
@@ -65,12 +74,25 @@ float Mouse::getPosY(){
     return sf::Mouse::getPosition().y;
 }
 
+float Mouse::getLastPositionX()
+{
+    return xlast;
+}
+
+float Mouse::getLastPositionY()
+{
+    return ylast;
+}
+
 void Mouse::CursorUpdate(int x, int y){
-    std::cout << "DespX: " << x << std::endl;
-    std::cout << "DespY: " << y << std::endl;
+    xlast = cursor->getPosition().x;
+    ylast = cursor->getPosition().y;
+    /*std::cout << "DespX: " << xlast << std::endl;
+    std::cout << "DespY: " << ylast  << std::endl;*/
+    
         cursor->setPosition(sf::Mouse::getPosition(*(Motor2D::Instance()->getWindow())).x + x, sf::Mouse::getPosition(*(Motor2D::Instance()->getWindow())).y + y);
-        /*std::cout << "MouseX: " << sf::Mouse::getPosition().x << std::endl;
-        std::cout << "MouseY: " << sf::Mouse::getPosition().y << std::endl;*/
+        /*std::cout << "MouseX: " << cursor->getPosition().x << std::endl;
+        std::cout << "MouseY: " << cursor->getPosition().y << std::endl;*/
 }   
 
 Sprite* Mouse::getCursorSprite(){

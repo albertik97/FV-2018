@@ -230,7 +230,8 @@ void menu_state::Draw(float percentTick)
         b[i].draw();
             
         }
-
+    
+   // mouse.setPositionInterpolated(mouse.getLastPositionX() * (1 - percentTick) + mouse.getCursorSprite()->getPosition().x * percentTick, mouse.getLastPositionY() * (1 - percentTick) + mouse.getCursorSprite()->getPosition().y * percentTick);
     mouse.getCursorSprite()->draw();
   
 }

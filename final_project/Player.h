@@ -50,6 +50,7 @@ public:
     void aumentaEnergia(float _tiempo);
     float getEnergia();
     int getTipo();
+    Mouse getMouse();
 
 
      

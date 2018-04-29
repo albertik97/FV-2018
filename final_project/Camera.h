@@ -13,6 +13,7 @@ public:
     void setCenter(float originX, float originY);
     void centerToPlayer();
     void setSize(float sizeX, float sizeY);
+   
 private:
     sf::View view;
 };
