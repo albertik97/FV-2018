@@ -28,7 +28,7 @@ public:
     int vida;
     int energia;
     Sprite* Rectvida;
-    int maxenergia = 1000;
+    int maxenergia = 100;
     float rellenoenergia;
     Sprite* Rectenergia;
     //sf::Texture t_vida;

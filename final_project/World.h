@@ -74,6 +74,7 @@ private:
     Fondo fondoTransition;
     Clock gameStart;
     bool endGame;
+    bool nivelico;
 
    /* Player* player;
     Camera camera;
