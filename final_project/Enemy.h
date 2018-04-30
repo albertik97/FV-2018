@@ -9,7 +9,7 @@ public:
     Enemy();
     Enemy(const Enemy& orig);
     virtual ~Enemy();
-    void chargingTexture();
+    void chargingTexture(std::string s,int a,int b,float c, float d);
     void setPosRandom(int*** &m);
     void draw();
     void update();//actualiza el movimiento

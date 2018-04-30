@@ -64,7 +64,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/tinystr.o \
 	${OBJECTDIR}/tinyxml.o \
 	${OBJECTDIR}/tinyxmlerror.o \
-	${OBJECTDIR}/tinyxmlparser.o
+	${OBJECTDIR}/tinyxmlparser.o \
+	${OBJECTDIR}/transition_state.o
 
 
 # C Compiler Flags
@@ -248,6 +249,11 @@ ${OBJECTDIR}/tinyxmlparser.o: tinyxmlparser.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Iusr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tinyxmlparser.o tinyxmlparser.cpp
+
+${OBJECTDIR}/transition_state.o: transition_state.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iusr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/transition_state.o transition_state.cpp
 
 # Subprojects
 .build-subprojects:

@@ -20,6 +20,7 @@
 #include "intro_state.h"
 #include "menu_state.h"
 #include "ingame_state.h"
+#include "transition_state.h"
 
 #endif /* STATES_H */
 

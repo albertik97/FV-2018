@@ -40,10 +40,11 @@ public:
     bool getEndGame();
     std::vector<Food*> getComida();
     int getNivelActual();
+    Fondo getFondo();
     
     /*
     Clock getClockGameStart();
-    Fondo getFondo();
+    
     
     */
     void Update();

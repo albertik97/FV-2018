@@ -64,7 +64,7 @@ IAActiva::~IAActiva() {
                    float xe =enemy->getPosition().x;
                    float ye =enemy->getPosition().y;
                    if(y-enemy->getPosition().y>0 && x-enemy->getPosition().x>0){
-                                simpleColision(enemy);
+                               simpleColision(enemy);
                                 if(tipo==0){
                                     enemy->move(-7,7);
                                 }
@@ -75,7 +75,7 @@ IAActiva::~IAActiva() {
 
                             }
                              if(y-enemy->getPosition().y<0 && x-enemy->getPosition().x>0){
-                                simpleColision(enemy);
+                              simpleColision(enemy);
                                  if(tipo==0){
                                     enemy->move(7,7);
                                 }
@@ -86,7 +86,7 @@ IAActiva::~IAActiva() {
 
                             }
                              if(y-enemy->getPosition().y<0 && x-enemy->getPosition().x<0){
-                               simpleColision(enemy);
+                              simpleColision(enemy);
                                  if(tipo==0){
                                     enemy->move(-7,7);
                                 }
@@ -97,7 +97,7 @@ IAActiva::~IAActiva() {
 
                             }
                              if(y-enemy->getPosition().y>0 && x-enemy->getPosition().x<0){
-                                simpleColision(enemy);
+                               simpleColision(enemy);
                                  if(tipo==0){
                                     enemy->move(7,7);
                                 }
@@ -112,9 +112,9 @@ IAActiva::~IAActiva() {
 
            if(enemy->getSprite()->getGlobalBounds().intersects(player->getSprite()->getSprite()->getGlobalBounds())){//si esta cerca del player ataca
 
-                 enemy->move(0,0);//se lanza a por el
-                 t_ataque.reset();
-                 World::Instance()->getPlayer()->restaVida();
+                enemy->move(0,0);//se lanza a por el
+                t_ataque.reset();
+                World::Instance()->getPlayer()->restaVida();
 
              }
      }

@@ -34,7 +34,7 @@ void World::CargarNivel(int nivel)
         for(int i=0; i<22; i++)
         {  
             Enemy* e = new Enemy();
-            e->chargingTexture();
+            e->chargingTexture("resources/enemy.png",1024,1024,0.06,0.07);
             e->setPosRandom(mapa._tilemap);
             enemys.push_back(e);
         }
@@ -67,20 +67,22 @@ void World::CargarNivel(int nivel)
     else
         if(nivel == 2)
         {
+            resetWorld();
             nivelActual = nivel;
             srand(time(0));
             mapa.cargarmapa(LEVEL2_MAP_FILEPATH);
             
-            for(int i=0; i<22; i++)
+            for(int i=0; i<0; i++)
             {  
                 Enemy* e = new Enemy();
-                e->chargingTexture();
+                e->chargingTexture("resources/carnivoro.png",100,100,0.6,0.6);
+               // e->getSprite()->setSpriteTexture("resources/carnivoro.png");
                 e->setPosRandom(mapa._tilemap);
                 enemys.push_back(e);
             }
 
-            //player = new Player();
-           // player->chargingTexture();
+            player = new Player();
+            player->chargingTexture();
             if(player->getCarne()>player->getVerdura()){
                 player->cambiarSprite("resources/carnivoro.png");
                 player->setTipo(1);
@@ -132,10 +134,13 @@ void World::CargarNivel(int nivel)
 
 void World::Update()
 {
-    if(player->getExperiencia() >= 10 && !nivelico)
+    if(player->getExperiencia() >= 30 && !nivelico)
     {
         nivelico=true;
-       CargarNivel(2);
+        std::cout << "entraaaa" << std::endl;
+        Game::instance()->setState(transition_state::Instance());
+        Motor2D::Instance()->resetCamera();
+       //CargarNivel(2);
     }
     
     
@@ -180,6 +185,8 @@ void World::Update()
         comidaArray[i]->update();
     
     player->aumentaEnergia(gameStart.getSeconds());
+    
+    
 }
 
 void World::Draw(float percentTick)
@@ -268,14 +275,16 @@ void World::resetWorld()
         comidaArray[x] = NULL;
         comidaArray.erase(comidaArray.begin() + x);
     }
-    
+    comidaArray.clear();
     for(int i = 0; i < enemys.size(); i++)
     {
         delete enemys[i];
         enemys[i] = NULL;
         enemys.erase(enemys.begin() + i);
     }
+    enemys.clear();
     delete player->getMouse();
+    
 }
 
 
@@ -297,6 +306,11 @@ Camera World::getCamera()
 Hud World::getHud()
 {
     return hud;
+}
+
+Fondo World::getFondo()
+{
+    return fondoTransition;
 }
 
 void World::setEndGame(bool state_game)

@@ -2,6 +2,7 @@
 #include "IA.h"
 #include "IAPasiva.h"
 #include "Sprite.h"
+#include "World.h"
 #include <stdio.h>      
 #include <stdlib.h>     
 #include <time.h> 
@@ -22,11 +23,12 @@ Enemy::Enemy(const Enemy& orig) {
 Enemy::~Enemy() {
 }
 
-void Enemy::chargingTexture(){
-    sprite->setSpriteTexture("resources/enemy.png");
-    sprite->setTextureRect(0,0,1024,1024);
-    sprite->setOrigin(1024/2,1024/2);
-    sprite->scale(0.07,0.07);  
+void Enemy::chargingTexture(std::string s,int a,int b,float c, float d){
+    sprite->setSpriteTexture(s);
+    sprite->setTextureRect(0,0,a,b);
+    sprite->setOrigin(a/2,b/2);
+    sprite->scale(c,d);
+    
     sprite->setAnimationTime(400);
 }
 
@@ -56,10 +58,13 @@ void Enemy::draw(){
 }
 
 void Enemy::update(){
-    xlast =x;
+    xlast = x;
     ylast = y;
     strategy->elegirComportamiento(sprite);
-    sprite->animar(0,0,1024,1024, 1026);
+    if(World::Instance()->getNivelActual()==2)
+        sprite->animar(0,0,100,100, 100);
+    else
+        sprite->animar(0,0,1024,1024, 1024);
     x=sprite->getPosition().x;
     y=sprite->getPosition().y;
 }
