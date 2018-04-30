@@ -31,7 +31,7 @@ IAActiva::~IAActiva() {
     perseguir(s, time); 
  }
  
- void IAActiva::moverse(std::vector<Food*> f, Sprite* s){
+ void IAActiva::moverse(std::vector<Food*> f, Sprite* &s){
  
  }
  

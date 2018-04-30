@@ -11,7 +11,7 @@ public:
     IAActiva(const IAActiva& orig);
     virtual ~IAActiva();
     void elegirComportamiento(Sprite* &s);
-    void moverse(std::vector<Food*> f,Sprite* s);
+    void moverse(std::vector<Food*> f,Sprite* &s);
     void perseguir(Sprite* s, float time);
     bool checkColisionMap(int x, int y, Sprite* enemy);
     int getType();

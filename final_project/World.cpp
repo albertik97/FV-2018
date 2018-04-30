@@ -219,7 +219,11 @@ void World::Draw(float percentTick)
     }
     
     for(int i=0;i<enemys.size();i++)
+        enemys[i]->setPositionInterpolated(enemys[i]->getLastPositionX()*(1-percentTick)+enemys[i]->getPositionX()*percentTick,enemys[i]->getLastPositionY()*(1-percentTick)+enemys[i]->getPositionY()*percentTick);
+    
+    for(int i=0;i<enemys.size();i++)
         enemys[i]->draw();
+    
     
     
     player->draw();

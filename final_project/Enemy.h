@@ -16,11 +16,18 @@ public:
     void changeStrategy(IA* a);
     Sprite* getSprite();
     IA* getStrategy();
+    float getPositionX();
+    float getPositionY();
+    float getLastPositionX();
+    float getLastPositionY();
+    void setPositionInterpolated(float a,float b);
+    
+    
 private:
     Sprite* sprite;
-    Coords actual,last;
     float kVel;
     IA* strategy;
+    int x,y,ylast,xlast;
 };
 
 #endif /* ENEMY_H */

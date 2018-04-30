@@ -5,7 +5,7 @@
 
 class IA {
 public:
-    virtual void moverse(std::vector<Food*> f,Sprite* s)=0;
+    virtual void moverse(std::vector<Food*> f,Sprite* &s)=0;
     virtual void elegirComportamiento(Sprite* &s)=0;
     virtual int getType() = 0;
 private:
