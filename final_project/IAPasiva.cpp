@@ -25,7 +25,7 @@ void IAPasiva::elegirComportamiento(Sprite *&s){
 
 }
 
- void IAPasiva::moverse(std::vector<Food*> comida,Sprite* s){
+ void IAPasiva::moverse(std::vector<Food*> comida,Sprite* &s){
     
             if(!move && !comer){
                 //srand(time(NULL));//activasmmmos el randomizeitor jojo

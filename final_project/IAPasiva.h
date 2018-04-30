@@ -19,7 +19,7 @@ public:
     IAPasiva();
     IAPasiva(const IAPasiva& orig);
     virtual ~IAPasiva();
-    void moverse(std::vector<Food*> f,Sprite* s);
+    void moverse(std::vector<Food*> f,Sprite* &s);
     void buscarComida(std::vector<Food*> f,Sprite* player,int i);
     void elegirComportamiento(Sprite *&s);
     std::vector<float> distFood(Food* comida,Sprite* player);

@@ -14,11 +14,13 @@ public:
     void moverse(std::vector<Food*> f,Sprite* &s);
     void perseguir(Sprite* s, float time);
     bool checkColisionMap(int x, int y, Sprite* enemy);
+    void simpleColision(Sprite* enemy);
     int getType();
 private:
    int kVel;
    Clock t_ataque;
    Colisionator collision;
+   int tipo;
 };
 
 #endif /* IAACTIVA_H */
