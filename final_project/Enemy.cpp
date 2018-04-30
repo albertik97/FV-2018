@@ -27,7 +27,7 @@ void Enemy::chargingTexture(){
     sprite->setTextureRect(0,0,1024,1024);
     sprite->setOrigin(1024/2,1024/2);
     sprite->scale(0.07,0.07);  
-   // sprite->setAnimationTime(400);
+    sprite->setAnimationTime(400);
 }
 
 void Enemy::setPosRandom(int*** &m){
