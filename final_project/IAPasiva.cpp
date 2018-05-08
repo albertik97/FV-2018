@@ -38,7 +38,7 @@ void IAPasiva::elegirComportamiento(Sprite *&s){
                 if(wait.getSeconds()>time){
                      if(mov_dir==1){//izquierda
                      if(!checkColisionMap(-kVel,0,s)){    
-                        if(dist_aux<dist)
+                        if(dist_aux<dist )
                            s->move(-kVel,0);
                          }
                     }
@@ -164,6 +164,10 @@ bool IAPasiva::checkColisionMap(int x, int y, Sprite* s){
     return true;
     
 }
+
+
+
+
 
 
 int IAPasiva::getType(){

@@ -24,6 +24,11 @@ IAActiva::IAActiva() {
     else{
         tipo=1;
     }
+    
+    //rand_decision = std::rand()%4;
+    
+    
+    
 }
 
 IAActiva::IAActiva(const IAActiva& orig) {
@@ -45,15 +50,33 @@ IAActiva::~IAActiva() {
      if(t_ataque.getSeconds()>0.3){
         Player *player = World::Instance()->getPlayer();
         player->getPositionX();
-
-
-           int xp=player->getPositionX();
-           int yp=player->getPositionY();
+        int xp, yp;
+/*
+        switch(rand_decision){
+            case 0: //arriba
+                 xp=player->getPositionX();
+                 yp=player->getPositionY()-10;
+            break;
+             case 1: //abajo
+                 xp=player->getPositionX();
+                 yp=player->getPositionY()+10;
+            break;
+             case 2: //derecha
+                 xp=player->getPositionX()+10;
+                 yp=player->getPositionY();
+            break;
+             case 3: //izquierda
+                 xp=player->getPositionX()-10;
+                 yp=player->getPositionY();
+            break;
+        }
+ */
            int xenemy=enemy->getPosition().x;
            int yenemy=enemy->getPosition().y;
            float angle = atan2(yp - yenemy, xp - xenemy);
+           
      
-               if(!checkColisionMap(cos(angle)*2*time*kVel,sin(angle)*2*time*kVel,enemy)){
+               if(!checkColisionMap(cos(angle)*2*time*kVel,sin(angle)*2*time*kVel,enemy) /*&& !checkColisionEnemy(cos(angle)*2*time*kVel,sin(angle)*2*time*kVel,enemy)*/){
                    enemy->move(cos(angle)*2*time*kVel,sin(angle)*2*time*kVel);
                }else{
 
@@ -66,10 +89,10 @@ IAActiva::~IAActiva() {
                    if(y-enemy->getPosition().y>0 && x-enemy->getPosition().x>0){
                                simpleColision(enemy);
                                 if(tipo==0){
-                                    enemy->move(-7,7);
+                                    enemy->move(-kVel,kVel);
                                 }
                                 else{
-                                    enemy->move(7,-7);
+                                    enemy->move(kVel,-kVel);
                                 }
                                 std::cout<<"1ºcuadrante"<<std::endl;
 
@@ -77,10 +100,10 @@ IAActiva::~IAActiva() {
                              if(y-enemy->getPosition().y<0 && x-enemy->getPosition().x>0){
                               simpleColision(enemy);
                                  if(tipo==0){
-                                    enemy->move(7,7);
+                                    enemy->move(kVel,kVel);
                                 }
                                 else{
-                                    enemy->move(-7,-7);
+                                    enemy->move(-kVel,-kVel);
                                 }
                                 std::cout<<"4ºcuadrante"<<std::endl;
 
@@ -88,10 +111,10 @@ IAActiva::~IAActiva() {
                              if(y-enemy->getPosition().y<0 && x-enemy->getPosition().x<0){
                               simpleColision(enemy);
                                  if(tipo==0){
-                                    enemy->move(-7,7);
+                                    enemy->move(-kVel,kVel);
                                 }
                                 else{
-                                    enemy->move(7,-7);
+                                    enemy->move(kVel,-kVel);
                                 }
                                 std::cout<<"3ºcuadrante"<<std::endl;
 
@@ -99,10 +122,10 @@ IAActiva::~IAActiva() {
                              if(y-enemy->getPosition().y>0 && x-enemy->getPosition().x<0){
                                simpleColision(enemy);
                                  if(tipo==0){
-                                    enemy->move(7,7);
+                                    enemy->move(kVel,kVel);
                                 }
                                 else{
-                                    enemy->move(-7,-7);
+                                    enemy->move(-kVel,-kVel);
                                 }
                                 std::cout<<"2ºcuadrante"<<std::endl;
 
@@ -145,19 +168,43 @@ IAActiva::~IAActiva() {
 }
  
  void IAActiva::simpleColision(Sprite* enemy){
-     if(checkColisionMap(-kVel,0, enemy)){
+     if(checkColisionMap(-kVel,0, enemy) || checkColisionEnemy(-kVel,0, enemy)){
         enemy->move(kVel, 0);               
     }
-    if(checkColisionMap(kVel,0, enemy)){
+    if(checkColisionMap(kVel,0, enemy) || checkColisionEnemy(kVel,0, enemy)){
         enemy->move(-kVel, 0);               
     }
-    if(checkColisionMap(0,-kVel, enemy)){
+    if(checkColisionMap(0,-kVel, enemy) || checkColisionEnemy(0,-kVel, enemy)){
         enemy->move(0, kVel);               
     }
-    if(checkColisionMap(0,kVel, enemy)){
+    if(checkColisionMap(0,kVel, enemy) || checkColisionEnemy(0,kVel, enemy)){
         enemy->move(0, -kVel);               
     }
  }
+ 
+ 
+ 
+ 
+bool IAActiva::checkColisionEnemy(int x, int y, Sprite* enemy){
+    bool colision_detected = false;
+    
+    const sf::Rect<float> miBounds(enemy->getSprite()->getGlobalBounds().left+15+x,enemy->getSprite()->getGlobalBounds().top+15+y,enemy->getSprite()->getGlobalBounds().width-60,enemy->getSprite()->getGlobalBounds().height-60);
+    
+
+            
+    
+    std::vector<Enemy*> array = World::Instance()->getEnemies();
+    for(int i=0; i<array.size(); i++){
+        if(enemy->getPosition().x != array[i]->getLastPositionX() || enemy->getPosition().y != array[i]->getLastPositionY()  ){ // compruebo que no está comparando la colisión con él mismo
+            if(miBounds.intersects(array[i]->getSprite()->getSprite()->getGlobalBounds())){
+                colision_detected = true;
+            }
+        }
+    }
+    return colision_detected;
+}
+
+ 
 
  int IAActiva::getType(){
      return 0;

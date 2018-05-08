@@ -293,6 +293,13 @@ Player* World::getPlayer()
     return player;
 }
 
+
+std::vector<Enemy*> World::getEnemies()
+{
+    return enemys;
+}
+
+
 TileMap World::getMapa()
 {
     return mapa;
