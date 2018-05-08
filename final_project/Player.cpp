@@ -9,15 +9,18 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Color.hpp>
 
-#define kVel 20
 
-#define kSalto 20
+
 
 Player::Player() 
-    : movX(0), movY(0)
+    : movX(0), movY(0) ,kVel(20)
 {
     
-    sprite=new Sprite();
+    sprite = new Sprite();
+    lengua = new Sprite();
+    lengua->setSpriteTexture("resources/Lengua.png");
+    lengua->setOrigin(10,-40);
+  
     x = 1920 / 2;
     y = 1080 / 2;
     xlast = 1920 / 2;
@@ -27,11 +30,12 @@ Player::Player()
     down = false;
     right = false;
 
-    habuno = false;
+    habuno = true;
     habdos = false;
     habtres = false;
-    
-    
+    h1 = false;
+    h2 = false;
+    h3 = false;
 
     exp=0;
     carne=0;
@@ -46,6 +50,8 @@ Player::Player()
     energia = 1;
     
     tipoPlayer = 0;
+    tam=150;
+    estado_lengua=false;
 
 }
 
@@ -120,6 +126,7 @@ int Player::getExperiencia(){
 void Player::draw() {
     sprite->draw();
     mouse->getCursorSprite()->draw();
+    lengua->draw();
     
 }
 
@@ -160,23 +167,24 @@ void Player::input(){
                     
                     if(Keyboard::isKey1Pressed()){
                         habuno = true;
+                         habdos = false;
+                         habtres = false;
                        // std::cout << "HABILIDAD 1" << std::endl;
                     }
                     
                     if(Keyboard::isKey2Pressed()){
+                        habuno = false;
                         habdos = true;
+                        habtres =false;
                         //std::cout << "HABILIDAD 2" << std::endl;
                     }
                     
                     if(Keyboard::isKey3Pressed()){
+                        habuno = false;
+                        habdos = false;
                         habtres = true;
                         //std::cout << "HABILIDAD 3" << std::endl;
                     }
-
-		//}
-	
-	
-	//else{
 	
                     if(!Keyboard::isKeyDPressed()){				
 
@@ -197,27 +205,7 @@ void Player::input(){
                     if(!Keyboard::isKeySPressed()){
                         
                         down=false;
-                        
-                        //std::cout << "ABAJOOOOOOOOOOOOOOOOO FALSE" << std::endl;
                     }
-                    
-                    if(!Keyboard::isKey1Pressed()){
-                        habuno = false;
-                        //std::cout << "HABILIDAD 1 FALSE" << std::endl;
-                    }
-                    
-                    if(!Keyboard::isKey2Pressed()){
-                        habdos = false;
-                        //std::cout << "HABILIDAD 2 FALSE" << std::endl;
-                    }
-                    
-                    if(!Keyboard::isKey3Pressed()){
-                        habtres = false;
-                        //std::cout << "HABILIDAD 3 FALSE" << std::endl;
-                    }
-		
-	//}  
-
 }
 
 int Player::getHabilidad(){
@@ -249,7 +237,7 @@ void Player::lookAtMouse(){
     const float PI = 3.14159265;
     float dx = curPos.x - position.x;
     float dy = curPos.y - position.y;
-    float rotation = (atan2(dy, dx)) * 180 / PI;
+    rotation = (atan2(dy, dx)) * 180 / PI;
     sprite->rotate(rotation-90);
 
 }
@@ -280,10 +268,28 @@ void Player::update(){
                 sprite->setAnimationTime(200);
             }
         }
+       
+       if(h1){
+            kVel=0;     
+            if(tam>=0){
+                tam-=20;
+                 estado_lengua=true;
+            }else if(!estado_lengua&&tam<=149){               
+                tam+=15;
+              
+           }else{
+               tam=0;      
+               kVel=5;
+               h1=false;
+               estado_lengua=false;
+           }
+        
+        lengua->setTextureRect(0, 0,23.0,tam);
+        lengua->getSprite()->setRotation(rotation+90);
+        lengua->setPosition(sprite->getPosition().x,sprite->getPosition().y);
+       }
 }
 
-// Si pulsamos IZDA, intentamos ir a la IZDA
-// Si pulsamos DCHA, intentamos ir a la DCHA
 void Player::moveChar(){
     
 	if(left || right){
@@ -297,6 +303,9 @@ void Player::moveChar(){
         }
 }
 
+void Player::setVelocidad(int v){
+    kVel = v;
+}
 
 void Player::moveX(){
 if(left){
@@ -395,4 +404,53 @@ float Player::getLastPositionX()
 float Player::getLastPositionY()
 {
     return ylast;
+}
+
+
+void Player::lanzarHabilidadUno()
+{
+    if(tipoPlayer == 2)
+    {
+        std::cout << "Lanzamos la habilidad 1 del herbivoro" << std::endl;
+        
+    }
+    if(tipoPlayer == 1)
+    {
+        std::cout << "Lanzamos la habilidad 1 del carnivoro" << std::endl;
+        // Lanzamos la habilidad 1 del carnivoro
+        h1 = true;
+    }
+}
+void Player::lanzarHabilidadDos()
+{
+    if(tipoPlayer == 2)
+    {
+        std::cout << "Lanzamos la habilidad 2 del herbivoro" << std::endl;
+        // Lanzamos la habilidad 2 del herbivoro
+    }
+    if(tipoPlayer == 1)
+    {
+        std::cout << "Lanzamos la habilidad 2 del carnivoro" << std::endl;
+        // Lanzamos la habilidad 2 del carnivoro
+    }
+}
+void Player::lanzarHabilidadTres()
+{
+    if(tipoPlayer == 2)
+    {
+        std::cout << "Lanzamos la habilidad 3 del herbivoro" << std::endl;
+        // Lanzamos la habilidad 3 del herbivoro
+    }
+    if(tipoPlayer == 1)
+    {
+        std::cout << "Lanzamos la habilidad 3 del carnivoro" << std::endl;
+        if(energia>=1){
+            energia-=1;
+            if(energia <= 10){
+                kVel = 10;
+            }else{
+                kVel = 20;
+            }
+        }
+    }  
 }

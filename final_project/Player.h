@@ -17,6 +17,7 @@
 #include "Coords.h"
 #include "Sprite.h"
 #include "Mouse.h"
+#include "Clock.h"
 
 class Player {
 public:
@@ -42,11 +43,9 @@ public:
     int getVida();
     void aumenteCarne();
     void aumentaVerdura();
-
     void restaVida();
     void aumentaVida();
     bool checkColisionMap(int, int);
-
     void aumentaEnergia(float _tiempo);
     float getEnergia();
     int getTipo();
@@ -54,17 +53,21 @@ public:
     void cambiarSprite(std::string);
     int getCarne();
     int getVerdura();    
-
     Mouse* getMouse();
-    
     void anyadirRaton();
-
+    void lanzarHabilidadUno();
+    void lanzarHabilidadDos();
+    void lanzarHabilidadTres();
+    
+    void setVelocidad(int);
     
 private:
+    int kVel;
     sf::Texture tex;
     Coords actual;
     Coords last;
     Sprite* sprite;
+    Sprite* lengua;
     bool left;
     bool up;
     bool down;
@@ -85,7 +88,14 @@ private:
     int movY;
 
     int tipoPlayer;
-
+    float rotation;
+    
+    Clock chab1,chab2,chab3;
+    bool h1,h2,h3;
+    
+    //COSAS ATAQUES
+    int tam;
+    bool estado_lengua;
 
 
 };
