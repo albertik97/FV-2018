@@ -24,6 +24,7 @@ public:
     void elegirComportamiento(Sprite *&s);
     std::vector<float> distFood(Food* comida,Sprite* player);
     bool checkColisionMap(int x, int y, Sprite* enemy);
+    //bool checkColisionEnemy(int x, int y, Sprite* enemy);
     void setComida(std::vector<Food*> & com);
     int getType();
 

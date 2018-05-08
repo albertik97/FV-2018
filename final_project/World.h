@@ -39,6 +39,7 @@ public:
     Hud getHud();
     bool getEndGame();
     std::vector<Food*> getComida();
+    std::vector<Enemy*> getEnemies();
     int getNivelActual();
     Fondo getFondo();
     

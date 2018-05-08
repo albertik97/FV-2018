@@ -38,7 +38,7 @@ void IAPasiva::elegirComportamiento(Sprite *&s){
                 if(wait.getSeconds()>time){
                      if(mov_dir==1){//izquierda
                      if(!checkColisionMap(-kVel,0,s)){    
-                        if(dist_aux<dist)
+                        if(dist_aux<dist )
                            s->move(-kVel,0);
                          }
                     }
@@ -132,7 +132,7 @@ void IAPasiva::buscarComida(std::vector<Food*> comida,Sprite* s,int i){
             int yplayer=s->getPosition().y;
             float angle = atan2(yp - yplayer, xp - xplayer);
             if(!checkColisionMap(cos(angle)*2, sin(angle)*2, s)){
-                s->move(cos(angle)*2,sin(angle)*2);
+                s->move(cos(angle)*2*kVel,sin(angle)*2*kVel);
                 if(collision.checkColisionSprite(comida,s)){              
                     comer=false;
          
@@ -164,6 +164,10 @@ bool IAPasiva::checkColisionMap(int x, int y, Sprite* s){
     return true;
     
 }
+
+
+
+
 
 
 int IAPasiva::getType(){

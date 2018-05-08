@@ -269,6 +269,7 @@ void Player::update(){
             }
         }
        
+<<<<<<< HEAD
        if(h1){
             kVel=0;     
             if(tam>=0){
@@ -288,6 +289,9 @@ void Player::update(){
         lengua->getSprite()->setRotation(rotation+90);
         lengua->setPosition(sprite->getPosition().x,sprite->getPosition().y);
        }
+=======
+       std::cout << vida << std::endl;
+>>>>>>> master
 }
 
 void Player::moveChar(){

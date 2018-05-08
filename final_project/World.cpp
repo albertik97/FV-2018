@@ -1,6 +1,7 @@
 
 
 #include "World.h"
+#include "gameover_state.h"
 
 World* World::pinstance = 0;
 World* World::Instance()
@@ -48,7 +49,7 @@ void World::CargarNivel(int nivel)
               
         hud.cargarhud(1);
         
-        for(int i=0; i<60; i++)
+        for(int i=0; i<160; i++)
         {  
             Food* comida = new Food();
             comidaArray.push_back(comida);
@@ -100,7 +101,7 @@ void World::CargarNivel(int nivel)
             else
                 hud.cargarhud(2);
 
-            for(int i=0; i<60; i++)
+            for(int i=0; i<100; i++)
             {  
                 Food* comida = new Food();
                 comidaArray.push_back(comida);
@@ -134,7 +135,11 @@ void World::CargarNivel(int nivel)
 
 void World::Update()
 {
+<<<<<<< HEAD
     if(player->getExperiencia() >= 50 && !nivelico)
+=======
+    if(player->getExperiencia() >= 3000 && !nivelico)
+>>>>>>> master
     {
         nivelico=true;
         Game::instance()->setState(transition_state::Instance());
@@ -169,7 +174,7 @@ void World::Update()
             
             enemys[i]->changeStrategy(new IAActiva());
         }
-        if(resultado>1000 && enemys[i]->getStrategy()->getType() == 0){
+        if(resultado>400 && enemys[i]->getStrategy()->getType() == 0){
             enemys[i]->changeStrategy(new IAPasiva());
         }
     }
@@ -184,6 +189,11 @@ void World::Update()
         comidaArray[i]->update();
     
     player->aumentaEnergia(gameStart.getSeconds());
+    
+    if(player->getVida() == 0){
+        std::cout << "Has muerto bandido" << std::endl;
+        Game::instance()->setState(gameover_state::Instance());
+    }
     
     
 }
@@ -291,6 +301,13 @@ Player* World::getPlayer()
 {
     return player;
 }
+
+
+std::vector<Enemy*> World::getEnemies()
+{
+    return enemys;
+}
+
 
 TileMap World::getMapa()
 {
