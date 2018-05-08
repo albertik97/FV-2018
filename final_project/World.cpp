@@ -81,8 +81,8 @@ void World::CargarNivel(int nivel)
                 enemys.push_back(e);
             }
 
-            player = new Player();
-            player->chargingTexture();
+            
+            player->anyadirRaton();
             if(player->getCarne()>player->getVerdura()){
                 player->cambiarSprite("resources/carnivoro.png");
                 player->setTipo(1);

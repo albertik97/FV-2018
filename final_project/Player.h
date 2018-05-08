@@ -56,6 +56,8 @@ public:
     int getVerdura();    
 
     Mouse* getMouse();
+    
+    void anyadirRaton();
 
     
 private:

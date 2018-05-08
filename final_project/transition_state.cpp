@@ -27,8 +27,6 @@ void transition_state::Init()
 
  for(int i=0;i<4;i++){
      text[i].setColor(255,255,0);
-     //text[i].setFont("resources/prstart.ttf");
-      
      text[i].setSize(30);
      text[i].setOriginCenter();
  }   

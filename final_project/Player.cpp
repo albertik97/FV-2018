@@ -65,6 +65,11 @@ int Player::getVida(){
     return vida;
 }
 
+void Player::anyadirRaton(){
+    mouse= new Mouse();
+    mouse->initMouse("resources/mira.png",0.1,0.1);
+}
+
 void Player::restaVida(){
     if(vida>=10)
          vida-=10;
@@ -265,7 +270,15 @@ void Player::update(){
            sprite->animar(1,1, 100, 105, 100);
        }
        if(!left && !right && !up && !down){
-            sprite->setAnimationTime(500);
+           if(tipoPlayer==0){
+             sprite->setAnimationTime(500);  
+           } 
+            if(tipoPlayer==1){
+                sprite->setAnimationTime(0);
+            }
+            if(tipoPlayer==2){
+                sprite->setAnimationTime(200);
+            }
         }
 }
 
