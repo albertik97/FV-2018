@@ -1,6 +1,7 @@
 
 
 #include "World.h"
+#include "gameover_state.h"
 
 World* World::pinstance = 0;
 World* World::Instance()
@@ -185,6 +186,11 @@ void World::Update()
         comidaArray[i]->update();
     
     player->aumentaEnergia(gameStart.getSeconds());
+    
+    if(player->getVida() == 0){
+        std::cout << "Has muerto bandido" << std::endl;
+        Game::instance()->setState(gameover_state::Instance());
+    }
     
     
 }

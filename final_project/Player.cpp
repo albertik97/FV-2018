@@ -280,6 +280,8 @@ void Player::update(){
                 sprite->setAnimationTime(200);
             }
         }
+       
+       std::cout << vida << std::endl;
 }
 
 // Si pulsamos IZDA, intentamos ir a la IZDA

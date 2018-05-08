@@ -53,7 +53,7 @@ IAActiva::~IAActiva() {
         Player *player = World::Instance()->getPlayer();
         player->getPositionX();
         int xp, yp;
-        std::cout<<rand_decision<<std::endl;
+        //std::cout<<rand_decision<<std::endl;
 
         switch(rand_decision){
             case 0: //arriba
