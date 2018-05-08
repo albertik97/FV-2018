@@ -13,6 +13,8 @@
 
 #include "IAActiva.h"
 #include "ingame_state.h"
+#include <time.h>
+#include <iostream>
 
 IAActiva::IAActiva() {
     
@@ -24,8 +26,8 @@ IAActiva::IAActiva() {
     else{
         tipo=1;
     }
-    
-    //rand_decision = std::rand()%4;
+    srand(time(NULL));
+    rand_decision = std::rand()%8;
     
     
     
@@ -51,87 +53,109 @@ IAActiva::~IAActiva() {
         Player *player = World::Instance()->getPlayer();
         player->getPositionX();
         int xp, yp;
-/*
+        std::cout<<rand_decision<<std::endl;
+
         switch(rand_decision){
             case 0: //arriba
                  xp=player->getPositionX();
-                 yp=player->getPositionY()-10;
+                 yp=player->getPositionY()-100;
             break;
              case 1: //abajo
                  xp=player->getPositionX();
-                 yp=player->getPositionY()+10;
+                 yp=player->getPositionY()+100;
             break;
              case 2: //derecha
-                 xp=player->getPositionX()+10;
+                 xp=player->getPositionX()+100;
                  yp=player->getPositionY();
             break;
              case 3: //izquierda
-                 xp=player->getPositionX()-10;
+                 xp=player->getPositionX()-100;
                  yp=player->getPositionY();
             break;
+             case 4: //izquierda
+                 xp=player->getPositionX()-100;
+                 yp=player->getPositionY()-100;
+            break;
+             case 5: //izquierda
+                 xp=player->getPositionX()-100;
+                 yp=player->getPositionY()+100;
+            break;
+             case 6: //izquierda
+                 xp=player->getPositionX()+100;
+                 yp=player->getPositionY()+100;
+            break;
+             case 7: //izquierda
+                 xp=player->getPositionX()+100;
+                 yp=player->getPositionY()-100;
+            break;
+
         }
- */
+ 
            int xenemy=enemy->getPosition().x;
            int yenemy=enemy->getPosition().y;
            float angle = atan2(yp - yenemy, xp - xenemy);
            
      
-               if(!checkColisionMap(cos(angle)*2*time*kVel,sin(angle)*2*time*kVel,enemy) /*&& !checkColisionEnemy(cos(angle)*2*time*kVel,sin(angle)*2*time*kVel,enemy)*/){
+               if(!checkColisionMap(cos(angle)*2*time*kVel,sin(angle)*2*time*kVel,enemy) && (abs(player->getPositionY()-yenemy)>20) && (abs(player->getPositionX()-xenemy)>20)){
+                    enemy->move(cos(angle)*2*time*kVel,sin(angle)*2*time*kVel);
+
+               }else if(!checkColisionMap(cos(atan2(player->getPositionY() - yenemy, player->getPositionX() - xenemy))*2*time*kVel,sin(atan2(player->getPositionY() - yenemy, player->getPositionX() - xenemy))*2*time*kVel,enemy)){
+                   float angle = atan2(player->getPositionY() - yenemy, player->getPositionX()- xenemy);
                    enemy->move(cos(angle)*2*time*kVel,sin(angle)*2*time*kVel);
-               }else{
+                    }else{
 
 
-                   //enemy->move(-cos(angle)*2*time*kVel,-sin(angle)*2*time*kVel);
-                   float x = player->getPositionX();
-                   float y = player->getPositionY();
-                   float xe =enemy->getPosition().x;
-                   float ye =enemy->getPosition().y;
-                   if(y-enemy->getPosition().y>0 && x-enemy->getPosition().x>0){
-                               simpleColision(enemy);
-                                if(tipo==0){
-                                    enemy->move(-kVel,kVel);
-                                }
-                                else{
-                                    enemy->move(kVel,-kVel);
-                                }
-                                std::cout<<"1ºcuadrante"<<std::endl;
+                        //enemy->move(-cos(angle)*2*time*kVel,-sin(angle)*2*time*kVel);
+                        float x = player->getPositionX();
+                        float y = player->getPositionY();
+                        float xe =enemy->getPosition().x;
+                        float ye =enemy->getPosition().y;
+                        if(y-enemy->getPosition().y>0 && x-enemy->getPosition().x>0){
+                                    simpleColision(enemy);
+                                     if(tipo==0){
+                                         enemy->move(-kVel,kVel);
+                                     }
+                                     else{
+                                         enemy->move(kVel,-kVel);
+                                     }
+                                     std::cout<<"1ºcuadrante"<<std::endl;
 
-                            }
-                             if(y-enemy->getPosition().y<0 && x-enemy->getPosition().x>0){
-                              simpleColision(enemy);
-                                 if(tipo==0){
-                                    enemy->move(kVel,kVel);
-                                }
-                                else{
-                                    enemy->move(-kVel,-kVel);
-                                }
-                                std::cout<<"4ºcuadrante"<<std::endl;
+                                 }
+                                  if(y-enemy->getPosition().y<0 && x-enemy->getPosition().x>0){
+                                   simpleColision(enemy);
+                                      if(tipo==0){
+                                         enemy->move(kVel,kVel);
+                                     }
+                                     else{
+                                         enemy->move(-kVel,-kVel);
+                                     }
+                                     std::cout<<"4ºcuadrante"<<std::endl;
 
-                            }
-                             if(y-enemy->getPosition().y<0 && x-enemy->getPosition().x<0){
-                              simpleColision(enemy);
-                                 if(tipo==0){
-                                    enemy->move(-kVel,kVel);
-                                }
-                                else{
-                                    enemy->move(kVel,-kVel);
-                                }
-                                std::cout<<"3ºcuadrante"<<std::endl;
+                                 }
+                                  if(y-enemy->getPosition().y<0 && x-enemy->getPosition().x<0){
+                                   simpleColision(enemy);
+                                      if(tipo==0){
+                                         enemy->move(-kVel,kVel);
+                                     }
+                                     else{
+                                         enemy->move(kVel,-kVel);
+                                     }
+                                     std::cout<<"3ºcuadrante"<<std::endl;
 
-                            }
-                             if(y-enemy->getPosition().y>0 && x-enemy->getPosition().x<0){
-                               simpleColision(enemy);
-                                 if(tipo==0){
-                                    enemy->move(kVel,kVel);
-                                }
-                                else{
-                                    enemy->move(-kVel,-kVel);
-                                }
-                                std::cout<<"2ºcuadrante"<<std::endl;
+                                 }
+                                  if(y-enemy->getPosition().y>0 && x-enemy->getPosition().x<0){
+                                    simpleColision(enemy);
+                                      if(tipo==0){
+                                         enemy->move(kVel,kVel);
+                                     }
+                                     else{
+                                         enemy->move(-kVel,-kVel);
+                                     }
+                                     std::cout<<"2ºcuadrante"<<std::endl;
 
-                            }
+                                 }
 
-           }
+                }
 
            if(enemy->getSprite()->getGlobalBounds().intersects(player->getSprite()->getSprite()->getGlobalBounds())){//si esta cerca del player ataca
 

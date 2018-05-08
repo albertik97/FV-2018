@@ -134,7 +134,7 @@ void World::CargarNivel(int nivel)
 
 void World::Update()
 {
-    if(player->getExperiencia() >= 30 && !nivelico)
+    if(player->getExperiencia() >= 3000 && !nivelico)
     {
         nivelico=true;
         std::cout << "entraaaa" << std::endl;
