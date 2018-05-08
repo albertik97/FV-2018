@@ -48,7 +48,7 @@ void World::CargarNivel(int nivel)
               
         hud.cargarhud(1);
         
-        for(int i=0; i<60; i++)
+        for(int i=0; i<160; i++)
         {  
             Food* comida = new Food();
             comidaArray.push_back(comida);
@@ -100,7 +100,7 @@ void World::CargarNivel(int nivel)
             else
                 hud.cargarhud(2);
 
-            for(int i=0; i<60; i++)
+            for(int i=0; i<100; i++)
             {  
                 Food* comida = new Food();
                 comidaArray.push_back(comida);
@@ -170,7 +170,7 @@ void World::Update()
             
             enemys[i]->changeStrategy(new IAActiva());
         }
-        if(resultado>1000 && enemys[i]->getStrategy()->getType() == 0){
+        if(resultado>400 && enemys[i]->getStrategy()->getType() == 0){
             enemys[i]->changeStrategy(new IAPasiva());
         }
     }
