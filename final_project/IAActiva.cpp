@@ -96,12 +96,12 @@ IAActiva::~IAActiva() {
            float angle = atan2(yp - yenemy, xp - xenemy);
            
      
-               if(!checkColisionMap(cos(angle)*2*time*kVel,sin(angle)*2*time*kVel,enemy) && (abs(player->getPositionY()-yenemy)>20) && (abs(player->getPositionX()-xenemy)>20)){
+               if(!checkColisionMap(cos(angle)*2*time*kVel,sin(angle)*2*time*kVel,enemy) && (abs(player->getPositionY()-yenemy)>10) && (abs(player->getPositionX()-xenemy)>10)){
                     enemy->move(cos(angle)*2*time*kVel,sin(angle)*2*time*kVel);
 
                }else if(!checkColisionMap(cos(atan2(player->getPositionY() - yenemy, player->getPositionX() - xenemy))*2*time*kVel,sin(atan2(player->getPositionY() - yenemy, player->getPositionX() - xenemy))*2*time*kVel,enemy)){
                    float angle = atan2(player->getPositionY() - yenemy, player->getPositionX()- xenemy);
-                   enemy->move(cos(angle)*2*time*kVel,sin(angle)*2*time*kVel);
+                     enemy->move(cos(angle)*2*time*kVel,sin(angle)*2*time*kVel);
                     }else{
 
 
@@ -118,7 +118,7 @@ IAActiva::~IAActiva() {
                                      else{
                                          enemy->move(kVel,-kVel);
                                      }
-                                     std::cout<<"1ºcuadrante"<<std::endl;
+                                     //std::cout<<"1ºcuadrante"<<std::endl;
 
                                  }
                                   if(y-enemy->getPosition().y<0 && x-enemy->getPosition().x>0){
@@ -129,7 +129,7 @@ IAActiva::~IAActiva() {
                                      else{
                                          enemy->move(-kVel,-kVel);
                                      }
-                                     std::cout<<"4ºcuadrante"<<std::endl;
+                                     //std::cout<<"4ºcuadrante"<<std::endl;
 
                                  }
                                   if(y-enemy->getPosition().y<0 && x-enemy->getPosition().x<0){
@@ -140,7 +140,7 @@ IAActiva::~IAActiva() {
                                      else{
                                          enemy->move(kVel,-kVel);
                                      }
-                                     std::cout<<"3ºcuadrante"<<std::endl;
+                                     //std::cout<<"3ºcuadrante"<<std::endl;
 
                                  }
                                   if(y-enemy->getPosition().y>0 && x-enemy->getPosition().x<0){
@@ -151,7 +151,7 @@ IAActiva::~IAActiva() {
                                      else{
                                          enemy->move(-kVel,-kVel);
                                      }
-                                     std::cout<<"2ºcuadrante"<<std::endl;
+                                     //std::cout<<"2ºcuadrante"<<std::endl;
 
                                  }
 
@@ -172,7 +172,7 @@ IAActiva::~IAActiva() {
     
     //COJO LAS CUATRO ESQUINAS DEL BOUNDING BOX
     
-    float left = s->getSprite()->getGlobalBounds().left+15 + x;
+    float left = s->getSprite()->getGlobalBounds().left+15+ x;
     float top = s->getSprite()->getGlobalBounds().top+15 + y;
     float right = s->getSprite()->getGlobalBounds().width-60 + left;
     float down = top + s->getSprite()->getGlobalBounds().height-60;
@@ -192,16 +192,16 @@ IAActiva::~IAActiva() {
 }
  
  void IAActiva::simpleColision(Sprite* enemy){
-     if(checkColisionMap(-kVel,0, enemy) || checkColisionEnemy(-kVel,0, enemy)){
+     if(checkColisionMap(-kVel,0, enemy)){
         enemy->move(kVel, 0);               
     }
-    if(checkColisionMap(kVel,0, enemy) || checkColisionEnemy(kVel,0, enemy)){
+    if(checkColisionMap(kVel,0, enemy)){
         enemy->move(-kVel, 0);               
     }
-    if(checkColisionMap(0,-kVel, enemy) || checkColisionEnemy(0,-kVel, enemy)){
+    if(checkColisionMap(0,-kVel, enemy)){
         enemy->move(0, kVel);               
     }
-    if(checkColisionMap(0,kVel, enemy) || checkColisionEnemy(0,kVel, enemy)){
+    if(checkColisionMap(0,kVel, enemy)){
         enemy->move(0, -kVel);               
     }
  }

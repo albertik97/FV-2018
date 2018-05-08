@@ -132,7 +132,7 @@ void IAPasiva::buscarComida(std::vector<Food*> comida,Sprite* s,int i){
             int yplayer=s->getPosition().y;
             float angle = atan2(yp - yplayer, xp - xplayer);
             if(!checkColisionMap(cos(angle)*2, sin(angle)*2, s)){
-                s->move(cos(angle)*2,sin(angle)*2);
+                s->move(cos(angle)*2*kVel,sin(angle)*2*kVel);
                 if(collision.checkColisionSprite(comida,s)){              
                     comer=false;
          
