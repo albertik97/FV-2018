@@ -135,11 +135,8 @@ void World::CargarNivel(int nivel)
 
 void World::Update()
 {
-<<<<<<< HEAD
-    if(player->getExperiencia() >= 50 && !nivelico)
-=======
+
     if(player->getExperiencia() >= 3000 && !nivelico)
->>>>>>> master
     {
         nivelico=true;
         Game::instance()->setState(transition_state::Instance());

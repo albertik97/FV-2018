@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="100">
+<configurationDescriptor version="97">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
@@ -51,6 +51,7 @@
       <itemPath>resources/fondo.jpg</itemPath>
       <itemPath>../../Descargas/Hito2_clases (3)/resources/fondo.png</itemPath>
       <itemPath>resources/font.ttf</itemPath>
+      <itemPath>resources/gameover.jpg</itemPath>
       <itemPath>resources/mira.png</itemPath>
       <itemPath>../../Descargas/Hito2_clases (3)/resources/pointer.png</itemPath>
       <itemPath>resources/prstart.ttf</itemPath>
@@ -282,6 +283,8 @@
       </item>
       <item path="resources/font.ttf" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="resources/gameover.jpg" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="resources/mira.png" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/prstart.ttf" ex="false" tool="3" flavor2="0">
@@ -465,6 +468,8 @@
       <item path="resources/fondo.jpg" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/font.ttf" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/gameover.jpg" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/mira.png" ex="false" tool="3" flavor2="0">
       </item>

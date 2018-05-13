@@ -28,7 +28,7 @@ private:
     
     static gameover_state* pinstance;
     
-    Sprite* fondo;
+    Sprite fondo;
     int vida;
     
     
