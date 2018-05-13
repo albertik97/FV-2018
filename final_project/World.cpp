@@ -184,19 +184,23 @@ void World::Update()
         //std::cout << "ESTAMOS DENTRO DE ENEMIGOS" << std::endl;
         if(resultado<400){
             
-            if(player->transparente() && enemys[i]->getStrategy()->getType() == 0){
+            if(resultado>400 && enemys[i]->getStrategy()->getType() != 1){
                 enemys[i]->changeStrategy(new IAPasiva());
                 std::cout << "IA PASIVA" << std::endl;
-            }else if(!player->transparente() && enemys[i]->getStrategy()->getType() == 1){
+            }else if(!player->transparente() && enemys[i]->getStrategy()->getType() != 0){
                 std::cout << "IA ACTIVA" << std::endl;
                 enemys[i]->changeStrategy(new IAActiva());
             }
+            if(resultado<300 && player->getHabilidad()==2 && enemys[i]->getStrategy()->getType() != 2){
+                enemys[i]->changeStrategy(new IAStopped());
+            }
 
         }
-        if(resultado>400 && enemys[i]->getStrategy()->getType() == 0){
+        if(resultado>400 && enemys[i]->getStrategy()->getType() != 1){
             enemys[i]->changeStrategy(new IAPasiva());
             std::cout << "IA PASIVA" << std::endl;
         }
+        
         
     }
     

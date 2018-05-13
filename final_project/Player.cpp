@@ -177,6 +177,7 @@ void Player::input(){
                         habuno = false;
                         habdos = true;
                         habtres =false;
+                         chab2.reset();
                         //std::cout << "HABILIDAD 2" << std::endl;
                     }
                     
@@ -314,6 +315,10 @@ void Player::update(){
         lengua->setTextureRect(0, 0,23.0,tam);
         lengua->getSprite()->setRotation(rotation+90);
         lengua->setPosition(sprite->getPosition().x,sprite->getPosition().y);
+       }
+       if(chab2.getSeconds()>5){
+           habdos = false;
+           habuno = true;
        }
 }
 

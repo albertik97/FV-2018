@@ -7,18 +7,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/jose/NetBeansProjects/FV-2018-GOOD/final_project/Sprite.cpp</file>
-            <file>file:/home/jose/NetBeansProjects/FV-2018-GOOD/final_project/gameover_state.cpp</file>
-            <file>file:/home/jose/NetBeansProjects/FV-2018-GOOD/final_project/World.cpp</file>
-            <file>file:/home/jose/NetBeansProjects/FV-2018-GOOD/final_project/IAActiva.cpp</file>
-            <file>file:/home/jose/NetBeansProjects/FV-2018-GOOD/final_project/IAActiva.h</file>
-            <file>file:/home/jose/NetBeansProjects/FV-2018-GOOD/final_project/gameover_state.h</file>
-            <file>file:/home/jose/NetBeansProjects/FV-2018-GOOD/final_project/Hud.cpp</file>
-            <file>file:/home/jose/NetBeansProjects/FV-2018-GOOD/final_project/Enemy.h</file>
-            <file>file:/home/jose/NetBeansProjects/FV-2018-GOOD/final_project/Player.h</file>
-            <file>file:/home/jose/NetBeansProjects/FV-2018-GOOD/final_project/Sprite.h</file>
-            <file>file:/home/jose/NetBeansProjects/FV-2018-GOOD/final_project/Player.cpp</file>
-            <file>file:/home/jose/NetBeansProjects/FV-2018-GOOD/final_project/Enemy.cpp</file>
+            <file>file:/home/xals1997/Escritorio/THE%20GOOD%20TO%20ADD/FV-2018/final_project/World.cpp</file>
+            <file>file:/home/xals1997/Escritorio/THE%20GOOD%20TO%20ADD/FV-2018/final_project/Player.cpp</file>
+            <file>file:/home/xals1997/Escritorio/THE%20GOOD%20TO%20ADD/FV-2018/final_project/Game.cpp</file>
+            <file>file:/home/xals1997/Escritorio/THE%20GOOD%20TO%20ADD/FV-2018/final_project/World.h</file>
         </group>
     </open-files>
 </project-private>

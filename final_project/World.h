@@ -14,6 +14,7 @@
 #include "IA.h"
 #include "IAActiva.h"
 #include "IAPasiva.h"
+#include "IAStopped.h"
 #include "Colisionator.h"
 
 #include "states.h"

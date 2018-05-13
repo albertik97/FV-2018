@@ -3,7 +3,7 @@ build/Debug/GNU-Linux/TileMap.o: TileMap.cpp TileMap.h tinystr.h \
  Resources.h states.h intro_state.h Transitions.h Motor2D.h Camera.h \
  Clock.h Keyboard.h Fondo.h Button.h menu_state.h Mouse.h Player.h \
  Coords.h Hud.h Rectangleshape.h Food.h Enemy.h IA.h IAActiva.h \
- Colisionator.h IAPasiva.h transition_state.h
+ Colisionator.h IAPasiva.h IAStopped.h transition_state.h
 
 TileMap.h:
 
@@ -66,5 +66,7 @@ IAActiva.h:
 Colisionator.h:
 
 IAPasiva.h:
+
+IAStopped.h:
 
 transition_state.h:

@@ -17,6 +17,7 @@
       <itemPath>IA.h</itemPath>
       <itemPath>IAActiva.h</itemPath>
       <itemPath>IAPasiva.h</itemPath>
+      <itemPath>IAStopped.h</itemPath>
       <itemPath>Keyboard.h</itemPath>
       <itemPath>Motor2D.h</itemPath>
       <itemPath>Mouse.h</itemPath>
@@ -72,6 +73,7 @@
       <itemPath>Hud.cpp</itemPath>
       <itemPath>IAActiva.cpp</itemPath>
       <itemPath>IAPasiva.cpp</itemPath>
+      <itemPath>IAStopped.cpp</itemPath>
       <itemPath>Keyboard.cpp</itemPath>
       <itemPath>Motor2D.cpp</itemPath>
       <itemPath>Mouse.cpp</itemPath>
@@ -210,6 +212,10 @@
       <item path="IAPasiva.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="IAPasiva.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IAStopped.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="IAStopped.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Keyboard.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -396,6 +402,10 @@
       <item path="IAPasiva.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="IAPasiva.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IAStopped.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="IAStopped.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Keyboard.cpp" ex="false" tool="1" flavor2="0">
       </item>
