@@ -27,7 +27,7 @@ gameover_state::gameover_state(){
 }
 void gameover_state::Init()
 {
-    fondo.setSpriteTexture("resources/gameover.jpg");
+    //fondo.setSpriteTexture("resources/fondo.jpg");
     //fondo.setPosition(0.f, 0.f);
 }
 void gameover_state::HandleInput()
@@ -53,6 +53,6 @@ void gameover_state::Update()
 }
 void gameover_state::Draw(float percentTick)
 {      
-    fondo.draw();
+//    fondo.draw();
 }
 
