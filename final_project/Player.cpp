@@ -256,9 +256,13 @@ void Player::lookAtMouse(){
 void Player::update(){
          ylast=y;
          xlast=x;
-       moveChar();
-       mouse->CursorUpdate(movX, movY);
-       lookAtMouse();
+         if(!h1){
+            moveChar();
+            lookAtMouse();
+           
+         }
+          mouse->CursorUpdate(movX, movY);
+       
        if(tipoPlayer==0)
             sprite->animar(7,1, 112, 173, 134);
        else if(tipoPlayer==1){
@@ -298,16 +302,14 @@ void Player::update(){
        }
        
        if(h1 && tipoPlayer == 1){
-            kVel=0;     
-            if(tam>=0){
+              if(tam<149 && !estado_lengua){
+                tam+=75;
+                
+            }else if(tam>=20){               
                 tam-=20;
-                 estado_lengua=true;
-            }else if(!estado_lengua&&tam<=149){               
-                tam+=15;
-              
+                estado_lengua=true;
            }else{
                tam=0;      
-               kVel=5;
                h1=false;
                estado_lengua=false;
            }
@@ -489,4 +491,8 @@ void Player::lanzarHabilidadTres()
             }
         }
     }  
+}
+
+Sprite* Player::getLengua(){
+    return lengua;
 }

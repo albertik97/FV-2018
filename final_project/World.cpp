@@ -201,7 +201,7 @@ void World::Update()
             std::cout << "IA PASIVA" << std::endl;
         }
         
-        
+        enemys[i]->colisionLengua(player->getLengua());
     }
     
     if(colision.checkColisionComida(comidaArray))
