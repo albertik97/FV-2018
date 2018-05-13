@@ -84,18 +84,14 @@ void IAPasiva::elegirComportamiento(Sprite *&s){
                         minima = sqrt(pow((int)pos[0],2)+(pow((int)pos[1],2),2));
                         select = i;
                         }
-
-                    } 
-                    
+                    }       
                     i++;
-                
                 }
                 if(comer&&select!=-1)
                     buscarComida(World::Instance()->getComida(),s,select);
-                
+           
                 if(i==comida.size()&&select==-1){
                     comer=false;
-    
                 }
                
                 
@@ -150,24 +146,14 @@ bool IAPasiva::checkColisionMap(int x, int y, Sprite* s){
     float top = s->getSprite()->getGlobalBounds().top+15 + y;
     float right = s->getSprite()->getGlobalBounds().width-60 + left;
     float down = top + s->getSprite()->getGlobalBounds().height-60;
-
-    
     if(World::Instance()->getMapa()._tilemap[1][(int)top/32][(int)left/32]==0 &&
        World::Instance()->getMapa()._tilemap[1][(int)top/32][(int)right/32]==0 &&
        World::Instance()->getMapa()._tilemap[1][(int)down/32][(int)left/32]==0 &&
        World::Instance()->getMapa()._tilemap[1][(int)down/32][(int)right/32]==0){
-
-        
         return false;
-   
     }
     return true;
-    
 }
-
-
-
-
 
 
 int IAPasiva::getType(){

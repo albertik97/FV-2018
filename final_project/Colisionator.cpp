@@ -64,30 +64,37 @@ bool Colisionator::checkColisionComidaEnemy(std::vector<Food*> &comidaArray){
 
 bool Colisionator::checkColisionComida(std::vector<Food*> &comidaArray){
     
+    int x = World::Instance()->getPlayer()->getPositionX();
+    int y = World::Instance()->getPlayer()->getPositionY();
+    int mitadPantallaX = Motor2D::Instance()->getWindow()->getView().getSize().x/2;
+    int mitadPantallaY = Motor2D::Instance()->getWindow()->getView().getSize().y/2;
     
     for(int i=0; i<comidaArray.size(); i++){
-        if(comidaArray[i]->getSprite()->getSprite()->getGlobalBounds().intersects(World::Instance()->getPlayer()->getSprite()->getSprite()->getGlobalBounds())){
-            if(comidaArray[i]->getType()==0){
-                     player->setExperiencia(10);
-                       player->aumenteCarne();
-                     player->aumentaVida();
-                 }
-                 if(comidaArray[i]->getType()==1){
-                     player->setExperiencia(10);
-                     player->aumentaVerdura();
-                     player->aumentaVida();
-                 }
-                 if(comidaArray[i]->getType()==2){
-                     player->setExperiencia(-30);
-                     player->restaVida();
-                 } 
-              delete comidaArray[i]; //liberas memoria
-                comidaArray[i]=NULL;
-                comidaArray.erase(comidaArray.begin() + i); 
-               //eliminas la posición del vector
+        //OPTIMIZACION DE COSOS
+        if(comidaArray[i]->getSprite()->getPosition().x<x+mitadPantallaX && comidaArray[i]->getSprite()->getPosition().x>x-mitadPantallaX && comidaArray[i]->getSprite()->getPosition().y<y+mitadPantallaY && comidaArray[i]->getSprite()->getPosition().y>y-mitadPantallaY){
+            if(comidaArray[i]->getSprite()->getSprite()->getGlobalBounds().intersects(World::Instance()->getPlayer()->getSprite()->getSprite()->getGlobalBounds())){
+                if(comidaArray[i]->getType()==0){
+                         player->setExperiencia(10);
+                         player->aumenteCarne();
+                         player->aumentaVida();
+                     }
+                     if(comidaArray[i]->getType()==1){
+                         player->setExperiencia(10);
+                         player->aumentaVerdura();
+                         player->aumentaVida();
+                     }
+                     if(comidaArray[i]->getType()==2){
+                         player->setExperiencia(-30);
+                         player->restaVida();
+                     } 
+                    delete comidaArray[i]; //liberas memoria
+                    comidaArray[i]=NULL;
+                    comidaArray.erase(comidaArray.begin() + i); 
+                   //eliminas la posición del vector
 
-                return true;
-       }
+                    return true;
+           }
+        }
     }
      return false;
     
@@ -95,10 +102,17 @@ bool Colisionator::checkColisionComida(std::vector<Food*> &comidaArray){
 
 bool Colisionator::checkColisionSprite(std::vector<Food*> &comidaArray, Sprite* &s){
     
+    int x = World::Instance()->getPlayer()->getPositionX();
+    int y = World::Instance()->getPlayer()->getPositionY();
+    int mitadPantallaX = Motor2D::Instance()->getWindow()->getView().getSize().x/2;
+    int mitadPantallaY = Motor2D::Instance()->getWindow()->getView().getSize().y/2;
+    
         for(int i=0; i<comidaArray.size(); i++){
-        if(comidaArray[i]->getSprite()->getSprite()->getGlobalBounds().intersects(s->getSprite()->getGlobalBounds())){
-                return true;
-       }
+        if(comidaArray[i]->getSprite()->getPosition().x<x+mitadPantallaX && comidaArray[i]->getSprite()->getPosition().x>x-mitadPantallaX && comidaArray[i]->getSprite()->getPosition().y<y+mitadPantallaY && comidaArray[i]->getSprite()->getPosition().y>y-mitadPantallaY){
+            if(comidaArray[i]->getSprite()->getSprite()->getGlobalBounds().intersects(s->getSprite()->getGlobalBounds())){
+                    return true;
+               }
+        }
     }
      return false;   
     
