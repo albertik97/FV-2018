@@ -204,6 +204,7 @@ void World::Update()
     
     if(player->getVida() == 0){
         std::cout << "Has muerto bandido" << std::endl;
+        Motor2D::Instance()->Instance()->resetCamera();
         Game::instance()->setState(gameover_state::Instance());
     }
     
