@@ -156,7 +156,22 @@ void World::Update()
         gameStart.reset();
     }
     
-    colision.checkColisionComidaEnemy(comidaArray);
+    
+    for(int i=0; i<enemys.size(); i++){
+        //OPTIMIZACION DE CALCULO DE COLISIONES
+        int x = player->getPositionX();
+        int y = player->getPositionY();
+        int xEnemy = enemys[i]->getSprite()->getPosition().x;
+        int yEnemy = enemys[i]->getSprite()->getPosition().y;
+        int mitadPantallaX = Motor2D::Instance()->getWindow()->getView().getSize().x/2;
+        int mitadPantallaY = Motor2D::Instance()->getWindow()->getView().getSize().y/2;
+        if(xEnemy<x+mitadPantallaX && xEnemy>x-mitadPantallaX && yEnemy<y+mitadPantallaY && yEnemy>y-mitadPantallaY){
+            colision.checkColisionComidaEnemy(comidaArray);
+            //std::cout<<"Entro"<<i<<std::endl;          
+        }
+    }
+    
+   
     
     player->update();
     

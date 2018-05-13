@@ -208,7 +208,7 @@ IAActiva::~IAActiva() {
  
  
  
- 
+/*
 bool IAActiva::checkColisionEnemy(int x, int y, Sprite* enemy){
     bool colision_detected = false;
     
@@ -228,7 +228,7 @@ bool IAActiva::checkColisionEnemy(int x, int y, Sprite* enemy){
     return colision_detected;
 }
 
- 
+ */
 
  int IAActiva::getType(){
      return 0;
