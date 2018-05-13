@@ -31,10 +31,6 @@ void ingame_state::Init()
 {
     mundo = World::Instance();
     mundo->CargarNivel(1);
-    
-   
-   
-   
    std::cout<<"He hecho el init de ingame"<<std::endl;
 }
 
@@ -50,6 +46,33 @@ void ingame_state::HandleInput()
             if(evento.type == sf::Event::KeyPressed && evento.key.code == sf::Keyboard::Return)
             {
                 World::Instance()->setEndGame(true);
+            }
+            
+            if(evento.type == sf::Event::KeyPressed && Mouse::LeftPressed())
+            {
+                
+                //ataque basico
+            }
+            if(Mouse::RightPressed())
+            {
+                //Mirar que habilidad hay seleccionada
+                std::cout << "entramos en lo de habilidades" << std::endl;
+                std::cout << "habilidad: " << World::Instance()->getPlayer()->getHabilidad() << std::endl;
+                switch(World::Instance()->getPlayer()->getHabilidad())
+                {
+                    case 1: World::Instance()->getPlayer()->lanzarHabilidadUno();
+                        break;
+                    case 2: World::Instance()->getPlayer()->lanzarHabilidadDos();
+                        break;
+                    case 3: World::Instance()->getPlayer()->lanzarHabilidadTres();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            
+            if(!Mouse::RightPressed()){
+                World::Instance()->getPlayer()->setVelocidad(10);
             }
 
         }

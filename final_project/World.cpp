@@ -135,10 +135,10 @@ void World::CargarNivel(int nivel)
 
 void World::Update()
 {
+
     if(player->getExperiencia() >= 3000 && !nivelico)
     {
         nivelico=true;
-        std::cout << "entraaaa" << std::endl;
         Game::instance()->setState(transition_state::Instance());
         Motor2D::Instance()->resetCamera();
        //CargarNivel(2);
