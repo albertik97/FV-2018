@@ -149,7 +149,7 @@ void Hud::updateHud(float x,float y){
 
     
     if(World::Instance()->getPlayer()->getHabilidad() == 1){
-        std::cout << "Usamos habilidad numero 1" << std::endl;
+        //std::cout << "Usamos habilidad numero 1" << std::endl;
         activaHabilidad(1, tipo);
         if(habilidadActiva != 1){
             desactivaHabilidad(habilidadActiva, tipo);
@@ -157,7 +157,7 @@ void Hud::updateHud(float x,float y){
         habilidadActiva = 1;
     }
     if(World::Instance()->getPlayer()->getHabilidad() == 2){
-        std::cout << "Usamos habilidad numero 2" << std::endl;
+        //std::cout << "Usamos habilidad numero 2" << std::endl;
         activaHabilidad(2, tipo);
          if(habilidadActiva != 2){
             desactivaHabilidad(habilidadActiva, tipo);
@@ -165,7 +165,7 @@ void Hud::updateHud(float x,float y){
         habilidadActiva = 2;
     }
     if(World::Instance()->getPlayer()->getHabilidad() == 3){
-        std::cout << "Usamos habilidad numero 3" << std::endl;
+        //std::cout << "Usamos habilidad numero 3" << std::endl;
         activaHabilidad(3, tipo);
          if(habilidadActiva != 3){
             desactivaHabilidad(habilidadActiva, tipo);

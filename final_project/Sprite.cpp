@@ -128,3 +128,11 @@ int Sprite::getLastAlpha()
 {
     return lastAlpha;
 }
+
+void Sprite::transparente(){
+    sprite->setColor(sf::Color(255,255,255,120));
+}
+
+void Sprite::opaco(){
+    sprite->setColor(sf::Color(255,255,255,255));
+}

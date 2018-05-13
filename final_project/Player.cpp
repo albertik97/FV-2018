@@ -52,6 +52,7 @@ Player::Player()
     tipoPlayer = 0;
     tam=150;
     estado_lengua=false;
+    invisible = false;
 
 }
 
@@ -206,6 +207,13 @@ void Player::input(){
                         
                         down=false;
                     }
+                    if(Mouse::LeftPressed()){
+                        
+                    }
+                    if(!Mouse::LeftPressed()){
+                        
+                    }
+                    
 }
 
 int Player::getHabilidad(){
@@ -268,8 +276,27 @@ void Player::update(){
                 sprite->setAnimationTime(200);
             }
         }
+       //INVISIBLE DEL HERVIBORO
+       if(h1 && tipoPlayer == 2){
+           //sprite
+           if(!invisible){
+                chab1.reset();
+           }
+           if(chab1.getSeconds() < 5 && energia > 0){
+                sprite->transparente();
+                invisible = true;
+                energia -= 1;
+                //std::cout << "ESTAMOS INBISIBLA" << std::endl;
+           }else if(chab1.getSeconds() > 6){
+               sprite->opaco();
+               invisible = false;
+               h1 = false;
+                //std::cout << "ESTAMOS OPAKOH" << std::endl;
+           }
+           
+       }
        
-       if(h1){
+       if(h1 && tipoPlayer == 1){
             kVel=0;     
             if(tam>=0){
                 tam-=20;
@@ -305,6 +332,10 @@ void Player::moveChar(){
 
 void Player::setVelocidad(int v){
     kVel = v;
+}
+
+bool Player::transparente(){
+    return invisible;
 }
 
 void Player::moveX(){
@@ -411,8 +442,8 @@ void Player::lanzarHabilidadUno()
 {
     if(tipoPlayer == 2)
     {
-        std::cout << "Lanzamos la habilidad 1 del herbivoro" << std::endl;
-        
+        std::cout << "Lanzamos la habilidad 1 del herbivorom (INVISIBILIDAD)" << std::endl;
+        h1 = true;
     }
     if(tipoPlayer == 1)
     {

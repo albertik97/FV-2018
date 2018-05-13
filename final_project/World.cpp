@@ -32,7 +32,7 @@ void World::CargarNivel(int nivel)
         srand(time(0));
         mapa.cargarmapa(LEVEL1_MAP_FILEPATH);
         
-        for(int i=0; i<22; i++)
+        for(int i=0; i<1; i++)
         {  
             Enemy* e = new Enemy();
             e->chargingTexture("resources/enemy.png",1024,1024,0.06,0.07);
@@ -73,7 +73,7 @@ void World::CargarNivel(int nivel)
             srand(time(0));
             mapa.cargarmapa(LEVEL2_MAP_FILEPATH);
             
-            for(int i=0; i<0; i++)
+            for(int i=0; i<30; i++)
             {  
                 Enemy* e = new Enemy();
                 e->chargingTexture("resources/carnivoro.png",100,100,0.6,0.6);
@@ -136,7 +136,7 @@ void World::CargarNivel(int nivel)
 void World::Update()
 {
 
-    if(player->getExperiencia() >= 3000 && !nivelico)
+    if(player->getExperiencia() >= 30 && !nivelico)
     {
         nivelico=true;
         Game::instance()->setState(transition_state::Instance());
@@ -166,14 +166,23 @@ void World::Update()
         float x = enemys[i]->getSprite()->getPosition().x-player->getPositionX();
         float y = enemys[i]->getSprite()->getPosition().y-player->getPositionY();
         float resultado = sqrt((x*x)+(y*y));
-        
-        if(resultado<400 && enemys[i]->getStrategy()->getType() == 1){
+        //std::cout << "ESTAMOS DENTRO DE ENEMIGOS" << std::endl;
+        if(resultado<400){
             
-            enemys[i]->changeStrategy(new IAActiva());
+            if(player->transparente() && enemys[i]->getStrategy()->getType() == 0){
+                enemys[i]->changeStrategy(new IAPasiva());
+                std::cout << "IA PASIVA" << std::endl;
+            }else if(!player->transparente() && enemys[i]->getStrategy()->getType() == 1){
+                std::cout << "IA ACTIVA" << std::endl;
+                enemys[i]->changeStrategy(new IAActiva());
+            }
+
         }
         if(resultado>400 && enemys[i]->getStrategy()->getType() == 0){
             enemys[i]->changeStrategy(new IAPasiva());
+            std::cout << "IA PASIVA" << std::endl;
         }
+        
     }
     
     if(colision.checkColisionComida(comidaArray))
