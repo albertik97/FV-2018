@@ -47,6 +47,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Hud.o \
 	${OBJECTDIR}/IAActiva.o \
 	${OBJECTDIR}/IAPasiva.o \
+	${OBJECTDIR}/IAStopped.o \
 	${OBJECTDIR}/Keyboard.o \
 	${OBJECTDIR}/Motor2D.o \
 	${OBJECTDIR}/Mouse.o \
@@ -160,6 +161,11 @@ ${OBJECTDIR}/IAPasiva.o: IAPasiva.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Iusr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/IAPasiva.o IAPasiva.cpp
+
+${OBJECTDIR}/IAStopped.o: IAStopped.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iusr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/IAStopped.o IAStopped.cpp
 
 ${OBJECTDIR}/Keyboard.o: Keyboard.cpp 
 	${MKDIR} -p ${OBJECTDIR}

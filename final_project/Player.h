@@ -59,6 +59,7 @@ public:
     void lanzarHabilidadUno();
     void lanzarHabilidadDos();
     void lanzarHabilidadTres();
+    bool transparente();
     
     void setVelocidad(int);
     
@@ -89,12 +90,13 @@ private:
     Mouse* mouse;
     int movX;
     int movY;
-
+    bool invisible;
     int tipoPlayer;
     float rotation;
     
     Clock chab1,chab2,chab3;
     bool h1,h2,h3;
+    
     
     //COSAS ATAQUES
     int tam;

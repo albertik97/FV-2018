@@ -17,8 +17,7 @@ Game* Game::instance(){
     if(pinstance==0){
         pinstance= new Game();
     }
-    return pinstance;
-    
+    return pinstance;    
 }
 
 Game::Game(){

@@ -27,9 +27,11 @@ gameover_state::gameover_state(){
 }
 void gameover_state::Init()
 {
+
     fondo.setSpriteTexture("resources/gameover.jpg");
    
     fondo.setPosition(0.f, 0.f);
+
 }
 void gameover_state::HandleInput()
 {
