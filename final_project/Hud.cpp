@@ -149,7 +149,7 @@ void Hud::updateHud(float x,float y){
 
     
     if(World::Instance()->getPlayer()->getHabilidad() == 1){
-        std::cout << "Usamos habilidad numero 1" << std::endl;
+       
         activaHabilidad(1, tipo);
         if(habilidadActiva != 1){
             desactivaHabilidad(habilidadActiva, tipo);

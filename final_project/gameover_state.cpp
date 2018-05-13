@@ -56,4 +56,3 @@ void gameover_state::Draw(float percentTick)
 {      
     fondo.draw();
 }
-

@@ -32,7 +32,7 @@ void World::CargarNivel(int nivel)
         srand(time(0));
         mapa.cargarmapa(LEVEL1_MAP_FILEPATH);
         
-        for(int i=0; i<22; i++)
+        for(int i=0; i<2; i++)
         {  
             Enemy* e = new Enemy();
             e->chargingTexture("resources/enemy.png",1024,1024,0.06,0.07);
@@ -57,8 +57,7 @@ void World::CargarNivel(int nivel)
         }
               
         colision.setPlayer(player);
-        colision.setEnemies(enemys);
-       
+        colision.setEnemies(enemys);   
         fondoTransition.setSize(WINDOW_WIDTH * 2, WINDOW_HEIGHT * 2);
         fondoTransition.setColor(0, 0, 0);
         fondoTransition.setOriginCenter();
@@ -73,11 +72,10 @@ void World::CargarNivel(int nivel)
             srand(time(0));
             mapa.cargarmapa(LEVEL2_MAP_FILEPATH);
             
-            for(int i=0; i<0; i++)
+            for(int i=0; i<100; i++)
             {  
                 Enemy* e = new Enemy();
                 e->chargingTexture("resources/carnivoro.png",100,100,0.6,0.6);
-               // e->getSprite()->setSpriteTexture("resources/carnivoro.png");
                 e->setPosRandom(mapa._tilemap);
                 enemys.push_back(e);
             }
@@ -112,9 +110,6 @@ void World::CargarNivel(int nivel)
             colision.setPlayer(player);
             colision.setEnemies(enemys);
 
-
-
-
             fondoTransition.setSize(WINDOW_WIDTH * 2, WINDOW_HEIGHT * 2);
             fondoTransition.setColor(0, 0, 0);
             fondoTransition.setOriginCenter();
@@ -136,7 +131,7 @@ void World::CargarNivel(int nivel)
 void World::Update()
 {
 
-    if(player->getExperiencia() >= 3000 && !nivelico)
+    if(player->getExperiencia() >= 30 && !nivelico)
     {
         nivelico=true;
         Game::instance()->setState(transition_state::Instance());
@@ -174,11 +169,12 @@ void World::Update()
         if(resultado>400 && enemys[i]->getStrategy()->getType() == 0){
             enemys[i]->changeStrategy(new IAPasiva());
         }
+        
+        enemys[i]->colisionLengua(player->getLengua());
     }
     
     if(colision.checkColisionComida(comidaArray))
         hud.sumaexp(player->getExperiencia());
-    
     
     hud.updateHud(player->getPositionX(), player->getPositionY());
     
@@ -188,10 +184,9 @@ void World::Update()
     player->aumentaEnergia(gameStart.getSeconds());
     
     if(player->getVida() == 0){
-        std::cout << "Has muerto bandido" << std::endl;
+        Motor2D::Instance()->resetCamera();
         Game::instance()->setState(gameover_state::Instance());
     }
-    
     
 }
 
@@ -236,7 +231,6 @@ void World::Draw(float percentTick)
     
     for(int i=0;i<enemys.size();i++)
         enemys[i]->draw();
-    
     
     
     player->draw();

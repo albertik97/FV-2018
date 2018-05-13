@@ -30,8 +30,6 @@ private:
     
     Sprite fondo;
     int vida;
-    
-    
 
 public:
     static gameover_state* Instance();

@@ -45,8 +45,6 @@ void Enemy::setPosRandom(int*** &m){
        if(m[1][y/32][x/32]==0){
    
             sprite->setPosition(x,y);
-        
-
             set=true;
        }
         
@@ -67,6 +65,7 @@ void Enemy::update(){
         sprite->animar(0,0,1024,1024, 1024);
     x=sprite->getPosition().x;
     y=sprite->getPosition().y;
+     std::cout<<"x: "<<x<<"y: "<<y<<std::endl;
 }
 
 void Enemy::changeStrategy(IA* a){
@@ -103,4 +102,31 @@ float Enemy::getLastPositionX()
 float Enemy::getLastPositionY()
 {
     return ylast;
+}
+
+void Enemy::colisionLengua(Sprite* lengua){
+
+    if(sprite->getSprite()->getGlobalBounds().intersects(lengua->getSprite()->getGlobalBounds())){
+        int npc_x = sprite->getPosition().x;     
+        int npc_y = sprite->getPosition().y; 
+        int lengua_x = lengua->getPosition().x;     
+        int lengua_y = lengua->getPosition().y; 
+            if(npc_x<lengua_x&&npc_y<lengua_y){
+                sprite->setPosition(lengua->getSprite()->getGlobalBounds().left,lengua->getSprite()->getGlobalBounds().top);
+                    x= lengua->getSprite()->getGlobalBounds().left;
+                    y= lengua->getSprite()->getGlobalBounds().top;
+            }else if(npc_x>lengua_x&&npc_y<lengua_y){
+               sprite->setPosition(lengua->getSprite()->getGlobalBounds().left+lengua->getSprite()->getGlobalBounds().width,lengua->getSprite()->getGlobalBounds().top);
+               x=lengua->getSprite()->getGlobalBounds().left+lengua->getSprite()->getGlobalBounds().width;
+               y=lengua->getSprite()->getGlobalBounds().top;
+            }else if(npc_x<lengua_x&&npc_y>lengua_y){
+                sprite->setPosition(lengua->getSprite()->getGlobalBounds().left,lengua->getSprite()->getGlobalBounds().top+lengua->getSprite()->getGlobalBounds().height);
+                x=lengua->getSprite()->getGlobalBounds().left;
+                y=lengua->getSprite()->getGlobalBounds().top+lengua->getSprite()->getGlobalBounds().height;
+            }else if(npc_x>lengua_x&&npc_y>lengua_y){
+                sprite->setPosition(lengua->getSprite()->getGlobalBounds().width+lengua->getSprite()->getGlobalBounds().left,lengua->getSprite()->getGlobalBounds().top+lengua->getSprite()->getGlobalBounds().height);
+                x=lengua->getSprite()->getGlobalBounds().width;
+                y=lengua->getSprite()->getGlobalBounds().left,lengua->getSprite()->getGlobalBounds().top+lengua->getSprite()->getGlobalBounds().height;
+            }
+    }
 }

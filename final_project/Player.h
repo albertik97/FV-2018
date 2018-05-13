@@ -32,6 +32,7 @@ public:
     bool colisionComida();
     void chargingTexture();
     Sprite* getSprite();
+    Sprite* getLengua();
     float getPositionX();
     float getPositionY();
     void setPositionInterpolated(float x,float y);
@@ -60,6 +61,8 @@ public:
     void lanzarHabilidadTres();
     
     void setVelocidad(int);
+    
+    
     
 private:
     int kVel;

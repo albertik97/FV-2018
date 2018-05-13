@@ -10,7 +10,7 @@
 
 #include  <iostream>
 
-#define UPDATE_TICK_TIME 1000/30
+#define UPDATE_TICK_TIME 1000/15
 
 Game* Game::pinstance=0;
 Game* Game::instance(){

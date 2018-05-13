@@ -56,8 +56,6 @@ void ingame_state::HandleInput()
             if(Mouse::RightPressed())
             {
                 //Mirar que habilidad hay seleccionada
-                std::cout << "entramos en lo de habilidades" << std::endl;
-                std::cout << "habilidad: " << World::Instance()->getPlayer()->getHabilidad() << std::endl;
                 switch(World::Instance()->getPlayer()->getHabilidad())
                 {
                     case 1: World::Instance()->getPlayer()->lanzarHabilidadUno();
@@ -74,7 +72,6 @@ void ingame_state::HandleInput()
             if(!Mouse::RightPressed()){
                 World::Instance()->getPlayer()->setVelocidad(10);
             }
-
         }
      mundo->getPlayer()->input();
 }

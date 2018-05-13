@@ -21,6 +21,7 @@ public:
     float getLastPositionX();
     float getLastPositionY();
     void setPositionInterpolated(float a,float b);
+    void colisionLengua(Sprite *s);
     
     
 private:

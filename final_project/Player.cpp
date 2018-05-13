@@ -19,7 +19,7 @@ Player::Player()
     sprite = new Sprite();
     lengua = new Sprite();
     lengua->setSpriteTexture("resources/Lengua.png");
-    lengua->setOrigin(10,-40);
+    lengua->setOrigin(10,-30);
   
     x = 1920 / 2;
     y = 1080 / 2;
@@ -46,11 +46,9 @@ Player::Player()
     mouse= new Mouse();
     mouse->initMouse("resources/mira.png",0.1,0.1);
     mouse->getCursorSprite()->setPosition(x+50, y+50);
-
     energia = 1;
-    
     tipoPlayer = 0;
-    tam=150;
+    tam=0;
     estado_lengua=false;
 
 }
@@ -124,9 +122,10 @@ int Player::getExperiencia(){
 }
 
 void Player::draw() {
+    lengua->draw();
     sprite->draw();
     mouse->getCursorSprite()->draw();
-    lengua->draw();
+    
     
 }
 
@@ -141,8 +140,6 @@ float Player::getEnergia(){
 }
 
 void Player::input(){
-        
-   // if(sf::Event::KeyPressed){
 
                     if(Keyboard::isKeyDPressed()){				
                             
@@ -231,8 +228,6 @@ int Player::getHabilidad(){
 void Player::lookAtMouse(){
     
     sf::Vector2f curPos = sprite->getPosition();
-    //(std::cout<<sprite->getPosition().x;
-    //std::cout<<sprite->getPosition().y;
     sf::Vector2f position(mouse->getCursorSprite()->getPosition().x, mouse->getCursorSprite()->getPosition().y); 
     const float PI = 3.14159265;
     float dx = curPos.x - position.x;
@@ -242,14 +237,16 @@ void Player::lookAtMouse(){
 
 }
 
-
-
 void Player::update(){
          ylast=y;
          xlast=x;
-       moveChar();
-       mouse->CursorUpdate(movX, movY);
-       lookAtMouse();
+         //si esta la habilidad activada
+         if(!h1){
+            moveChar();
+            
+            lookAtMouse();
+         }
+         mouse->CursorUpdate(movX, movY);
        if(tipoPlayer==0)
             sprite->animar(7,1, 112, 173, 134);
        else if(tipoPlayer==1){
@@ -269,17 +266,17 @@ void Player::update(){
             }
         }
        
+       //lo dela lengua
        if(h1){
-            kVel=0;     
-            if(tam>=0){
-                tam-=20;
-                 estado_lengua=true;
-            }else if(!estado_lengua&&tam<=149){               
-                tam+=15;
               
+            if(tam<149 && !estado_lengua){
+                tam+=75;
+                
+            }else if(tam>=20){               
+                tam-=20;
+                estado_lengua=true;
            }else{
                tam=0;      
-               kVel=5;
                h1=false;
                estado_lengua=false;
            }
@@ -287,6 +284,8 @@ void Player::update(){
         lengua->setTextureRect(0, 0,23.0,tam);
         lengua->getSprite()->setRotation(rotation+90);
         lengua->setPosition(sprite->getPosition().x,sprite->getPosition().y);
+        
+       
        }
 }
 
@@ -295,8 +294,6 @@ void Player::moveChar(){
 	if(left || right){
             moveX();
         }
-        
-        
         
         if(up || down){
             moveY();
@@ -316,7 +313,6 @@ if(left){
              sprite->setAnimationTime(100);
              x -= kVel;
         }
-             
     }
     if(right){
         
@@ -453,4 +449,8 @@ void Player::lanzarHabilidadTres()
             }
         }
     }  
+}
+
+Sprite* Player::getLengua(){
+    return lengua;
 }
