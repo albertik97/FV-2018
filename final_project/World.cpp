@@ -170,10 +170,11 @@ void World::Update()
             {
                 std::cout << "Le quito vida al enemigo" << std::endl;
                 enemys[i]->restarVida(100);
-                //enemys[i]->getSprite()->setPosition(0, 0);
+               
                 
                 if(enemys[i]->getVida() <= 0)
                 {
+                    enemys[i]->changeStrategy(new IAStopped());
                      enemys.erase(enemys.begin() + i);
                     
                    // enemys.erase(enemys.begin() + i);
