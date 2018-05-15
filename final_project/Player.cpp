@@ -240,8 +240,6 @@ int Player::getHabilidad(){
 void Player::lookAtMouse(){
     
     sf::Vector2f curPos = sprite->getPosition();
-    //(std::cout<<sprite->getPosition().x;
-    //std::cout<<sprite->getPosition().y;
     sf::Vector2f position(mouse->getCursorSprite()->getPosition().x, mouse->getCursorSprite()->getPosition().y); 
     const float PI = 3.14159265;
     float dx = curPos.x - position.x;
@@ -256,7 +254,7 @@ void Player::lookAtMouse(){
 void Player::update(){
          ylast=y;
          xlast=x;
-         if(!h1){
+         if(tipoPlayer==2 ||tipoPlayer==0 ||(tipoPlayer==1 && !h1)){
             moveChar();
             lookAtMouse();
            
