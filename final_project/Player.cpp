@@ -288,7 +288,7 @@ void Player::update(){
            if(chab1.getSeconds() < 5 && energia > 0){
                 sprite->transparente();
                 invisible = true;
-                energia -= 1;
+                energia -= 2;
                 //std::cout << "ESTAMOS INBISIBLA" << std::endl;
            }else if(chab1.getSeconds() > 6){
                sprite->opaco();

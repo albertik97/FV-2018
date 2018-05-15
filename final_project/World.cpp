@@ -184,7 +184,7 @@ void World::Update()
         //std::cout << "ESTAMOS DENTRO DE ENEMIGOS" << std::endl;
         if(resultado<400){
             
-            if(resultado>400 && enemys[i]->getStrategy()->getType() != 1){
+            if(player->transparente() && enemys[i]->getStrategy()->getType() != 1){
                 enemys[i]->changeStrategy(new IAPasiva());
                 std::cout << "IA PASIVA" << std::endl;
             }else if(!player->transparente() && enemys[i]->getStrategy()->getType() != 0){
@@ -195,10 +195,6 @@ void World::Update()
                 enemys[i]->changeStrategy(new IAStopped());
             }
 
-        }
-        if(resultado>400 && enemys[i]->getStrategy()->getType() != 1){
-            enemys[i]->changeStrategy(new IAPasiva());
-            std::cout << "IA PASIVA" << std::endl;
         }
         
         enemys[i]->colisionLengua(player->getLengua());
