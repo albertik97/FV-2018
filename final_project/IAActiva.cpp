@@ -171,6 +171,7 @@ IAActiva::~IAActiva() {
                 enemy->move(0,0);//se lanza a por el
                 t_ataque.reset();
                 World::Instance()->getPlayer()->restaVida();
+                
 
              }
      }

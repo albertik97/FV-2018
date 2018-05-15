@@ -596,3 +596,7 @@ Sprite* Player::getVeneno()
 {
     return veneno;
 }
+
+bool Player::getLanzandoVeneno(){
+    return lanzando_veneno;
+}

@@ -12,6 +12,7 @@ public:
     virtual ~IAStopped();
     void elegirComportamiento(Sprite* &s);
     void moverse(std::vector<Food*> f,Sprite* &s);
+    bool checkColisionMap(int x, int y, Sprite* enemy);
     int getType();
 private:
   

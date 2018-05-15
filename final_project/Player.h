@@ -69,6 +69,7 @@ public:
     void calcDirVeneno();
     
     Sprite* getVeneno();
+    bool getLanzandoVeneno();
     
     
     

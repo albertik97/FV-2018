@@ -31,7 +31,7 @@ void World::CargarNivel(int nivel)
         srand(time(0));
         mapa.cargarmapa(LEVEL1_MAP_FILEPATH);
         
-        for(int i=0; i<23; i++)
+        for(int i=0; i<15; i++)
         {  
             Enemy* e = new Enemy();
             e->chargingTexture("resources/enemy.png",1024,1024,0.06,0.07);
@@ -72,7 +72,7 @@ void World::CargarNivel(int nivel)
             srand(time(0));
             mapa.cargarmapa(LEVEL2_MAP_FILEPATH);
             
-            for(int i=0; i<15; i++)
+            for(int i=0; i<10; i++)
             {  
                 Enemy* e = new Enemy();
                 e->chargingTexture("resources/carnivoro.png",100,100,0.6,0.6);
@@ -166,16 +166,16 @@ void World::Update()
         int mitadPantallaY = Motor2D::Instance()->getWindow()->getView().getSize().y/2;
         if(xEnemy<x+mitadPantallaX && xEnemy>x-mitadPantallaX && yEnemy<y+mitadPantallaY && yEnemy>y-mitadPantallaY){
             colision.checkColisionComidaEnemy(comidaArray);
-            if(player->getVeneno()->getSprite()->getGlobalBounds().intersects(enemys[i]->getSprite()->getSprite()->getGlobalBounds()))
+            if(player->getLanzandoVeneno() && player->getVeneno()->getSprite()->getGlobalBounds().intersects(enemys[i]->getSprite()->getSprite()->getGlobalBounds()))
             {
                 std::cout << "Le quito vida al enemigo" << std::endl;
-                //enemys[i]->restarVida(100);
-                enemys[i]->getSprite()->setPosition(0, 0);
+                enemys[i]->restarVida(100);
+                //enemys[i]->getSprite()->setPosition(0, 0);
                 
                 if(enemys[i]->getVida() <= 0)
                 {
-                   // delete enemys[i];
-                   // enemys[i] = NULL;
+                     enemys.erase(enemys.begin() + i);
+                    
                    // enemys.erase(enemys.begin() + i);
                     std::cout << "Enemigo borrado del array" << std::endl;
                 }
@@ -190,26 +190,73 @@ void World::Update()
     
     for(int i=0;i<enemys.size();i++)
     {
-        enemys[i]->update();
-        float x = enemys[i]->getSprite()->getPosition().x-player->getPositionX();
-        float y = enemys[i]->getSprite()->getPosition().y-player->getPositionY();
-        float resultado = sqrt((x*x)+(y*y));
-        //std::cout << "ESTAMOS DENTRO DE ENEMIGOS" << std::endl;
-        if(resultado<400){
-            
-            if(player->transparente() && enemys[i]->getStrategy()->getType() != 1){
-                enemys[i]->changeStrategy(new IAPasiva());
-                std::cout << "IA PASIVA" << std::endl;
-            }else if(!player->transparente() && enemys[i]->getStrategy()->getType() != 0){
-                std::cout << "IA ACTIVA" << std::endl;
-                enemys[i]->changeStrategy(new IAActiva());
-            }
-            if(resultado<300 && player->getHabilidad()==2 && enemys[i]->getStrategy()->getType() != 2){
-                enemys[i]->changeStrategy(new IAStopped());
-            }
+        for(int j=0; j<enemys.size(); j++){
+            if(enemys[i]!=enemys[j]){
+                
+                if(!enemys[i]->getSprite()->getSprite()->getGlobalBounds().intersects(enemys[j]->getSprite()->getSprite()->getGlobalBounds())){
+                    float x = enemys[i]->getSprite()->getPosition().x-player->getPositionX();
+                    float y = enemys[i]->getSprite()->getPosition().y-player->getPositionY();
+                    float resultado = sqrt((x*x)+(y*y));
+                    //std::cout << "ESTAMOS DENTRO DE ENEMIGOS" << std::endl;
+                    if(resultado<400){
 
+                        if(player->transparente() && enemys[i]->getStrategy()->getType() != 1){
+                            enemys[i]->changeStrategy(new IAPasiva());
+                            std::cout << "IA PASIVA" << std::endl;
+                        }else if(!player->transparente() && enemys[i]->getStrategy()->getType() != 0){
+                            std::cout << "IA ACTIVA" << std::endl;
+                            enemys[i]->changeStrategy(new IAActiva());
+                        }
+                        if(resultado<300 && player->getHabilidad()==2 && enemys[i]->getStrategy()->getType() != 2){
+                            enemys[i]->changeStrategy(new IAStopped());
+                        }
+
+
+
+                    }
+                }
+                else{
+                    if(enemys[i]->getStrategy()->checkColisionMap(-7,0, enemys[i]->getSprite())){
+                        enemys[i]->getSprite()->move(7, 0);               
+                    }
+                    else if(enemys[i]->getStrategy()->checkColisionMap(7,0, enemys[i]->getSprite())){
+                        enemys[i]->getSprite()->move(-7, 0);   
+                        
+                    }
+                    else if(enemys[i]->getStrategy()->checkColisionMap(0,-7, enemys[i]->getSprite())){
+                        enemys[i]->getSprite()->move(0, 7);             
+                    }
+                    else if(enemys[i]->getStrategy()->checkColisionMap(0,7, enemys[i]->getSprite())){
+                        enemys[i]->getSprite()->move(0, -7);         
+                    }
+                    else{
+                        enemys[i]->getSprite()->getSprite()->setPosition(enemys[i]->getSprite()->getSprite()->getPosition().x+10,enemys[i]->getSprite()->getSprite()->getPosition().y+10);
+                    }
+                    
+                    if(enemys[j]->getStrategy()->checkColisionMap(-7,0, enemys[j]->getSprite())){
+                        enemys[j]->getSprite()->move(7, 0);               
+                    }
+                    else if(enemys[j]->getStrategy()->checkColisionMap(7,0, enemys[j]->getSprite())){
+                        enemys[j]->getSprite()->move(-7, 0);   
+                        
+                    }
+                    else if(enemys[j]->getStrategy()->checkColisionMap(0,-7, enemys[j]->getSprite())){
+                        enemys[j]->getSprite()->move(0, 7);             
+                    }
+                    else if(enemys[j]->getStrategy()->checkColisionMap(0,7, enemys[j]->getSprite())){
+                        enemys[j]->getSprite()->move(0, -7);         
+                    }
+                    else{
+                        enemys[j]->getSprite()->getSprite()->setPosition(enemys[j]->getSprite()->getSprite()->getPosition().x-10,enemys[j]->getSprite()->getSprite()->getPosition().y-10);
+                    }
+                    
+                    //enemys[j]->getSprite()->getSprite()->setPosition(enemys[j]->getSprite()->getSprite()->getPosition().x-10,enemys[j]->getSprite()->getSprite()->getPosition().y-10);
+                    //enemys.erase(enemys.begin()+i);
+                }
+                
+            }
         }
-        
+        enemys[i]->update();
         enemys[i]->colisionLengua(player->getLengua());
     }
     

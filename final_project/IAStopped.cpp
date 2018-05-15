@@ -32,3 +32,6 @@ int IAStopped::getType(){
      return 2;
  }
 
+bool IAStopped::checkColisionMap(int x, int y, Sprite* enemy){
+    return true;
+}
