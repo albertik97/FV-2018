@@ -8,7 +8,9 @@
 #include <time.h> 
 #include<iostream>
 
-Enemy::Enemy() {
+Enemy::Enemy()
+    : vida(100)
+{
     sprite=new Sprite();
     strategy=new IAPasiva();
     x=0;
@@ -129,4 +131,14 @@ void Enemy::colisionLengua(Sprite* lengua){
                 y=lengua->getSprite()->getGlobalBounds().left,lengua->getSprite()->getGlobalBounds().top+lengua->getSprite()->getGlobalBounds().height;
             }
     }
+}
+
+void Enemy::restarVida(int v)
+{
+    vida -= v;
+}
+
+int Enemy::getVida()
+{
+    return vida;
 }

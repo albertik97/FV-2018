@@ -13,13 +13,16 @@
 
 
 Player::Player() 
-    : movX(0), movY(0) ,kVel(20)
+    : movX(0), movY(0) ,kVel(50)
 {
     
     sprite = new Sprite();
     lengua = new Sprite();
     lengua->setSpriteTexture("resources/Lengua.png");
     lengua->setOrigin(10,-40);
+    veneno = new Sprite();
+    veneno->setSpriteTexture("resources/veneno.png");
+    veneno->setOrigin(veneno->getSprite()->getGlobalBounds().width / 2, veneno->getSprite()->getGlobalBounds().height / 2);
   
     x = 1920 / 2;
     y = 1080 / 2;
@@ -29,7 +32,8 @@ Player::Player()
     left = false;
     down = false;
     right = false;
-
+    
+    habbas = false;
     habuno = true;
     habdos = false;
     habtres = false;
@@ -53,6 +57,8 @@ Player::Player()
     tam=150;
     estado_lengua=false;
     invisible = false;
+    
+    lanzando_veneno = false;
 
 }
 
@@ -68,6 +74,13 @@ void Player::cambiarSprite(std::string s){
         ylast = 860;
         
 }
+
+void Player::cambiarSprite2(std::string s){
+        sprite->setSpriteTexture(s);                              // Y creo el spritesheet a partir de la imagen anterior
+        sprite->setTextureRect(1,1, 100, 105);
+	sprite->setOrigin(100/2,105/2);
+        sprite->scale(0.8,0.8);        
+}
 int Player::getVida(){
     return vida;
 }
@@ -78,8 +91,9 @@ void Player::anyadirRaton(){
 }
 
 void Player::restaVida(){
-    if(vida>=10)
-         vida-=10;
+    vida-=10;
+    if(vida<=10)
+         vida=0;
 }
 
 void Player::aumentaVida(){
@@ -125,9 +139,13 @@ int Player::getExperiencia(){
 }
 
 void Player::draw() {
+    
+    if(World::Instance()->getNivelActual() >= 2 && lanzando_veneno)
+        veneno->draw();
     sprite->draw();
     mouse->getCursorSprite()->draw();
     lengua->draw();
+    
     
 }
 
@@ -244,6 +262,7 @@ void Player::lookAtMouse(){
     const float PI = 3.14159265;
     float dx = curPos.x - position.x;
     float dy = curPos.y - position.y;
+    
     rotation = (atan2(dy, dx)) * 180 / PI;
     sprite->rotate(rotation-90);
 
@@ -252,6 +271,19 @@ void Player::lookAtMouse(){
 
 
 void Player::update(){
+
+               //HABILIDAD BASICA DEL HERVIBORO DE MOMENTO
+           if(habbas && tipoPlayer == 2){
+           //sprite
+                if(chab.getSeconds() > 0.75){
+                   // cambiarSprite2("resources/bicho.png");
+
+                     habbas = false;
+
+
+                }
+           }
+    
          ylast=y;
          xlast=x;
          if(tipoPlayer==2 ||tipoPlayer==0 ||(tipoPlayer==1 && !h1)){
@@ -278,7 +310,9 @@ void Player::update(){
             if(tipoPlayer==2){
                 sprite->setAnimationTime(200);
             }
-        }
+       }
+        
+
        //INVISIBLE DEL HERVIBORO
        if(h1 && tipoPlayer == 2){
            //sprite
@@ -320,6 +354,17 @@ void Player::update(){
            habdos = false;
            habuno = true;
        }
+                 if(lanzando_veneno && chab2.getSeconds() < 1)
+        {
+           std::cout << "movemos el veneno" << std::endl;
+        
+        veneno->getSprite()->move(cos(dir_veneno * M_PI/180) * 80,sin(dir_veneno * M_PI/180) * 80);
+        }
+        else
+        {
+            lanzando_veneno = false;
+            veneno->setPosition(sprite->getSprite()->getPosition().x, sprite->getSprite()->getPosition().y);
+        }
 }
 
 void Player::moveChar(){
@@ -442,6 +487,15 @@ float Player::getLastPositionY()
     return ylast;
 }
 
+void Player::lanzarHabilidadBasica(){
+    
+    
+    if(tipoPlayer ==  2  && !habbas){
+        chab.reset();
+       // cambiarSprite2("resources/mordisco.png");
+        habbas = true;   
+    }    
+}
 
 void Player::lanzarHabilidadUno()
 {
@@ -475,6 +529,7 @@ void Player::lanzarHabilidadTres()
     if(tipoPlayer == 2)
     {
         std::cout << "Lanzamos la habilidad 3 del herbivoro" << std::endl;
+        lanzarVeneno();
         // Lanzamos la habilidad 3 del herbivoro
     }
     if(tipoPlayer == 1)
@@ -493,4 +548,51 @@ void Player::lanzarHabilidadTres()
 
 Sprite* Player::getLengua(){
     return lengua;
+}
+
+void Player::lanzarVeneno()
+{
+    if(!lanzando_veneno)
+    {
+        lanzando_veneno = true;
+        chab2.reset();
+        calcDirVeneno();
+    }
+}
+
+
+void Player::calcDirVeneno()
+{
+    const float PI = 3.14159265;
+    
+    std::cout << "mouseX: " << mouse->getCursorSprite()->getSprite()->getPosition().x << std::endl;
+    std::cout << "mouseY: " << mouse->getCursorSprite()->getSprite()->getPosition().y << std::endl;
+    
+    std::cout << "sprteX: " << sprite->getPosition().x << std::endl;
+    std::cout << "sprteY " << sprite->getPosition().y << std::endl;
+    
+    float x = mouse->getCursorSprite()->getSprite()->getPosition().x - sprite->getPosition().x; //mouse.x - _sprite.getPosition().x;
+    float y = mouse->getCursorSprite()->getSprite()->getPosition().y - sprite->getPosition().y;//mouse.y - _sprite.getPosition().y;
+    std::cout << "x: " << x << std::endl;
+    std::cout << "y: " << y << std::endl;
+    
+    float hipp = sqrt(pow(x, 2) + pow(y, 2));
+    
+    std::cout << "h: " << hipp << std::endl;
+    float dx = mouse->getCursorSprite()->getSprite()->getPosition().x - sprite->getPosition().x;
+    float dy = mouse->getCursorSprite()->getSprite()->getPosition().y - sprite->getPosition().y;
+    
+    float angulo = (atan2(dy, dx) * 180 / PI);
+    if(mouse->getCursorSprite()->getSprite()->getPosition().y > sprite->getPosition().y)
+    {
+        float aux = (180 - angulo) + 180;
+        angulo = -aux;
+    }
+    dir_veneno = angulo;
+    hip = hipp;
+}
+
+Sprite* Player::getVeneno()
+{
+    return veneno;
 }

@@ -23,12 +23,16 @@ public:
     void setPositionInterpolated(float a,float b);
     void colisionLengua(Sprite *s);
     
+    void restarVida(int v);
+    int getVida();
+    
     
 private:
     Sprite* sprite;
     float kVel;
     IA* strategy;
     int x,y,ylast,xlast;
+    int vida;
 };
 
 #endif /* ENEMY_H */

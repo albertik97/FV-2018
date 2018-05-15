@@ -18,7 +18,7 @@
 
 IAActiva::IAActiva() {
     
-    kVel=7;
+    kVel=15;
     t_ataque.reset();
     if((std::rand())%2==0){
         tipo=0;
@@ -156,6 +156,15 @@ IAActiva::~IAActiva() {
                                  }
 
                 }
+           //miramos al personaje
+           
+            const float PI = 3.14159265;
+            float dx = player->getSprite()->getPosition().x - enemy->getPosition().x;
+            float dy = player->getSprite()->getPosition().y - enemy->getPosition().y;
+            
+            float rotation = (atan2(dy, dx)) * 180 / PI;
+            
+            enemy->getSprite()->setRotation(rotation+90);
 
            if(enemy->getSprite()->getGlobalBounds().intersects(player->getSprite()->getSprite()->getGlobalBounds())){//si esta cerca del player ataca
 
@@ -206,29 +215,6 @@ IAActiva::~IAActiva() {
     }
  }
  
- 
- 
-/*
-bool IAActiva::checkColisionEnemy(int x, int y, Sprite* enemy){
-    bool colision_detected = false;
-    
-    const sf::Rect<float> miBounds(enemy->getSprite()->getGlobalBounds().left+15+x,enemy->getSprite()->getGlobalBounds().top+15+y,enemy->getSprite()->getGlobalBounds().width-60,enemy->getSprite()->getGlobalBounds().height-60);
-    
-
-            
-    
-    std::vector<Enemy*> array = World::Instance()->getEnemies();
-    for(int i=0; i<array.size(); i++){
-        if(enemy->getPosition().x != array[i]->getLastPositionX() || enemy->getPosition().y != array[i]->getLastPositionY()  ){ // compruebo que no está comparando la colisión con él mismo
-            if(miBounds.intersects(array[i]->getSprite()->getSprite()->getGlobalBounds())){
-                colision_detected = true;
-            }
-        }
-    }
-    return colision_detected;
-}
-
- */
 
  int IAActiva::getType(){
      return 0;

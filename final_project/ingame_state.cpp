@@ -48,10 +48,11 @@ void ingame_state::HandleInput()
                 World::Instance()->setEndGame(true);
             }
             
-            if(evento.type == sf::Event::KeyPressed && Mouse::LeftPressed())
+            if(Mouse::LeftPressed())
             {
                 
                 //ataque basico
+                World::Instance()->getPlayer()->lanzarHabilidadBasica();
             }
             if(Mouse::RightPressed())
             {
@@ -70,7 +71,7 @@ void ingame_state::HandleInput()
             }
             
             if(!Mouse::RightPressed()){
-                World::Instance()->getPlayer()->setVelocidad(10);
+                World::Instance()->getPlayer()->setVelocidad(30);
             }
         }
      mundo->getPlayer()->input();

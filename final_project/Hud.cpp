@@ -190,9 +190,11 @@ void Hud::draw(){
     Rectenergia->draw();
     Rectvida->draw();
     panel->draw();
-    habilidad_uno->draw();
-    habilidad_dos->draw();
-    habilidad_tres->draw();
+    if(World::Instance()->getNivelActual()!=1){
+        habilidad_uno->draw();
+        habilidad_dos->draw();
+        habilidad_tres->draw();
+    }
     exp->draw();
     
 }

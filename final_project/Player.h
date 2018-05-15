@@ -52,16 +52,23 @@ public:
     int getTipo();
     void setTipo(int i);
     void cambiarSprite(std::string);
+    void cambiarSprite2(std::string);
     int getCarne();
     int getVerdura();    
     Mouse* getMouse();
     void anyadirRaton();
+    void lanzarHabilidadBasica();
     void lanzarHabilidadUno();
     void lanzarHabilidadDos();
     void lanzarHabilidadTres();
     bool transparente();
     
     void setVelocidad(int);
+    
+    void lanzarVeneno();
+    void calcDirVeneno();
+    
+    Sprite* getVeneno();
     
     
     
@@ -72,10 +79,12 @@ private:
     Coords last;
     Sprite* sprite;
     Sprite* lengua;
+    Sprite* veneno;
     bool left;
     bool up;
     bool down;
     bool right;
+    bool habbas;
     bool habuno;
     bool habdos;
     bool habtres;
@@ -94,13 +103,16 @@ private:
     int tipoPlayer;
     float rotation;
     
-    Clock chab1,chab2,chab3;
+    Clock chab1,chab2,chab3,chab;
     bool h1,h2,h3;
     
     
     //COSAS ATAQUES
     int tam;
     bool estado_lengua;
+    float dir_veneno;
+    float hip;
+    bool lanzando_veneno;
 
 
 };

@@ -28,11 +28,10 @@ void World::CargarNivel(int nivel)
     if(nivel == 1)
     {
         nivelActual = nivel;
-        
         srand(time(0));
         mapa.cargarmapa(LEVEL1_MAP_FILEPATH);
         
-        for(int i=0; i<1; i++)
+        for(int i=0; i<23; i++)
         {  
             Enemy* e = new Enemy();
             e->chargingTexture("resources/enemy.png",1024,1024,0.06,0.07);
@@ -49,7 +48,7 @@ void World::CargarNivel(int nivel)
               
         hud.cargarhud(1);
         
-        for(int i=0; i<160; i++)
+        for(int i=0; i<80; i++)
         {  
             Food* comida = new Food();
             comidaArray.push_back(comida);
@@ -73,7 +72,7 @@ void World::CargarNivel(int nivel)
             srand(time(0));
             mapa.cargarmapa(LEVEL2_MAP_FILEPATH);
             
-            for(int i=0; i<30; i++)
+            for(int i=0; i<15; i++)
             {  
                 Enemy* e = new Enemy();
                 e->chargingTexture("resources/carnivoro.png",100,100,0.6,0.6);
@@ -136,12 +135,12 @@ void World::CargarNivel(int nivel)
 void World::Update()
 {
 
-    if(player->getExperiencia() >= 30 && !nivelico)
+    if(player->getExperiencia() >= 10 && !nivelico)
     {
         nivelico=true;
         Game::instance()->setState(transition_state::Instance());
         Motor2D::Instance()->resetCamera();
-       //CargarNivel(2);
+        CargarNivel(2);
     }
     
     
@@ -167,6 +166,20 @@ void World::Update()
         int mitadPantallaY = Motor2D::Instance()->getWindow()->getView().getSize().y/2;
         if(xEnemy<x+mitadPantallaX && xEnemy>x-mitadPantallaX && yEnemy<y+mitadPantallaY && yEnemy>y-mitadPantallaY){
             colision.checkColisionComidaEnemy(comidaArray);
+            if(player->getVeneno()->getSprite()->getGlobalBounds().intersects(enemys[i]->getSprite()->getSprite()->getGlobalBounds()))
+            {
+                std::cout << "Le quito vida al enemigo" << std::endl;
+                //enemys[i]->restarVida(100);
+                enemys[i]->getSprite()->setPosition(0, 0);
+                
+                if(enemys[i]->getVida() <= 0)
+                {
+                   // delete enemys[i];
+                   // enemys[i] = NULL;
+                   // enemys.erase(enemys.begin() + i);
+                    std::cout << "Enemigo borrado del array" << std::endl;
+                }
+            }
             //std::cout<<"Entro"<<i<<std::endl;          
         }
     }
