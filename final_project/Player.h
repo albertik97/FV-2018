@@ -38,6 +38,13 @@ public:
     void setPositionInterpolated(float x,float y);
     float getLastPositionX();
     float getLastPositionY();
+    
+    float getPositionVX();
+    float getPositionVY();
+    void setPositionVInterpolated(float x,float y);
+    float getLastPositionVX();
+    float getLastPositionVY();
+    
     int getHabilidad();
     void setExperiencia(int exp);
     int getExperiencia();
@@ -95,6 +102,7 @@ private:
     int experiencia;
     float dir;
     int x,xlast,y,ylast;
+    int vx,vy,vxlast,vylast;
     int exp,carne,verdura;//la experciencia y la cantidad de comida de cada tipo
     int eliminoComida;
     Mouse* mouse;

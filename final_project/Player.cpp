@@ -354,16 +354,24 @@ void Player::update(){
            habdos = false;
            habuno = true;
        }
-                 if(lanzando_veneno && chab2.getSeconds() < 1)
+       if(lanzando_veneno && chab2.getSeconds() < 2)
         {
            std::cout << "movemos el veneno" << std::endl;
-        
+           vxlast=vx;
+           vylast=vy;
         veneno->getSprite()->move(cos(dir_veneno * M_PI/180) * 80,sin(dir_veneno * M_PI/180) * 80);
+         vx=veneno->getPosition().x;
+          vy=veneno->getPosition().y;
+     
         }
         else
         {
             lanzando_veneno = false;
+            vxlast=vx;
+            vylast=vy;
             veneno->setPosition(sprite->getSprite()->getPosition().x, sprite->getSprite()->getPosition().y);
+             vx=veneno->getPosition().x;
+            vy=veneno->getPosition().y;
         }
 }
 
@@ -473,6 +481,15 @@ float Player::getPositionY()
     return y;
 }
 
+float Player::getPositionVX()
+{
+    return vx;
+}
+
+float Player::getPositionVY()
+{
+    return vy;
+}
 void Player::setPositionInterpolated(float a,float b){
     sprite->setPosition(a,b);
 }
@@ -485,6 +502,16 @@ float Player::getLastPositionX()
 float Player::getLastPositionY()
 {
     return ylast;
+}
+
+float Player::getLastPositionVX()
+{
+    return vxlast;
+}
+
+float Player::getLastPositionVY()
+{
+    return vylast;
 }
 
 void Player::lanzarHabilidadBasica(){
@@ -529,8 +556,11 @@ void Player::lanzarHabilidadTres()
     if(tipoPlayer == 2)
     {
         std::cout << "Lanzamos la habilidad 3 del herbivoro" << std::endl;
-        lanzarVeneno();
-        // Lanzamos la habilidad 3 del herbivoro
+        
+        if(energia>=30){
+            energia-=30;
+            lanzarVeneno();
+        }
     }
     if(tipoPlayer == 1)
     {
@@ -564,21 +594,13 @@ void Player::lanzarVeneno()
 void Player::calcDirVeneno()
 {
     const float PI = 3.14159265;
-    
-    std::cout << "mouseX: " << mouse->getCursorSprite()->getSprite()->getPosition().x << std::endl;
-    std::cout << "mouseY: " << mouse->getCursorSprite()->getSprite()->getPosition().y << std::endl;
-    
-    std::cout << "sprteX: " << sprite->getPosition().x << std::endl;
-    std::cout << "sprteY " << sprite->getPosition().y << std::endl;
+
     
     float x = mouse->getCursorSprite()->getSprite()->getPosition().x - sprite->getPosition().x; //mouse.x - _sprite.getPosition().x;
     float y = mouse->getCursorSprite()->getSprite()->getPosition().y - sprite->getPosition().y;//mouse.y - _sprite.getPosition().y;
-    std::cout << "x: " << x << std::endl;
-    std::cout << "y: " << y << std::endl;
     
     float hipp = sqrt(pow(x, 2) + pow(y, 2));
     
-    std::cout << "h: " << hipp << std::endl;
     float dx = mouse->getCursorSprite()->getSprite()->getPosition().x - sprite->getPosition().x;
     float dy = mouse->getCursorSprite()->getSprite()->getPosition().y - sprite->getPosition().y;
     

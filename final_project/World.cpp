@@ -292,7 +292,7 @@ void World::Draw(float percentTick)
         beginAlpha(percentTick);
     }
     player->setPositionInterpolated(player->getLastPositionX()*(1-percentTick)+player->getPositionX()*percentTick,player->getLastPositionY()*(1-percentTick)+player->getPositionY()*percentTick);
-    
+    player->getVeneno()->setPosition(player->getLastPositionVX()*(1-percentTick)+player->getPositionVX()*percentTick,player->getLastPositionVY()*(1-percentTick)+player->getPositionVY()*percentTick);
     hud.panel->setPosition(((player->getLastPositionX()*(1-percentTick)+player->getPositionX()*percentTick)-950)+15,15+((player->getLastPositionY()*(1-percentTick)+player->getPositionY()*percentTick)-530));
     hud.Rectenergia->setPosition(((player->getLastPositionX()*(1-percentTick)+player->getPositionX()*percentTick)-950)+20,47+((player->getLastPositionY()*(1-percentTick)+player->getPositionY()*percentTick)-530));
     hud.Rectvida->setPosition(((player->getLastPositionX()*(1-percentTick)+player->getPositionX()*percentTick)-950)+20,25+((player->getLastPositionY()*(1-percentTick)+player->getPositionY()*percentTick)-530));

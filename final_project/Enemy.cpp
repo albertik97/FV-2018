@@ -67,7 +67,6 @@ void Enemy::update(){
         sprite->animar(0,0,1024,1024, 1024);
     x=sprite->getPosition().x;
     y=sprite->getPosition().y;
-     std::cout<<"x: "<<x<<"y: "<<y<<std::endl;
 }
 
 void Enemy::changeStrategy(IA* a){
