@@ -153,7 +153,7 @@ void World::CargarNivel(int nivel)
                 }
                 else
                 {
-                    player->cambiarSprite("resources/bicho.png");
+                    player->cambiarSprite("resources/animasao.png");
                     player->setTipo(2);
                 }
                 player->anyadirRaton();
