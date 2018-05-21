@@ -165,14 +165,14 @@ void World::CargarNivel(int nivel)
 void World::Update()
 {
 
-    if(player->getExperiencia() >= 10 && !nivelico)
+    if(player->getExperiencia() >= 100 && !nivelico)
     {
         nivelico=true;
         Game::instance()->setState(transition_state::Instance());
         Motor2D::Instance()->resetCamera();
     }
     
-    if(nivelActual == 2 && player->getExperiencia() >= 90)
+    if(nivelActual == 2 && player->getExperiencia() >= 200)
     {
 
         Game::instance()->setState(transition_state::Instance());

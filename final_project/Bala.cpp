@@ -40,7 +40,8 @@ void Bala::setDirection(){
 void Bala::update(){
 
     sprite->move(cos( direction * M_PI/180) * 80,sin( direction * M_PI/180) * 80);
-        
+    if(sprite->getSprite()->getGlobalBounds().intersects(World::Instance()->getPlayer()->getSprite()->getSprite()->getGlobalBounds()))
+        World::Instance()->getPlayer()->restaVida();
 }
 
 void Bala::draw(){
