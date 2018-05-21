@@ -73,11 +73,8 @@ void World::CargarNivel(int nivel)
             srand(time(0));
             mapa.cargarmapa(LEVEL2_MAP_FILEPATH);
             
-<<<<<<< HEAD
-            for(int i=0; i<40; i++)
-=======
+
             for(int i=0; i<10; i++)
->>>>>>> master
             {  
                 Enemy* e = new Enemy();
                 e->chargingTexture("resources/carnivoro.png",100,100,0.6,0.6);
@@ -196,46 +193,6 @@ void World::Update()
     
     for(int i=0;i<enemys.size();i++)
     {
-<<<<<<< HEAD
-        enemys[i]->update();
-        float x = enemys[i]->getSprite()->getPosition().x-player->getPositionX();
-        float y = enemys[i]->getSprite()->getPosition().y-player->getPositionY();
-        float resultado = sqrt((x*x)+(y*y));
-        //std::cout << "ESTAMOS DENTRO DE ENEMIGOS" << std::endl;
-        if(resultado<400){
-                           // std::cout << "dentro de las ias" << std::endl;
-
-            if(player->transparente() && enemys[i]->getStrategy()->getType() != 1){
-                enemys[i]->changeStrategy(new IAPasiva());
-                std::cout << "IA PASIVA" << std::endl;
-            }
-                            
-            if(!player->transparente() && enemys[i]->getStrategy()->getType() != 0){
-                std::cout << "IA ACTIVA" << std::endl;
-                enemys[i]->changeStrategy(new IAActiva());
-            }
-            
-            if(player->getRalentiza()){
-                std::cout << "RALENTIZAMOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOH" << std::endl;
-                enemys[i]->getStrategy()->setVelocidad(4.f);
-                std::cout << "SETEAMOS VELOCIDAD 2.f" << std::endl;
-            }
-            if(!player->getRalentiza()){
-                enemys[i]->getStrategy()->setVelocidad(7.f);
-                std::cout << "SETEAMOS VELOCIDAD 7" << std::endl;
-            }
-            if(resultado<300 && player->getHabilidad()==2 && player->getTipo() == 1 && enemys[i]->getStrategy()->getType() != 2){
-                enemys[i]->changeStrategy(new IAStopped());
-                std::cout << "IA STOPPED" << std::endl;
-
-            }
-        }
-  
-            
-
-        
-        
-=======
         for(int j=0; j<enemys.size(); j++){
             if(enemys[i]!=enemys[j]){
                 
@@ -253,8 +210,19 @@ void World::Update()
                             std::cout << "IA ACTIVA" << std::endl;
                             enemys[i]->changeStrategy(new IAActiva());
                         }
-                        if(resultado<300 && player->getHabilidad()==2 && enemys[i]->getStrategy()->getType() != 2){
+                        if(resultado<300 && player->getHabilidad()==2 && player->getTipo() != 2 && enemys[i]->getStrategy()->getType() != 2){
                             enemys[i]->changeStrategy(new IAStopped());
+                                                        std::cout << "ENTRA EN EL PUTO IASTOPPED" << std::endl;
+
+                        }
+                        if(player->getRalentiza()){
+                            std::cout << "RALENTIZAMOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOH" << std::endl;
+                            enemys[i]->getStrategy()->setVelocidad(4.f);
+                            std::cout << "SETEAMOS VELOCIDAD 2.f" << std::endl;
+                         }
+                        if(!player->getRalentiza()){
+                            enemys[i]->getStrategy()->setVelocidad(7.f);
+                            std::cout << "SETEAMOS VELOCIDAD 7" << std::endl;
                         }
 
 
@@ -303,7 +271,7 @@ void World::Update()
             }
         }
         enemys[i]->update();
->>>>>>> master
+
         enemys[i]->colisionLengua(player->getLengua());
     }
     

@@ -57,12 +57,12 @@ Player::Player()
     tam=150;
     estado_lengua=false;
     invisible = false;
-<<<<<<< HEAD
+
     ralentiza = false;
-=======
+
     
     lanzando_veneno = false;
->>>>>>> master
+
 
 }
 
