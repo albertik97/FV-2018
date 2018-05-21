@@ -53,5 +53,8 @@ void options_state::Update()
 }
 void options_state::Draw(float percentTick)
 {
+    Sprite controles;
+    controles.setSpriteTexture("resources/options.png");
+    controles.draw();
  //Motor2D::Instance()->getWindow()->draw(mapa);
 }
