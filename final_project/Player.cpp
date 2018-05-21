@@ -327,13 +327,12 @@ void Player::update(){
                 sprite->transparente();
                 invisible = true;
                 energia -= 2;
-<<<<<<< HEAD
-=======
+
                 if(energia <= 0){
                     sprite->opaco();
                 }
                 //std::cout << "ESTAMOS INBISIBLA" << std::endl;
->>>>>>> master
+
            }else if(chab1.getSeconds() > 6){
                sprite->opaco();
                invisible = false;
@@ -346,11 +345,10 @@ void Player::update(){
              // std::cout << "Nene tamoh dentro el bucle lokkko" << std::endl;
               if(!ralentiza){
                    chab2.reset();
-                                  // std::cout << "RESETEAMOS EL RELOJ" << std::endl;
+
 
               }
               if(chab2.getSeconds() < 5 && energia > 5){
-                                 // std::cout << "COMO RESETEAMOS EL RELOJ ENTONCES ESTA EN MENOR QUE SINCO" << std::endl;
 
 
                   ralentiza = true;
@@ -378,7 +376,7 @@ void Player::update(){
                 tam-=20;
                 estado_lengua=true;
            }else{
-               tam=0;      
+               tam=1;
                h1=false;
                estado_lengua=false;
            }
@@ -581,13 +579,9 @@ void Player::lanzarHabilidadDos()
 {
     if(tipoPlayer == 2)
     {
-<<<<<<< HEAD
-      
-    }
-    if(tipoPlayer == 1)
-    {
+
        
-=======
+
         h2 = true;
         std::cout << "Lanzamos la habilidad 2 del herbivoro" << std::endl;
         // Lanzamos la habilidad 2 del herbivoro
@@ -597,7 +591,6 @@ void Player::lanzarHabilidadDos()
         h2 = true;
         std::cout << "Lanzamos la habilidad 2 del carnivoro" << std::endl;
         // Lanzamos la habilidad 2 del carnivoro
->>>>>>> master
     }
 }
 void Player::lanzarHabilidadTres()

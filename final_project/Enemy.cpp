@@ -17,6 +17,7 @@ Enemy::Enemy()
     y=0;
     ylast=0;
     xlast=0;
+    atrapado=false;
 }
 
 Enemy::Enemy(const Enemy& orig) {
@@ -107,6 +108,10 @@ float Enemy::getLastPositionY()
 }
 
 
+bool Enemy::getAtrapado(){
+    return atrapado;
+}
+
 
 void Enemy::colisionLengua(Sprite* lengua){
 
@@ -132,7 +137,13 @@ void Enemy::colisionLengua(Sprite* lengua){
                 x=lengua->getSprite()->getGlobalBounds().left+lengua->getSprite()->getGlobalBounds().width;
                y=lengua->getSprite()->getGlobalBounds().top+lengua->getSprite()->getGlobalBounds().height;
             }
+        
+        if(World::Instance()->getPlayer()->getLengua()->getSprite()->getTextureRect().height<21){
+            atrapado=true;
+            
+        }
     }
+   
 }
 
 void Enemy::restarVida(int v)

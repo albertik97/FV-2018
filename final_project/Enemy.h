@@ -25,6 +25,7 @@ public:
     
     void restarVida(int v);
     int getVida();
+    bool getAtrapado();
     
     
 private:
@@ -33,6 +34,7 @@ private:
     IA* strategy;
     int x,y,ylast,xlast;
     int vida;
+    bool atrapado;
 };
 
 #endif /* ENEMY_H */
