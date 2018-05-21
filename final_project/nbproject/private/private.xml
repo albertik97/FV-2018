@@ -7,16 +7,28 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/xals1997/Escritorio/FV/FV-2018/final_project/IA.h</file>
-            <file>file:/home/xals1997/Escritorio/FV/FV-2018/final_project/Player.h</file>
-            <file>file:/home/xals1997/Escritorio/FV/FV-2018/final_project/World.cpp</file>
-            <file>file:/home/xals1997/Escritorio/FV/FV-2018/final_project/Enemy.cpp</file>
-            <file>file:/home/xals1997/Escritorio/FV/FV-2018/final_project/World.h</file>
-            <file>file:/home/xals1997/Escritorio/FV/FV-2018/final_project/IAActiva.h</file>
-            <file>file:/home/xals1997/Escritorio/FV/FV-2018/final_project/Player.cpp</file>
-            <file>file:/home/xals1997/Escritorio/FV/FV-2018/final_project/IAStopped.cpp</file>
-            <file>file:/home/xals1997/Escritorio/FV/FV-2018/final_project/IAActiva.cpp</file>
-            <file>file:/home/xals1997/Escritorio/FV/FV-2018/final_project/IAStopped.h</file>
+            <file>file:/home/jose/NetBeansProjects/FV-GUENO/FV-GUENO/final_project/Coords.cpp</file>
+            <file>file:/home/jose/NetBeansProjects/FV-GUENO/FV-GUENO/final_project/Enemy.h</file>
+            <file>file:/home/jose/NetBeansProjects/FV-GUENO/FV-GUENO/final_project/Food.cpp</file>
+            <file>file:/home/jose/NetBeansProjects/FV-GUENO/FV-GUENO/final_project/IAPasiva.cpp</file>
+            <file>file:/home/jose/NetBeansProjects/FV-GUENO/FV-GUENO/final_project/Game.cpp</file>
+            <file>file:/home/jose/NetBeansProjects/FV-GUENO/FV-GUENO/final_project/IAActiva.cpp</file>
+            <file>file:/home/jose/NetBeansProjects/FV-GUENO/FV-GUENO/final_project/World.cpp</file>
+            <file>file:/home/jose/NetBeansProjects/FV-GUENO/FV-GUENO/final_project/IAActiva.h</file>
+            <file>file:/home/jose/NetBeansProjects/FV-GUENO/FV-GUENO/final_project/IAPasiva.h</file>
+            <file>file:/home/jose/NetBeansProjects/FV-GUENO/FV-GUENO/final_project/IAStopped.cpp</file>
+            <file>file:/home/jose/NetBeansProjects/FV-GUENO/FV-GUENO/final_project/Hud.cpp</file>
+            <file>file:/home/jose/NetBeansProjects/FV-GUENO/FV-GUENO/final_project/Camera.cpp</file>
+            <file>file:/home/jose/NetBeansProjects/FV-GUENO/FV-GUENO/final_project/Player.cpp</file>
+            <file>file:/home/jose/NetBeansProjects/FV-GUENO/FV-GUENO/final_project/Player.h</file>
+            <file>file:/home/jose/NetBeansProjects/FV-GUENO/FV-GUENO/final_project/IA.h</file>
+            <file>file:/home/jose/NetBeansProjects/FV-GUENO/FV-GUENO/final_project/Button.cpp</file>
+            <file>file:/home/jose/NetBeansProjects/FV-GUENO/FV-GUENO/final_project/Colisionator.cpp</file>
+            <file>file:/home/jose/NetBeansProjects/FV-GUENO/FV-GUENO/final_project/Fondo.cpp</file>
+            <file>file:/home/jose/NetBeansProjects/FV-GUENO/FV-GUENO/final_project/IAStopped.h</file>
+            <file>file:/home/jose/NetBeansProjects/FV-GUENO/FV-GUENO/final_project/Enemy.cpp</file>
+            <file>file:/home/jose/NetBeansProjects/FV-GUENO/FV-GUENO/final_project/World.h</file>
+            <file>file:/home/jose/NetBeansProjects/FV-GUENO/FV-GUENO/final_project/Clock.cpp</file>
         </group>
     </open-files>
 </project-private>

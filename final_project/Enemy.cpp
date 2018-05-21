@@ -67,6 +67,7 @@ void Enemy::update(){
         sprite->animar(0,0,1024,1024, 1024);
     x=sprite->getPosition().x;
     y=sprite->getPosition().y;
+
 }
 
 void Enemy::changeStrategy(IA* a){
@@ -104,6 +105,8 @@ float Enemy::getLastPositionY()
 {
     return ylast;
 }
+
+
 
 void Enemy::colisionLengua(Sprite* lengua){
 

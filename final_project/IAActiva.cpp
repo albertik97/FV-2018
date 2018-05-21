@@ -215,3 +215,7 @@ IAActiva::~IAActiva() {
  int IAActiva::getType(){
      return 0;
  }
+ 
+ void IAActiva::setVelocidad(float velocidad){
+     kVel = velocidad;
+ }

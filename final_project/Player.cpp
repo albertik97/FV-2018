@@ -9,7 +9,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Color.hpp>
 
-
+///ATENCION EL TIPO PLAYER 0 AMEBA 1 CARNIVORO 2 HERVIBORO
 
 
 Player::Player() 
@@ -46,7 +46,7 @@ Player::Player()
     verdura=0;
 
     eliminoComida = 0;
-    vida=100;
+    vida=100000;
     mouse= new Mouse();
     mouse->initMouse("resources/mira.png",0.1,0.1);
     mouse->getCursorSprite()->setPosition(x+50, y+50);
@@ -57,8 +57,12 @@ Player::Player()
     tam=150;
     estado_lengua=false;
     invisible = false;
+
+    ralentiza = false;
+
     
     lanzando_veneno = false;
+
 
 }
 
@@ -128,7 +132,7 @@ void Player::setExperiencia(int e){
 }
 void Player::chargingTexture() {
 	
-	sprite->setSpriteTexture("resources/spritesheet.png");                              // Y creo el spritesheet a partir de la imagen anterior
+	sprite->setSpriteTexture("resources/spritesheet.png");   // Y creo el spritesheet a partir de la imagen anterior
         sprite->setTextureRect(7,1, 112, 173);
 	sprite->setOrigin(112/2,173/2);
         sprite->scale(0.5,0.5);
@@ -149,7 +153,9 @@ void Player::draw() {
     
 }
 
-void Player::aumentaEnergia(float _tiempo){
+void Player::aumentaEnergia
+
+(float _tiempo){
     if(static_cast<int>(_tiempo)%2 == 0 && energia < maxenergia){
         energia++;
     }
@@ -228,7 +234,6 @@ void Player::input(){
                         
                     }
                     if(!Mouse::LeftPressed()){
-                        
                     }
                     
 }
@@ -318,9 +323,17 @@ void Player::update(){
                 chab1.reset();
            }
            if(chab1.getSeconds() < 5 && energia > 0){
+               
                 sprite->transparente();
                 invisible = true;
                 energia -= 2;
+<<<<<<< HEAD
+=======
+                if(energia <= 0){
+                    sprite->opaco();
+                }
+                //std::cout << "ESTAMOS INBISIBLA" << std::endl;
+>>>>>>> master
            }else if(chab1.getSeconds() > 6){
                sprite->opaco();
                invisible = false;
@@ -328,6 +341,34 @@ void Player::update(){
            }
            
        }
+          //RALENTIZA HERBVIBVORO XD
+          if(h2 && tipoPlayer == 2){
+             // std::cout << "Nene tamoh dentro el bucle lokkko" << std::endl;
+              if(!ralentiza){
+                   chab2.reset();
+                                  // std::cout << "RESETEAMOS EL RELOJ" << std::endl;
+
+              }
+              if(chab2.getSeconds() < 5 && energia > 5){
+                                 // std::cout << "COMO RESETEAMOS EL RELOJ ENTONCES ESTA EN MENOR QUE SINCO" << std::endl;
+
+
+                  ralentiza = true;
+                //  std::cout << "entonses ralentisa = " << ralentiza << std::endl;
+
+                  energia -= 3;
+                  if(energia <= 0){
+                      ralentiza = false;
+                  }
+                  
+              }else if(chab2.getSeconds() > 6){
+
+                  ralentiza = false;
+                //  std::cout << "ARA EL RELOJ ESTA MAYOR QUE SIX TONSES RALENTISA: " << ralentiza << std::endl;
+
+                  h2 = false;
+              }
+          }
        
        if(h1 && tipoPlayer == 1){
               if(tam<149 && !estado_lengua){
@@ -494,6 +535,10 @@ float Player::getLastPositionX()
     return xlast;
 }
 
+bool Player::getRalentiza(){
+    return ralentiza;
+}
+
 float Player::getLastPositionY()
 {
     return ylast;
@@ -536,11 +581,23 @@ void Player::lanzarHabilidadDos()
 {
     if(tipoPlayer == 2)
     {
+<<<<<<< HEAD
       
     }
     if(tipoPlayer == 1)
     {
        
+=======
+        h2 = true;
+        std::cout << "Lanzamos la habilidad 2 del herbivoro" << std::endl;
+        // Lanzamos la habilidad 2 del herbivoro
+    }
+    if(tipoPlayer == 1)
+    {
+        h2 = true;
+        std::cout << "Lanzamos la habilidad 2 del carnivoro" << std::endl;
+        // Lanzamos la habilidad 2 del carnivoro
+>>>>>>> master
     }
 }
 void Player::lanzarHabilidadTres()

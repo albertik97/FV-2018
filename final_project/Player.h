@@ -69,7 +69,7 @@ public:
     void lanzarHabilidadDos();
     void lanzarHabilidadTres();
     bool transparente();
-    
+    bool getRalentiza();
     void setVelocidad(int);
     
     void lanzarVeneno();
@@ -109,6 +109,7 @@ private:
     int movX;
     int movY;
     bool invisible;
+    bool ralentiza;
     int tipoPlayer;
     float rotation;
     

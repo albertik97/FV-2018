@@ -71,6 +71,7 @@ void World::CargarNivel(int nivel)
             srand(time(0));
             mapa.cargarmapa(LEVEL2_MAP_FILEPATH);
             
+
             for(int i=0; i<10; i++)
             {  
                 Enemy* e = new Enemy();
@@ -202,8 +203,19 @@ void World::Update()
                            
                             enemys[i]->changeStrategy(new IAActiva());
                         }
-                        if(resultado<300 && player->getHabilidad()==2 && enemys[i]->getStrategy()->getType() != 2){
+                        if(resultado<300 && player->getHabilidad()==2 && player->getTipo() != 2 && enemys[i]->getStrategy()->getType() != 2){
                             enemys[i]->changeStrategy(new IAStopped());
+                                                        std::cout << "ENTRA EN EL PUTO IASTOPPED" << std::endl;
+
+                        }
+                        if(player->getRalentiza()){
+                            std::cout << "RALENTIZAMOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOH" << std::endl;
+                            enemys[i]->getStrategy()->setVelocidad(4.f);
+                            std::cout << "SETEAMOS VELOCIDAD 2.f" << std::endl;
+                         }
+                        if(!player->getRalentiza()){
+                            enemys[i]->getStrategy()->setVelocidad(7.f);
+                            std::cout << "SETEAMOS VELOCIDAD 7" << std::endl;
                         }
 
 
@@ -252,6 +264,7 @@ void World::Update()
             }
         }
         enemys[i]->update();
+
         enemys[i]->colisionLengua(player->getLengua());
     }
     
