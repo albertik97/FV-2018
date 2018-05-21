@@ -2,6 +2,7 @@
 
 #include "World.h"
 #include "gameover_state.h"
+#include "gamewin_state.h"
 
 World* World::pinstance = 0;
 World* World::Instance()
@@ -181,7 +182,7 @@ void World::Update()
     if(bossTime.getSeconds() >= 6 && nivelActual == 3)
     {
         Motor2D::Instance()->Instance()->resetCamera();
-        Game::instance()->setState(gameover_state::Instance());
+        Game::instance()->setState(gamewin_state::Instance());
     }
     
     

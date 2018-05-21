@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="100">
+<configurationDescriptor version="97">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
@@ -32,6 +32,7 @@
       <itemPath>World.h</itemPath>
       <itemPath>credits_state.h</itemPath>
       <itemPath>gameover_state.h</itemPath>
+      <itemPath>gamewin_state.h</itemPath>
       <itemPath>ingame_state.h</itemPath>
       <itemPath>intro_state.h</itemPath>
       <itemPath>menu_state.h</itemPath>
@@ -88,6 +89,7 @@
       <itemPath>World.cpp</itemPath>
       <itemPath>credits_state.cpp</itemPath>
       <itemPath>gameover_state.cpp</itemPath>
+      <itemPath>gamewin_state.cpp</itemPath>
       <itemPath>ingame_state.cpp</itemPath>
       <itemPath>intro_state.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
@@ -272,6 +274,10 @@
       <item path="gameover_state.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="gameover_state.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="gamewin_state.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="gamewin_state.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ingame_state.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -470,6 +476,10 @@
       <item path="gameover_state.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="gameover_state.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="gamewin_state.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="gamewin_state.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ingame_state.cpp" ex="false" tool="1" flavor2="0">
       </item>
