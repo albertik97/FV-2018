@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Bala.h</itemPath>
       <itemPath>Boss.h</itemPath>
       <itemPath>Button.h</itemPath>
       <itemPath>Camera.h</itemPath>
@@ -62,6 +63,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Bala.cpp</itemPath>
       <itemPath>Boss.cpp</itemPath>
       <itemPath>Button.cpp</itemPath>
       <itemPath>Camera.cpp</itemPath>
@@ -164,6 +166,10 @@
             ex="false"
             tool="3"
             flavor2="0">
+      </item>
+      <item path="Bala.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Bala.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Boss.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -358,6 +364,10 @@
             ex="false"
             tool="3"
             flavor2="0">
+      </item>
+      <item path="Bala.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Bala.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Boss.cpp" ex="false" tool="1" flavor2="0">
       </item>
