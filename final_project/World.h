@@ -44,6 +44,7 @@ public:
     std::vector<Enemy*> getEnemies();
     int getNivelActual();
     Fondo getFondo();
+    Clock getTimeBoss();
     
     /*
     Clock getClockGameStart();
@@ -77,21 +78,11 @@ private:
     Hud hud;
     Fondo fondoTransition;
     Clock gameStart;
+    Clock bossTime;
     bool endGame;
     bool nivelico;
     
     Boss* boss;
-
-   /* Player* player;
-    Camera camera;
-    
-    Clock gameStart;
-    Fondo fondoTransition;
-    TileMap mapa;
-    std::vector<Enemy*> enemys;
-    std::vector<Food*> comidaArray;
-    Colisionator colision;
-    sf::CircleShape s;*/
 };
 
 #endif /* WORLD_H */

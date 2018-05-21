@@ -174,6 +174,18 @@ void Hud::updateHud(float x,float y){
     Rectvida->scale2(scale,0.4);
     exp->setPos(x+760,y-470);
 
+    
+    if(World::Instance()->getNivelActual() == 3)
+    {
+        int sec = 0;
+        sec = World::Instance()->getTimeBoss().getMiliseconds() / 1000;
+        std::string s = "Tiempo: " + sec;
+        std::cout << s << std::endl;
+        exp->setText(s);
+        
+    }
+        
+
 }
 
 void Hud::sumaexp(int e){
@@ -181,6 +193,7 @@ void Hud::sumaexp(int e){
     ss<<e;
     std::string str=ss.str();
     exp->setText("Experiencia: "+str);
+
 }
 void Hud::draw(){
 

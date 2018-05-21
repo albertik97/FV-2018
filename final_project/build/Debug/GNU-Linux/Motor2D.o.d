@@ -3,7 +3,7 @@ build/Debug/GNU-Linux/Motor2D.o: Motor2D.cpp Motor2D.h Camera.h Game.h \
  Clock.h Keyboard.h Fondo.h Button.h menu_state.h ingame_state.h World.h \
  TileMap.h Player.h Coords.h Mouse.h Hud.h Rectangleshape.h Food.h \
  Enemy.h IA.h IAActiva.h Colisionator.h IAPasiva.h IAStopped.h Boss.h \
- transition_state.h
+ Bala.h transition_state.h
 
 Motor2D.h:
 
@@ -66,5 +66,7 @@ IAPasiva.h:
 IAStopped.h:
 
 Boss.h:
+
+Bala.h:
 
 transition_state.h:

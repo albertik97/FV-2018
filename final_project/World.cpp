@@ -125,6 +125,8 @@ void World::CargarNivel(int nivel)
             {
                 resetWorld();
                 nivelActual = nivel;
+                bossTime.reset();
+                
                 
                 mapa.cargarmapa("lastmap.tmx");
                 
@@ -174,6 +176,12 @@ void World::Update()
 
         Game::instance()->setState(transition_state::Instance());
         Motor2D::Instance()->resetCamera();
+    }
+    
+    if(bossTime.getSeconds() >= 6 && nivelActual == 3)
+    {
+        Motor2D::Instance()->Instance()->resetCamera();
+        Game::instance()->setState(gameover_state::Instance());
     }
     
     
@@ -372,6 +380,7 @@ void World::Draw(float percentTick)
     
     
     
+    
     player->draw();
     if(nivelActual==3)
         boss->draw();
@@ -477,4 +486,9 @@ std::vector<Food*> World::getComida()
 int World::getNivelActual()
 {
     return nivelActual;
+}
+
+Clock World::getTimeBoss()
+{
+    return bossTime;
 }

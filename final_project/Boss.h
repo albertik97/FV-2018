@@ -1,5 +1,6 @@
 #include "Sprite.h"
 #include "Clock.h"
+#include "Bala.h"
 
 #ifndef BOSS_H
 #define BOSS_H
@@ -23,7 +24,8 @@ public:
 private:
     Sprite* sprite;
     int x,y,lastx,lasty,rotationx, rotationy;
-    Clock time;
+    Clock time,timeshoot;
+    std::vector<Bala*> balasArray;
 };
 
 #endif /* BOSS_H */
