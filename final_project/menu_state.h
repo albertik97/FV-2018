@@ -27,6 +27,7 @@
 #include "Button.h"
 #include "Clock.h"
 #include "World.h"
+#include "Music.h"
 
 class menu_state : public state, transitions
 {
@@ -43,8 +44,10 @@ private:
     Sprite fondo;
     Sprite selector;
     int selected;
+    bool musicplayed;
     Clock menuStart;
     Mouse mouse;
+    Music musicaInicio;
     
 public:
         

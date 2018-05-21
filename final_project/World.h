@@ -17,7 +17,8 @@
 #include "IAStopped.h"
 #include "Colisionator.h"
 #include "Boss.h"
-
+#include "Music.h"
+#include "Sound.h"
 #include "states.h"
 
 #include <math.h>
@@ -70,6 +71,11 @@ private:
     static World* pinstance;
     int nivelActual;
     TileMap mapa;
+    Sound sonidoComida;
+    Sound sonidoLengua;
+    Music musicaNiveluno;
+    Music musicaNiveldos;
+    Music musicaNiveltres;
     Camera camera;
     Player* player;
     std::vector<Food*> comidaArray;

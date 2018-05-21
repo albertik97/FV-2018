@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="97">
+<configurationDescriptor version="100">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
@@ -23,8 +23,10 @@
       <itemPath>Keyboard.h</itemPath>
       <itemPath>Motor2D.h</itemPath>
       <itemPath>Mouse.h</itemPath>
+      <itemPath>Music.h</itemPath>
       <itemPath>Player.h</itemPath>
       <itemPath>Resources.h</itemPath>
+      <itemPath>Sound.h</itemPath>
       <itemPath>Sprite.h</itemPath>
       <itemPath>Text.h</itemPath>
       <itemPath>TileMap.h</itemPath>
@@ -82,7 +84,9 @@
       <itemPath>Keyboard.cpp</itemPath>
       <itemPath>Motor2D.cpp</itemPath>
       <itemPath>Mouse.cpp</itemPath>
+      <itemPath>Music.cpp</itemPath>
       <itemPath>Player.cpp</itemPath>
+      <itemPath>Sound.cpp</itemPath>
       <itemPath>Sprite.cpp</itemPath>
       <itemPath>Text.cpp</itemPath>
       <itemPath>TileMap.cpp</itemPath>
@@ -243,11 +247,19 @@
       </item>
       <item path="Mouse.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Music.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Music.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Player.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Player.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Resources.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sound.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sound.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Sprite.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -445,11 +457,19 @@
       </item>
       <item path="Mouse.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Music.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Music.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Player.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Player.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Resources.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sound.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sound.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Sprite.cpp" ex="false" tool="1" flavor2="0">
       </item>

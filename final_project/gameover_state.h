@@ -18,6 +18,8 @@
 #include <SFML/Graphics.hpp>
 #include "Sprite.h"
 
+#include "Music.h"
+
 class gameover_state : public state
 {
 private:
@@ -27,7 +29,8 @@ private:
     gameover_state &operator= (const gameover_state &);
     
     static gameover_state* pinstance;
-    
+    Music sonidoGameover;
+    bool gameover;
     Sprite fondo;
     int vida;
 

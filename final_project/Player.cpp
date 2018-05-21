@@ -59,8 +59,8 @@ Player::Player()
     invisible = false;
 
     ralentiza = false;
-
-    
+    sonidoLengua = false;
+    lenguetaso.setSound("resources/lengua.wav");
     lanzando_veneno = false;
 
 
@@ -371,14 +371,20 @@ void Player::update(){
        if(h1 && tipoPlayer == 1){
               if(tam<149 && !estado_lengua){
                 tam+=75;
+                if(!sonidoLengua){
+                    lenguetaso.playSound();
+                    sonidoLengua = true;
+                }
                 
             }else if(tam>=20){               
                 tam-=20;
                 estado_lengua=true;
+                sonidoLengua = false;
            }else{
                tam=1;
                h1=false;
                estado_lengua=false;
+               
            }
         
         lengua->setTextureRect(0, 0,23.0,tam);

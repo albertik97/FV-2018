@@ -26,6 +26,10 @@ void World::CargarNivel(int nivel)
     
     if(nivel == 1)
     {
+        sonidoComida.setSound("resources/come.wav");
+        musicaNiveluno.cargarMusica("resources/musicaniveldos.wav");
+        musicaNiveluno.play();
+        musicaNiveluno.musicaBucle();
         nivelico = false;
         nivelActual = nivel;
         srand(time(0));
@@ -67,12 +71,16 @@ void World::CargarNivel(int nivel)
     else
         if(nivel == 2)
         {
+            
             resetWorld();
             nivelActual = nivel;
             srand(time(0));
             mapa.cargarmapa(LEVEL2_MAP_FILEPATH);
             
-
+            musicaNiveluno.pararMusica();
+        musicaNiveldos.cargarMusica("resources/musicaniveluno.wav");
+        musicaNiveldos.play();
+        musicaNiveldos.musicaBucle();
             for(int i=0; i<10; i++)
             {  
                 Enemy* e = new Enemy();
@@ -124,6 +132,13 @@ void World::CargarNivel(int nivel)
         else
             if(nivel == 3)
             {
+                musicaNiveldos.pararMusica();
+
+                        musicaNiveltres.cargarMusica("resources/boss.wav");
+                         musicaNiveltres.play();
+                         musicaNiveltres.musicaBucle();
+                
+                
                 resetWorld();
                 nivelActual = nivel;
                 
@@ -165,14 +180,14 @@ void World::CargarNivel(int nivel)
 void World::Update()
 {
 
-    if(player->getExperiencia() >= 100 && !nivelico)
+    if(player->getExperiencia() >= 40 && !nivelico)
     {
         nivelico=true;
         Game::instance()->setState(transition_state::Instance());
         Motor2D::Instance()->resetCamera();
     }
     
-    if(nivelActual == 2 && player->getExperiencia() >= 200)
+    if(nivelActual == 2 && player->getExperiencia() >= 80)
     {
 
         Game::instance()->setState(transition_state::Instance());
@@ -315,8 +330,11 @@ void World::Update()
         enemys[i]->colisionLengua(player->getLengua());
     }
     
-    if(colision.checkColisionComida(comidaArray))
+    if(colision.checkColisionComida(comidaArray)){
         hud.sumaexp(player->getExperiencia());
+        sonidoComida.playSound();
+        
+    }
     
     
     hud.updateHud(player->getPositionX(), player->getPositionY());
@@ -330,6 +348,9 @@ void World::Update()
        
         Motor2D::Instance()->Instance()->resetCamera();
         Game::instance()->setState(gameover_state::Instance());
+        musicaNiveluno.pararMusica();
+        musicaNiveldos.pararMusica();
+        musicaNiveltres.pararMusica();
     }
     
     

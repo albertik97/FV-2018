@@ -53,7 +53,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/Keyboard.o \
 	${OBJECTDIR}/Motor2D.o \
 	${OBJECTDIR}/Mouse.o \
+	${OBJECTDIR}/Music.o \
 	${OBJECTDIR}/Player.o \
+	${OBJECTDIR}/Sound.o \
 	${OBJECTDIR}/Sprite.o \
 	${OBJECTDIR}/Text.o \
 	${OBJECTDIR}/TileMap.o \
@@ -195,10 +197,20 @@ ${OBJECTDIR}/Mouse.o: Mouse.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Iusr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Mouse.o Mouse.cpp
 
+${OBJECTDIR}/Music.o: Music.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iusr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Music.o Music.cpp
+
 ${OBJECTDIR}/Player.o: Player.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Iusr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Player.o Player.cpp
+
+${OBJECTDIR}/Sound.o: Sound.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iusr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sound.o Sound.cpp
 
 ${OBJECTDIR}/Sprite.o: Sprite.cpp
 	${MKDIR} -p ${OBJECTDIR}

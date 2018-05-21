@@ -18,6 +18,7 @@
 #include "Sprite.h"
 #include "Mouse.h"
 #include "Clock.h"
+#include "Sound.h"
 
 class Player {
 public:
@@ -89,6 +90,7 @@ private:
     Sprite* lengua;
     Sprite* veneno;
     bool left;
+    bool sonidoLengua;
     bool up;
     bool down;
     bool right;
@@ -112,6 +114,7 @@ private:
     bool ralentiza;
     int tipoPlayer;
     float rotation;
+    Sound lenguetaso;
     
     Clock chab1,chab2,chab3,chab;
     bool h1,h2,h3;

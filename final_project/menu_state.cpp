@@ -24,7 +24,8 @@ menu_state::menu_state()
 }
 void menu_state::Init()
 {
-    
+    musicaInicio.cargarMusica("resources/inicio.wav");
+    musicplayed = false;
     Motor2D::Instance()->resetCamera();
     
     b[0].getFondoButton()->setSize(200, 50);
@@ -103,7 +104,11 @@ void menu_state::Init()
 }
 void menu_state::HandleInput()
 {
-    
+    if(!musicplayed){
+        musicaInicio.play();
+        musicaInicio.musicaBucle();
+        musicplayed = true;
+    }
         sf::Event evento;
         while(Motor2D::Instance()->getWindow()->pollEvent(evento))
         {
@@ -115,7 +120,7 @@ void menu_state::HandleInput()
             switch(selected){
                 case 0:
                     if(Keyboard::isKeyEnterPressed() || Mouse::LeftPressed() && b[0].getColision(Mouse::getPosX(),Mouse::getPosY())){
-                       
+                        musicaInicio.pararMusica();
                         if(World::Instance()->getEndGame())
                         {
                             World::Instance()->resetWorld();

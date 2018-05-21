@@ -10,6 +10,7 @@
 #include "Keyboard.h"
 #include "Sprite.h"
 #include "Motor2D.h"
+#include "Music.h"
 
 
 
@@ -29,12 +30,17 @@ void gameover_state::Init()
 {
 
     fondo.setSpriteTexture("resources/gameover.jpg");
-   
+    sonidoGameover.cargarMusica("resources/loser.wav");
+    gameover = false;
     fondo.setPosition(0.f, 0.f);
 
 }
 void gameover_state::HandleInput()
 {
+    if(!gameover){
+        gameover = true;
+        sonidoGameover.play();
+    }
     sf::Event evento;
         while(Motor2D::Instance()->getWindow()->pollEvent(evento))
         {
