@@ -78,6 +78,7 @@ public:
     
     Sprite* getVeneno();
     bool getLanzandoVeneno();
+    bool getHabBasica();
     
     
     
@@ -112,6 +113,7 @@ private:
     int movY;
     bool invisible;
     bool ralentiza;
+    bool habbasica;
     int tipoPlayer;
     float rotation;
     Sound lenguetaso;

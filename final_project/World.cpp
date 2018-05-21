@@ -96,7 +96,7 @@ void World::CargarNivel(int nivel)
                 player->cambiarSprite("resources/carnivoro.png");
                 player->setTipo(1);
             }else{
-                player->cambiarSprite("resources/bicho.png");
+                player->cambiarSprite("resources/animasao.png");
                 player->setTipo(2);
             }
 
@@ -236,7 +236,20 @@ void World::Update()
                     
                    
                 }
-            }       
+            }
+            
+            
+            if(player->getHabBasica() && player->getSprite()->getSprite()->getGlobalBounds().intersects(enemys[i]->getSprite()->getSprite()->getGlobalBounds())){
+                
+                enemys[i]->restarVida(100);
+                if(enemys[i]->getVida() <= 0)
+                {
+                    enemys[i]->changeStrategy(new IAStopped());
+                    enemys.erase(enemys.begin() + i);
+                }
+
+            }
+
         }
         
         if(enemys[i]->getAtrapado())

@@ -85,6 +85,28 @@ void Sprite::animar(int a, int b, int c, int d, int factor){ //TODO cuando tenga
     
 }
 
+
+void Sprite::animar2(int a, int b, int c, int d, int factor){ //TODO cuando tengamos todos los sprites pasarlos o algo por parametro
+   
+        if(tiempo.getElapsedTime().asMilliseconds()<animationTime){
+            sprite->setTextureRect(sf::IntRect(a+(factor*3),b, c, d)); 
+        }
+        if(tiempo.getElapsedTime().asMilliseconds()>animationTime && tiempo.getElapsedTime().asMilliseconds()<animationTime*2){
+            sprite->setTextureRect(sf::IntRect(a+(factor*4),b, c, d));
+        }
+        if(tiempo.getElapsedTime().asMilliseconds()>animationTime*2 && tiempo.getElapsedTime().asMilliseconds()<animationTime*3){
+            sprite->setTextureRect(sf::IntRect(a+(factor*5),b, c, d));
+        }
+        if(tiempo.getElapsedTime().asMilliseconds()>animationTime*3 && tiempo.getElapsedTime().asMilliseconds()<animationTime*4){
+            sprite->setTextureRect(sf::IntRect(a+(factor*3),b, c, d));
+        }
+
+        if(tiempo.getElapsedTime().asMilliseconds()>animationTime*4){
+            tiempo.restart();
+        }      
+    
+}
+
 void Sprite::setOrigin(int x, int y){
     sprite->setOrigin(x,y);
 }

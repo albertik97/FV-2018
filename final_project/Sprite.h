@@ -27,6 +27,7 @@ public:
     void move(int a,int b);
     void setAnimationTime(int t);
     void animar(int a, int b, int c, int d, int factor);
+    void animar2(int a, int b, int c, int d, int factor);
     void transparente();
     void opaco();
     void setLastAlpha(int a);

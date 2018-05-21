@@ -57,6 +57,7 @@ Player::Player()
     tam=150;
     estado_lengua=false;
     invisible = false;
+    habbasica = false;
 
     ralentiza = false;
     sonidoLengua = false;
@@ -301,7 +302,23 @@ void Player::update(){
        else if(tipoPlayer==1){
            sprite->animar(1,1, 100, 105, 100);
        }else{
-           sprite->animar(1,1, 100, 105, 100);
+           
+           if(!habbasica){
+           sprite->animar2(1,1, 100, 105, 100);
+           }
+           else{
+               sprite->animar(1,1, 100, 105, 100);
+              
+                if(chab.getSeconds()>0.8)
+               {
+                   
+                   habbasica=false;
+
+               }
+                
+           }
+               
+           
        }
        if(!left && !right && !up && !down){
            if(tipoPlayer==0){
@@ -561,12 +578,21 @@ float Player::getLastPositionVY()
 void Player::lanzarHabilidadBasica(){
     
     
-    if(tipoPlayer ==  2  && !habbas){
+    if(tipoPlayer ==  2){
         chab.reset();
        // cambiarSprite2("resources/mordisco.png");
-        habbas = true;   
-    }    
+        habbasica = true;   
+    }
+    
 }
+
+
+bool Player::getHabBasica(){
+    
+    return habbasica;
+}
+
+
 
 void Player::lanzarHabilidadUno()
 {
