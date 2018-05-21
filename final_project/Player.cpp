@@ -46,7 +46,7 @@ Player::Player()
     verdura=0;
 
     eliminoComida = 0;
-    vida=100000;
+    vida=100;
     mouse= new Mouse();
     mouse->initMouse("resources/mira.png",0.1,0.1);
     mouse->getCursorSprite()->setPosition(x+50, y+50);
