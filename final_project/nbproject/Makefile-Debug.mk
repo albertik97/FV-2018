@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Boss.o \
 	${OBJECTDIR}/Button.o \
 	${OBJECTDIR}/Camera.o \
 	${OBJECTDIR}/Clock.o \
@@ -101,6 +102,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/final_project: /usr/lib/x86_64-linux-
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/final_project: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/final_project ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/Boss.o: Boss.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iusr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Boss.o Boss.cpp
 
 ${OBJECTDIR}/Button.o: Button.cpp 
 	${MKDIR} -p ${OBJECTDIR}
