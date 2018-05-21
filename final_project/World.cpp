@@ -125,8 +125,41 @@ void World::CargarNivel(int nivel)
         else
             if(nivel == 3)
             {
+                resetWorld();
                 nivelActual = nivel;
-                // carga el nivel del jefe final
+                
+                
+                mapa.cargarmapa(LEVEL2_MAP_FILEPATH);
+                
+                if(player->getTipo() == 1)
+                {
+                    player->cambiarSprite("resources/carnivoro.png");
+                    player->setTipo(1);
+                }
+                else
+                {
+                    player->cambiarSprite("resources/bicho.png");
+                    player->setTipo(2);
+                }
+                player->anyadirRaton();
+                
+                
+                camera.setCenter(player->getPositionX(), player->getPositionY());
+                camera.setSize(1920, 1080);
+
+
+                if(player->getTipo()==1)
+                    hud.cargarhud(1);
+                else
+                    hud.cargarhud(2);
+                
+                colision.setPlayer(player);
+                
+                fondoTransition.setSize(WINDOW_WIDTH * 2, WINDOW_HEIGHT * 2);
+                fondoTransition.setColor(0, 0, 0);
+                fondoTransition.setOriginCenter();
+                fondoTransition.setPos(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
+                fondoTransition.setAlpha(0);
             }
     
     
@@ -142,7 +175,13 @@ void World::Update()
         nivelico=true;
         Game::instance()->setState(transition_state::Instance());
         Motor2D::Instance()->resetCamera();
-        CargarNivel(2);
+    }
+    
+    if(nivelActual == 2 && player->getExperiencia() >= 90)
+    {
+
+        Game::instance()->setState(transition_state::Instance());
+        Motor2D::Instance()->resetCamera();
     }
     
     

@@ -34,15 +34,7 @@ void transition_state::Init()
  text[1].setPos(WINDOW_WIDTH*0.2,WINDOW_HEIGHT * 0.5);
  text[2].setPos(WINDOW_WIDTH*0.2,WINDOW_HEIGHT * 0.6);
  text[3].setPos(WINDOW_WIDTH*0.1,WINDOW_HEIGHT * 0.9);
-  std::stringstream ss,ss2;
-    ss<<World::Instance()->getPlayer()->getVerdura();
-    std::string str=ss.str();
- text[0].setText("Verdura obtenida: "+str);
-  ss2<<World::Instance()->getPlayer()->getCarne();
-    std::string str2=ss2.str();
- text[1].setText("Carne obtenida: "+str2);
- text[2].setText("Has evolucionado a...");
- text[3].setText("Presiona \"espacio\" para continuar al siguiente nivel");
+  
  if(World::Instance()->getPlayer()->getCarne()>World::Instance()->getPlayer()->getVerdura())
         img.setSpriteTexture("resources/carnivoro1.png");
  else
@@ -67,8 +59,10 @@ void transition_state::HandleInput()
         }
         if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space)
         {
-           // World::Instance()->resetWorld();
-            World::Instance()->CargarNivel(2);
+           if(World::Instance()->getNivelActual() == 2)
+                World::Instance()->CargarNivel(3);
+           if(World::Instance()->getNivelActual() == 1)
+                World::Instance()->CargarNivel(2);
             Game::instance()->setState(ingame_state::instance());
         }
     }
@@ -76,7 +70,15 @@ void transition_state::HandleInput()
 
 void transition_state::Update()
 {
-    
+    std::stringstream ss,ss2;
+    ss<<World::Instance()->getPlayer()->getVerdura();
+    std::string str=ss.str();
+    text[0].setText("Verdura obtenida: "+str);
+    ss2<<World::Instance()->getPlayer()->getCarne();
+    std::string str2=ss2.str();
+    text[1].setText("Carne obtenida: "+str2);
+    text[2].setText("Has evolucionado a...");
+    text[3].setText("Presiona \"espacio\" para continuar al siguiente nivel");
 }
 
 void transition_state::Draw(float percentTick)
