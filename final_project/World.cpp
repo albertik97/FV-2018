@@ -140,11 +140,9 @@ void World::CargarNivel(int nivel)
                     player->setTipo(2);
                 }
                 player->anyadirRaton();
-                
-                
+                             
                 camera.setCenter(player->getPositionX(), player->getPositionY());
                 camera.setSize(1920, 1080);
-
 
                 if(player->getTipo()==1)
                     hud.cargarhud(1);
