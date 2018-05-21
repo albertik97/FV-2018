@@ -139,11 +139,9 @@ void Enemy::colisionLengua(Sprite* lengua){
             }
         
         if(World::Instance()->getPlayer()->getLengua()->getSprite()->getTextureRect().height<21){
-            atrapado=true;
-            
+            atrapado=true; 
         }
     }
-   
 }
 
 void Enemy::restarVida(int v)

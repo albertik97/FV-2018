@@ -126,8 +126,7 @@ void World::CargarNivel(int nivel)
                 resetWorld();
                 nivelActual = nivel;
                 
-                
-                mapa.cargarmapa(LEVEL2_MAP_FILEPATH);
+                mapa.cargarmapa("lastmap.tmx");
                 
                 if(player->getTipo() == 1)
                 {
@@ -150,7 +149,7 @@ void World::CargarNivel(int nivel)
                     hud.cargarhud(2);
                 
                 colision.setPlayer(player);
-                
+                boss= new Boss();
                 fondoTransition.setSize(WINDOW_WIDTH * 2, WINDOW_HEIGHT * 2);
                 fondoTransition.setColor(0, 0, 0);
                 fondoTransition.setOriginCenter();
@@ -223,7 +222,8 @@ void World::Update()
    
     
     player->update();
-    
+    if(nivelActual==3)
+        boss->update();
     for(int i=0;i<enemys.size();i++)
     {
         for(int j=0; j<enemys.size(); j++){
@@ -296,9 +296,7 @@ void World::Update()
                     else{
                         enemys[j]->getSprite()->getSprite()->setPosition(enemys[j]->getSprite()->getSprite()->getPosition().x-10,enemys[j]->getSprite()->getSprite()->getPosition().y-10);
                     }
-                    
-                    //enemys[j]->getSprite()->getSprite()->setPosition(enemys[j]->getSprite()->getSprite()->getPosition().x-10,enemys[j]->getSprite()->getSprite()->getPosition().y-10);
-                    //enemys.erase(enemys.begin()+i);
+
                 }
                 
             }
@@ -338,6 +336,9 @@ void World::Draw(float percentTick)
     {
         beginAlpha(percentTick);
     }
+    
+    if(nivelActual==3)
+        boss->setPosition(boss->getLastPositionX()*(1-percentTick)+boss->getPositionX()*percentTick,boss->getLastPositionY()*(1-percentTick)+boss->getPositionY()*percentTick);
     player->setPositionInterpolated(player->getLastPositionX()*(1-percentTick)+player->getPositionX()*percentTick,player->getLastPositionY()*(1-percentTick)+player->getPositionY()*percentTick);
     player->getVeneno()->setPosition(player->getLastPositionVX()*(1-percentTick)+player->getPositionVX()*percentTick,player->getLastPositionVY()*(1-percentTick)+player->getPositionVY()*percentTick);
     hud.panel->setPosition(((player->getLastPositionX()*(1-percentTick)+player->getPositionX()*percentTick)-950)+15,15+((player->getLastPositionY()*(1-percentTick)+player->getPositionY()*percentTick)-530));
@@ -349,7 +350,6 @@ void World::Draw(float percentTick)
     hud.exp->setPos((player->getLastPositionX()*(1-percentTick)+player->getPositionX()*percentTick)+760,(player->getLastPositionY()*(1-percentTick)+player->getPositionY()*percentTick)-470);
     player->getMouse()->setPositionInterpolated(player->getMouse()->getLastPositionX()*(1-percentTick)+player->getMouse()->getPositionX()*percentTick,player->getMouse()->getLastPositionY()*(1-percentTick)+player->getMouse()->getPositionY()*percentTick);
 
-    
     camera.setCenter(player->getSprite()->getPosition().x, player->getSprite()->getPosition().y);
     Motor2D::Instance()->setCamera(camera);
     mapa.setCapaActiva(0);
@@ -373,7 +373,8 @@ void World::Draw(float percentTick)
     
     
     player->draw();
-    
+    if(nivelActual==3)
+        boss->draw();
     hud.draw();
     
     if(fondoTransition.getAlpha() != 0)

@@ -16,6 +16,7 @@
 #include "IAPasiva.h"
 #include "IAStopped.h"
 #include "Colisionator.h"
+#include "Boss.h"
 
 #include "states.h"
 
@@ -78,6 +79,8 @@ private:
     Clock gameStart;
     bool endGame;
     bool nivelico;
+    
+    Boss* boss;
 
    /* Player* player;
     Camera camera;
