@@ -52,7 +52,7 @@ void menu_state::Init()
     b[1].getFondoButton()->setTexture(WOOD_TEXTURE_FILEPATH);
     b[1].getFondoButton()->setOriginCenter();
     b[1].getFondoButton()->setPos(0, (WINDOW_HEIGHT / 2) * 1.15);
-    b[1].getTextButton()->setText("Options");
+    b[1].getTextButton()->setText("Controls");
     b[1].getTextButton()->setSize(20);
     b[1].getTextButton()->setColor(255, 222, 173);
     
