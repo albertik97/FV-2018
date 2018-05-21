@@ -43,7 +43,6 @@ void Fondo::setOutlineColor(int r, int g, int b)
 
 void Fondo::setOriginCenter()
 {
-    std::cout << "width: " << shape.getGlobalBounds().width << " height: " << shape.getGlobalBounds().height << std::endl;
     shape.setOrigin(shape.getGlobalBounds().width / 2, shape.getGlobalBounds().height / 2);
 }
 

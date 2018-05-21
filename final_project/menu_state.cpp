@@ -20,39 +20,12 @@ menu_state* menu_state::Instance()
 menu_state::menu_state()
 {
     this->Init();
-    std::cout << "Esto deberia de salir al crear el menu en el main" << std::endl;
+    
 }
 void menu_state::Init()
 {
-    std::cout << "Entramos al Init()" << std::endl;
+    
     Motor2D::Instance()->resetCamera();
-    
-    /*menu[0].setPos(Motor2D::Instance()->getWindow()->getSize().x/2,Motor2D::Instance()->getWindow()->getSize().y*0.5);
-    menu[0].setColor(255,255,255);
-    menu[0].setText("Jugar");
-    menu[0].setSize(50);
-    menu[0].setOriginCenter();
-    
-    
-    menu[1].setPos(Motor2D::Instance()->getWindow()->getSize().x/2,Motor2D::Instance()->getWindow()->getSize().y*0.6);
-    menu[1].setColor(255,0,0);
-    menu[1].setText("Opciones");
-    menu[1].setSize(50);
-    menu[1].setOriginCenter();
-   
-    
-    menu[2].setPos(Motor2D::Instance()->getWindow()->getSize().x/2,Motor2D::Instance()->getWindow()->getSize().y*0.7);
-    menu[2].setColor(255,0,0);
-    menu[2].setText("Creditos");
-    menu[2].setSize(50);
-    menu[2].setOriginCenter();
-  
-    std::cout<<Motor2D::Instance()->getWindow()->getSize().y<<std::endl;
-    menu[3].setPos(Motor2D::Instance()->getWindow()->getSize().x/2,Motor2D::Instance()->getWindow()->getSize().y*0.8);
-    menu[3].setColor(255,0,0);
-    menu[3].setText("Salir");
-    menu[3].setSize(50);
-    menu[3].setOriginCenter();*/
     
     b[0].getFondoButton()->setSize(200, 50);
     b[0].getFondoButton()->setTextureRect(100, 90);
@@ -142,7 +115,7 @@ void menu_state::HandleInput()
             switch(selected){
                 case 0:
                     if(Keyboard::isKeyEnterPressed() || Mouse::LeftPressed() && b[0].getColision(Mouse::getPosX(),Mouse::getPosY())){
-                        std::cout << "Nos pasamos a la escena de juego" << std::endl;
+                       
                         if(World::Instance()->getEndGame())
                         {
                             World::Instance()->resetWorld();
@@ -155,7 +128,7 @@ void menu_state::HandleInput()
                     break;
                 case 1:
                     if(Keyboard::isKeyEnterPressed() || Mouse::LeftPressed() && b[1].getColision(Mouse::getPosX(),Mouse::getPosY())){
-                        std::cout << "Segunda opcion" << std::endl;
+                        
                         Game::instance()->setState(options_state::Instance());
                     }
                     
@@ -163,14 +136,14 @@ void menu_state::HandleInput()
                 case 2: 
                     
                     if(Keyboard::isKeyEnterPressed() || Mouse::LeftPressed() && b[2].getColision(Mouse::getPosX(),Mouse::getPosY())){
-                       std::cout << "Tercera opcion" << std::endl;
+                      
                        Game::instance()->setState(credits_state::Instance());
                     }                  
                     
                     break;
                 case 3: 
                     if(Keyboard::isKeyEnterPressed() || Mouse::LeftPressed() && b[3].getColision(Mouse::getPosX(),Mouse::getPosY())){
-                        std::cout << "Nos salimos del juego" << std::endl;
+                       
                         Motor2D::Instance()->closeWindow();
                     }
                     
@@ -197,7 +170,6 @@ void menu_state::HandleInput()
 }
 void menu_state::Update()
 {
-    //std::cout << "se esta actualizando" << std::endl;
     Motor2D::Instance()->resetCamera();
     
     
@@ -207,7 +179,7 @@ void menu_state::Update()
                     menu[i].setColor(255,0,0);
             }            
             mouse.CursorUpdate(0, 0);//se actualiza el sprite a la posicion del raton
-            std::cout << World::Instance()->getEndGame() << std::endl;
+          
             
 }
 void menu_state::Draw(float percentTick)

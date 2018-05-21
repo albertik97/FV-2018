@@ -188,7 +188,7 @@ void Player::input(){
                         habuno = true;
                          habdos = false;
                          habtres = false;
-                       // std::cout << "HABILIDAD 1" << std::endl;
+                       
                     }
                     
                     if(Keyboard::isKey2Pressed()){
@@ -196,14 +196,12 @@ void Player::input(){
                         habdos = true;
                         habtres =false;
                          chab2.reset();
-                        //std::cout << "HABILIDAD 2" << std::endl;
                     }
                     
                     if(Keyboard::isKey3Pressed()){
                         habuno = false;
                         habdos = false;
                         habtres = true;
-                        //std::cout << "HABILIDAD 3" << std::endl;
                     }
 	
                     if(!Keyboard::isKeyDPressed()){				
@@ -323,12 +321,10 @@ void Player::update(){
                 sprite->transparente();
                 invisible = true;
                 energia -= 2;
-                //std::cout << "ESTAMOS INBISIBLA" << std::endl;
            }else if(chab1.getSeconds() > 6){
                sprite->opaco();
                invisible = false;
                h1 = false;
-                //std::cout << "ESTAMOS OPAKOH" << std::endl;
            }
            
        }
@@ -356,7 +352,6 @@ void Player::update(){
        }
        if(lanzando_veneno && chab2.getSeconds() < 2)
         {
-           std::cout << "movemos el veneno" << std::endl;
            vxlast=vx;
            vylast=vy;
         veneno->getSprite()->move(cos(dir_veneno * M_PI/180) * 80,sin(dir_veneno * M_PI/180) * 80);
@@ -528,12 +523,11 @@ void Player::lanzarHabilidadUno()
 {
     if(tipoPlayer == 2)
     {
-        std::cout << "Lanzamos la habilidad 1 del herbivorom (INVISIBILIDAD)" << std::endl;
+       
         h1 = true;
     }
     if(tipoPlayer == 1)
     {
-        std::cout << "Lanzamos la habilidad 1 del carnivoro" << std::endl;
         // Lanzamos la habilidad 1 del carnivoro
         h1 = true;
     }
@@ -542,20 +536,18 @@ void Player::lanzarHabilidadDos()
 {
     if(tipoPlayer == 2)
     {
-        std::cout << "Lanzamos la habilidad 2 del herbivoro" << std::endl;
-        // Lanzamos la habilidad 2 del herbivoro
+      
     }
     if(tipoPlayer == 1)
     {
-        std::cout << "Lanzamos la habilidad 2 del carnivoro" << std::endl;
-        // Lanzamos la habilidad 2 del carnivoro
+       
     }
 }
 void Player::lanzarHabilidadTres()
 {
     if(tipoPlayer == 2)
     {
-        std::cout << "Lanzamos la habilidad 3 del herbivoro" << std::endl;
+       
         
         if(energia>=30){
             energia-=30;
@@ -564,7 +556,7 @@ void Player::lanzarHabilidadTres()
     }
     if(tipoPlayer == 1)
     {
-        std::cout << "Lanzamos la habilidad 3 del carnivoro" << std::endl;
+   
         if(energia>=1){
             energia-=1;
             if(energia <= 10){

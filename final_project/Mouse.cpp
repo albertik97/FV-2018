@@ -45,7 +45,6 @@ void Mouse::setTexture(std::string route){
 }
 
 void Mouse::setPositionInterpolated(float x, float y){
-    //std::cout<<"jjaja: "<<x<<std::endl;
     cursor->setPosition(x, y);
     
 }

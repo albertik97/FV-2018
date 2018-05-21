@@ -53,7 +53,6 @@ IAActiva::~IAActiva() {
         Player *player = World::Instance()->getPlayer();
         player->getPositionX();
         int xp, yp;
-        //std::cout<<rand_decision<<std::endl;
 
         switch(rand_decision){
             case 0: //arriba
@@ -118,7 +117,6 @@ IAActiva::~IAActiva() {
                                      else{
                                          enemy->move(kVel,-kVel);
                                      }
-                                     //std::cout<<"1ºcuadrante"<<std::endl;
 
                                  }
                                   if(y-enemy->getPosition().y<0 && x-enemy->getPosition().x>0){
@@ -129,7 +127,6 @@ IAActiva::~IAActiva() {
                                      else{
                                          enemy->move(-kVel,-kVel);
                                      }
-                                     //std::cout<<"4ºcuadrante"<<std::endl;
 
                                  }
                                   if(y-enemy->getPosition().y<0 && x-enemy->getPosition().x<0){
@@ -140,7 +137,6 @@ IAActiva::~IAActiva() {
                                      else{
                                          enemy->move(kVel,-kVel);
                                      }
-                                     //std::cout<<"3ºcuadrante"<<std::endl;
 
                                  }
                                   if(y-enemy->getPosition().y>0 && x-enemy->getPosition().x<0){
@@ -151,7 +147,6 @@ IAActiva::~IAActiva() {
                                      else{
                                          enemy->move(-kVel,-kVel);
                                      }
-                                     //std::cout<<"2ºcuadrante"<<std::endl;
 
                                  }
 

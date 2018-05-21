@@ -24,14 +24,12 @@ ingame_state* ingame_state::instance()
 }
 ingame_state::ingame_state()
 {
-    std::cout << "Esto deberia salir al crearse la escena de ingame" << std::endl;
     this->Init();
 }
 void ingame_state::Init()
 {
     mundo = World::Instance();
     mundo->CargarNivel(1);
-   std::cout<<"He hecho el init de ingame"<<std::endl;
 }
 
 void ingame_state::HandleInput()

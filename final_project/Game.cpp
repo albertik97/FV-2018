@@ -65,6 +65,5 @@ void Game::update(){
 void Game::setState(state* escena)
 {
     this->escena = escena;
-    std::cout << "Hacemos el Init() de la escena" << std::endl;
     
 }

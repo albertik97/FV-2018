@@ -138,7 +138,6 @@ void Hud::updateHud(float x,float y){
     if(energia > 0 && energia < maxenergia){
         rellenoenergia = (energia*12.4)/maxenergia;
         //aumentamos la energia
-        std::cout<<"energia: "<<energia<<std::endl;
         Rectenergia->setSpriteTexture("resources/experiencia.jpg");
         Rectenergia->scale(rellenoenergia,0.4);
     }
@@ -149,7 +148,6 @@ void Hud::updateHud(float x,float y){
 
     
     if(World::Instance()->getPlayer()->getHabilidad() == 1){
-        //std::cout << "Usamos habilidad numero 1" << std::endl;
         activaHabilidad(1, tipo);
         if(habilidadActiva != 1){
             desactivaHabilidad(habilidadActiva, tipo);
@@ -157,7 +155,6 @@ void Hud::updateHud(float x,float y){
         habilidadActiva = 1;
     }
     if(World::Instance()->getPlayer()->getHabilidad() == 2){
-        //std::cout << "Usamos habilidad numero 2" << std::endl;
         activaHabilidad(2, tipo);
          if(habilidadActiva != 2){
             desactivaHabilidad(habilidadActiva, tipo);
@@ -165,7 +162,6 @@ void Hud::updateHud(float x,float y){
         habilidadActiva = 2;
     }
     if(World::Instance()->getPlayer()->getHabilidad() == 3){
-        //std::cout << "Usamos habilidad numero 3" << std::endl;
         activaHabilidad(3, tipo);
          if(habilidadActiva != 3){
             desactivaHabilidad(habilidadActiva, tipo);

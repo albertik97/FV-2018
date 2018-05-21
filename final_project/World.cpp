@@ -9,7 +9,7 @@ World* World::Instance()
     if(pinstance == 0)
     {
         pinstance = new World();
-        std::cout << "Instancia de mundo creada" << std::endl;
+
     }
     return pinstance;
 }
@@ -17,13 +17,11 @@ World* World::Instance()
 World::World() 
     : nivelActual(0), endGame(false)
 {
-    std::cout << "Hemos creado el mundo y parace que no ha petado " << std::endl;
     nivelico=false;
 }
 
 void World::CargarNivel(int nivel)
 {
-    std::cout << "cargamos el nivel " << nivel << std::endl;
     
     if(nivel == 1)
     {
@@ -127,9 +125,6 @@ void World::CargarNivel(int nivel)
                 nivelActual = nivel;
                 // carga el nivel del jefe final
             }
-    
-    
-    std::cout << "Se ha cargado todo lo del nivel " << nivel << std::endl;
                 
 }
 
@@ -169,7 +164,7 @@ void World::Update()
             colision.checkColisionComidaEnemy(comidaArray);
             if(player->getLanzandoVeneno() && player->getVeneno()->getSprite()->getGlobalBounds().intersects(enemys[i]->getSprite()->getSprite()->getGlobalBounds()))
             {
-                std::cout << "Le quito vida al enemigo" << std::endl;
+                
                 enemys[i]->restarVida(100);
                
                 
@@ -178,11 +173,9 @@ void World::Update()
                     enemys[i]->changeStrategy(new IAStopped());
                      enemys.erase(enemys.begin() + i);
                     
-                   // enemys.erase(enemys.begin() + i);
-                    std::cout << "Enemigo borrado del array" << std::endl;
+                   
                 }
-            }
-            //std::cout<<"Entro"<<i<<std::endl;          
+            }       
         }
     }
     
@@ -199,14 +192,14 @@ void World::Update()
                     float x = enemys[i]->getSprite()->getPosition().x-player->getPositionX();
                     float y = enemys[i]->getSprite()->getPosition().y-player->getPositionY();
                     float resultado = sqrt((x*x)+(y*y));
-                    //std::cout << "ESTAMOS DENTRO DE ENEMIGOS" << std::endl;
+                   
                     if(resultado<400){
 
                         if(player->transparente() && enemys[i]->getStrategy()->getType() != 1){
                             enemys[i]->changeStrategy(new IAPasiva());
-                            std::cout << "IA PASIVA" << std::endl;
+                            
                         }else if(!player->transparente() && enemys[i]->getStrategy()->getType() != 0){
-                            std::cout << "IA ACTIVA" << std::endl;
+                           
                             enemys[i]->changeStrategy(new IAActiva());
                         }
                         if(resultado<300 && player->getHabilidad()==2 && enemys[i]->getStrategy()->getType() != 2){
@@ -274,7 +267,7 @@ void World::Update()
     player->aumentaEnergia(gameStart.getSeconds());
     
     if(player->getVida() == 0){
-        std::cout << "Has muerto bandido" << std::endl;
+       
         Motor2D::Instance()->Instance()->resetCamera();
         Game::instance()->setState(gameover_state::Instance());
     }

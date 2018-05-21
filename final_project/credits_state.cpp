@@ -1,17 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   credits_state.cpp
- * Author: blanca
- * 
- * Created on 19 de abril de 2018, 9:33
- */
-
-
 
 #include "credits_state.h"
 #include "Motor2D.h"

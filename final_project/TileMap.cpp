@@ -62,7 +62,6 @@ void TileMap::cargarmapa(std::string path){
     TiXmlElement *img = map->FirstChildElement("tileset")->FirstChildElement("image");
     tilesetname = img->Attribute("source");
     //Imprimimos el nombre o ruta del tileset
-    //std::cout << "Nombre del tileset: " << tilesetname << std::endl;
   
     while(layer != NULL){
         /*if(numeroCapas < 1)*/
@@ -86,7 +85,7 @@ void TileMap::cargarmapa(std::string path){
             _tilemap[l][y] = new int[anchoMapa];
             for(int x = 0; x < anchoMapa; x++){
                 data[l]->QueryIntAttribute("gid", &_tilemap[l][y][x]);
-                //std::cout<<_tilemap[l][y][x]<<std::endl;
+               
                 data[l] = data[l]->NextSiblingElement("tile");
              
             }
@@ -100,18 +99,6 @@ void TileMap::cargarmapa(std::string path){
             data[l+1] = data[l+1]->NextSiblingElement("layer")->FirstChildElement("data")->FirstChildElement("tile");
         }
     }
-
-    /*
-    for(int i = 0; i  numeroCapas-2; i++){
-        for(int j = 0; j < altoMapa; j++){
-            for(int x = 0; x < anchoMapa; x++){
-                std::cout << _tilemap[i][j][x] << std::endl;
-            }
-        }
-    }
-    */
-    
-    
     
     //Recortamos y añadimos el tileset al array
     //Primero sacamos las columnas y la altura del tileset
@@ -160,12 +147,10 @@ void TileMap::cargarmapa(std::string path){
                             << gid << " fuera del rango del tileset ("<<anchoTile*altoTile<<")" << std::endl;
                 }
                 else if(gid > 0){
-                    //std::cout << "_tileMapSprite[" << l << "][" << y << "][" << x << "]" << std::endl;
-                    //_tileMapSprite[l][y][x] = _tileSetImagen[gid];
+
                     _tileMapSprite[l][y][x] = new sf::Sprite(_tileSetTexture, _tileSetImagen[gid].getTextureRect());
                     _tileMapSprite[l][y][x]->setPosition(x*anchoTile, y*altoTile);
-                    //if(l == 2)
-                    //std::cout << "[" << l << "][" << y << "][" << x << "] -- " << gid << std::endl;
+                   
                 }
                 else{
                     _tileMapSprite[l][y][x] = NULL;
@@ -173,7 +158,6 @@ void TileMap::cargarmapa(std::string path){
             }
         }
     }
-    std::cout << "Se ha terminado el cargar el mapa, creo" << std::endl;
 }
 void TileMap::deleteMap()
 {
@@ -186,9 +170,9 @@ void TileMap::deleteMap()
         delete[] _tilemap[l];
     }
     delete[] _tilemap;
-    std::cout << "Y: " << std::endl;
+ 
     delete[] _tileSetImagen;
-    std::cout << "D: " << std::endl;
+
     for(int x = 0; x < numeroCapas; x++)
     {
         for(int y = 0; y < altoMapa; y++)
