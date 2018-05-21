@@ -44,7 +44,7 @@ public:
     std::vector<Enemy*> getEnemies();
     int getNivelActual();
     Fondo getFondo();
-    Clock getTimeBoss();
+    Clock* getTimeBoss();
     
     /*
     Clock getClockGameStart();
@@ -78,7 +78,7 @@ private:
     Hud hud;
     Fondo fondoTransition;
     Clock gameStart;
-    Clock bossTime;
+    Clock *bossTime;
     bool endGame;
     bool nivelico;
     

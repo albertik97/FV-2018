@@ -177,11 +177,11 @@ void Hud::updateHud(float x,float y){
     
     if(World::Instance()->getNivelActual() == 3)
     {
-        int sec = 0;
-        sec = World::Instance()->getTimeBoss().getMiliseconds() / 1000;
-        std::string s = "Tiempo: " + sec;
-        std::cout << s << std::endl;
-        exp->setText(s);
+        float sec = ceil(World::Instance()->getTimeBoss()->getSeconds());
+       std::stringstream ss;
+            ss<<sec;
+            std::string str=ss.str();
+        exp->setText("Tiempo: "+str);
         
     }
         

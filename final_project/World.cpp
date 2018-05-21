@@ -125,9 +125,9 @@ void World::CargarNivel(int nivel)
             {
                 resetWorld();
                 nivelActual = nivel;
-                bossTime.reset();
                 
-                
+                bossTime = new Clock();
+                bossTime->reset();
                 mapa.cargarmapa("lastmap.tmx");
                 
                 if(player->getTipo() == 1)
@@ -178,7 +178,7 @@ void World::Update()
         Motor2D::Instance()->resetCamera();
     }
     
-    if(bossTime.getSeconds() >= 6 && nivelActual == 3)
+    if(nivelActual == 3 &&bossTime->getSeconds() >= 60 )
     {
         Motor2D::Instance()->Instance()->resetCamera();
         Game::instance()->setState(gameover_state::Instance());
@@ -488,7 +488,7 @@ int World::getNivelActual()
     return nivelActual;
 }
 
-Clock World::getTimeBoss()
+Clock* World::getTimeBoss()
 {
     return bossTime;
 }
