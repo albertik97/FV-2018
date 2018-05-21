@@ -8,7 +8,9 @@
 #include <time.h> 
 #include<iostream>
 
-Enemy::Enemy() {
+Enemy::Enemy()
+    : vida(100)
+{
     sprite=new Sprite();
     strategy=new IAPasiva();
     x=0;
@@ -65,7 +67,10 @@ void Enemy::update(){
         sprite->animar(0,0,1024,1024, 1024);
     x=sprite->getPosition().x;
     y=sprite->getPosition().y;
+<<<<<<< HEAD
     // std::cout<<"x: "<<x<<"y: "<<y<<std::endl;
+=======
+>>>>>>> master
 }
 
 void Enemy::changeStrategy(IA* a){
@@ -108,7 +113,7 @@ float Enemy::getLastPositionY()
 
 void Enemy::colisionLengua(Sprite* lengua){
 
-    if(sprite->getSprite()->getGlobalBounds().intersects(lengua->getSprite()->getGlobalBounds())){
+   if(sprite->getSprite()->getGlobalBounds().intersects(lengua->getSprite()->getGlobalBounds())){
         int npc_x = sprite->getPosition().x;     
         int npc_y = sprite->getPosition().y; 
         int lengua_x = lengua->getPosition().x;     
@@ -126,9 +131,19 @@ void Enemy::colisionLengua(Sprite* lengua){
                 x=lengua->getSprite()->getGlobalBounds().left;
                 y=lengua->getSprite()->getGlobalBounds().top+lengua->getSprite()->getGlobalBounds().height;
             }else if(npc_x>lengua_x&&npc_y>lengua_y){
-                sprite->setPosition(lengua->getSprite()->getGlobalBounds().width+lengua->getSprite()->getGlobalBounds().left,lengua->getSprite()->getGlobalBounds().top+lengua->getSprite()->getGlobalBounds().height);
-                x=lengua->getSprite()->getGlobalBounds().width;
-                y=lengua->getSprite()->getGlobalBounds().left,lengua->getSprite()->getGlobalBounds().top+lengua->getSprite()->getGlobalBounds().height;
+                sprite->setPosition(lengua->getSprite()->getGlobalBounds().left+lengua->getSprite()->getGlobalBounds().width,lengua->getSprite()->getGlobalBounds().top+lengua->getSprite()->getGlobalBounds().height);
+                x=lengua->getSprite()->getGlobalBounds().left+lengua->getSprite()->getGlobalBounds().width;
+               y=lengua->getSprite()->getGlobalBounds().top+lengua->getSprite()->getGlobalBounds().height;
             }
     }
+}
+
+void Enemy::restarVida(int v)
+{
+    vida -= v;
+}
+
+int Enemy::getVida()
+{
+    return vida;
 }

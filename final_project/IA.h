@@ -9,7 +9,11 @@ public:
     virtual void moverse(std::vector<Food*> f,Sprite* &s)=0;
     virtual void elegirComportamiento(Sprite* &s)=0;
     virtual int getType() = 0;
+<<<<<<< HEAD
     virtual void setVelocidad(float) = 0;
+=======
+    virtual bool checkColisionMap(int x, int y, Sprite* enemy)=0;
+>>>>>>> master
 private:
     
 protected:

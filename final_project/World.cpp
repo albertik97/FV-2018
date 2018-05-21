@@ -27,12 +27,12 @@ void World::CargarNivel(int nivel)
     
     if(nivel == 1)
     {
+        nivelico = false;
         nivelActual = nivel;
-        
         srand(time(0));
         mapa.cargarmapa(LEVEL1_MAP_FILEPATH);
         
-        for(int i=0; i<1; i++)
+        for(int i=0; i<15; i++)
         {  
             Enemy* e = new Enemy();
             e->chargingTexture("resources/enemy.png",1024,1024,0.06,0.07);
@@ -49,7 +49,7 @@ void World::CargarNivel(int nivel)
               
         hud.cargarhud(1);
         
-        for(int i=0; i<160; i++)
+        for(int i=0; i<80; i++)
         {  
             Food* comida = new Food();
             comidaArray.push_back(comida);
@@ -73,7 +73,11 @@ void World::CargarNivel(int nivel)
             srand(time(0));
             mapa.cargarmapa(LEVEL2_MAP_FILEPATH);
             
+<<<<<<< HEAD
             for(int i=0; i<40; i++)
+=======
+            for(int i=0; i<10; i++)
+>>>>>>> master
             {  
                 Enemy* e = new Enemy();
                 e->chargingTexture("resources/carnivoro.png",100,100,0.6,0.6);
@@ -136,12 +140,12 @@ void World::CargarNivel(int nivel)
 void World::Update()
 {
 
-    if(player->getExperiencia() >= 30 && !nivelico)
+    if(player->getExperiencia() >= 10 && !nivelico)
     {
         nivelico=true;
         Game::instance()->setState(transition_state::Instance());
         Motor2D::Instance()->resetCamera();
-       //CargarNivel(2);
+        CargarNivel(2);
     }
     
     
@@ -167,6 +171,21 @@ void World::Update()
         int mitadPantallaY = Motor2D::Instance()->getWindow()->getView().getSize().y/2;
         if(xEnemy<x+mitadPantallaX && xEnemy>x-mitadPantallaX && yEnemy<y+mitadPantallaY && yEnemy>y-mitadPantallaY){
             colision.checkColisionComidaEnemy(comidaArray);
+            if(player->getLanzandoVeneno() && player->getVeneno()->getSprite()->getGlobalBounds().intersects(enemys[i]->getSprite()->getSprite()->getGlobalBounds()))
+            {
+                std::cout << "Le quito vida al enemigo" << std::endl;
+                enemys[i]->restarVida(100);
+               
+                
+                if(enemys[i]->getVida() <= 0)
+                {
+                    enemys[i]->changeStrategy(new IAStopped());
+                     enemys.erase(enemys.begin() + i);
+                    
+                   // enemys.erase(enemys.begin() + i);
+                    std::cout << "Enemigo borrado del array" << std::endl;
+                }
+            }
             //std::cout<<"Entro"<<i<<std::endl;          
         }
     }
@@ -177,6 +196,7 @@ void World::Update()
     
     for(int i=0;i<enemys.size();i++)
     {
+<<<<<<< HEAD
         enemys[i]->update();
         float x = enemys[i]->getSprite()->getPosition().x-player->getPositionX();
         float y = enemys[i]->getSprite()->getPosition().y-player->getPositionY();
@@ -215,6 +235,75 @@ void World::Update()
 
         
         
+=======
+        for(int j=0; j<enemys.size(); j++){
+            if(enemys[i]!=enemys[j]){
+                
+                if(!enemys[i]->getSprite()->getSprite()->getGlobalBounds().intersects(enemys[j]->getSprite()->getSprite()->getGlobalBounds())){
+                    float x = enemys[i]->getSprite()->getPosition().x-player->getPositionX();
+                    float y = enemys[i]->getSprite()->getPosition().y-player->getPositionY();
+                    float resultado = sqrt((x*x)+(y*y));
+                    //std::cout << "ESTAMOS DENTRO DE ENEMIGOS" << std::endl;
+                    if(resultado<400){
+
+                        if(player->transparente() && enemys[i]->getStrategy()->getType() != 1){
+                            enemys[i]->changeStrategy(new IAPasiva());
+                            std::cout << "IA PASIVA" << std::endl;
+                        }else if(!player->transparente() && enemys[i]->getStrategy()->getType() != 0){
+                            std::cout << "IA ACTIVA" << std::endl;
+                            enemys[i]->changeStrategy(new IAActiva());
+                        }
+                        if(resultado<300 && player->getHabilidad()==2 && enemys[i]->getStrategy()->getType() != 2){
+                            enemys[i]->changeStrategy(new IAStopped());
+                        }
+
+
+
+                    }
+                }
+                else{
+                    if(enemys[i]->getStrategy()->checkColisionMap(-7,0, enemys[i]->getSprite())){
+                        enemys[i]->getSprite()->move(7, 0);               
+                    }
+                    else if(enemys[i]->getStrategy()->checkColisionMap(7,0, enemys[i]->getSprite())){
+                        enemys[i]->getSprite()->move(-7, 0);   
+                        
+                    }
+                    else if(enemys[i]->getStrategy()->checkColisionMap(0,-7, enemys[i]->getSprite())){
+                        enemys[i]->getSprite()->move(0, 7);             
+                    }
+                    else if(enemys[i]->getStrategy()->checkColisionMap(0,7, enemys[i]->getSprite())){
+                        enemys[i]->getSprite()->move(0, -7);         
+                    }
+                    else{
+                        enemys[i]->getSprite()->getSprite()->setPosition(enemys[i]->getSprite()->getSprite()->getPosition().x+10,enemys[i]->getSprite()->getSprite()->getPosition().y+10);
+                    }
+                    
+                    if(enemys[j]->getStrategy()->checkColisionMap(-7,0, enemys[j]->getSprite())){
+                        enemys[j]->getSprite()->move(7, 0);               
+                    }
+                    else if(enemys[j]->getStrategy()->checkColisionMap(7,0, enemys[j]->getSprite())){
+                        enemys[j]->getSprite()->move(-7, 0);   
+                        
+                    }
+                    else if(enemys[j]->getStrategy()->checkColisionMap(0,-7, enemys[j]->getSprite())){
+                        enemys[j]->getSprite()->move(0, 7);             
+                    }
+                    else if(enemys[j]->getStrategy()->checkColisionMap(0,7, enemys[j]->getSprite())){
+                        enemys[j]->getSprite()->move(0, -7);         
+                    }
+                    else{
+                        enemys[j]->getSprite()->getSprite()->setPosition(enemys[j]->getSprite()->getSprite()->getPosition().x-10,enemys[j]->getSprite()->getSprite()->getPosition().y-10);
+                    }
+                    
+                    //enemys[j]->getSprite()->getSprite()->setPosition(enemys[j]->getSprite()->getSprite()->getPosition().x-10,enemys[j]->getSprite()->getSprite()->getPosition().y-10);
+                    //enemys.erase(enemys.begin()+i);
+                }
+                
+            }
+        }
+        enemys[i]->update();
+>>>>>>> master
         enemys[i]->colisionLengua(player->getLengua());
     }
     
@@ -249,7 +338,7 @@ void World::Draw(float percentTick)
         beginAlpha(percentTick);
     }
     player->setPositionInterpolated(player->getLastPositionX()*(1-percentTick)+player->getPositionX()*percentTick,player->getLastPositionY()*(1-percentTick)+player->getPositionY()*percentTick);
-    
+    player->getVeneno()->setPosition(player->getLastPositionVX()*(1-percentTick)+player->getPositionVX()*percentTick,player->getLastPositionVY()*(1-percentTick)+player->getPositionVY()*percentTick);
     hud.panel->setPosition(((player->getLastPositionX()*(1-percentTick)+player->getPositionX()*percentTick)-950)+15,15+((player->getLastPositionY()*(1-percentTick)+player->getPositionY()*percentTick)-530));
     hud.Rectenergia->setPosition(((player->getLastPositionX()*(1-percentTick)+player->getPositionX()*percentTick)-950)+20,47+((player->getLastPositionY()*(1-percentTick)+player->getPositionY()*percentTick)-530));
     hud.Rectvida->setPosition(((player->getLastPositionX()*(1-percentTick)+player->getPositionX()*percentTick)-950)+20,25+((player->getLastPositionY()*(1-percentTick)+player->getPositionY()*percentTick)-530));

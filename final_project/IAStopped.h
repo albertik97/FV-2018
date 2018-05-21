@@ -12,9 +12,13 @@ public:
     virtual ~IAStopped();
     void elegirComportamiento(Sprite* &s);
     void moverse(std::vector<Food*> f,Sprite* &s);
+<<<<<<< HEAD
    // void setVelocidad(float velocidad);
     void setVelocidad(float);
 
+=======
+    bool checkColisionMap(int x, int y, Sprite* enemy);
+>>>>>>> master
     int getType();
 private:
    
