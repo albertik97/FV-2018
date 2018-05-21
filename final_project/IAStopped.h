@@ -12,9 +12,12 @@ public:
     virtual ~IAStopped();
     void elegirComportamiento(Sprite* &s);
     void moverse(std::vector<Food*> f,Sprite* &s);
+   // void setVelocidad(float velocidad);
+    void setVelocidad(float);
+
     int getType();
 private:
-  
+   
 };
 
 #endif /* IASTOPPED_H */

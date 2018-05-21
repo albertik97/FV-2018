@@ -159,3 +159,7 @@ bool IAPasiva::checkColisionMap(int x, int y, Sprite* s){
 int IAPasiva::getType(){
     return 1;
 }
+
+ void IAPasiva::setVelocidad(float){
+     
+ }

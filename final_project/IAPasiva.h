@@ -22,11 +22,15 @@ public:
     void moverse(std::vector<Food*> f,Sprite* &s);
     void buscarComida(std::vector<Food*> f,Sprite* player,int i);
     void elegirComportamiento(Sprite *&s);
+
     std::vector<float> distFood(Food* comida,Sprite* player);
     bool checkColisionMap(int x, int y, Sprite* enemy);
     //bool checkColisionEnemy(int x, int y, Sprite* enemy);
     void setComida(std::vector<Food*> & com);
     int getType();
+        void setVelocidad(float);
+
+    
 
 private:
     int mov_dir,dist,dist_aux;

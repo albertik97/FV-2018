@@ -28,7 +28,13 @@ IAStopped::~IAStopped() {
  
  }
  
+void IAStopped::setVelocidad(float){
+     
+ }
+ 
 int IAStopped::getType(){
      return 2;
  }
+
+
 

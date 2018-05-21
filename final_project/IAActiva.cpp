@@ -233,3 +233,7 @@ bool IAActiva::checkColisionEnemy(int x, int y, Sprite* enemy){
  int IAActiva::getType(){
      return 0;
  }
+ 
+ void IAActiva::setVelocidad(float velocidad){
+     kVel = velocidad;
+ }

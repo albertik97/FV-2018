@@ -138,7 +138,7 @@ void Hud::updateHud(float x,float y){
     if(energia > 0 && energia < maxenergia){
         rellenoenergia = (energia*12.4)/maxenergia;
         //aumentamos la energia
-        std::cout<<"energia: "<<energia<<std::endl;
+       // std::cout<<"energia: "<<energia<<std::endl;
         Rectenergia->setSpriteTexture("resources/experiencia.jpg");
         Rectenergia->scale(rellenoenergia,0.4);
     }
