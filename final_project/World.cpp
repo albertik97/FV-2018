@@ -27,6 +27,7 @@ void World::CargarNivel(int nivel)
     
     if(nivel == 1)
     {
+        nivelico = false;
         nivelActual = nivel;
         srand(time(0));
         mapa.cargarmapa(LEVEL1_MAP_FILEPATH);
